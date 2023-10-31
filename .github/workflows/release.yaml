@@ -1,0 +1,66 @@
+name: Release
+on:
+  push:
+    branches:
+      - main
+      - beta
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    env:
+      TF_PLUGIN_CACHE_DIR: ${{ github.workspace }}/.terraform.d/plugin-cache
+    steps:
+
+      - name: Check out source code
+        uses: actions/checkout@v4
+
+      - name: Init terraform cache
+        run: mkdir -p $TF_PLUGIN_CACHE_DIR
+
+      - name: Setup terraform cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.TF_PLUGIN_CACHE_DIR }}
+          key: ${{ runner.os }}-terraform-${{ hashFiles('**/.terraform.lock.hcl') }}
+          restore-keys: ${{ runner.os }}-terraform-
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.6.2
+          terraform_wrapper: false
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v1
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v1
+        with:
+          export_environment_variables: true
+          service_account: terraform@${{ vars.GOOGLE_PROJECT }}.iam.gserviceaccount.com
+          workload_identity_provider: projects/${{ vars.GOOGLE_PROJECT_NUMBER }}/locations/global/workloadIdentityPools/github-actions-workflows/providers/github-actions
+
+      - name: Install semantic-release exec plugin
+        run: npm install --save-dev @semantic-release/exec
+
+      - name: Release
+        env:
+          ARTIFACT_REGISTRY_LOCATION: ${{ vars.ARTIFACT_REGISTRY_LOCATION }}
+          CREDENTIALS: ${{ secrets.CREDENTIALS }}
+          DEV_BUCKET: ${{ vars.DEV_BUCKET }}
+          DOMAIN_NAME: ${{ vars.DOMAIN_NAME }}
+          FIRESTORE_LOCATION: ${{ vars.FIRESTORE_LOCATION }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GOOGLE_PROJECT: ${{ vars.GOOGLE_PROJECT }}
+          GOOGLE_REGION: ${{ vars.GOOGLE_REGION }}
+          GOOGLE_ZONE: ${{ vars.GOOGLE_ZONE }}
+          PROD_BUCKET: ${{ vars.PROD_BUCKET }}
+          SEND_GRID_API_KEY: ${{ secrets.SEND_GRID_API_KEY }}
+        run: npx semantic-release@22
+
+permissions:
+  contents: write
+  id-token: write
+  issues: write
+  pull-requests: write

@@ -1,0 +1,18 @@
+branches:
+  - name: main
+    channel: prod
+  - name: beta
+    channel: dev
+    prerelease: true
+
+plugins: [
+  "@semantic-release/commit-analyzer",
+  [
+    "@semantic-release/exec",
+    {
+      "publishCmd": "make VERSION=${nextRelease.version} ${nextRelease.channel}"
+    }
+  ],
+  "@semantic-release/release-notes-generator",
+  "@semantic-release/github"
+]
