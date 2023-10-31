@@ -1,0 +1,12 @@
+.custom-logo {
+    width: 100%;
+    height: 75%;
+    margin-top: auto;
+}
+
+#custom-logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+}

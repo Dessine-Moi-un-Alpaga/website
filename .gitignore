@@ -1,0 +1,18 @@
+# macOS
+.DS_Store
+
+# IntelliJ IDEA
+.idea/
+out/
+*.iml
+
+# Gradle
+.gradle/
+build/
+
+# Terraform
+.terraform/
+tfplan
+
+# Custom
+/assets/
