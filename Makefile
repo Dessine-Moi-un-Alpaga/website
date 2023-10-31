@@ -115,6 +115,7 @@ dev:
 prod:
 	$(MAKE) init-infra \
 		&& $(MAKE) apply-infra \
+		&& $(MAKE) push \
 		&& $(MAKE) init-prod \
 		&& $(MAKE) apply-prod
 
