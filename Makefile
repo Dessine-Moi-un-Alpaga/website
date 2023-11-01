@@ -65,9 +65,8 @@ run:
 
 push:
 	@cd app \
-		&& docker build -t $(DOCKER_TAG) . \
 		&& gcloud auth configure-docker $(ARTIFACT_REGISTRY) --quiet \
-		&& docker push $(DOCKER_TAG)
+		&& docker buildx build --push --tag $(DOCKER_TAG) --cache-from type=gha --cache-to type=gha,mode=max .
 
 bootstrap:
 	@bash infrastructure/bootstrap/install.sh
