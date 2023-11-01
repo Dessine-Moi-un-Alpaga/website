@@ -6,7 +6,15 @@ branches:
     prerelease: true
 
 plugins: [
-  "@semantic-release/commit-analyzer",
+  [
+    "@semantic-release/commit-analyzer",
+    {
+      "releaseRules": [
+        { "type": "build", "release": "patch" },
+        { "type": "ci", "release": "patch" }
+      ]
+    }
+  ],
   [
     "@semantic-release/exec",
     {
