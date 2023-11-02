@@ -1,6 +1,6 @@
-DMUA_HOME=$(HOME)/.dmua
-DMUA_SECRETS=$(DMUA_HOME)/secrets
-DMUA_VARIABLES=$(DMUA_HOME)/variables
+DMUA_HOME := $(HOME)/.dmua
+DMUA_SECRETS := $(DMUA_HOME)/secrets
+DMUA_VARIABLES := $(DMUA_HOME)/variables
 
 GOOGLE_PROJECT ?= $(shell cat "$(DMUA_VARIABLES)/GOOGLE_PROJECT")
 VERSION ?= $(shell git describe --tags --always --first-parent)
@@ -8,7 +8,13 @@ VERSION ?= $(shell git describe --tags --always --first-parent)
 ARTIFACT_REGISTRY_LOCATION ?= $(shell cat "$(DMUA_VARIABLES)/ARTIFACT_REGISTRY_LOCATION")
 ARTIFACT_REGISTRY = $(ARTIFACT_REGISTRY_LOCATION)-docker.pkg.dev
 ARTIFACT_REPOSITORY = common
-CREDENTIALS ?= $(shell cat "$(DMUA_SECRETS)/CREDENTIALS")
+
+ifdef CREDENTIALS
+	export CREDENTIALS
+else
+	export CREDENTIALS := $(shell cat "$(DMUA_SECRETS)/CREDENTIALS")
+endif
+
 DEV_BUCKET ?= $(shell cat "$(DMUA_VARIABLES)/DEV_BUCKET")
 DOCKER_TAG = $(ARTIFACT_REGISTRY)/$(GOOGLE_PROJECT)/$(ARTIFACT_REPOSITORY)/website:$(VERSION)
 DOMAIN_NAME ?= $(shell cat "$(DMUA_VARIABLES)/DOMAIN_NAME")
@@ -22,12 +28,11 @@ export GOOGLE_PROJECT
 export GOOGLE_REGION
 export GOOGLE_ZONE
 
-TERRAFORM_INFRA_VARS = \
-	-var 'artifact_registry_location=$(ARTIFACT_REGISTRY_LOCATION)' \
-	-var 'artifact_repository=$(ARTIFACT_REPOSITORY)' \
-	-var 'credentials=$(CREDENTIALS)' \
-	-var 'firestore_location=$(FIRESTORE_LOCATION)' \
-	-var 'send_grid_api_key=$(SEND_GRID_API_KEY)'
+TERRAFORM_INFRA_VARS = -var 'artifact_registry_location=$(ARTIFACT_REGISTRY_LOCATION)'
+TERRAFORM_INFRA_VARS += -var 'artifact_repository=$(ARTIFACT_REPOSITORY)'
+TERRAFORM_INFRA_VARS += -var 'credentials=$(value CREDENTIALS)'
+TERRAFORM_INFRA_VARS += -var 'firestore_location=$(FIRESTORE_LOCATION)'
+TERRAFORM_INFRA_VARS += -var 'send_grid_api_key=$(SEND_GRID_API_KEY)'
 
 TERRAFORM_APP_VARS = \
 	-var 'artifact_registry_location=$(ARTIFACT_REGISTRY_LOCATION)' \
