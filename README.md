@@ -5,7 +5,7 @@
 [![Terraform](https://img.shields.io/badge/terraform-1.6.2-darkred.svg?logo=terraform)](http://gradle.org)
 [![Gradle](https://img.shields.io/badge/gradle-8.4-darkgreen.svg?logo=gradle)](http://gradle.org)
 [![GrralVM](https://img.shields.io/badge/graalvm-17.0.9-blue.svg?logo=openjdk)](http://graalvm.org)
-[![Kotlin](https://img.shields.io/badge/kotlin-1.9.10-darkblue.svg?logo=kotlin)](http://kotlinlang.org)
+[![Kotlin](https://img.shields.io/badge/kotlin-1.9.20-darkblue.svg?logo=kotlin)](http://kotlinlang.org)
 [![Ktor](https://img.shields.io/badge/ktor-2.3.5-red.svg)](http://ktor.io)
 
 # What is this?
