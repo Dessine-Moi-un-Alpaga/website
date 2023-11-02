@@ -1,12 +1,13 @@
 package be.alpago.website.libs.page.template.footer.contact.info
 
+import be.alpago.website.libs.environment.Environment
 import be.alpago.website.libs.page.template.style.EscapeVelocity
 import kotlinx.html.DIV
 import kotlinx.html.classes
 import kotlinx.html.div
 import kotlinx.html.section
 
-fun DIV.contactInformation() {
+fun DIV.contactInformation(environment: Environment) {
     div {
         classes = setOf(
             EscapeVelocity.col6,
@@ -25,7 +26,7 @@ fun DIV.contactInformation() {
                 address()
                 phone()
                 social()
-                email()
+                email(environment)
             }
         }
     }

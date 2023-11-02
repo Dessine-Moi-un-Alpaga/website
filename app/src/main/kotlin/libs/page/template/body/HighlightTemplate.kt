@@ -1,6 +1,7 @@
 package be.alpago.website.libs.page.template.body
 
 import be.alpago.website.libs.environment.Environment
+import be.alpago.website.libs.i18n.Messages
 import be.alpago.website.libs.page.template.style.EscapeVelocity
 import be.alpago.website.modules.highlight.Highlight
 import io.ktor.server.html.Template
@@ -73,7 +74,7 @@ class HighlightTemplate(
                                 EscapeVelocity.style1
                             )
                             href = highlight.resolveLink(environment)
-                            +"En savoir plus"
+                            +"${Messages.moreAbout}"
                         }
                     }
                 }

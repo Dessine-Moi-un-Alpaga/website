@@ -1,5 +1,7 @@
 package be.alpago.website.libs.page.template.footer.contact.form
 
+import be.alpago.website.libs.i18n.Messages
+import be.alpago.website.libs.i18n.capitalize
 import be.alpago.website.libs.page.template.style.EscapeVelocity
 import kotlinx.html.DIV
 import kotlinx.html.InputType
@@ -19,7 +21,7 @@ fun DIV.nameInput() {
             id = "contact-name"
             maxLength = "100"
             name = "name"
-            placeholder = "Nom"
+            placeholder = capitalize(Messages.name)
             required = true
             type = InputType.text
         }

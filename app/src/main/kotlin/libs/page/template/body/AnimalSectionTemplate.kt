@@ -1,6 +1,8 @@
 package be.alpago.website.libs.page.template.body
 
 import be.alpago.website.libs.environment.Environment
+import be.alpago.website.libs.i18n.Messages
+import be.alpago.website.libs.i18n.capitalize
 import be.alpago.website.libs.page.model.AnimalSectionModel
 import be.alpago.website.libs.page.template.style.EscapeVelocity
 import be.alpago.website.modules.animal.Animal
@@ -37,8 +39,8 @@ import java.time.format.FormatStyle
 import java.util.Locale
 
 private fun Sex.text() = when (this) {
-    Sex.FEMALE -> "femelle"
-    Sex.MALE -> "mâle"
+    Sex.FEMALE -> "${Messages.female}"
+    Sex.MALE -> "${Messages.male}"
 }
 
 private fun Animal.age(): String {
@@ -46,9 +48,9 @@ private fun Animal.age(): String {
     val ageInYears = age.years
 
     return if (ageInYears < 2) {
-        "${age.months} mois"
+        Messages.ageInMonths(age.months, Locale.FRENCH)
     } else {
-        "$ageInYears ans"
+        Messages.ageInYears(age.years, Locale.FRENCH)
     }
 }
 
@@ -58,10 +60,10 @@ private fun Animal.formattedDateOfBirth() = dateOfBirth.format(
 )
 
 private fun Color.text() = when (this) {
-    Color.BAY_BLACK -> "bay black"
-    Color.MEDIUM_FAWN -> "medium fawn"
-    Color.DARK_FAWN -> "dark fawn"
-    Color.WHITE -> "white"
+    Color.BAY_BLACK -> "${Messages.bayBlack}"
+    Color.MEDIUM_FAWN -> "${Messages.mediumFawn}"
+    Color.DARK_FAWN -> "${Messages.darkFawn}"
+    Color.WHITE -> "${Messages.white}"
 }
 
 private fun LI.reference(reference: Reference) {
@@ -110,7 +112,7 @@ class AnimalSectionTemplate(
 
                             header {
                                 h2 {
-                                    +"À propos de "
+                                    +capitalize(Messages.about)
 
                                     span {
                                         +model.animal.name
@@ -135,7 +137,7 @@ class AnimalSectionTemplate(
 
                                     li {
                                         b {
-                                            +"Nom : "
+                                            +"${capitalize(Messages.name)} : "
                                         }
                                         span {
                                             +model.animal.fullName
@@ -144,7 +146,7 @@ class AnimalSectionTemplate(
 
                                     li {
                                         b {
-                                            +"Sexe : "
+                                            +"${capitalize(Messages.sex)} : "
                                         }
                                         span {
                                             +model.animal.sex.text()
@@ -153,7 +155,7 @@ class AnimalSectionTemplate(
 
                                     li {
                                         b {
-                                            +"Âge : "
+                                            +"${capitalize(Messages.age)} : "
                                         }
 
                                         span {
@@ -163,7 +165,7 @@ class AnimalSectionTemplate(
 
                                     li {
                                         b {
-                                            +"Date de naissance : "
+                                            +"${capitalize(Messages.birthDate)} : "
                                         }
 
                                         span {
@@ -173,7 +175,7 @@ class AnimalSectionTemplate(
 
                                     li {
                                         b {
-                                            +"Couleur : "
+                                            +"${capitalize(Messages.color)} : "
                                         }
 
                                         span {
@@ -183,7 +185,7 @@ class AnimalSectionTemplate(
 
                                     li {
                                         b {
-                                            +"Mère : "
+                                            +"${capitalize(Messages.dam)} : "
                                         }
 
                                         reference(model.animal.dam)
@@ -191,7 +193,7 @@ class AnimalSectionTemplate(
 
                                     li {
                                         b {
-                                            +"Père : "
+                                            +"${capitalize(Messages.sire)} : "
                                         }
 
                                         reference(model.animal.sire)
@@ -208,7 +210,7 @@ class AnimalSectionTemplate(
 
                                 header {
                                     h2 {
-                                        +"Analyses de fibre"
+                                        +capitalize(Messages.fiberAnalyses)
                                     }
                                 }
 
@@ -219,10 +221,10 @@ class AnimalSectionTemplate(
 
                                     tr {
                                         th { }
-                                        th { +"AFD" }
-                                        th { +"SD" }
-                                        th { +"CV" }
-                                        th { +"CF" }
+                                        th { +"${Messages.averageFiberDiamterAbbreviation}" }
+                                        th { +"${Messages.standardDeviationAbbreviation}" }
+                                        th { +"${Messages.coefficientOfVariationAbbreviation}" }
+                                        th { +"${Messages.comfortFactorAbbreviation}" }
                                     }
 
                                     for (fibreAnalysis in model.fiberAnalyses) {
@@ -234,18 +236,10 @@ class AnimalSectionTemplate(
                                                     }
                                                 }
                                             }
-                                            td {
-                                                +fibreAnalysis.averageFiberDiameter
-                                            }
-                                            td {
-                                                +fibreAnalysis.standardDeviation
-                                            }
-                                            td {
-                                                +fibreAnalysis.coefficientOfVariation
-                                            }
-                                            td {
-                                                +fibreAnalysis.comfortFactor
-                                            }
+                                            td { +fibreAnalysis.averageFiberDiameter }
+                                            td { +fibreAnalysis.standardDeviation }
+                                            td { +fibreAnalysis.coefficientOfVariation }
+                                            td { +fibreAnalysis.comfortFactor }
                                         }
                                     }
                                 }

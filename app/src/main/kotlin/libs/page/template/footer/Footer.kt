@@ -1,5 +1,8 @@
 package be.alpago.website.libs.page.template.footer
 
+import be.alpago.website.libs.environment.Environment
+import be.alpago.website.libs.i18n.Messages
+import be.alpago.website.libs.i18n.capitalize
 import be.alpago.website.libs.page.template.footer.contact.contact
 import be.alpago.website.libs.page.template.footer.legal.legalNotice
 import be.alpago.website.libs.page.template.style.EscapeVelocity
@@ -15,7 +18,7 @@ import kotlinx.html.p
 import kotlinx.html.section
 import kotlinx.html.unsafe
 
-fun DIV.footer() {
+fun DIV.footer(environment: Environment) {
     section {
         classes = setOf(EscapeVelocity.wrapper)
         id = EscapeVelocity.footer
@@ -26,7 +29,7 @@ fun DIV.footer() {
             classes = setOf(EscapeVelocity.container)
 
             footerHeader()
-            contact()
+            contact(environment)
             legalNotice()
         }
     }
@@ -35,7 +38,7 @@ fun DIV.footer() {
 private fun SECTION.footerTitle() {
     div {
         classes = setOf(EscapeVelocity.title)
-        +"Nous contacter"
+        +"${Messages.footerHeaderTitle}"
     }
 }
 
@@ -44,7 +47,7 @@ private fun DIV.footerHeader() {
         classes = setOf(EscapeVelocity.style1)
 
         h2 {
-            +"Vous souhaitez nous contacter"
+            +capitalize(Messages.footerHeaderLine1)
 
             unsafe {
                 +Entities.nbsp.text
@@ -56,7 +59,7 @@ private fun DIV.footerHeader() {
 
 
         p {
-            +"Nous nous ferons un plaisir de répondre à toutes vos questions"
+            +capitalize(Messages.footerHeaderLine2)
 
             unsafe {
                 +Entities.nbsp.text

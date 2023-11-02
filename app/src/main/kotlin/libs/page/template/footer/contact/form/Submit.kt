@@ -1,5 +1,7 @@
 package be.alpago.website.libs.page.template.footer.contact.form
 
+import be.alpago.website.libs.i18n.Messages
+import be.alpago.website.libs.i18n.capitalize
 import be.alpago.website.libs.page.template.style.EscapeVelocity
 import kotlinx.html.DIV
 import kotlinx.html.InputType
@@ -20,7 +22,7 @@ fun DIV.sendButton() {
                 input {
                     classes = setOf(EscapeVelocity.style1)
                     type = InputType.submit
-                    value = "Envoyer"
+                    value = capitalize(Messages.sendButton)
                 }
             }
         }

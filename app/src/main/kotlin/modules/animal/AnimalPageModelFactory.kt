@@ -1,5 +1,6 @@
 package be.alpago.website.modules.animal
 
+import be.alpago.website.libs.i18n.Messages
 import be.alpago.website.libs.page.model.PageModel
 import be.alpago.website.libs.repository.CrudRepository
 
@@ -13,7 +14,7 @@ class AnimalPageModelFactory(
         val animal = animalRepository.get(id)
         val fiberAnalyses = fiberAnalysisRepository.findBy("animalId", animal.id)
         val pageModel = PageModel(
-            title = "Dessine-moi un Alpaga :: ${animal.name}",
+            title = "${Messages.dmua} :: ${animal.name}",
             description = animal.pageDescription,
             animals = animals,
         )

@@ -1,6 +1,8 @@
 package be.alpago.website.libs.page.template.header.navigation
 
 import be.alpago.website.libs.environment.Environment
+import be.alpago.website.libs.i18n.Messages
+import be.alpago.website.libs.i18n.capitalize
 import be.alpago.website.libs.page.model.Category
 import be.alpago.website.libs.page.model.PageModel
 import be.alpago.website.libs.page.template.style.EscapeVelocity
@@ -12,11 +14,11 @@ import kotlinx.html.nav
 import kotlinx.html.ul
 
 private fun Category.text() = when (this) {
-    Category.DOG -> "La garde hongroise"
-    Category.GELDING -> "Mâles castrés"
-    Category.MARE -> "Femelles"
-    Category.SOLD -> "Vendus"
-    Category.STUD -> "Étalons"
+    Category.DOG -> capitalize(Messages.navigationMenuDogCategory)
+    Category.GELDING -> capitalize(Messages.navigationMenuGeldingCategory)
+    Category.MARE -> capitalize(Messages.navigationMenuMareCategory)
+    Category.SOLD -> capitalize(Messages.navigationMenuSoldCategory)
+    Category.STUD -> capitalize(Messages.navigationMenuStudCategory)
 }
 
 fun SECTION.navigationMenu(
@@ -30,20 +32,20 @@ fun SECTION.navigationMenu(
             li {
                 a {
                     href = "/"
-                    +"Accueil"
+                    +"${Messages.home}"
                 }
             }
             li {
                 a {
                     href = "/news.html"
-                    +"Actualités"
+                    +"${(Messages.news)}"
                 }
             }
 
             if (pageModel.navigationModel.categories.isNotEmpty()) {
                 li {
                     a {
-                        +"Nos animaux"
+                        +"${Messages.navigationMenuTitle}"
                     }
                     ul {
                         for (category in pageModel.navigationModel.categories) {
@@ -69,19 +71,19 @@ fun SECTION.navigationMenu(
             li {
                 a {
                     href = "/factsheets.html"
-                    +"Fiches Pratiques"
+                    +"${Messages.factsheets}"
                 }
             }
             li {
                 a {
                     href = "/photos.html"
-                    +"Photos"
+                    +"${Messages.photos}"
                 }
             }
             li {
                 a {
                     href = "#footer"
-                    +"Contact"
+                    +"${Messages.contact}"
                 }
             }
         }
