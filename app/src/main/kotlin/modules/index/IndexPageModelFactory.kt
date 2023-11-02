@@ -1,5 +1,7 @@
 package be.alpago.website.modules.index
 
+import be.alpago.website.libs.i18n.Messages
+import be.alpago.website.libs.i18n.capitalize
 import be.alpago.website.libs.page.model.PageModel
 import be.alpago.website.libs.page.model.SectionColor
 import be.alpago.website.libs.repository.CrudRepository
@@ -8,8 +10,8 @@ import be.alpago.website.modules.article.Article
 import be.alpago.website.modules.highlight.Highlight
 import be.alpago.website.modules.image.ImageMetadata
 
-private const val DESCRIPTION = "Un élevage d'alpagas huacaya de qualité et à taille humaine depuis 2017. Vente d'animaux et de vêtements en alpaga 100% confectionnés en Belgique"
-private const val TITLE = "Dessine-Moi un Alpaga :: Présentation"
+private val DESCRIPTION = "${Messages.indexPageDescription}"
+private val TITLE = "${Messages.dmua} :: ${capitalize(Messages.presentation)}"
 
 class IndexPageModelFactory(
     private val animalRepository: CrudRepository<Animal>,
@@ -34,17 +36,17 @@ class IndexPageModelFactory(
         }
 
         val news = newsRepository.findAll()
-        pageModel.createHighlightSection("Actualités", news, SectionColor.GREY)
+        pageModel.createHighlightSection("${Messages.news}", news, SectionColor.GREY)
 
         val trainings = trainingRepository.findAll()
         pageModel.createPhotoGallerySection(
             color = SectionColor.RED,
             images = trainings,
-            sectionTitle = "Formations",
+            sectionTitle = "${Messages.trainings}",
         )
 
         val guilds = guildRepository.findAll()
-        pageModel.createHighlightSection("Affiliations", guilds, SectionColor.GREY)
+        pageModel.createHighlightSection("${Messages.guilds}", guilds, SectionColor.GREY)
 
         return pageModel
     }

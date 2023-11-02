@@ -32,7 +32,7 @@ class BodyTemplate(
                     insert(template) { }
                 }
 
-                footer()
+                footer(environment)
             }
         }
     }

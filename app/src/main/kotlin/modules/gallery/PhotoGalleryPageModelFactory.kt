@@ -1,5 +1,7 @@
 package be.alpago.website.modules.gallery
 
+import be.alpago.website.libs.i18n.Messages
+import be.alpago.website.libs.i18n.capitalize
 import be.alpago.website.libs.page.model.PageModel
 import be.alpago.website.libs.page.model.SectionColor
 import be.alpago.website.libs.repository.CrudRepository
@@ -13,7 +15,7 @@ class PhotoGalleryPageModelFactory(
 
     suspend fun create() : PageModel {
         val pageModel = PageModel(
-            "Dessine-Moi un Alpaga :: Photos",
+            "${Messages.dmua} :: ${capitalize(Messages.photos)}",
             "",
             animals = animalRepository.findAll()
         )
@@ -22,9 +24,9 @@ class PhotoGalleryPageModelFactory(
         pageModel.createPhotoGallerySection(
             color = SectionColor.WHITE,
             images = images,
-            sectionTitle = "Photos",
-            subtitle = "Une sélection de nos plus beaux moments avec le troupeau",
-            title = "Photographie-moi un alpaga"
+            sectionTitle = "${Messages.photos}",
+            subtitle = "${Messages.photoGallerySubtitle}",
+            title = "${Messages.photoGalleryTitle}"
         )
 
         return pageModel

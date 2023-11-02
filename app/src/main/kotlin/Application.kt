@@ -10,6 +10,7 @@ import be.alpago.website.modules.auth.authentication
 import be.alpago.website.modules.email.email
 import be.alpago.website.modules.factsheet.factsheets
 import be.alpago.website.modules.gallery.photoGallery
+import be.alpago.website.modules.i18n.i18n
 import be.alpago.website.modules.index.index
 import be.alpago.website.modules.news.news
 import be.alpago.website.modules.validation.validation
@@ -36,6 +37,7 @@ fun main() {
 }
 
 fun Application.main() {
+    i18n()
     environment()
     authentication()
     validation()

@@ -1,6 +1,7 @@
 package be.alpago.website.modules.email
 
 import be.alpago.website.libs.environment.Environment
+import be.alpago.website.libs.i18n.Messages
 import com.sendgrid.Method
 import com.sendgrid.Request
 import com.sendgrid.SendGrid
@@ -18,13 +19,12 @@ class SendGridEmailService(
     private val sendGrid: SendGrid
 ) : EmailService {
 
-    private val subject = environment.emailSubject
-
     private val to = EmailAddress(environment.emailAddress)
 
     override fun send(email: Email) {
         val request = Request()
         val from = EmailAddress(email.from)
+        val subject = Messages.emailSubject(email.from)
         val content = Content(CONTENT_TYPE, email.message)
         val message = SendGridEmail(from, subject, to, content)
         request.method = Method.POST

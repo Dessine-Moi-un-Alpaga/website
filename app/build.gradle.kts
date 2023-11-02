@@ -1,8 +1,8 @@
 import org.gradle.internal.os.OperatingSystem
 
 plugins {
-    application
     kotlin("jvm") version "1.9.10"
+    id("de.comahe.i18n4k") version "0.6.2"
     kotlin("plugin.serialization") version "1.9.10"
     id("io.ktor.plugin") version "2.3.5"
     id("org.graalvm.buildtools.native") version "0.9.28"
@@ -24,6 +24,7 @@ val webjars by configurations.creating
 val bcryptVersion = "0.10.2"
 val escapeVelocityVersion = "1.0.0-1"
 val googleCloudLibrariesBomVersion = "26.26.0"
+val i18n4kVersion = "0.6.2"
 val koinVersion = "3.5.1"
 val kotlinCssVersion = "1.0.0-pre.636"
 val logbackVersion = "1.4.11"
@@ -36,6 +37,7 @@ dependencies {
 
     implementation("at.favre.lib:bcrypt:$bcryptVersion")
     implementation("com.google.cloud:google-cloud-firestore")
+    implementation("de.comahe.i18n4k:i18n4k-core-jvm:$i18n4kVersion")
     implementation("io.insert-koin:koin-ktor:$koinVersion")
     implementation("org.jetbrains.kotlin-wrappers:kotlin-css:$kotlinCssVersion")
     implementation("io.ktor:ktor-serialization-kotlinx-json")
@@ -58,6 +60,10 @@ dependencies {
 
     testImplementation("io.ktor:ktor-server-test-host-jvm")
     testImplementation("org.jetbrains.kotlin:kotlin-test")
+}
+
+i18n4k {
+    sourceCodeLocales = listOf("fr", "en")
 }
 
 graalvmNative {
@@ -123,7 +129,7 @@ tasks.register<Copy>("explodeWebjars") {
 }
 
 tasks.processResources.configure {
-    dependsOn(":explodeWebjars")
+    dependsOn(":explodeWebjars", ":generateI18n4kFiles")
 }
 
 tasks.named<JavaExec>("run") {

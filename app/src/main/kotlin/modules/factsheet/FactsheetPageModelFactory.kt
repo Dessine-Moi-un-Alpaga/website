@@ -1,5 +1,7 @@
 package be.alpago.website.modules.factsheet
 
+import be.alpago.website.libs.i18n.Messages
+import be.alpago.website.libs.i18n.capitalize
 import be.alpago.website.libs.page.model.PageModel
 import be.alpago.website.libs.page.model.SectionColor
 import be.alpago.website.libs.repository.CrudRepository
@@ -7,8 +9,8 @@ import be.alpago.website.modules.animal.Animal
 import be.alpago.website.modules.article.Article
 import be.alpago.website.modules.highlight.Highlight
 
-private const val DESCRIPTION = "Pour répondre à toutes les questions que vous vous posez sur les alpagas : découvrez les fiches pratiques que nous avons rédigées au fil de nos expériences"
-private const val TITLE = "Dessine-Moi un Alpaga :: Fiches Pratiques"
+private val DESCRIPTION = "${Messages.factsheetPageDescription}"
+private val TITLE = "${Messages.dmua} :: ${capitalize(Messages.factsheets)}"
 
 class FactsheetPageModelFactory(
     private val animalRepository: CrudRepository<Animal>,
@@ -31,7 +33,7 @@ class FactsheetPageModelFactory(
         }
 
         val factsheets = factsheetRepository.findAll()
-        pageModel.createHighlightSection("Téléchargement", factsheets, SectionColor.GREY)
+        pageModel.createHighlightSection("${Messages.factsheetDownloadButton}", factsheets, SectionColor.GREY)
 
         return pageModel
     }

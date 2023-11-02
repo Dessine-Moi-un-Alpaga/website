@@ -1,5 +1,7 @@
 package be.alpago.website.libs.page.template.footer.contact.info
 
+import be.alpago.website.libs.i18n.Messages
+import be.alpago.website.libs.i18n.capitalize
 import be.alpago.website.libs.page.template.style.EscapeVelocity
 import be.alpago.website.libs.page.template.style.FontAwesome
 import kotlinx.html.DIV
@@ -23,7 +25,7 @@ fun DIV.address() {
                     EscapeVelocity.icon,
                     FontAwesome.home
                 )
-                +"Adresse"
+                +capitalize(Messages.address)
             }
             p {
                 +"Rue de Saint-Lô 50"; br

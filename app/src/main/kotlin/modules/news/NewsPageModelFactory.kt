@@ -1,5 +1,7 @@
 package be.alpago.website.modules.news
 
+import be.alpago.website.libs.i18n.Messages
+import be.alpago.website.libs.i18n.capitalize
 import be.alpago.website.libs.page.model.PageModel
 import be.alpago.website.libs.page.model.SectionColor
 import be.alpago.website.libs.repository.CrudRepository
@@ -17,7 +19,7 @@ class NewsPageModelFactory(
         val animals = animalRepository.findAll()
         val articles = articleRepository.findAll()
         val pageModel = PageModel(
-            title = "Dessine-Moi un Alpaga :: Actualités",
+            title = "${Messages.dmua} :: ${capitalize(Messages.news)}",
             description = "",
             animals = animals
         )
