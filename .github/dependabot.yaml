@@ -4,19 +4,24 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    target-branch: "beta"
   - package-ecosystem: "docker"
     directory: "/app"
     schedule:
       interval: "weekly"
+    target-branch: "beta"
   - package-ecosystem: "gradle"
     directory: "/app"
     schedule:
       interval: "weekly"
+    target-branch: "beta"
   - package-ecosystem: "terraform"
     directory: "/infrastructure/stacks/app"
     schedule:
       interval: "weekly"
+    target-branch: "beta"
   - package-ecosystem: "terraform"
     directory: "/infrastructure/stacks/infra"
     schedule:
       interval: "weekly"
+    target-branch: "beta"

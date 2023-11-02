@@ -44,7 +44,7 @@ TERRAFORM_PROD_APP_VARS = \
 	$(TERRAFORM_APP_VARS) \
 	-var-file=variables/production.tfvars \
 	-var 'bucket_name=$(PROD_BUCKET)' \
-	-var 'cors_origins_list=["https://$(DOMAIN_NAME)"]' \
+	-var 'cors_origins=["https://$(DOMAIN_NAME)"]' \
 	-var 'domain_name=$(DOMAIN_NAME)'
 
 TERRAFORM_INFRA_GLOBAL_OPTIONS = -chdir=infrastructure/stacks/infra
@@ -64,9 +64,9 @@ run:
 	@cd app && ./gradlew run
 
 push:
-	@cd app && docker build -t $(DOCKER_TAG) .
-	@gcloud auth configure-docker $(ARTIFACT_REGISTRY) --quiet
-	@docker push $(DOCKER_TAG)
+	@cd app \
+		&& gcloud auth configure-docker $(ARTIFACT_REGISTRY) --quiet \
+		&& docker buildx build --push --tag $(DOCKER_TAG) --cache-from type=gha --cache-to type=gha,mode=max .
 
 bootstrap:
 	@bash infrastructure/bootstrap/install.sh
@@ -105,17 +105,18 @@ unlock-app:
 	@terraform $(TERRAFORM_APP_GLOBAL_OPTIONS) force-unlock $(TERRAFORM_UNLOCK_OPTIONS)
 
 dev:
-	$(MAKE) init-infra
-	$(MAKE) apply-infra
-	$(MAKE) push
-	$(MAKE) init-dev
-	$(MAKE) apply-dev
+	$(MAKE) init-infra \
+		&& $(MAKE) apply-infra \
+		&& $(MAKE) push \
+		&& $(MAKE) init-dev \
+		&& $(MAKE) apply-dev
 
 prod:
-	$(MAKE) init-infra
-	$(MAKE) apply-infra
-	$(MAKE) init-prod
-	$(MAKE) apply-prod
+	$(MAKE) init-infra \
+		&& $(MAKE) apply-infra \
+		&& $(MAKE) push \
+		&& $(MAKE) init-prod \
+		&& $(MAKE) apply-prod
 
 tear-down:
 	@bash infrastructure/bootstrap/uninstall.sh

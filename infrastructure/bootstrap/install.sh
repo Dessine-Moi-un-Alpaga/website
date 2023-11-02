@@ -66,6 +66,7 @@ function prompt_for_initial_api_credentials() {
     read -p "Username [${default_username}]: " username
     username=${username:-${default_username}}
     htpasswd -Bc -C ${PARANOIA_LEVEL} "${credentials_file}" ${username}
+    chmod go-rwx "${credentials_file}"
     echo "Credentials saved to ${credentials_file}"
   fi
   echo "You can manage its contents directly using the htpasswd command"
@@ -110,8 +111,10 @@ then
   echo "OK"
 fi
 
+google_project_number_file="${DMUA_VARIABLES}/GOOGLE_PROJECT_NUMBER"
 GOOGLE_PROJECT_NUMBER=$(gcloud projects describe "${GOOGLE_PROJECT}" --format="value(projectNumber)")
-echo "${GOOGLE_PROJECT_NUMBER}" > "${DMUA_VARIABLES}/GOOGLE_PROJECT_NUMBER"
+echo -n "${GOOGLE_PROJECT_NUMBER}" > "${google_project_number_file}"
+chmod go-rwx "${google_project_number_file}"
 
 echo -n "Google Project Link to Billing Account... "
 gcloud beta billing projects link "${GOOGLE_PROJECT}" \
