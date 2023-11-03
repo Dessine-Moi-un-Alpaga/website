@@ -56,6 +56,14 @@
   "methods":[{"name":"serializer","parameterTypes":[] }]
 },
 {
+  "name":"be.alpago.website.modules.email.SendGridEmail",
+  "fields":[{"name":"Companion"}]
+},
+{
+  "name":"be.alpago.website.modules.email.SendGridEmail$Companion",
+  "methods":[{"name":"serializer","parameterTypes":[] }]
+},
+{
   "name":"be.alpago.website.modules.highlight.Highlight",
   "fields":[{"name":"Companion"}]
 },
@@ -134,14 +142,6 @@
   "methods":[{"name":"valueOf","parameterTypes":["java.lang.String"] }]
 },
 {
-  "name":"com.fasterxml.jackson.databind.ext.Java7HandlersImpl",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"com.fasterxml.jackson.databind.ext.Java7SupportImpl",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
   "name":"com.google.api.client.http.GenericUrl",
   "allDeclaredFields":true
 },
@@ -155,21 +155,6 @@
   "name":"com.google.api.client.json.GenericJson",
   "allDeclaredFields":true,
   "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"com.google.api.client.json.webtoken.JsonWebSignature$Header",
-  "allDeclaredFields":true,
-  "queryAllDeclaredMethods":true
-},
-{
-  "name":"com.google.api.client.json.webtoken.JsonWebToken$Header",
-  "allDeclaredFields":true,
-  "queryAllDeclaredMethods":true
-},
-{
-  "name":"com.google.api.client.json.webtoken.JsonWebToken$Payload",
-  "allDeclaredFields":true,
-  "queryAllDeclaredMethods":true
 },
 {
   "name":"com.google.api.client.util.GenericData",
@@ -208,34 +193,6 @@
   "methods":[{"name":"getEmptyRegistry","parameterTypes":[] }]
 },
 {
-  "name":"com.sendgrid.helpers.mail.Mail",
-  "allDeclaredFields":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[{"name":"<init>","parameterTypes":[] }, {"name":"getASM","parameterTypes":[] }, {"name":"getAttachments","parameterTypes":[] }, {"name":"getBatchId","parameterTypes":[] }, {"name":"getCategories","parameterTypes":[] }, {"name":"getContent","parameterTypes":[] }, {"name":"getCustomArgs","parameterTypes":[] }, {"name":"getFrom","parameterTypes":[] }, {"name":"getHeaders","parameterTypes":[] }, {"name":"getIpPoolId","parameterTypes":[] }, {"name":"getMailSettings","parameterTypes":[] }, {"name":"getPersonalization","parameterTypes":[] }, {"name":"getReplyto","parameterTypes":[] }, {"name":"getSections","parameterTypes":[] }, {"name":"getSubject","parameterTypes":[] }, {"name":"getTemplateId","parameterTypes":[] }, {"name":"getTrackingSettings","parameterTypes":[] }, {"name":"sendAt","parameterTypes":[] }]
-},
-{
-  "name":"com.sendgrid.helpers.mail.objects.Content",
-  "allDeclaredFields":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[{"name":"<init>","parameterTypes":[] }, {"name":"getType","parameterTypes":[] }, {"name":"getValue","parameterTypes":[] }]
-},
-{
-  "name":"com.sendgrid.helpers.mail.objects.Email",
-  "allDeclaredFields":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[{"name":"<init>","parameterTypes":[] }, {"name":"getEmail","parameterTypes":[] }, {"name":"getName","parameterTypes":[] }]
-},
-{
-  "name":"com.sendgrid.helpers.mail.objects.Personalization",
-  "allDeclaredFields":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllDeclaredConstructors":true,
-  "methods":[{"name":"<init>","parameterTypes":[] }, {"name":"getBccs","parameterTypes":[] }, {"name":"getCcs","parameterTypes":[] }, {"name":"getCustomArgs","parameterTypes":[] }, {"name":"getDynamicTemplateData","parameterTypes":[] }, {"name":"getFrom","parameterTypes":[] }, {"name":"getHeaders","parameterTypes":[] }, {"name":"getSubject","parameterTypes":[] }, {"name":"getSubstitutions","parameterTypes":[] }, {"name":"getTos","parameterTypes":[] }, {"name":"sendAt","parameterTypes":[] }]
-},
-{
   "name":"com.sun.crypto.provider.AESCipher$General",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
@@ -264,19 +221,15 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "name":"com.sun.crypto.provider.HmacCore$HmacSHA256",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
   "name":"com.sun.crypto.provider.HmacCore$HmacSHA384",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "name":"com.sun.crypto.provider.TlsKeyMaterialGenerator",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
   "name":"com.sun.crypto.provider.TlsMasterSecretGenerator",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"com.sun.crypto.provider.TlsPrfGenerator$V12",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
@@ -500,6 +453,22 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "name":"io.ktor.client.HttpClient",
+  "fields":[{"name":"closed"}]
+},
+{
+  "name":"io.ktor.client.call.HttpClientCall",
+  "fields":[{"name":"received"}]
+},
+{
+  "name":"io.ktor.client.engine.HttpClientEngineBase",
+  "fields":[{"name":"closed"}]
+},
+{
+  "name":"io.ktor.client.engine.cio.Endpoint",
+  "fields":[{"name":"connections"}]
+},
+{
   "name":"io.ktor.http.HttpStatusCode"
 },
 {
@@ -522,14 +491,8 @@
   "name":"io.ktor.server.application.Application"
 },
 {
-  "name":"io.ktor.server.application.ApplicationCall"
-},
-{
   "name":"io.ktor.server.cio.internal.WeakTimeoutQueue$WeakTimeoutCoroutine",
   "fields":[{"name":"state"}]
-},
-{
-  "name":"io.ktor.server.plugins.requestvalidation.RequestValidationException"
 },
 {
   "name":"io.ktor.util.collections.CopyOnWriteHashMap",
@@ -545,6 +508,12 @@
 },
 {
   "name":"io.ktor.utils.io.ByteReadChannel"
+},
+{
+  "name":"io.ktor.utils.io.ClosedWriteChannelException",
+  "allDeclaredFields":true,
+  "queryAllPublicConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.String"] }]
 },
 {
   "name":"io.ktor.utils.io.core.internal.ChunkBuffer",
@@ -591,10 +560,15 @@
   "name":"java.lang.ClassValue"
 },
 {
-  "name":"java.lang.Exception"
+  "name":"java.lang.Exception",
+  "allDeclaredFields":true
 },
 {
   "name":"java.lang.IllegalArgumentException"
+},
+{
+  "name":"java.lang.IllegalStateException",
+  "allDeclaredFields":true
 },
 {
   "name":"java.lang.NullPointerException"
@@ -611,6 +585,10 @@
   "methods":[{"name":"current","parameterTypes":[] }, {"name":"pid","parameterTypes":[] }]
 },
 {
+  "name":"java.lang.RuntimeException",
+  "allDeclaredFields":true
+},
+{
   "name":"java.lang.RuntimePermission"
 },
 {
@@ -622,7 +600,8 @@
 },
 {
   "name":"java.lang.Throwable",
-  "allDeclaredFields":true
+  "allDeclaredFields":true,
+  "methods":[{"name":"addSuppressed","parameterTypes":["java.lang.Throwable"] }]
 },
 {
   "name":"java.lang.management.ManagementFactory",
@@ -682,6 +661,9 @@
   "name":"java.security.KeyStoreSpi"
 },
 {
+  "name":"java.security.MessageDigestSpi"
+},
+{
   "name":"java.security.SecureRandomParameters"
 },
 {
@@ -714,6 +696,12 @@
   "name":"java.util.PropertyPermission"
 },
 {
+  "name":"java.util.concurrent.CancellationException",
+  "allDeclaredFields":true,
+  "queryAllPublicConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.String"] }]
+},
+{
   "name":"java.util.concurrent.ForkJoinTask",
   "fields":[{"name":"aux"}, {"name":"status"}]
 },
@@ -737,10 +725,6 @@
 {
   "name":"java.util.concurrent.atomic.Striped64",
   "fields":[{"name":"base"}, {"name":"cellsBusy"}]
-},
-{
-  "name":"java.util.concurrent.atomic.Striped64$Cell",
-  "fields":[{"name":"value"}]
 },
 {
   "name":"javax.naming.directory.InitialDirContext"
@@ -783,6 +767,14 @@
 {
   "name":"kotlin.reflect.jvm.internal.impl.resolve.scopes.DescriptorKindFilter",
   "allPublicFields":true
+},
+{
+  "name":"kotlinx.atomicfu.AtomicBoolean",
+  "fields":[{"name":"_value"}]
+},
+{
+  "name":"kotlinx.atomicfu.AtomicRef",
+  "fields":[{"name":"value"}]
 },
 {
   "name":"kotlinx.coroutines.CancellableContinuationImpl",
@@ -878,24 +870,6 @@
 },
 {
   "name":"libcore.io.Memory"
-},
-{
-  "name":"org.apache.commons.logging.LogFactory"
-},
-{
-  "name":"org.apache.commons.logging.impl.Jdk14Logger",
-  "methods":[{"name":"<init>","parameterTypes":["java.lang.String"] }, {"name":"setLogFactory","parameterTypes":["org.apache.commons.logging.LogFactory"] }]
-},
-{
-  "name":"org.apache.commons.logging.impl.Log4JLogger"
-},
-{
-  "name":"org.apache.commons.logging.impl.LogFactoryImpl",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"org.apache.commons.logging.impl.WeakHashtable",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
   "name":"org.robolectric.Robolectric"
