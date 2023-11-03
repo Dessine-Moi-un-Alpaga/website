@@ -1,6 +1,9 @@
 ![Dessine-Moi un Alpaga](logo.png)
 
-![](https://github.com/gilles-gosuin/dessine-moi-un-alpaga/actions/workflows/release.yaml/badge.svg)
+![GitHub workflow](https://github.com/Dessine-Moi-un-Alpaga/website/actions/workflows/release.yaml/badge.svg)
+![GitHub development deployment](https://img.shields.io/github/deployments/Dessine-Moi-un-Alpaga/website/development?label=development)
+![GitHub production deployment](https://img.shields.io/github/deployments/Dessine-Moi-un-Alpaga/website/production?label=production)
+
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg?logo=gnu)](https://www.gnu.org/licenses/gpl-3.0)
 [![Terraform](https://img.shields.io/badge/terraform-1.6.2-darkred.svg?logo=terraform)](http://gradle.org)
 [![Gradle](https://img.shields.io/badge/gradle-8.4-darkgreen.svg?logo=gradle)](http://gradle.org)
