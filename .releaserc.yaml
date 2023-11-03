@@ -11,7 +11,8 @@ plugins: [
     {
       "releaseRules": [
         { "type": "build", "release": "patch" },
-        { "type": "ci", "release": "patch" }
+        { "type": "ci", "release": "patch" },
+        { "type": "refactor", "release": "patch" }
       ]
     }
   ],
