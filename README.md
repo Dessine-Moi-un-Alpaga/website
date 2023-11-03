@@ -54,7 +54,7 @@ automatically detect the credentials for the user you are logged in with:
 $ gcloud auth application-default login
 ```
 
-Your are now all set to run the project locally:
+You are now all set to run the project locally:
 
 ```shell
 $ make run

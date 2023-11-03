@@ -9,7 +9,7 @@ plugins {
 }
 
 group = "be.alpago"
-version = "0.1.0-SNAPSHOT"
+version = "latest"
 
 application {
     mainClass.set("be.alpago.website.ApplicationKt")
@@ -29,7 +29,6 @@ val koinVersion = "3.5.1"
 val kotlinCssVersion = "1.0.0-pre.636"
 val logbackVersion = "1.4.11"
 val photoswipeVersion = "5.3.7"
-val sendgridVersion = "4.9.3"
 val toastrVersion = "2.1.2"
 
 dependencies {
@@ -37,19 +36,21 @@ dependencies {
 
     implementation("at.favre.lib:bcrypt:$bcryptVersion")
     implementation("com.google.cloud:google-cloud-firestore")
-    implementation("de.comahe.i18n4k:i18n4k-core-jvm:$i18n4kVersion")
+    implementation("de.comahe.i18n4k:i18n4k-core:$i18n4kVersion")
     implementation("io.insert-koin:koin-ktor:$koinVersion")
     implementation("org.jetbrains.kotlin-wrappers:kotlin-css:$kotlinCssVersion")
+    implementation("io.ktor:ktor-client-cio")
+    implementation("io.ktor:ktor-client-core")
+    implementation("io.ktor:ktor-client-content-negotiation")
     implementation("io.ktor:ktor-serialization-kotlinx-json")
     implementation("io.ktor:ktor-server-auth")
     implementation("io.ktor:ktor-server-caching-headers")
     implementation("io.ktor:ktor-server-content-negotiation")
-    implementation("io.ktor:ktor-server-core-jvm")
-    implementation("io.ktor:ktor-server-cio-jvm")
+    implementation("io.ktor:ktor-server-core")
+    implementation("io.ktor:ktor-server-cio")
     implementation("io.ktor:ktor-server-html-builder")
     implementation("io.ktor:ktor-server-request-validation")
     implementation("io.ktor:ktor-server-status-pages")
-    implementation("com.sendgrid:sendgrid-java:$sendgridVersion")
 
     runtimeOnly("io.insert-koin:koin-logger-slf4j:$koinVersion")
     runtimeOnly("ch.qos.logback:logback-classic:$logbackVersion")
@@ -58,7 +59,7 @@ dependencies {
     webjars("org.webjars.npm:photoswipe:$photoswipeVersion")
     webjars("org.webjars:toastr:$toastrVersion")
 
-    testImplementation("io.ktor:ktor-server-test-host-jvm")
+    testImplementation("io.ktor:ktor-server-test-host")
     testImplementation("org.jetbrains.kotlin:kotlin-test")
 }
 
@@ -87,6 +88,7 @@ graalvmNative {
             buildArgs.add("--initialize-at-build-time=ch.qos.logback")
             buildArgs.add("--initialize-at-build-time=io.ktor,kotlin")
             buildArgs.add("--initialize-at-build-time=org.slf4j.LoggerFactory")
+            buildArgs.add("--initialize-at-build-time=kotlinx.coroutines")
 
             buildArgs.add("--initialize-at-run-time=io.ktor.serialization.kotlinx.json.JsonSupportKt")
 
