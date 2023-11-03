@@ -1,11 +1,25 @@
-![Dessine-Moi un Alpaga](logo.png)
+[![Dessine-Moi un Alpaga](logo.png)](https://dessinemoiunalpaga.com)
 
 ![GitHub workflow](https://github.com/Dessine-Moi-un-Alpaga/website/actions/workflows/release.yaml/badge.svg)
+
+[![Google Cloud Run](https://img.shields.io/badge/Hosted%20on-Google%20Cloud%20Run-blue?logo=google)](https://console.cloud.google.com/run)
 ![GitHub development deployment](https://img.shields.io/github/deployments/Dessine-Moi-un-Alpaga/website/development?label=development)
 ![GitHub production deployment](https://img.shields.io/github/deployments/Dessine-Moi-un-Alpaga/website/production?label=production)
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Dessine-Moi-un-Alpaga_website&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Dessine-Moi-un-Alpaga_website)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=Dessine-Moi-un-Alpaga_website&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=Dessine-Moi-un-Alpaga_website)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=Dessine-Moi-un-Alpaga_website&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=Dessine-Moi-un-Alpaga_website)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=Dessine-Moi-un-Alpaga_website&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=Dessine-Moi-un-Alpaga_website)
+
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=Dessine-Moi-un-Alpaga_website&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=Dessine-Moi-un-Alpaga_website)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=Dessine-Moi-un-Alpaga_website&metric=bugs)](https://sonarcloud.io/summary/new_code?id=Dessine-Moi-un-Alpaga_website)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=Dessine-Moi-un-Alpaga_website&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=Dessine-Moi-un-Alpaga_website)
+
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=Dessine-Moi-un-Alpaga_website&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=Dessine-Moi-un-Alpaga_website)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=Dessine-Moi-un-Alpaga_website&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=Dessine-Moi-un-Alpaga_website)
+
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg?logo=gnu)](https://www.gnu.org/licenses/gpl-3.0)
-[![Terraform](https://img.shields.io/badge/terraform-1.6.2-darkred.svg?logo=terraform)](http://gradle.org)
+[![Terraform](https://img.shields.io/badge/terraform-1.6.2-darkred.svg?logo=terraform)](http://terraform.io)
 [![Gradle](https://img.shields.io/badge/gradle-8.4-darkgreen.svg?logo=gradle)](http://gradle.org)
 [![GrralVM](https://img.shields.io/badge/graalvm-17.0.9-blue.svg?logo=openjdk)](http://graalvm.org)
 [![Kotlin](https://img.shields.io/badge/kotlin-1.9.20-darkblue.svg?logo=kotlin)](http://kotlinlang.org)
@@ -13,7 +27,7 @@
 
 # What is this?
 
-An application for serving and managing [the website of our alpaca breeding farm 🦙](https://dessinemoiunalpaga.com).
+An application for serving and managing [the website of our alpaca breeding farm](https://dessinemoiunalpaga.com) 🦙
 
 # Prerequisites
 
