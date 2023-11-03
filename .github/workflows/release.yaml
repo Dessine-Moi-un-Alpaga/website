@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       TF_PLUGIN_CACHE_DIR: ${{ github.workspace }}/.terraform.d/plugin-cache
+    environment: ${{ github.ref_name == 'main' && 'production' || 'development' }}
     steps:
 
       - name: Check out source code
