@@ -1,6 +1,5 @@
 package be.alpago.website.libs.page.template.header.navigation
 
-import be.alpago.website.libs.environment.Environment
 import be.alpago.website.libs.i18n.Messages
 import be.alpago.website.libs.i18n.capitalize
 import be.alpago.website.libs.page.model.Category
