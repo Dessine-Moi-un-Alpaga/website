@@ -19,6 +19,6 @@ fun DIV.header(
         id = EscapeVelocity.header
 
         logo(environment)
-        navigationMenu(environment, pageModel)
+        navigationMenu(pageModel)
     }
 }

@@ -22,7 +22,6 @@ private fun Category.text() = when (this) {
 }
 
 fun SECTION.navigationMenu(
-    environment: Environment,
     pageModel: PageModel,
 ) {
     nav {
