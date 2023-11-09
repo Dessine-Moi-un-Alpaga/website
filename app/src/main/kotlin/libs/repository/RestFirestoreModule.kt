@@ -16,15 +16,19 @@ import io.ktor.client.request.header
 import io.ktor.client.request.headers
 import io.ktor.http.ContentType
 import io.ktor.http.contentType
+import io.ktor.http.isSuccess
 import io.ktor.serialization.kotlinx.json.json
 import io.ktor.server.application.Application
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
+import mu.KotlinLogging
 import org.koin.dsl.module
 import org.koin.ktor.ext.inject
 import org.koin.ktor.plugin.koin
 import java.util.concurrent.atomic.AtomicReference
+
+private val logger = KotlinLogging.logger { }
 
 fun createClient(
     authenticationEnabled: Boolean,
@@ -48,16 +52,33 @@ fun createClient(
             install(Auth) {
                 bearer {
                     loadTokens {
-                        tokenStorage.get()
+                        logger.debug { "Searching for token in local storage" }
+                        val token = tokenStorage.get()
+
+                        if (token != null) {
+                            logger.debug { "Token found in the local store" }
+                        }
+
+                        token
                     }
 
                     refreshTokens {
-                        val token = client.get("http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/token") {
+                        logger.debug { "Refreshing token" }
+
+                        val response = client.get("http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/token") {
                             headers {
                                 header("Metadata-Flavor", "Google")
                             }
                             markAsRefreshTokenRequest()
-                        }.body<GoogleToken>()
+                        }
+
+                        logger.debug { "Response received: ${response.status}" }
+
+                        if (!response.status.isSuccess()) {
+                            throw RuntimeException("Error fetching token: ${response.status}")
+                        }
+
+                        val token = response.body<GoogleToken>()
                         val tokens = BearerTokens(token.value, token.value)
                         tokenStorage.set(tokens)
                         tokens
