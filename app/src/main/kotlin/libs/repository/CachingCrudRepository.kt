@@ -15,8 +15,8 @@ class CachingCrudRepository<T : AggregateRoot>(private val delegate: CrudReposit
 
     private val getCache = RepositoryOperationCache<String, T>()
 
-    override suspend fun createOrUpdate(aggregateRoot: T) {
-        delegate.createOrUpdate(aggregateRoot)
+    override suspend fun create(aggregateRoot: T) {
+        delegate.create(aggregateRoot)
         findAllCache.evictAll()
         findByCache.evictAll()
         getCache.evict(aggregateRoot.id)
@@ -47,7 +47,7 @@ class CachingCrudRepository<T : AggregateRoot>(private val delegate: CrudReposit
         return result
     }
 
-    override suspend fun findBy(field: String, value: Any): List<T> {
+    override suspend fun findBy(field: String, value: String): List<T> {
         val key = FindByCacheKey(field, value)
         var result = findByCache.get(key)
 

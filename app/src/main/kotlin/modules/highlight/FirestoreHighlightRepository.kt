@@ -1,10 +1,6 @@
 package be.alpago.website.modules.highlight
 
-import be.alpago.website.libs.repository.AbstractFirestoreCrudRepository
-import be.alpago.website.libs.repository.await
-import com.google.cloud.firestore.DocumentReference
-import com.google.cloud.firestore.DocumentSnapshot
-import com.google.cloud.firestore.Firestore
+import be.alpago.website.libs.repository.FirestoreAggregateTransformer
 
 private object Fields {
     const val id = "id"
@@ -15,38 +11,23 @@ private object Fields {
     const val title = "title"
 }
 
-class FirestoreHighlightRepository(
-    collection: String,
-    db: Firestore,
-    environment: String,
-    vararg subCollections: Pair<String, String>,
-) : AbstractFirestoreCrudRepository<Highlight>(
-    collection,
-    db,
-    environment,
-    *subCollections,
-) {
+object FirestoreHighlightTransformer : FirestoreAggregateTransformer<Highlight> {
 
-    override fun DocumentSnapshot.toDomain() = Highlight(
-        id = getString(Fields.id)!!,
-        link = getString(Fields.link)!!,
-        text = getString(Fields.text),
-        thumbnail = getString(Fields.thumbnail)!!,
-        thumbnailDescription = getString(Fields.thumbnailDescription)!!,
-        title = getString(Fields.title)!!,
-
+    override fun fromDomain(aggregateRoot: Highlight) = mapOf(
+        Fields.id to aggregateRoot.id,
+        Fields.link to aggregateRoot.link,
+        Fields.text to aggregateRoot.text,
+        Fields.thumbnail to aggregateRoot.thumbnail,
+        Fields.thumbnailDescription to aggregateRoot.thumbnailDescription,
+        Fields.title to aggregateRoot.title,
     )
 
-    override suspend fun DocumentReference.fromDomain(aggregateRoot: Highlight) {
-        set(
-            mapOf(
-                Fields.id to aggregateRoot.id,
-                Fields.link to aggregateRoot.link,
-                Fields.text to aggregateRoot.text,
-                Fields.thumbnail to aggregateRoot.thumbnail,
-                Fields.thumbnailDescription to aggregateRoot.thumbnailDescription,
-                Fields.title to aggregateRoot.title,
-            )
-        ).await()
-    }
+    override fun toDomain(fields: Map<String, Any?>) = Highlight(
+        id = fields[Fields.id] as String,
+        link = fields[Fields.link] as String,
+        text = fields[Fields.text] as String?,
+        thumbnail = fields[Fields.thumbnail] as String,
+        thumbnailDescription = fields[Fields.thumbnailDescription] as String,
+        title = fields[Fields.title] as String,
+    )
 }

@@ -1,13 +1,11 @@
 package be.alpago.website.modules.animal
 
-import be.alpago.website.libs.repository.AbstractFirestoreCrudRepository
-import com.google.cloud.firestore.DocumentReference
-import com.google.cloud.firestore.DocumentSnapshot
-import com.google.cloud.firestore.Firestore
+import be.alpago.website.libs.repository.FirestoreAggregateTransformer
 
-private const val COLLECTION = "fiberAnalyses"
+const val FIBER_ANALYSIS_COLLECTION = "fiberAnalyses"
 
 private object FiberAnalysisFields {
+
     const val animalId = "animalId"
     const val averageFiberDiameter = "averageFiberDiameter"
     const val coefficientOfVariation = "coefficientOfVariation"
@@ -16,33 +14,23 @@ private object FiberAnalysisFields {
     const val year = "year"
 }
 
-class FirestoreFiberAnalysisRepository(
-    db: Firestore,
-    environment: String,
-) : AbstractFirestoreCrudRepository<FiberAnalysis>(
-    COLLECTION,
-    db,
-    environment,
-) {
-    override fun DocumentSnapshot.toDomain() = FiberAnalysis(
-        animalId = getString(FiberAnalysisFields.animalId)!!,
-        averageFiberDiameter = getString(FiberAnalysisFields.averageFiberDiameter)!!,
-        coefficientOfVariation = getString(FiberAnalysisFields.coefficientOfVariation)!!,
-        comfortFactor = getString(FiberAnalysisFields.comfortFactor)!!,
-        standardDeviation = getString(FiberAnalysisFields.standardDeviation)!!,
-        year = getLong(FiberAnalysisFields.year)!!.toInt()
+object FirestoreFiberAnalysisTransformer : FirestoreAggregateTransformer<FiberAnalysis> {
+
+    override fun fromDomain(aggregateRoot: FiberAnalysis) = mapOf(
+        FiberAnalysisFields.animalId to aggregateRoot.animalId,
+        FiberAnalysisFields.averageFiberDiameter to aggregateRoot.averageFiberDiameter,
+        FiberAnalysisFields.coefficientOfVariation to aggregateRoot.coefficientOfVariation,
+        FiberAnalysisFields.comfortFactor to aggregateRoot.comfortFactor,
+        FiberAnalysisFields.standardDeviation to aggregateRoot.standardDeviation,
+        FiberAnalysisFields.year to aggregateRoot.year,
     )
 
-    override suspend fun DocumentReference.fromDomain(aggregateRoot: FiberAnalysis) {
-        set(
-            mapOf(
-                FiberAnalysisFields.animalId to aggregateRoot.animalId,
-                FiberAnalysisFields.averageFiberDiameter to aggregateRoot.averageFiberDiameter,
-                FiberAnalysisFields.coefficientOfVariation to aggregateRoot.coefficientOfVariation,
-                FiberAnalysisFields.comfortFactor to aggregateRoot.comfortFactor,
-                FiberAnalysisFields.standardDeviation to aggregateRoot.standardDeviation,
-                FiberAnalysisFields.year to aggregateRoot.year.toLong()
-            )
-        )
-    }
+    override fun toDomain(fields: Map<String, Any?>) = FiberAnalysis(
+        animalId = fields[FiberAnalysisFields.animalId] as String,
+        averageFiberDiameter = fields[FiberAnalysisFields.averageFiberDiameter] as String,
+        coefficientOfVariation = fields[FiberAnalysisFields.coefficientOfVariation] as String,
+        comfortFactor = fields[FiberAnalysisFields.comfortFactor] as String,
+        standardDeviation = fields[FiberAnalysisFields.standardDeviation] as String,
+        year = fields[FiberAnalysisFields.year] as Int,
+    )
 }

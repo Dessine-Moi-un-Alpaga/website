@@ -3,37 +3,35 @@ package be.alpago.website.modules.index
 import be.alpago.website.libs.environment.Environment
 import be.alpago.website.libs.repository.CachingCrudRepository
 import be.alpago.website.libs.repository.CrudRepository
-import be.alpago.website.libs.repository.FirestorePageCollection
+import be.alpago.website.libs.repository.RestFirestoreCrudRepository
 import be.alpago.website.modules.animal.Animal
 import be.alpago.website.modules.animal.AnimalRepositories
 import be.alpago.website.modules.article.Article
-import be.alpago.website.modules.article.FirestoreArticleRepository
-import be.alpago.website.modules.highlight.FirestoreHighlightRepository
+import be.alpago.website.modules.article.FirestoreArticleTransformer
+import be.alpago.website.modules.highlight.FirestoreHighlightTransformer
 import be.alpago.website.modules.highlight.Highlight
-import be.alpago.website.modules.image.FirestoreImageMetadataRepository
+import be.alpago.website.modules.image.FirestoreImageMetadataTransformer
 import be.alpago.website.modules.image.ImageMetadata
-import com.google.cloud.firestore.Firestore
+import io.ktor.client.HttpClient
 import io.ktor.server.application.Application
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import org.koin.ktor.plugin.koin
 
-private const val DOCUMENT = "index"
-
-private fun createCollection(collection: String) = Pair(DOCUMENT, collection)
-
 fun indexModule() = module {
     single<CrudRepository<Article>>(
         named(IndexRepositories.article)
     ) {
-        val db by inject<Firestore>()
+        val client by inject<HttpClient>()
         val environment by inject<Environment>()
         CachingCrudRepository(
-            FirestoreArticleRepository(
-                collection = FirestorePageCollection.name,
-                db = db,
+            RestFirestoreCrudRepository(
+                client = client,
+                collection = IndexRepositories.article,
                 environment = environment.name,
-                createCollection("article"),
+                project = environment.project,
+                transformer = FirestoreArticleTransformer,
+                url = environment.firestoreUrl,
             )
         )
     }
@@ -41,30 +39,33 @@ fun indexModule() = module {
     single<CrudRepository<Highlight>>(
         named(IndexRepositories.guilds)
     ) {
-        val db by inject<Firestore>()
+        val client by inject<HttpClient>()
         val environment by inject<Environment>()
         CachingCrudRepository(
-            FirestoreHighlightRepository(
-                collection = FirestorePageCollection.name,
-                db = db,
+            RestFirestoreCrudRepository(
+                client = client,
+                collection = IndexRepositories.guilds,
                 environment = environment.name,
-                createCollection("guilds"),
+                project = environment.project,
+                transformer = FirestoreHighlightTransformer,
+                url = environment.firestoreUrl,
             )
         )
-
     }
 
     single<CrudRepository<Highlight>>(
         named(IndexRepositories.news)
     ) {
-        val db by inject<Firestore>()
+        val client by inject<HttpClient>()
         val environment by inject<Environment>()
         CachingCrudRepository(
-            FirestoreHighlightRepository(
-                collection = FirestorePageCollection.name,
-                db = db,
+            RestFirestoreCrudRepository(
+                client = client,
+                collection = IndexRepositories.news,
                 environment = environment.name,
-                createCollection("news"),
+                project = environment.project,
+                transformer = FirestoreHighlightTransformer,
+                url = environment.firestoreUrl,
             )
         )
     }
@@ -72,14 +73,16 @@ fun indexModule() = module {
     single<CrudRepository<ImageMetadata>>(
         named(IndexRepositories.trainings)
     ) {
-        val db by inject<Firestore>()
+        val client by inject<HttpClient>()
         val environment by inject<Environment>()
         CachingCrudRepository(
-            FirestoreImageMetadataRepository(
-                collection = FirestorePageCollection.name,
-                db = db,
+            RestFirestoreCrudRepository(
+                client = client,
+                collection = IndexRepositories.trainings,
                 environment = environment.name,
-                createCollection("trainings"),
+                project = environment.project,
+                transformer = FirestoreImageMetadataTransformer,
+                url = environment.firestoreUrl,
             )
         )
     }

@@ -3,33 +3,38 @@ package be.alpago.website.modules.factsheet
 import be.alpago.website.libs.environment.Environment
 import be.alpago.website.libs.repository.CachingCrudRepository
 import be.alpago.website.libs.repository.CrudRepository
-import be.alpago.website.libs.repository.FirestorePageCollection
+import be.alpago.website.libs.repository.RestFirestoreCrudRepository
 import be.alpago.website.modules.animal.Animal
 import be.alpago.website.modules.animal.AnimalRepositories
 import be.alpago.website.modules.article.Article
-import be.alpago.website.modules.article.FirestoreArticleRepository
-import be.alpago.website.modules.highlight.FirestoreHighlightRepository
+import be.alpago.website.modules.article.FirestoreArticleTransformer
+import be.alpago.website.modules.highlight.FirestoreHighlightTransformer
 import be.alpago.website.modules.highlight.Highlight
-import com.google.cloud.firestore.Firestore
+import io.ktor.client.HttpClient
 import io.ktor.server.application.Application
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import org.koin.ktor.plugin.koin
 
-private const val DOCUMENT = "factsheets"
+object FactsheetRepositories {
+    const val article = "factsheets/article"
+    const val factsheets = "factsheets/factsheets"
+}
 
 fun factsheetModule() = module {
     single<CrudRepository<Article>>(
         named(FactsheetRepositories.article)
     ) {
-        val db by inject<Firestore>()
+        val client by inject<HttpClient>()
         val environment by inject<Environment>()
         CachingCrudRepository(
-            FirestoreArticleRepository(
-                collection = FirestorePageCollection.name,
-                db = db,
+            RestFirestoreCrudRepository(
+                client = client,
+                collection = FirestoreFactsheetRepositories.article,
                 environment = environment.name,
-                DOCUMENT to "article"
+                project = environment.project,
+                transformer = FirestoreArticleTransformer,
+                url = environment.firestoreUrl,
             )
         )
     }
@@ -37,14 +42,16 @@ fun factsheetModule() = module {
     single<CrudRepository<Highlight>>(
         named(FactsheetRepositories.factsheets)
     ) {
-        val db by inject<Firestore>()
+        val client by inject<HttpClient>()
         val environment by inject<Environment>()
         CachingCrudRepository(
-            FirestoreHighlightRepository(
-                collection = FirestorePageCollection.name,
-                db = db,
+            RestFirestoreCrudRepository(
+                client = client,
+                collection = FirestoreFactsheetRepositories.highlights,
                 environment = environment.name,
-                DOCUMENT to "factsheets"
+                project = environment.project,
+                transformer = FirestoreHighlightTransformer,
+                url = environment.firestoreUrl,
             )
         )
     }

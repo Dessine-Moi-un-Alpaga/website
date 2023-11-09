@@ -1,9 +1,6 @@
 package be.alpago.website.modules.image
 
-import be.alpago.website.libs.repository.AbstractFirestoreCrudRepository
-import com.google.cloud.firestore.DocumentReference
-import com.google.cloud.firestore.DocumentSnapshot
-import com.google.cloud.firestore.Firestore
+import be.alpago.website.libs.repository.FirestoreAggregateTransformer
 
 private object Fields {
     const val id = "id"
@@ -14,37 +11,23 @@ private object Fields {
     const val width = "width"
 }
 
-class FirestoreImageMetadataRepository(
-    collection: String,
-    db: Firestore,
-    environment: String,
-    vararg subCollections: Pair<String, String>,
-) : AbstractFirestoreCrudRepository<ImageMetadata>(
-    collection,
-    db,
-    environment,
-    *subCollections,
-) {
+object FirestoreImageMetadataTransformer : FirestoreAggregateTransformer<ImageMetadata> {
 
-    override fun DocumentSnapshot.toDomain() = ImageMetadata(
-        id = getString(Fields.id)!!,
-        description = getString(Fields.description)!!,
-        height = getString(Fields.height)!!.toInt(),
-        path = getString(Fields.path)!!,
-        thumbnailPath = getString(Fields.thumbnailPath)!!,
-        width = getString(Fields.width)!!.toInt(),
+    override fun fromDomain(aggregateRoot: ImageMetadata) = mapOf(
+        Fields.id to aggregateRoot.id,
+        Fields.description to aggregateRoot.description,
+        Fields.height to aggregateRoot.height,
+        Fields.path to aggregateRoot.path,
+        Fields.thumbnailPath to aggregateRoot.thumbnailPath,
+        Fields.width to aggregateRoot.width
     )
 
-    override suspend fun DocumentReference.fromDomain(aggregateRoot: ImageMetadata) {
-        set(
-            mapOf(
-                Fields.id to aggregateRoot.id,
-                Fields.description to aggregateRoot.description,
-                Fields.height to "${aggregateRoot.height}",
-                Fields.path to aggregateRoot.path,
-                Fields.thumbnailPath to aggregateRoot.thumbnailPath,
-                Fields.width to "${aggregateRoot.width}"
-            )
-        )
-    }
+    override fun toDomain(fields: Map<String, Any?>) = ImageMetadata(
+        id = fields[Fields.id] as String,
+        description = fields[Fields.description] as String,
+        height = fields[Fields.height] as Int,
+        path = fields[Fields.path] as String,
+        thumbnailPath = fields[Fields.thumbnailPath] as String,
+        width = fields[Fields.width] as Int,
+    )
 }

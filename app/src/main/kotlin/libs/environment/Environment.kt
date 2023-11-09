@@ -4,6 +4,8 @@ data class Environment(
     val baseAssetUrl: String,
     val credentials: String,
     val emailAddress: String,
+    val firestoreAuthenticationEnabled: Boolean,
+    val firestoreUrl: String,
     val name: String,
     val project: String,
     val sendGridApiKey: String,

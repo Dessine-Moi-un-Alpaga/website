@@ -30,7 +30,7 @@ class SendGridEmailService(
                 json()
             }
         }.use {
-            val response = it.post(ENDPOINT) {
+            it.post(ENDPOINT) {
                 contentType(ContentType.Application.Json)
                 headers {
                     bearerAuth(environment.sendGridApiKey)

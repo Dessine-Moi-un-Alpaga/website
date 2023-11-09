@@ -3,12 +3,12 @@ package be.alpago.website.modules.news
 import be.alpago.website.libs.environment.Environment
 import be.alpago.website.libs.repository.CachingCrudRepository
 import be.alpago.website.libs.repository.CrudRepository
-import be.alpago.website.libs.repository.FirestorePageCollection
+import be.alpago.website.libs.repository.RestFirestoreCrudRepository
 import be.alpago.website.modules.animal.Animal
 import be.alpago.website.modules.animal.AnimalRepositories
 import be.alpago.website.modules.article.Article
-import be.alpago.website.modules.article.FirestoreArticleRepository
-import com.google.cloud.firestore.Firestore
+import be.alpago.website.modules.article.FirestoreArticleTransformer
+import io.ktor.client.HttpClient
 import io.ktor.server.application.Application
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
@@ -20,14 +20,16 @@ fun newsModule() = module {
     single<CrudRepository<Article>>(
         named(NewsRepositories.articles)
     ) {
-        val db by inject<Firestore>()
+        val client by inject<HttpClient>()
         val environment by inject<Environment>()
         CachingCrudRepository(
-            FirestoreArticleRepository(
-                collection = FirestorePageCollection.name,
-                db = db,
+            RestFirestoreCrudRepository(
+                client = client,
+                collection = NewsRepositories.articles,
                 environment = environment.name,
-                DOCUMENT to "articles"
+                project = environment.project,
+                transformer = FirestoreArticleTransformer,
+                url = environment.firestoreUrl,
             )
         )
     }
