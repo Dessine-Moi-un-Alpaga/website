@@ -36,6 +36,7 @@ dependencies {
     implementation("at.favre.lib:bcrypt:$bcryptVersion")
     implementation("de.comahe.i18n4k:i18n4k-core:$i18n4kVersion")
     implementation("io.insert-koin:koin-ktor:$koinVersion")
+    implementation("io.github.microutils:kotlin-logging:2.0.11")
     implementation("org.jetbrains.kotlin-wrappers:kotlin-css:$kotlinCssVersion")
     implementation("io.ktor:ktor-client-auth")
     implementation("io.ktor:ktor-client-cio")

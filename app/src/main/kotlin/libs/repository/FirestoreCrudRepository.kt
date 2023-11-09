@@ -11,6 +11,7 @@ import io.ktor.client.request.post
 import io.ktor.client.request.setBody
 import io.ktor.http.HttpStatusCode
 import kotlinx.serialization.Serializable
+import mu.KotlinLogging
 
 class RestFirestoreCrudRepository<T : AggregateRoot>(
     private val client: HttpClient,
@@ -21,6 +22,8 @@ class RestFirestoreCrudRepository<T : AggregateRoot>(
     url: String,
 ) : CrudRepository<T> {
 
+    private val logger = KotlinLogging.logger { }
+
     private val baseUrl = "${url}/v1/projects/${project}/databases/(default)/documents/environments/${environment}"
 
     private val rootUrl = "${baseUrl}/${collection}"
@@ -28,13 +31,21 @@ class RestFirestoreCrudRepository<T : AggregateRoot>(
     override suspend fun create(aggregateRoot: T) {
         val fields = transformer.toFirestore(aggregateRoot)
         val document = Document(fields)
-        client.patch("${rootUrl}/${aggregateRoot.id}") {
+        val response = client.patch("${rootUrl}/${aggregateRoot.id}") {
             setBody(document)
+        }
+
+        if (response.status != HttpStatusCode.OK) {
+            throw RuntimeException("${response.status}")
         }
     }
 
     override suspend fun delete(id: String) {
-        client.delete("${rootUrl}/${id}")
+        val response = client.delete("${rootUrl}/${id}")
+
+        if (response.status != HttpStatusCode.OK) {
+            throw RuntimeException("${response.status}")
+        }
     }
 
     override suspend fun deleteAll() {
@@ -45,15 +56,23 @@ class RestFirestoreCrudRepository<T : AggregateRoot>(
 
             for (document in body.documents) {
                 val id = (document.fields["id"]!! as StringValue).stringValue
-                client.delete("${rootUrl}/${id}")
+                delete(id)
             }
         }
     }
 
     override suspend fun findAll(): List<T> {
-        val response = client.get(rootUrl).body<ListDocumentsResponse>()
+        val response = client.get(rootUrl)
 
-        return response.documents.map { transformer.fromFirestore(it.fields) }
+        if (response.status != HttpStatusCode.OK) {
+            throw RuntimeException("${response.status}")
+        }
+
+        val body = response.body<ListDocumentsResponse>()
+
+        logger.debug { body }
+
+        return body.documents.map { transformer.fromFirestore(it.fields) }
     }
 
     override suspend fun findBy(field: String, value: String): List<T> {
@@ -86,6 +105,10 @@ class RestFirestoreCrudRepository<T : AggregateRoot>(
 
         if (response.status == HttpStatusCode.NotFound) {
             throw AggregateRootNotFound()
+        }
+
+        if (response.status != HttpStatusCode.OK) {
+            throw RuntimeException("${response.status}")
         }
 
         val document = response.body<Document>()
