@@ -83,9 +83,6 @@ fun createClient(
                         tokenStorage.set(tokens)
                         tokens
                     }
-                    sendWithoutRequest { request ->
-                        request.url.host == "firestore.googleapis.com"
-                    }
                 }
             }
         }
