@@ -11,7 +11,6 @@ import io.ktor.client.request.post
 import io.ktor.client.request.setBody
 import io.ktor.http.HttpStatusCode
 import kotlinx.serialization.Serializable
-import mu.KotlinLogging
 
 class RestFirestoreCrudRepository<T : AggregateRoot>(
     private val client: HttpClient,
@@ -21,8 +20,6 @@ class RestFirestoreCrudRepository<T : AggregateRoot>(
     private val transformer: FirestoreAggregateTransformer<T>,
     url: String,
 ) : CrudRepository<T> {
-
-    private val logger = KotlinLogging.logger { }
 
     private val baseUrl = "${url}/v1/projects/${project}/databases/(default)/documents/environments/${environment}"
 
@@ -69,8 +66,6 @@ class RestFirestoreCrudRepository<T : AggregateRoot>(
         }
 
         val body = response.body<ListDocumentsResponse>()
-
-        logger.debug { body }
 
         return body.documents.map { transformer.fromFirestore(it.fields) }
     }
