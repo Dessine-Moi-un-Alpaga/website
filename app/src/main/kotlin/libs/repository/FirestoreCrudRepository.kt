@@ -6,11 +6,16 @@ import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.delete
 import io.ktor.client.request.get
+import io.ktor.client.request.parameter
 import io.ktor.client.request.patch
 import io.ktor.client.request.post
 import io.ktor.client.request.setBody
 import io.ktor.http.HttpStatusCode
 import kotlinx.serialization.Serializable
+
+private const val ID_FIELD = "id"
+
+private const val NEXT_PAGE_PARMAETER = "pageToken"
 
 class RestFirestoreCrudRepository<T : AggregateRoot>(
     private val client: HttpClient,
@@ -46,28 +51,55 @@ class RestFirestoreCrudRepository<T : AggregateRoot>(
     }
 
     override suspend fun deleteAll() {
-        val response = client.get("${rootUrl}?mask.fieldPaths=id")
+        var nextPageToken: String? = null
 
-        if (response.status == HttpStatusCode.OK) {
-            val body = response.body<ListDocumentsResponse>()
+        do {
+            val response = client.get(rootUrl) {
+                parameter("mask.fieldPaths", ID_FIELD)
 
-            for (document in body.documents) {
-                val id = (document.fields["id"]!! as StringValue).stringValue
-                delete(id)
+                if (nextPageToken != null) {
+                    parameter(NEXT_PAGE_PARMAETER, nextPageToken)
+                }
             }
-        }
+
+            if (response.status == HttpStatusCode.OK) {
+                val body = response.body<ListDocumentsResponse>()
+
+                for (document in body.documents) {
+                    val id = (document.fields[ID_FIELD]!! as StringValue).stringValue
+                    delete(id)
+                }
+
+                nextPageToken = body.nextPageToken
+            }
+        } while (nextPageToken != null)
     }
 
     override suspend fun findAll(): List<T> {
-        val response = client.get(rootUrl)
+        val result = mutableListOf<T>()
+        var nextPageToken: String? = null
 
-        if (response.status != HttpStatusCode.OK) {
-            throw RuntimeException("${response.status}")
-        }
+        do {
+            val response = client.get(rootUrl) {
+                if (nextPageToken != null) {
+                    parameter(NEXT_PAGE_PARMAETER, nextPageToken)
+                }
+            }
 
-        val body = response.body<ListDocumentsResponse>()
+            if (response.status != HttpStatusCode.OK) {
+                throw RuntimeException("${response.status}")
+            }
 
-        return body.documents.map { transformer.fromFirestore(it.fields) }
+            val body = response.body<ListDocumentsResponse>()
+            result.addAll(
+                body.documents.map {
+                    transformer.fromFirestore(it.fields)
+                }
+            )
+            nextPageToken = body.nextPageToken
+        } while (nextPageToken != null)
+
+        return result.toList()
     }
 
     override suspend fun findBy(field: String, value: String): List<T> {
@@ -119,7 +151,7 @@ private data class Query(
 
 @Serializable
 private data class CollectionSelector(
-    private val collectionId: String
+    private val collectionId: String,
 )
 
 @Serializable
@@ -143,11 +175,14 @@ private data class FieldReference(val fieldPath: String)
 
 @Serializable
 private enum class Operator {
-    EQUAL
+    EQUAL,
 }
 
 @Serializable
-private data class ListDocumentsResponse(val documents: List<Document> = listOf())
+private data class ListDocumentsResponse(
+    val documents: List<Document> = listOf(),
+    val nextPageToken: String? = null,
+)
 
 @Serializable
 private data class Document(
@@ -156,5 +191,5 @@ private data class Document(
 
 @Serializable
 private data class QueryResponse(
-    val document: Document? = null
+    val document: Document? = null,
 )
