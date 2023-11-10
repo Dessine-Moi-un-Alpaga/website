@@ -33,6 +33,14 @@
   "methods":[{"name":"serializer","parameterTypes":[] }]
 },
 {
+  "name":"be.alpago.website.libs.repository.GoogleToken",
+  "fields":[{"name":"Companion"}]
+},
+{
+  "name":"be.alpago.website.libs.repository.GoogleToken$Companion",
+  "methods":[{"name":"serializer","parameterTypes":[] }]
+},
+{
   "name":"be.alpago.website.libs.repository.IntValue",
   "fields":[{"name":"Companion"}]
 },
