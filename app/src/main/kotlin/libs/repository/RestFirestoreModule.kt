@@ -6,16 +6,15 @@ import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.engine.cio.CIO
 import io.ktor.client.plugins.DefaultRequest
-import io.ktor.client.plugins.auth.Auth
-import io.ktor.client.plugins.auth.providers.BearerTokens
-import io.ktor.client.plugins.auth.providers.bearer
+import io.ktor.client.plugins.HttpSend
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.logging.LogLevel
 import io.ktor.client.plugins.logging.Logging
+import io.ktor.client.plugins.plugin
 import io.ktor.client.request.accept
-import io.ktor.client.request.get
 import io.ktor.client.request.header
 import io.ktor.client.request.headers
+import io.ktor.client.request.request
 import io.ktor.http.ContentType
 import io.ktor.http.HttpHeaders
 import io.ktor.http.contentType
@@ -31,12 +30,14 @@ import org.koin.ktor.ext.inject
 import org.koin.ktor.plugin.koin
 import java.util.concurrent.atomic.AtomicReference
 
+private const val FIRESTORE_HOSTNAME = "firestore.googleapis.com"
+private const val GOOGLE_METADATA_ENDPOINT = "http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/token"
+
 private val logger = KotlinLogging.logger { }
 
-fun createClient(
-    authenticationEnabled: Boolean,
-): HttpClient {
-    return HttpClient(CIO) {
+fun createClient(): HttpClient {
+
+    val client = HttpClient(CIO) {
         install(Logging) {
             level = LogLevel.ALL
 
@@ -54,54 +55,52 @@ fun createClient(
             accept(ContentType.Application.Json)
             contentType(ContentType.Application.Json)
         }
+    }
 
-        if (authenticationEnabled) {
-            val tokenStorage = AtomicReference<BearerTokens>()
+    val tokenStorage = AtomicReference<String>()
 
-            install(Auth) {
-                bearer {
-                    loadTokens {
-                        logger.debug { "Searching for token in local storage" }
-                        val token = tokenStorage.get()
+    client.plugin(HttpSend).intercept { request ->
+        if (request.url.host == FIRESTORE_HOSTNAME) {
+            logger.debug { "Attempting to access Firestore API; authentication required" }
 
-                        if (token != null) {
-                            logger.debug { "Token found in the local store" }
-                        }
+            var token = tokenStorage.get()
 
-                        token
-                    }
+            if (token == null) {
+                logger.debug { "No token found; requesting one" }
 
-                    refreshTokens {
-                        logger.debug { "Refreshing token" }
-
-                        val response = client.get("http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/token") {
-                            headers {
-                                header("Metadata-Flavor", "Google")
-                            }
-                            markAsRefreshTokenRequest()
-                        }
-
-                        logger.debug { "Response received: ${response.status}" }
-
-                        if (!response.status.isSuccess()) {
-                            throw RuntimeException("Error fetching token: ${response.status}")
-                        }
-
-                        val token = response.body<GoogleToken>()
-                        val tokens = BearerTokens(token.value, token.value)
-                        tokenStorage.set(tokens)
-                        tokens
+                val response = client.request(GOOGLE_METADATA_ENDPOINT) {
+                    headers {
+                        header("Metadata-Flavor", "Google")
                     }
                 }
+
+                if (response.status.isSuccess()) {
+                    logger.debug { "Successful response received: ${response.status}; extracting token" }
+                    token = response.body<GoogleToken>().value
+                    logger.debug { "Token successfully extracted" }
+                    tokenStorage.set(token)
+                }
             }
+
+            if (token == null) {
+                logger.debug { "No token found; sending unauthenticated request" }
+            } else {
+                logger.debug { "Token found, sending authenticated request" }
+                request.header(HttpHeaders.Authorization, "Bearer $token")
+            }
+        } else {
+            logger.debug { "No authentication required" }
         }
+
+        execute(request)
     }
+
+    return client
 }
 
 fun restFirestoreModule() = module {
     single<HttpClient> {
-        val environment by inject<Environment>()
-        createClient(environment.firestoreAuthenticationEnabled)
+        createClient()
     }
 }
 

@@ -48,7 +48,7 @@ class RestFirestoreCrudRepositoryTest {
     private val repository: RestFirestoreCrudRepository<TestAggregateRoot>
 
     init {
-        val client = createClient(false)
+        val client = createClient()
         repository = RestFirestoreCrudRepository(
             collection = "test",
             client = client,
