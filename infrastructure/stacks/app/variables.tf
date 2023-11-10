@@ -34,3 +34,8 @@ variable "environment" {
 variable "location" {
   type = string
 }
+
+variable "server_log_level" {
+  default = "INFO"
+  type    = string
+}
