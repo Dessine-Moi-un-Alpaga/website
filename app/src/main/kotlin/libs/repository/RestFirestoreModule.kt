@@ -9,6 +9,7 @@ import io.ktor.client.plugins.HttpSend
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.plugin
 import io.ktor.client.request.accept
+import io.ktor.client.request.bearerAuth
 import io.ktor.client.request.header
 import io.ktor.client.request.headers
 import io.ktor.client.request.request
@@ -68,7 +69,7 @@ fun createClient(): HttpClient {
             }
 
             if (token != null) {
-                request.header(HttpHeaders.Authorization, "Bearer $token")
+                request.bearerAuth(token)
             }
         }
 
