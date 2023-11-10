@@ -1,6 +1,5 @@
 package be.alpago.website.libs.repository
 
-import be.alpago.website.libs.environment.Environment
 import be.alpago.website.libs.ktor.registerCloseable
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
@@ -8,8 +7,6 @@ import io.ktor.client.engine.cio.CIO
 import io.ktor.client.plugins.DefaultRequest
 import io.ktor.client.plugins.HttpSend
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
-import io.ktor.client.plugins.logging.LogLevel
-import io.ktor.client.plugins.logging.Logging
 import io.ktor.client.plugins.plugin
 import io.ktor.client.request.accept
 import io.ktor.client.request.header
@@ -38,12 +35,6 @@ private val logger = KotlinLogging.logger { }
 fun createClient(): HttpClient {
 
     val client = HttpClient(CIO) {
-        install(Logging) {
-            level = LogLevel.ALL
-
-            sanitizeHeader { header -> header == HttpHeaders.Authorization }
-        }
-
         install(ContentNegotiation) {
             json(
                 Json {
@@ -61,13 +52,9 @@ fun createClient(): HttpClient {
 
     client.plugin(HttpSend).intercept { request ->
         if (request.url.host == FIRESTORE_HOSTNAME) {
-            logger.debug { "Attempting to access Firestore API; authentication required" }
-
             var token = tokenStorage.get()
 
             if (token == null) {
-                logger.debug { "No token found; requesting one" }
-
                 val response = client.request(GOOGLE_METADATA_ENDPOINT) {
                     headers {
                         header("Metadata-Flavor", "Google")
@@ -75,21 +62,14 @@ fun createClient(): HttpClient {
                 }
 
                 if (response.status.isSuccess()) {
-                    logger.debug { "Successful response received: ${response.status}; extracting token" }
                     token = response.body<GoogleToken>().value
-                    logger.debug { "Token successfully extracted" }
                     tokenStorage.set(token)
                 }
             }
 
-            if (token == null) {
-                logger.debug { "No token found; sending unauthenticated request" }
-            } else {
-                logger.debug { "Token found, sending authenticated request" }
+            if (token != null) {
                 request.header(HttpHeaders.Authorization, "Bearer $token")
             }
-        } else {
-            logger.debug { "No authentication required" }
         }
 
         execute(request)

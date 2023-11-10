@@ -89,11 +89,6 @@ resource "google_cloud_run_v2_service" "cloud_run_service" {
         }
       }
 
-      env {
-        name  = "KTOR_LOG_LEVEL"
-        value = var.server_log_level
-      }
-
       resources {
         cpu_idle = true
         limits   = {
