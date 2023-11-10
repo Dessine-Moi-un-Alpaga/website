@@ -5,7 +5,7 @@ plugins {
     kotlin("jvm") version "1.9.20"
     id("de.comahe.i18n4k") version "0.6.2"
     kotlin("plugin.serialization") version "1.9.20"
-    id("io.ktor.plugin") version "2.3.5"
+    id("io.ktor.plugin") version "2.3.6"
     id("org.graalvm.buildtools.native") version "0.9.28"
     id("com.github.psxpaul.execfork") version "0.2.2"
 }
