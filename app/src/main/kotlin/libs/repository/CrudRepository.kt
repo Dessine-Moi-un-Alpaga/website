@@ -4,7 +4,7 @@ import be.alpago.website.libs.domain.AggregateRoot
 
 interface CrudRepository<T : AggregateRoot> {
 
-    suspend fun createOrUpdate(aggregateRoot: T)
+    suspend fun create(aggregateRoot: T)
 
     suspend fun delete(id: String)
 
@@ -12,7 +12,7 @@ interface CrudRepository<T : AggregateRoot> {
 
     suspend fun findAll(): List<T>
 
-    suspend fun findBy(field: String, value: Any): List<T>
+    suspend fun findBy(field: String, value: String): List<T>
 
     suspend fun get(id: String): T
 }

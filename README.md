@@ -23,7 +23,7 @@
 [![Gradle](https://img.shields.io/badge/gradle-8.4-darkgreen.svg?logo=gradle)](http://gradle.org)
 [![GrralVM](https://img.shields.io/badge/graalvm-17.0.9-blue.svg?logo=openjdk)](http://graalvm.org)
 [![Kotlin](https://img.shields.io/badge/kotlin-1.9.20-darkblue.svg?logo=kotlin)](http://kotlinlang.org)
-[![Ktor](https://img.shields.io/badge/ktor-2.3.5-red.svg)](http://ktor.io)
+[![Ktor](https://img.shields.io/badge/ktor-2.3.6-red.svg)](http://ktor.io)
 
 # What is this?
 
@@ -33,7 +33,8 @@ An application for serving and managing [the website of our alpaca breeding farm
 
 The following is required to bootstrap the project:
 * a Google Cloud organization
-* a Google user account tht is `Organization Administrator` and has the `Owner` role on the project.
+* a Google user account that is `Organization Administrator` and has the `Owner` role on the project
+* a Google Firestore Emulator installation properly initialized at `~/.firestore` and running on port 8181
 
 # Bootstrapping the Project
 
@@ -45,14 +46,6 @@ $ make bootstrap
 ```
 
 Configuration will be saved in the `~/.dmua` directory.
-
-The application uses Google
-[Application Default Credentials](https://cloud.google.com/docs/authentication/application-default-credentials) and will
-automatically detect the credentials for the user you are logged in with:
-
-```shell
-$ gcloud auth application-default login
-```
 
 You are now all set to run the project locally:
 

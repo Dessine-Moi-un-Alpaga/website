@@ -45,7 +45,7 @@ inline fun <reified T : AggregateRoot> Application.managementRoutes(path: String
             put(path) {
                 val aggregateRoot = call.receive<T>()
                 val repository = repositoryProvider(this)
-                repository.createOrUpdate(aggregateRoot)
+                repository.create(aggregateRoot)
                 call.response.status(HttpStatusCode.OK)
             }
 

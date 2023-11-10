@@ -112,7 +112,7 @@ class AnimalSectionTemplate(
 
                             header {
                                 h2 {
-                                    +capitalize(Messages.about)
+                                    +"${capitalize(Messages.about)} "
 
                                     span {
                                         +model.animal.name

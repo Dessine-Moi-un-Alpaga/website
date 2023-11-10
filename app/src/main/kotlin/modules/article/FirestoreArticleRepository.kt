@@ -1,10 +1,6 @@
 package be.alpago.website.modules.article
 
-import be.alpago.website.libs.repository.AbstractFirestoreCrudRepository
-import be.alpago.website.libs.repository.await
-import com.google.cloud.firestore.DocumentReference
-import com.google.cloud.firestore.DocumentSnapshot
-import com.google.cloud.firestore.Firestore
+import be.alpago.website.libs.repository.FirestoreAggregateTransformer
 
 private object Fields {
     const val id = "id"
@@ -16,39 +12,25 @@ private object Fields {
     const val title = "title"
 }
 
-class FirestoreArticleRepository(
-    collection: String,
-    db: Firestore,
-    environment: String,
-    vararg subCollections: Pair<String, String>,
-) : AbstractFirestoreCrudRepository<Article>(
-    collection,
-    db,
-    environment,
-    *subCollections,
-) {
+object FirestoreArticleTransformer : FirestoreAggregateTransformer<Article> {
 
-    override fun DocumentSnapshot.toDomain() = Article(
-        id = getString(Fields.id)!!,
-        banner = getString(Fields.banner),
-        bannerDescription = getString(Fields.bannerDescription),
-        sectionTitle = getString(Fields.sectionTitle)!!,
-        subtitle = getString(Fields.subtitle),
-        text = getString(Fields.text)!!,
-        title = getString(Fields.title)
+    override fun fromDomain(aggregateRoot: Article) = mapOf(
+        Fields.id to aggregateRoot.id,
+        Fields.banner to aggregateRoot.banner,
+        Fields.bannerDescription to aggregateRoot.bannerDescription,
+        Fields.sectionTitle to aggregateRoot.sectionTitle,
+        Fields.subtitle to aggregateRoot.subtitle,
+        Fields.text to aggregateRoot.text,
+        Fields.title to aggregateRoot.title
     )
 
-    override suspend fun DocumentReference.fromDomain(aggregateRoot: Article) {
-        set(
-            mapOf(
-                Fields.id to aggregateRoot.id,
-                Fields.banner to aggregateRoot.banner,
-                Fields.bannerDescription to aggregateRoot.bannerDescription,
-                Fields.sectionTitle to aggregateRoot.sectionTitle,
-                Fields.subtitle to aggregateRoot.subtitle,
-                Fields.text to aggregateRoot.text,
-                Fields.title to aggregateRoot.title
-            )
-        ).await()
-    }
+    override fun toDomain(fields: Map<String, Any?>) = Article(
+        id = fields[Fields.id] as String,
+        banner = fields[Fields.banner] as String?,
+        bannerDescription = fields[Fields.bannerDescription] as String?,
+        sectionTitle = fields[Fields.sectionTitle] as String,
+        subtitle = fields[Fields.subtitle] as String?,
+        text = fields[Fields.text] as String,
+        title = fields[Fields.title] as String?
+    )
 }

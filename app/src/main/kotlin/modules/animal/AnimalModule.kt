@@ -3,7 +3,8 @@ package be.alpago.website.modules.animal
 import be.alpago.website.libs.environment.Environment
 import be.alpago.website.libs.repository.CachingCrudRepository
 import be.alpago.website.libs.repository.CrudRepository
-import com.google.cloud.firestore.Firestore
+import be.alpago.website.libs.repository.RestFirestoreCrudRepository
+import io.ktor.client.HttpClient
 import io.ktor.server.application.Application
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
@@ -13,12 +14,16 @@ private fun animalModule() = module {
     single<CrudRepository<Animal>>(
         named(AnimalRepositories.animal)
     ) {
-        val db by inject<Firestore>()
+        val client by inject<HttpClient>()
         val environment by inject<Environment>()
         CachingCrudRepository(
-            FirestoreAnimalRepository(
-                db = db,
-                environment = environment.name
+            RestFirestoreCrudRepository(
+                client = client,
+                collection = ANIMAL_COLLECTION,
+                environment = environment.name,
+                project = environment.project,
+                transformer = FirestoreAnimalTransformer,
+                url = environment.firestoreUrl,
             )
         )
     }
@@ -26,12 +31,16 @@ private fun animalModule() = module {
     single<CrudRepository<FiberAnalysis>>(
         named(AnimalRepositories.fiberAnalyses)
     ) {
-        val db by inject<Firestore>()
+        val client by inject<HttpClient>()
         val environment by inject<Environment>()
         CachingCrudRepository(
-            FirestoreFiberAnalysisRepository(
-                db = db,
-                environment = environment.name
+            RestFirestoreCrudRepository(
+                client = client,
+                collection = FIBER_ANALYSIS_COLLECTION,
+                environment = environment.name,
+                project = environment.project,
+                transformer = FirestoreFiberAnalysisTransformer,
+                url = environment.firestoreUrl,
             )
         )
     }

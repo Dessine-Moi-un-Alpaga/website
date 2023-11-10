@@ -1,11 +1,13 @@
+import com.github.psxpaul.task.ExecFork
 import org.gradle.internal.os.OperatingSystem
 
 plugins {
     kotlin("jvm") version "1.9.20"
     id("de.comahe.i18n4k") version "0.6.2"
     kotlin("plugin.serialization") version "1.9.20"
-    id("io.ktor.plugin") version "2.3.5"
+    id("io.ktor.plugin") version "2.3.6"
     id("org.graalvm.buildtools.native") version "0.9.28"
+    id("com.github.psxpaul.execfork") version "0.2.2"
 }
 
 group = "be.alpago"
@@ -23,25 +25,25 @@ val webjars by configurations.creating
 
 val bcryptVersion = "0.10.2"
 val escapeVelocityVersion = "1.0.0-1"
-val googleCloudLibrariesBomVersion = "26.26.0"
 val i18n4kVersion = "0.6.2"
+val junitVersion = "5.10.1"
 val koinVersion = "3.5.1"
-val kotlinCssVersion = "1.0.0-pre.636"
+val kotestVersion = "5.8.0"
+val kotlinCssVersion = "1.0.0-pre.640"
+val kotlinLoggingVersion = "2.0.11"
 val logbackVersion = "1.4.11"
 val photoswipeVersion = "5.3.7"
 val toastrVersion = "2.1.2"
 
 dependencies {
-    implementation(platform("com.google.cloud:libraries-bom:$googleCloudLibrariesBomVersion"))
-
     implementation("at.favre.lib:bcrypt:$bcryptVersion")
-    implementation("com.google.cloud:google-cloud-firestore")
     implementation("de.comahe.i18n4k:i18n4k-core:$i18n4kVersion")
     implementation("io.insert-koin:koin-ktor:$koinVersion")
+    implementation("io.github.microutils:kotlin-logging:$kotlinLoggingVersion")
     implementation("org.jetbrains.kotlin-wrappers:kotlin-css:$kotlinCssVersion")
     implementation("io.ktor:ktor-client-cio")
-    implementation("io.ktor:ktor-client-core")
     implementation("io.ktor:ktor-client-content-negotiation")
+    implementation("io.ktor:ktor-client-core")
     implementation("io.ktor:ktor-serialization-kotlinx-json")
     implementation("io.ktor:ktor-server-auth")
     implementation("io.ktor:ktor-server-caching-headers")
@@ -59,8 +61,10 @@ dependencies {
     webjars("org.webjars.npm:photoswipe:$photoswipeVersion")
     webjars("org.webjars:toastr:$toastrVersion")
 
-    testImplementation("io.ktor:ktor-server-test-host")
-    testImplementation("org.jetbrains.kotlin:kotlin-test")
+    testImplementation(platform("org.junit:junit-bom:$junitVersion"))
+
+    testImplementation("org.junit.jupiter:junit-jupiter")
+    testImplementation("io.kotest:kotest-assertions-core:$kotestVersion")
 }
 
 i18n4k {
@@ -134,12 +138,24 @@ tasks.processResources.configure {
     dependsOn(":explodeWebjars", ":generateI18n4kFiles")
 }
 
+val home = System.getProperty("user.home")
+
+val firestorePort = 8181
+
+val firestoreEmulator = tasks.register<ExecFork>("firestoreEmulator") {
+    executable = "firebase"
+    args = mutableListOf("emulators:start")
+    workingDir = File(home, ".firestore")
+    waitForPort = firestorePort
+}
+
 tasks.named<JavaExec>("run") {
+    dependsOn(firestoreEmulator)
+
     if (!project.hasProperty("agent")) {
         systemProperty("io.ktor.development", "true")
     }
 
-    val home = System.getProperty("user.home")
     val configurationDirectory = File(home, ".dmua")
     val secretDirectory = File(configurationDirectory, "secrets")
     val variableDirectory = File(configurationDirectory, "variables")
@@ -152,6 +168,12 @@ tasks.named<JavaExec>("run") {
     environment("DMUA_BASE_ASSET_URL", "https://storage.googleapis.com/${devBucket}")
     environment("DMUA_CREDENTIALS", credentials)
     environment("DMUA_ENVIRONMENT", "local")
+    environment("DMUA_FIRESTORE_URL", "http://localhost:${firestorePort}")
     environment("DMUA_PROJECT", googleProject)
     environment("DMUA_SEND_GRID_API_KEY", sendGridApiKey)
+}
+
+tasks.test.configure {
+    dependsOn(firestoreEmulator)
+    useJUnitPlatform()
 }
