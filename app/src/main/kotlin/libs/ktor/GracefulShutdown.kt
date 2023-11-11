@@ -5,6 +5,7 @@ import io.ktor.server.application.ApplicationStopped
 import io.ktor.server.engine.ApplicationEngine
 
 private const val GRACE_PERIOD_MILLIS: Long = 500
+
 private const val TIMEOUT_MILLIS: Long = 500
 
 fun ApplicationEngine.registerShutdownHook() {

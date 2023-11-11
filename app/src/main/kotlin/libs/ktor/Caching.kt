@@ -10,12 +10,22 @@ import io.ktor.server.request.httpMethod
 
 private const val MAX_AGE_SECONDS = 60 * 15
 
+private val ENABLE = CachingOptions(
+    CacheControl.MaxAge(MAX_AGE_SECONDS)
+)
+
+private val DISABLE = CachingOptions(
+    CacheControl.NoCache(
+        CacheControl.Visibility.Public
+    )
+)
+
 fun Application.caching() {
     install(CachingHeaders) {
         options { call, _ ->
             when (call.request.httpMethod) {
-                HttpMethod.Get -> CachingOptions(CacheControl.MaxAge(MAX_AGE_SECONDS))
-                else -> CachingOptions(CacheControl.NoCache(CacheControl.Visibility.Public))
+                HttpMethod.Get -> ENABLE
+                else           -> DISABLE
             }
         }
     }

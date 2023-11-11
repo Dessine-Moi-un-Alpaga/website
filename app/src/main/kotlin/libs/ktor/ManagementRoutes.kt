@@ -16,23 +16,31 @@ import io.ktor.server.routing.put
 import io.ktor.server.routing.routing
 import io.ktor.util.pipeline.PipelineContext
 
-inline fun <reified T : AggregateRoot> Application.managementRoutes(path: String, crossinline repositoryProvider: (PipelineContext<Unit, ApplicationCall>) -> CrudRepository<T>) {
+typealias RepositoryProvider<T> = (PipelineContext<Unit, ApplicationCall>) -> CrudRepository<T>
+
+const val ID = "id"
+
+inline fun <reified T : AggregateRoot> Application.managementRoutes(
+    path: String,
+    crossinline repositoryProviderFor: RepositoryProvider<T>
+) {
     routing {
         authenticate {
             get(path) {
-                val repository = repositoryProvider(this)
+                val repository = repositoryProviderFor(this)
                 call.respond(
                     repository.findAll()
                 )
             }
 
-            get("${path}/{id}") {
-                val id = call.parameters["id"]
+            get("${path}/{$ID}") {
+                val id = call.parameters[ID]
 
                 if (id == null) {
                     call.response.status(HttpStatusCode.BadRequest)
                 } else {
-                    val repository = repositoryProvider(this)
+                    val repository = repositoryProviderFor(this)
+
                     try {
                         val aggregateRoot = repository.get(id)
                         call.respond(aggregateRoot)
@@ -44,32 +52,40 @@ inline fun <reified T : AggregateRoot> Application.managementRoutes(path: String
 
             put(path) {
                 val aggregateRoot = call.receive<T>()
-                val repository = repositoryProvider(this)
+                val repository = repositoryProviderFor(this)
                 repository.create(aggregateRoot)
                 call.response.status(HttpStatusCode.OK)
             }
 
             delete(path) {
-                val repository = repositoryProvider(this)
+                val repository = repositoryProviderFor(this)
                 repository.deleteAll()
                 call.response.status(HttpStatusCode.OK)
             }
 
-            delete("${path}/{id}") {
-                val id = call.parameters["id"]!!
-                val repository = repositoryProvider(this)
+            delete("${path}/{$ID}") {
+                val id = call.parameters[ID]
 
-                try {
-                    repository.delete(id)
-                    call.response.status(HttpStatusCode.OK)
-                } catch (e: AggregateRootNotFound) {
-                    call.response.status(HttpStatusCode.NotFound)
+                if (id == null) {
+                    call.response.status(HttpStatusCode.BadRequest)
+                } else {
+                    val repository = repositoryProviderFor(this)
+
+                    try {
+                        repository.delete(id)
+                        call.response.status(HttpStatusCode.OK)
+                    } catch (e: AggregateRootNotFound) {
+                        call.response.status(HttpStatusCode.NotFound)
+                    }
                 }
             }
         }
     }
 }
 
-inline fun <reified T : AggregateRoot> Application.managementRoutes(path: String, repository: CrudRepository<T>) {
+inline fun <reified T : AggregateRoot> Application.managementRoutes(
+    path: String,
+    repository: CrudRepository<T>
+) {
     managementRoutes(path) { repository }
 }

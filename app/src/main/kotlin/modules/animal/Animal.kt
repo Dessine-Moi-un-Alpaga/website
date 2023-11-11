@@ -5,31 +5,6 @@ import be.alpago.website.libs.serialization.SerializableLocalDate
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Reference(val name: String, val link: String?)
-
-enum class Color {
-
-    BAY_BLACK,
-
-    DARK_FAWN,
-    MEDIUM_FAWN,
-
-    WHITE,
-}
-
-enum class Sex {
-    FEMALE,
-    MALE,
-}
-
-enum class Type {
-    DOG,
-    GELDING,
-    MARE,
-    STUD,
-}
-
-@Serializable
 data class Animal(
     val bannerDescription: String,
     val color: Color,
@@ -51,4 +26,29 @@ data class Animal(
 ) : AggregateRoot {
 
     val fullName = "$prefix $name $suffix".trim()
+
+    enum class Color {
+
+        BAY_BLACK,
+
+        DARK_FAWN,
+        MEDIUM_FAWN,
+
+        WHITE,
+    }
+
+    @Serializable
+    data class Reference(val name: String, val link: String?)
+
+    enum class Sex {
+        FEMALE,
+        MALE,
+    }
+
+    enum class Type {
+        DOG,
+        GELDING,
+        MARE,
+        STUD,
+    }
 }

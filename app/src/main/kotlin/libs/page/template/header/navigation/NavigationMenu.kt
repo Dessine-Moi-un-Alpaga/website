@@ -2,7 +2,7 @@ package be.alpago.website.libs.page.template.header.navigation
 
 import be.alpago.website.libs.i18n.Messages
 import be.alpago.website.libs.i18n.capitalize
-import be.alpago.website.libs.page.model.Category
+import be.alpago.website.libs.page.model.NavigationModel
 import be.alpago.website.libs.page.model.PageModel
 import be.alpago.website.libs.page.template.style.EscapeVelocity
 import kotlinx.html.SECTION
@@ -12,13 +12,14 @@ import kotlinx.html.li
 import kotlinx.html.nav
 import kotlinx.html.ul
 
-private fun Category.text() = when (this) {
-    Category.DOG -> capitalize(Messages.navigationMenuDogCategory)
-    Category.GELDING -> capitalize(Messages.navigationMenuGeldingCategory)
-    Category.MARE -> capitalize(Messages.navigationMenuMareCategory)
-    Category.SOLD -> capitalize(Messages.navigationMenuSoldCategory)
-    Category.STUD -> capitalize(Messages.navigationMenuStudCategory)
-}
+private val NavigationModel.Category.text
+    get() = when (this) {
+        NavigationModel.Category.DOG     -> capitalize(Messages.navigationMenuDogCategory)
+        NavigationModel.Category.GELDING -> capitalize(Messages.navigationMenuGeldingCategory)
+        NavigationModel.Category.MARE    -> capitalize(Messages.navigationMenuMareCategory)
+        NavigationModel.Category.SOLD    -> capitalize(Messages.navigationMenuSoldCategory)
+        NavigationModel.Category.STUD    -> capitalize(Messages.navigationMenuStudCategory)
+    }
 
 fun SECTION.navigationMenu(
     pageModel: PageModel,
@@ -40,16 +41,16 @@ fun SECTION.navigationMenu(
                 }
             }
 
-            if (pageModel.navigationModel.categories.isNotEmpty()) {
+            if (pageModel.navigationModel.animalsByCategory.isNotEmpty()) {
                 li {
                     a {
                         +"${Messages.navigationMenuTitle}"
                     }
                     ul {
-                        for (category in pageModel.navigationModel.categories) {
+                        for (category in pageModel.navigationModel.animalsByCategory) {
                             li {
                                 a {
-                                    +category.key.text()
+                                    +category.key.text
                                 }
                                 ul {
                                     for (animal in category.value) {
