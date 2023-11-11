@@ -55,7 +55,7 @@ object FirestoreAnimalTransformer : FirestoreAggregateTransformer<Animal> {
     override fun toDomain(fields: Map<String, Any?>) = Animal(
         bannerDescription = fields[AnimalFields.bannerDescription] as String,
         color = enumValueOf(fields[AnimalFields.color] as String),
-        dam = Reference(
+        dam = Animal.Reference(
             link = fields[AnimalFields.damLink] as String?,
             name = fields[AnimalFields.damName] as String,
         ),
@@ -65,7 +65,7 @@ object FirestoreAnimalTransformer : FirestoreAggregateTransformer<Animal> {
         pageDescription = fields[AnimalFields.pageDescription] as String,
         prefix = fields[AnimalFields.prefix] as String,
         sex = enumValueOf(fields[AnimalFields.sex] as String),
-        sire = Reference(
+        sire = Animal.Reference(
             link = fields[AnimalFields.sireLink] as String?,
             name = fields[AnimalFields.sireName] as String,
         ),

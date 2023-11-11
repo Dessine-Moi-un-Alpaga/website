@@ -6,9 +6,6 @@ import be.alpago.website.libs.i18n.capitalize
 import be.alpago.website.libs.page.model.AnimalSectionModel
 import be.alpago.website.libs.page.template.style.EscapeVelocity
 import be.alpago.website.modules.animal.Animal
-import be.alpago.website.modules.animal.Color
-import be.alpago.website.modules.animal.Reference
-import be.alpago.website.modules.animal.Sex
 import io.ktor.server.html.Template
 import io.ktor.server.html.insert
 import kotlinx.html.FlowContent
@@ -38,9 +35,9 @@ import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 import java.util.Locale
 
-private fun Sex.text() = when (this) {
-    Sex.FEMALE -> "${Messages.female}"
-    Sex.MALE -> "${Messages.male}"
+private fun Animal.Sex.text() = when (this) {
+    Animal.Sex.FEMALE -> "${Messages.female}"
+    Animal.Sex.MALE -> "${Messages.male}"
 }
 
 private fun Animal.age(): String {
@@ -59,14 +56,14 @@ private fun Animal.formattedDateOfBirth() = dateOfBirth.format(
         .withLocale(Locale.FRENCH)
 )
 
-private fun Color.text() = when (this) {
-    Color.BAY_BLACK -> "${Messages.bayBlack}"
-    Color.MEDIUM_FAWN -> "${Messages.mediumFawn}"
-    Color.DARK_FAWN -> "${Messages.darkFawn}"
-    Color.WHITE -> "${Messages.white}"
+private fun Animal.Color.text() = when (this) {
+    Animal.Color.BAY_BLACK -> "${Messages.bayBlack}"
+    Animal.Color.MEDIUM_FAWN -> "${Messages.mediumFawn}"
+    Animal.Color.DARK_FAWN -> "${Messages.darkFawn}"
+    Animal.Color.WHITE -> "${Messages.white}"
 }
 
-private fun LI.reference(reference: Reference) {
+private fun LI.reference(reference: Animal.Reference) {
     if (reference.link == null) {
         span {
             +reference.name
