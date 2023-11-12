@@ -2,7 +2,7 @@ package be.alpago.website.libs.ktor
 
 import be.alpago.website.libs.domain.AggregateRoot
 import be.alpago.website.libs.domain.AggregateRootNotFound
-import be.alpago.website.libs.repository.CrudRepository
+import be.alpago.website.libs.repository.Repository
 import io.ktor.http.HttpStatusCode
 import io.ktor.server.application.Application
 import io.ktor.server.application.ApplicationCall
@@ -16,7 +16,7 @@ import io.ktor.server.routing.put
 import io.ktor.server.routing.routing
 import io.ktor.util.pipeline.PipelineContext
 
-typealias RepositoryProvider<T> = (PipelineContext<Unit, ApplicationCall>) -> CrudRepository<T>
+typealias RepositoryProvider<T> = (PipelineContext<Unit, ApplicationCall>) -> Repository<T>
 
 const val ID = "id"
 
@@ -85,7 +85,7 @@ inline fun <reified T : AggregateRoot> Application.managementRoutes(
 
 inline fun <reified T : AggregateRoot> Application.managementRoutes(
     path: String,
-    repository: CrudRepository<T>
+    repository: Repository<T>
 ) {
     managementRoutes(path) { repository }
 }

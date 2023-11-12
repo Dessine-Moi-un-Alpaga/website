@@ -33,8 +33,8 @@ object FirestoreValueSerializer : JsonContentPolymorphicSerializer<Value>(Value:
     override fun selectDeserializer(element: JsonElement) = when {
         "booleanValue" in element.jsonObject -> BooleanValue.serializer()
         "integerValue" in element.jsonObject -> IntValue.serializer()
-        "nullValue" in element.jsonObject -> NullValue.serializer()
-        "stringValue" in element.jsonObject -> StringValue.serializer()
-        else -> throw RuntimeException()
+        "nullValue" in element.jsonObject    -> NullValue.serializer()
+        "stringValue" in element.jsonObject  -> StringValue.serializer()
+        else                                 -> throw RuntimeException("Unsupported value: ${element.jsonObject}")
     }
 }

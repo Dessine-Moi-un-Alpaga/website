@@ -27,6 +27,46 @@
   }, {
     "pattern":"\\Qstatic/assets/css/main.css\\E"
   }, {
+    "pattern":"\\Qstatic/assets/icons/browserconfig.xml\\E"
+  }, {
+    "pattern":"\\Qstatic/assets/icons/favicon.ico\\E"
+  }, {
+    "pattern":"\\Qstatic/assets/icons/favicon-16.png\\E"
+  }, {
+    "pattern":"\\Qstatic/assets/icons/favicon-32.png\\E"
+  }, {
+    "pattern":"\\Qstatic/assets/icons/favicon-57.png\\E"
+  }, {
+    "pattern":"\\Qstatic/assets/icons/favicon-60.png\\E"
+  }, {
+    "pattern":"\\Qstatic/assets/icons/favicon-64.png\\E"
+  }, {
+    "pattern":"\\Qstatic/assets/icons/favicon-70.png\\E"
+  }, {
+    "pattern":"\\Qstatic/assets/icons/favicon-72.png\\E"
+  }, {
+    "pattern":"\\Qstatic/assets/icons/favicon-76.png\\E"
+  }, {
+    "pattern":"\\Qstatic/assets/icons/favicon-96.png\\E"
+  }, {
+    "pattern":"\\Qstatic/assets/icons/favicon-114.png\\E"
+  }, {
+    "pattern":"\\Qstatic/assets/icons/favicon-120.png\\E"
+  }, {
+    "pattern":"\\Qstatic/assets/icons/favicon-144.png\\E"
+  }, {
+    "pattern":"\\Qstatic/assets/icons/favicon-150.png\\E"
+  }, {
+    "pattern":"\\Qstatic/assets/icons/favicon-152.png\\E"
+  }, {
+    "pattern":"\\Qstatic/assets/icons/favicon-160.png\\E"
+  }, {
+    "pattern":"\\Qstatic/assets/icons/favicon-180.png\\E"
+  }, {
+    "pattern":"\\Qstatic/assets/icons/favicon-192.png\\E"
+  }, {
+    "pattern":"\\Qstatic/assets/icons/favicon-310.png\\E"
+  }, {
     "pattern":"\\Qstatic/assets/js/email.js\\E"
   }, {
     "pattern":"\\Qstatic/webjars/escape-velocity/css/images/banner.jpg\\E"
@@ -47,6 +87,24 @@
   }, {
     "pattern":"\\Qstatic/webjars/font-awesome/css/solid.min.css\\E"
   }, {
+    "pattern":"\\Qstatic/webjars/font-awesome/webfonts/fa-brands-400.eot\\E"
+  }, {
+    "pattern":"\\Qstatic/webjars/font-awesome/webfonts/fa-brands-400.svg\\E"
+  }, {
+    "pattern":"\\Qstatic/webjars/font-awesome/webfonts/fa-brands-400.ttf\\E"
+  }, {
+    "pattern":"\\Qstatic/webjars/font-awesome/webfonts/fa-brands-400.woff\\E"
+  }, {
+    "pattern":"\\Qstatic/webjars/font-awesome/webfonts/fa-brands-400.woff2\\E"
+  }, {
+    "pattern":"\\Qstatic/webjars/font-awesome/webfonts/fa-solid-900.eot\\E"
+  }, {
+    "pattern":"\\Qstatic/webjars/font-awesome/webfonts/fa-solid-900.svg\\E"
+  }, {
+    "pattern":"\\Qstatic/webjars/font-awesome/webfonts/fa-solid-900.ttf\\E"
+  }, {
+    "pattern":"\\Qstatic/webjars/font-awesome/webfonts/fa-solid-900.woff\\E"
+  }, {
     "pattern":"\\Qstatic/webjars/font-awesome/webfonts/fa-solid-900.woff2\\E"
   }, {
     "pattern":"\\Qstatic/webjars/jquery.dropotron/jquery.dropotron.min.js\\E"
@@ -62,6 +120,8 @@
     "pattern":"\\Qstatic/webjars/responsive-tools/dist/breakpoints.min.js\\E"
   }, {
     "pattern":"\\Qstatic/webjars/responsive-tools/dist/browser.min.js\\E"
+  }, {
+    "pattern":"\\Qstatic/webjars/toastr/build/toastr.js.map\\E"
   }, {
     "pattern":"\\Qstatic/webjars/toastr/build/toastr.min.css\\E"
   }, {

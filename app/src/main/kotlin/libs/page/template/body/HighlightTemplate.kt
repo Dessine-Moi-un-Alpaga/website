@@ -3,7 +3,7 @@ package be.alpago.website.libs.page.template.body
 import be.alpago.website.libs.environment.Environment
 import be.alpago.website.libs.i18n.Messages
 import be.alpago.website.libs.page.template.style.EscapeVelocity
-import be.alpago.website.modules.highlight.Highlight
+import be.alpago.website.domain.highlight.Highlight
 import io.ktor.server.html.Template
 import kotlinx.html.FlowContent
 import kotlinx.html.a

@@ -1,60 +1,61 @@
-package be.alpago.website.modules.gallery
+package be.alpago.website.pages.news
 
 import be.alpago.website.domain.animal.Animal
-import be.alpago.website.domain.image.FirestoreImageMetadataTransformer
-import be.alpago.website.domain.image.ImageMetadata
+import be.alpago.website.domain.article.Article
+import be.alpago.website.domain.article.FirestoreArticleTransformer
 import be.alpago.website.libs.environment.Environment
 import be.alpago.website.libs.repository.CachingRepository
 import be.alpago.website.libs.repository.Repository
 import be.alpago.website.libs.repository.RestFirestoreRepository
 import be.alpago.website.modules.animal.ANIMAL_REPOSITORY
-import be.alpago.website.pages.gallery.PhotoGalleryPageModelFactory
-import be.alpago.website.pages.gallery.photoGalleryRoutes
 import io.ktor.client.HttpClient
 import io.ktor.server.application.Application
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import org.koin.ktor.plugin.koin
 
-const val PHOTO_GALLERY_IMAGE_REPOSITORY = "pages/gallery/images"
+const val NEWS_ARTICLE_REPOSITORY = "pages/news/articles"
 
-private const val PHOTO_GALLERY_IMAGE_COLLECTION = "pages/gallery/images"
+private const val NEWS_ARTICLE_COLLECTION = "pages/news/articles"
 
-fun photoGalleryModule() = module {
-    single<Repository<ImageMetadata>>(
-        named(PHOTO_GALLERY_IMAGE_REPOSITORY)
+private fun newsModule() = module {
+    single<Repository<Article>>(
+        named(NEWS_ARTICLE_REPOSITORY)
     ) {
         val client by inject<HttpClient>()
         val environment by inject<Environment>()
         CachingRepository(
             RestFirestoreRepository(
                 client = client,
-                collection = PHOTO_GALLERY_IMAGE_COLLECTION,
+                collection = NEWS_ARTICLE_COLLECTION,
                 environment = environment.name,
                 project = environment.project,
-                transformer = FirestoreImageMetadataTransformer(),
+                transformer = FirestoreArticleTransformer(),
                 url = environment.firestoreUrl,
             )
         )
     }
 
-    single<PhotoGalleryPageModelFactory> {
+    single<NewsPageModelFactory> {
         val animalRepository by inject<Repository<Animal>>(
             named(ANIMAL_REPOSITORY)
         )
-        val imageRepository by inject<Repository<ImageMetadata>>(
-            named(PHOTO_GALLERY_IMAGE_REPOSITORY)
+        val articleRepository by inject<Repository<Article>>(
+            named(NEWS_ARTICLE_REPOSITORY)
         )
-        PhotoGalleryPageModelFactory(animalRepository, imageRepository)
+        NewsPageModelFactory(
+            animalRepository = animalRepository,
+            articleRepository = articleRepository,
+        )
     }
 }
 
-fun Application.photoGallery() {
+fun Application.news() {
     koin {
         modules(
-            photoGalleryModule()
+            newsModule()
         )
     }
 
-    photoGalleryRoutes()
+    newsRoutes()
 }

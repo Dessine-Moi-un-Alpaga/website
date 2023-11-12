@@ -5,7 +5,7 @@ import be.alpago.website.libs.i18n.Messages
 import be.alpago.website.libs.i18n.capitalize
 import be.alpago.website.libs.page.model.AnimalSectionModel
 import be.alpago.website.libs.page.template.style.EscapeVelocity
-import be.alpago.website.modules.animal.Animal
+import be.alpago.website.domain.animal.Animal
 import io.ktor.server.html.Template
 import io.ktor.server.html.insert
 import kotlinx.html.FlowContent

@@ -1,6 +1,6 @@
 package be.alpago.website.libs.page.model
 
-import be.alpago.website.modules.animal.Animal
+import be.alpago.website.domain.animal.Animal
 
 class NavigationModel(
     animals: List<Animal>,

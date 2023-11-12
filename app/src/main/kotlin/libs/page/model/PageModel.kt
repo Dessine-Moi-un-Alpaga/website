@@ -1,11 +1,11 @@
 package be.alpago.website.libs.page.model
 
 import be.alpago.website.libs.page.template.style.EscapeVelocity
-import be.alpago.website.modules.animal.Animal
-import be.alpago.website.modules.animal.FiberAnalysis
-import be.alpago.website.modules.article.Article
-import be.alpago.website.modules.highlight.Highlight
-import be.alpago.website.modules.image.ImageMetadata
+import be.alpago.website.domain.animal.Animal
+import be.alpago.website.domain.fiber.FiberAnalysis
+import be.alpago.website.domain.article.Article
+import be.alpago.website.domain.highlight.Highlight
+import be.alpago.website.domain.image.ImageMetadata
 
 class PageModel(
     val title: String,

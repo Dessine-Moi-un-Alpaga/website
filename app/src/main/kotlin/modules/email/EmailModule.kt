@@ -5,7 +5,7 @@ import io.ktor.server.application.Application
 import org.koin.dsl.module
 import org.koin.ktor.plugin.koin
 
-fun sendGridEmailService() = module {
+private fun sendGridEmailService() = module {
     single<EmailService> {
         val environment by inject<Environment>()
         SendGridEmailService(environment)

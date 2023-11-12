@@ -1,56 +1,55 @@
-package be.alpago.website.modules.animal
+package be.alpago.website.modules.fiber
 
-import be.alpago.website.domain.animal.Animal
-import be.alpago.website.domain.animal.FirestoreAnimalTransformer
+import be.alpago.website.domain.fiber.FiberAnalysis
+import be.alpago.website.domain.fiber.FirestoreFiberAnalysisTransformer
 import be.alpago.website.libs.environment.Environment
 import be.alpago.website.libs.repository.CachingRepository
 import be.alpago.website.libs.repository.FirestoreAggregateTransformer
 import be.alpago.website.libs.repository.Repository
 import be.alpago.website.libs.repository.RestFirestoreRepository
-import be.alpago.website.pages.animal.animalRoutes
+import be.alpago.website.pages.fiber.fiberAnalysisRoutes
 import io.ktor.client.HttpClient
 import io.ktor.server.application.Application
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import org.koin.ktor.plugin.koin
 
-const val ANIMAL_REPOSITORY = "animals"
-const val ANIMAL_TRANSFORMER = "animals"
+const val FIBER_ANALYSIS_REPOSITORY = "fiberAnalyses"
+const val FIBER_ANALYSIS_TRANSFORMER = "fiberAnalyses"
 
-private const val ANIMAL_COLLECTION = "animals"
+private const val FIBER_ANALYSIS_COLLECTION = "fiberAnalyses"
 
-private fun animalModule() = module {
-    single<FirestoreAggregateTransformer<Animal>>(
-        named(ANIMAL_TRANSFORMER)
+private fun fiberAnalysisModule() = module {
+    single<FirestoreAggregateTransformer<FiberAnalysis>>(
+        named(FIBER_ANALYSIS_TRANSFORMER)
     ) {
-        FirestoreAnimalTransformer()
+        FirestoreFiberAnalysisTransformer()
     }
 
-    single<Repository<Animal>>(
-        named(ANIMAL_REPOSITORY)
+    single<Repository<FiberAnalysis>>(
+        named(FIBER_ANALYSIS_REPOSITORY)
     ) {
         val client by inject<HttpClient>()
         val environment by inject<Environment>()
-        val transformer by inject<FirestoreAggregateTransformer<Animal>>(named(ANIMAL_TRANSFORMER))
         CachingRepository(
             RestFirestoreRepository(
                 client = client,
-                collection = ANIMAL_COLLECTION,
+                collection = FIBER_ANALYSIS_COLLECTION,
                 environment = environment.name,
                 project = environment.project,
-                transformer = transformer,
+                transformer = FirestoreFiberAnalysisTransformer(),
                 url = environment.firestoreUrl,
             )
         )
     }
 }
 
-fun Application.animals() {
+fun Application.fiberAnalyses() {
     koin {
         modules(
-            animalModule()
+            fiberAnalysisModule()
         )
     }
 
-    animalRoutes()
+    fiberAnalysisRoutes()
 }
