@@ -20,7 +20,7 @@ private val DISABLE = CachingOptions(
     )
 )
 
-fun Application.caching() {
+fun Application.httpCaching() {
     install(CachingHeaders) {
         options { call, _ ->
             when (call.request.httpMethod) {

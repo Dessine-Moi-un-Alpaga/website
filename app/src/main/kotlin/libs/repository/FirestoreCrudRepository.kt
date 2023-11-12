@@ -17,14 +17,14 @@ private const val ID_FIELD = "id"
 
 private const val NEXT_PAGE_PARMAETER = "pageToken"
 
-class RestFirestoreCrudRepository<T : AggregateRoot>(
+class RestFirestoreRepository<T : AggregateRoot>(
     private val client: HttpClient,
     private val collection: String,
     environment: String,
     project: String,
     private val transformer: FirestoreAggregateTransformer<T>,
     url: String,
-) : CrudRepository<T> {
+) : Repository<T> {
 
     private val baseUrl = "${url}/v1/projects/${project}/databases/(default)/documents/environments/${environment}"
 

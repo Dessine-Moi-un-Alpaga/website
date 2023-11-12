@@ -17,6 +17,46 @@
   "methods":[{"name":"main","parameterTypes":[] }, {"name":"main","parameterTypes":["io.ktor.server.application.Application"] }]
 },
 {
+  "name":"be.alpago.website.domain.animal.Animal",
+  "fields":[{"name":"Companion"}]
+},
+{
+  "name":"be.alpago.website.domain.animal.Animal$Companion",
+  "methods":[{"name":"serializer","parameterTypes":[] }]
+},
+{
+  "name":"be.alpago.website.domain.article.Article",
+  "fields":[{"name":"Companion"}]
+},
+{
+  "name":"be.alpago.website.domain.article.Article$Companion",
+  "methods":[{"name":"serializer","parameterTypes":[] }]
+},
+{
+  "name":"be.alpago.website.domain.fiber.FiberAnalysis",
+  "fields":[{"name":"Companion"}]
+},
+{
+  "name":"be.alpago.website.domain.fiber.FiberAnalysis$Companion",
+  "methods":[{"name":"serializer","parameterTypes":[] }]
+},
+{
+  "name":"be.alpago.website.domain.highlight.Highlight",
+  "fields":[{"name":"Companion"}]
+},
+{
+  "name":"be.alpago.website.domain.highlight.Highlight$Companion",
+  "methods":[{"name":"serializer","parameterTypes":[] }]
+},
+{
+  "name":"be.alpago.website.domain.image.ImageMetadata",
+  "fields":[{"name":"Companion"}]
+},
+{
+  "name":"be.alpago.website.domain.image.ImageMetadata$Companion",
+  "methods":[{"name":"serializer","parameterTypes":[] }]
+},
+{
   "name":"be.alpago.website.libs.repository.BooleanValue",
   "fields":[{"name":"Companion"}]
 },
@@ -89,30 +129,6 @@
   "methods":[{"name":"serializer","parameterTypes":[] }]
 },
 {
-  "name":"be.alpago.website.modules.animal.Animal",
-  "fields":[{"name":"Companion"}]
-},
-{
-  "name":"be.alpago.website.modules.animal.Animal$Companion",
-  "methods":[{"name":"serializer","parameterTypes":[] }]
-},
-{
-  "name":"be.alpago.website.modules.animal.FiberAnalysis",
-  "fields":[{"name":"Companion"}]
-},
-{
-  "name":"be.alpago.website.modules.animal.FiberAnalysis$Companion",
-  "methods":[{"name":"serializer","parameterTypes":[] }]
-},
-{
-  "name":"be.alpago.website.modules.article.Article",
-  "fields":[{"name":"Companion"}]
-},
-{
-  "name":"be.alpago.website.modules.article.Article$Companion",
-  "methods":[{"name":"serializer","parameterTypes":[] }]
-},
-{
   "name":"be.alpago.website.modules.email.Email",
   "fields":[{"name":"Companion"}]
 },
@@ -126,22 +142,6 @@
 },
 {
   "name":"be.alpago.website.modules.email.SendGridEmail$Companion",
-  "methods":[{"name":"serializer","parameterTypes":[] }]
-},
-{
-  "name":"be.alpago.website.modules.highlight.Highlight",
-  "fields":[{"name":"Companion"}]
-},
-{
-  "name":"be.alpago.website.modules.highlight.Highlight$Companion",
-  "methods":[{"name":"serializer","parameterTypes":[] }]
-},
-{
-  "name":"be.alpago.website.modules.image.ImageMetadata",
-  "fields":[{"name":"Companion"}]
-},
-{
-  "name":"be.alpago.website.modules.image.ImageMetadata$Companion",
   "methods":[{"name":"serializer","parameterTypes":[] }]
 },
 {
