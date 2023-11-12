@@ -33,7 +33,7 @@ An application for serving and managing [the website of our alpaca breeding farm
 
 The following is required to bootstrap the project:
 * a Google Cloud organization
-* a Google user account that is `Organization Administrator` and has the `Owner` role on the project
+* a Google user account that is `Organization Administrator`
 * a Google Firestore Emulator installation properly initialized at `~/.firestore` and running on port 8181
 
 # Bootstrapping the Project
