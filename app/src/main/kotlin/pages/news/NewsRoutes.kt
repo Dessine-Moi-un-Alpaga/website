@@ -5,6 +5,7 @@ import be.alpago.website.libs.ktor.managementRoutes
 import be.alpago.website.libs.page.template.LayoutTemplate
 import be.alpago.website.libs.repository.Repository
 import be.alpago.website.domain.article.Article
+import be.alpago.website.modules.news.NEWS_ARTICLE_REPOSITORY
 import io.ktor.server.application.Application
 import io.ktor.server.application.call
 import io.ktor.server.html.respondHtmlTemplate

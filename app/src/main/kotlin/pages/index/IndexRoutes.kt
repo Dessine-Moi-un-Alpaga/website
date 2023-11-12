@@ -7,6 +7,10 @@ import be.alpago.website.libs.repository.Repository
 import be.alpago.website.domain.article.Article
 import be.alpago.website.domain.highlight.Highlight
 import be.alpago.website.domain.image.ImageMetadata
+import be.alpago.website.modules.index.INDEX_ARTICLE_REPOSITORY
+import be.alpago.website.modules.index.INDEX_GUILD_REPOSITORY
+import be.alpago.website.modules.index.INDEX_NEWS_REPOSITORY
+import be.alpago.website.modules.index.INDEX_TRAININGS_REPOSITORY
 import io.ktor.server.application.Application
 import io.ktor.server.application.call
 import io.ktor.server.html.respondHtmlTemplate

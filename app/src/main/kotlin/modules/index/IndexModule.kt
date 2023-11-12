@@ -1,4 +1,4 @@
-package be.alpago.website.pages.index
+package be.alpago.website.modules.index
 
 import be.alpago.website.domain.animal.Animal
 import be.alpago.website.domain.article.Article
@@ -12,6 +12,8 @@ import be.alpago.website.libs.repository.CachingRepository
 import be.alpago.website.libs.repository.Repository
 import be.alpago.website.libs.repository.RestFirestoreRepository
 import be.alpago.website.modules.animal.ANIMAL_REPOSITORY
+import be.alpago.website.pages.index.IndexPageModelFactory
+import be.alpago.website.pages.index.indexRoutes
 import io.ktor.client.HttpClient
 import io.ktor.server.application.Application
 import org.koin.core.qualifier.named
