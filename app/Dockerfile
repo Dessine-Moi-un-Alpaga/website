@@ -9,4 +9,4 @@ RUN ./gradlew nativeCompile
 FROM scratch
 WORKDIR /app
 COPY --from=build /app/build/native/nativeCompile/graalvm-server ./
-ENTRYPOINT [ "/app/graalvm-server" ]
+ENTRYPOINT [ "/app/graalvm-server", "-Xmx200m" ]

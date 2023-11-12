@@ -90,6 +90,7 @@ graalvmNative {
             verbose.set(true)
 
             buildArgs.add("-march=x86-64-v3")
+            buildArgs.add("-R:MaxHeapSize=200m")
 
             buildArgs.add("--initialize-at-build-time=ch.qos.logback")
             buildArgs.add("--initialize-at-build-time=io.ktor,kotlin")
