@@ -1,4 +1,4 @@
-package be.alpago.website.pages.news
+package be.alpago.website.modules.news
 
 import be.alpago.website.domain.animal.Animal
 import be.alpago.website.domain.article.Article
@@ -8,6 +8,8 @@ import be.alpago.website.libs.repository.CachingRepository
 import be.alpago.website.libs.repository.Repository
 import be.alpago.website.libs.repository.RestFirestoreRepository
 import be.alpago.website.modules.animal.ANIMAL_REPOSITORY
+import be.alpago.website.pages.news.NewsPageModelFactory
+import be.alpago.website.pages.news.newsRoutes
 import io.ktor.client.HttpClient
 import io.ktor.server.application.Application
 import org.koin.core.qualifier.named

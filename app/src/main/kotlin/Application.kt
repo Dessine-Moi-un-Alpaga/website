@@ -16,8 +16,8 @@ import be.alpago.website.modules.factsheet.factsheets
 import be.alpago.website.modules.gallery.photoGallery
 import be.alpago.website.modules.image.imageMetadata
 import be.alpago.website.modules.serialization.serialization
-import be.alpago.website.pages.index.index
-import be.alpago.website.pages.news.news
+import be.alpago.website.modules.index.index
+import be.alpago.website.modules.news.news
 import be.alpago.website.modules.validation.validation
 import io.ktor.server.application.Application
 import io.ktor.server.cio.CIO
