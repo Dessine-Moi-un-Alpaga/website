@@ -89,6 +89,8 @@ graalvmNative {
             fallback.set(false)
             verbose.set(true)
 
+            buildArgs.add("-march=x86-64-v3")
+
             buildArgs.add("--initialize-at-build-time=ch.qos.logback")
             buildArgs.add("--initialize-at-build-time=io.ktor,kotlin")
             buildArgs.add("--initialize-at-build-time=org.slf4j.LoggerFactory")
