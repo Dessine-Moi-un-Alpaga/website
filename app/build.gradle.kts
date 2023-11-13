@@ -30,7 +30,6 @@ val junitVersion = "5.10.1"
 val koinVersion = "3.5.1"
 val kotestVersion = "5.8.0"
 val kotlinCssVersion = "1.0.0-pre.640"
-val kotlinLoggingVersion = "2.0.11"
 val logbackVersion = "1.4.11"
 val photoswipeVersion = "5.3.7"
 val toastrVersion = "2.1.2"
@@ -39,7 +38,6 @@ dependencies {
     implementation("at.favre.lib:bcrypt:$bcryptVersion")
     implementation("de.comahe.i18n4k:i18n4k-core:$i18n4kVersion")
     implementation("io.insert-koin:koin-ktor:$koinVersion")
-    implementation("io.github.microutils:kotlin-logging:$kotlinLoggingVersion")
     implementation("org.jetbrains.kotlin-wrappers:kotlin-css:$kotlinCssVersion")
     implementation("io.ktor:ktor-client-cio")
     implementation("io.ktor:ktor-client-content-negotiation")
