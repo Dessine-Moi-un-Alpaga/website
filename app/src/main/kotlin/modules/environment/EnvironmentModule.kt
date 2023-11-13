@@ -1,5 +1,6 @@
-package be.alpago.website.libs.environment
+package be.alpago.website.modules.environment
 
+import be.alpago.website.libs.environment.Environment
 import io.ktor.server.application.Application
 import org.koin.dsl.module
 import org.koin.environmentProperties
