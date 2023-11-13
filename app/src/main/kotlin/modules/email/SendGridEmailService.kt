@@ -10,7 +10,9 @@ import io.ktor.client.request.headers
 import io.ktor.client.request.post
 import io.ktor.client.request.setBody
 import io.ktor.http.ContentType
+import io.ktor.http.HttpStatusCode
 import io.ktor.http.contentType
+import io.ktor.http.isSuccess
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.Serializable
 
@@ -22,13 +24,11 @@ class SendGridEmailService(
 
     override suspend fun send(email: Email) {
         HttpClient(CIO) {
-            expectSuccess = true
-
             install(ContentNegotiation) {
                 json()
             }
         }.use {
-            it.post(ENDPOINT) {
+            val response = it.post(ENDPOINT) {
                 contentType(ContentType.Application.Json)
                 headers {
                     bearerAuth(environment.sendGridApiKey)
@@ -39,6 +39,12 @@ class SendGridEmailService(
                         to = environment.emailAddress
                     )
                 )
+            }
+
+            if (response.status == HttpStatusCode.BadRequest) {
+                throw InvalidEmailException()
+            } else if (!response.status.isSuccess()) {
+                throw UnexpectedEmailException("$response")
             }
         }
     }

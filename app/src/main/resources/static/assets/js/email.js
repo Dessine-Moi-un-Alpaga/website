@@ -19,25 +19,15 @@ function buildRequest() {
 }
 
 async function sendRequest(url, request) {
-    let error;
-
-    try {
-        const response = await fetch(url, request);
-
-        if (!response.ok) {
-            error = response.statusText;
-        }
-    } catch (networkError) {
-        error = networkError;
-    }
-
-    if (error) {
-        throw error;
-    }
+    return await fetch(url, request);
 }
 
 function notifyError() {
     toastr.error('Une erreur inattendue est survenue. Veuillez nous en excuser.');
+}
+
+function notifyBadRequest() {
+    toastr.error('Il semblerait que votre adresse mail est incorrecte.');
 }
 
 function notifySuccess() {
@@ -46,14 +36,24 @@ function notifySuccess() {
     toastr.success('Merci pour votre message ! Nous y donnerons suite dans les plus brefs délais.');
 }
 
+function handleResponse(response) {
+    if (response.ok) {
+        notifySuccess();
+    } else if (response.status === 400) {
+        notifyBadRequest();
+    } else {
+        notifyError();
+    }
+}
+
 async function sendEmail(event) {
     event.preventDefault();
     const request = buildRequest();
     const url = '/api/email';
 
     try {
-        await sendRequest(url, request);
-        notifySuccess();
+        const response = await fetch(url, request);
+        handleResponse(response);
     } catch (error) {
         notifyError();
     }
