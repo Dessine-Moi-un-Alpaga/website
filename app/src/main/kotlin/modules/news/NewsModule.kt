@@ -6,7 +6,7 @@ import be.alpago.website.domain.article.FirestoreArticleTransformer
 import be.alpago.website.libs.environment.Environment
 import be.alpago.website.libs.repository.CachingRepository
 import be.alpago.website.libs.repository.Repository
-import be.alpago.website.libs.repository.RestFirestoreRepository
+import be.alpago.website.libs.repository.FirestoreRepository
 import be.alpago.website.modules.animal.ANIMAL_REPOSITORY
 import be.alpago.website.pages.news.NewsPageModelFactory
 import be.alpago.website.pages.news.newsRoutes
@@ -27,7 +27,7 @@ private fun newsModule() = module {
         val client by inject<HttpClient>()
         val environment by inject<Environment>()
         CachingRepository(
-            RestFirestoreRepository(
+            FirestoreRepository(
                 client = client,
                 collection = NEWS_ARTICLE_COLLECTION,
                 environment = environment.name,

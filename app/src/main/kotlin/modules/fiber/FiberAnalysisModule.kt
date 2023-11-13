@@ -6,7 +6,7 @@ import be.alpago.website.libs.environment.Environment
 import be.alpago.website.libs.repository.CachingRepository
 import be.alpago.website.libs.repository.FirestoreAggregateTransformer
 import be.alpago.website.libs.repository.Repository
-import be.alpago.website.libs.repository.RestFirestoreRepository
+import be.alpago.website.libs.repository.FirestoreRepository
 import be.alpago.website.pages.fiber.fiberAnalysisRoutes
 import io.ktor.client.HttpClient
 import io.ktor.server.application.Application
@@ -32,7 +32,7 @@ private fun fiberAnalysisModule() = module {
         val client by inject<HttpClient>()
         val environment by inject<Environment>()
         CachingRepository(
-            RestFirestoreRepository(
+            FirestoreRepository(
                 client = client,
                 collection = FIBER_ANALYSIS_COLLECTION,
                 environment = environment.name,

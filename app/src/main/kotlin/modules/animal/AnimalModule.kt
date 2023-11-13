@@ -6,7 +6,7 @@ import be.alpago.website.libs.environment.Environment
 import be.alpago.website.libs.repository.CachingRepository
 import be.alpago.website.libs.repository.FirestoreAggregateTransformer
 import be.alpago.website.libs.repository.Repository
-import be.alpago.website.libs.repository.RestFirestoreRepository
+import be.alpago.website.libs.repository.FirestoreRepository
 import be.alpago.website.pages.animal.animalRoutes
 import io.ktor.client.HttpClient
 import io.ktor.server.application.Application
@@ -33,7 +33,7 @@ private fun animalModule() = module {
         val environment by inject<Environment>()
         val transformer by inject<FirestoreAggregateTransformer<Animal>>(named(ANIMAL_TRANSFORMER))
         CachingRepository(
-            RestFirestoreRepository(
+            FirestoreRepository(
                 client = client,
                 collection = ANIMAL_COLLECTION,
                 environment = environment.name,

@@ -17,7 +17,7 @@ private const val ID_FIELD = "id"
 
 private const val NEXT_PAGE_PARMAETER = "pageToken"
 
-class RestFirestoreRepository<T : AggregateRoot>(
+class FirestoreRepository<T : AggregateRoot>(
     private val client: HttpClient,
     private val collection: String,
     environment: String,

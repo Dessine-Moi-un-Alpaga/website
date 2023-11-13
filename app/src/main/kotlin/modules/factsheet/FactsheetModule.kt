@@ -7,7 +7,7 @@ import be.alpago.website.libs.environment.Environment
 import be.alpago.website.libs.repository.CachingRepository
 import be.alpago.website.libs.repository.FirestoreAggregateTransformer
 import be.alpago.website.libs.repository.Repository
-import be.alpago.website.libs.repository.RestFirestoreRepository
+import be.alpago.website.libs.repository.FirestoreRepository
 import be.alpago.website.modules.animal.ANIMAL_REPOSITORY
 import be.alpago.website.modules.article.ARTICLE_TRANSFORMER
 import be.alpago.website.modules.article.HIGHLIGHT_TRANSFORMER
@@ -37,7 +37,7 @@ private fun factsheetModule() = module {
             named(ARTICLE_TRANSFORMER)
         )
         CachingRepository(
-            RestFirestoreRepository(
+            FirestoreRepository(
                 client = client,
                 collection = FACTSHEET_ARTICLE_COLLECTION,
                 environment = environment.name,
@@ -57,7 +57,7 @@ private fun factsheetModule() = module {
             named(HIGHLIGHT_TRANSFORMER)
         )
         CachingRepository(
-            RestFirestoreRepository(
+            FirestoreRepository(
                 client = client,
                 collection = FACTSHEET_HIGHLIGHT_COLLECTION,
                 environment = environment.name,
