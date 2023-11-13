@@ -16,8 +16,13 @@ fun Application.emailRoute() {
 
         post("/api/email") {
             val email = call.receive<Email>()
-            emailService.send(email)
-            call.response.status(HttpStatusCode.NoContent)
+
+            try {
+                emailService.send(email)
+                call.response.status(HttpStatusCode.OK)
+            } catch (e: InvalidEmailException) {
+                call.response.status(HttpStatusCode.BadRequest)
+            }
         }
     }
 }
