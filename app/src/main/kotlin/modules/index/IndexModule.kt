@@ -10,7 +10,7 @@ import be.alpago.website.domain.image.ImageMetadata
 import be.alpago.website.libs.environment.Environment
 import be.alpago.website.libs.repository.CachingRepository
 import be.alpago.website.libs.repository.Repository
-import be.alpago.website.libs.repository.RestFirestoreRepository
+import be.alpago.website.libs.repository.FirestoreRepository
 import be.alpago.website.modules.animal.ANIMAL_REPOSITORY
 import be.alpago.website.pages.index.IndexPageModelFactory
 import be.alpago.website.pages.index.indexRoutes
@@ -37,7 +37,7 @@ private fun indexModule() = module {
         val client by inject<HttpClient>()
         val environment by inject<Environment>()
         CachingRepository(
-            RestFirestoreRepository(
+            FirestoreRepository(
                 client = client,
                 collection = INDEX_ARTICLE_COLLECTION,
                 environment = environment.name,
@@ -54,7 +54,7 @@ private fun indexModule() = module {
         val client by inject<HttpClient>()
         val environment by inject<Environment>()
         CachingRepository(
-            RestFirestoreRepository(
+            FirestoreRepository(
                 client = client,
                 collection = INDEX_GUILD_COLLECTION,
                 environment = environment.name,
@@ -71,7 +71,7 @@ private fun indexModule() = module {
         val client by inject<HttpClient>()
         val environment by inject<Environment>()
         CachingRepository(
-            RestFirestoreRepository(
+            FirestoreRepository(
                 client = client,
                 collection = INDEX_NEWS_COLLECTION,
                 environment = environment.name,
@@ -88,7 +88,7 @@ private fun indexModule() = module {
         val client by inject<HttpClient>()
         val environment by inject<Environment>()
         CachingRepository(
-            RestFirestoreRepository(
+            FirestoreRepository(
                 client = client,
                 collection = INDEX_TRAININGS_COLLECTION,
                 environment = environment.name,

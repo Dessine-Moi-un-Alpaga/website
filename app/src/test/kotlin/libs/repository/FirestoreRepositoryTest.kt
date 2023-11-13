@@ -3,7 +3,7 @@ package libs.repository
 import be.alpago.website.libs.domain.AggregateRoot
 import be.alpago.website.libs.domain.AggregateRootNotFound
 import be.alpago.website.libs.repository.FirestoreAggregateTransformer
-import be.alpago.website.libs.repository.RestFirestoreRepository
+import be.alpago.website.libs.repository.FirestoreRepository
 import be.alpago.website.libs.repository.createClient
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.collections.shouldContainAll
@@ -45,11 +45,11 @@ class TestTransformer : FirestoreAggregateTransformer<TestAggregateRoot> {
 
 class FirestoreRepositoryTest {
 
-    private val repository: RestFirestoreRepository<TestAggregateRoot>
+    private val repository: FirestoreRepository<TestAggregateRoot>
 
     init {
         val client = createClient()
-        repository = RestFirestoreRepository(
+        repository = FirestoreRepository(
             collection = "test",
             client = client,
             environment = "test",
