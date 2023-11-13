@@ -18,10 +18,6 @@ function buildRequest() {
     };
 }
 
-async function sendRequest(url, request) {
-    return await fetch(url, request);
-}
-
 function notifyError() {
     toastr.error('Une erreur inattendue est survenue. Veuillez nous en excuser.');
 }
