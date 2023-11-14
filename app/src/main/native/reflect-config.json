@@ -57,75 +57,75 @@
   "methods":[{"name":"serializer","parameterTypes":[] }]
 },
 {
-  "name":"be.alpago.website.libs.repository.BooleanValue",
+  "name":"be.alpago.website.libs.firestore.BooleanValue",
   "fields":[{"name":"Companion"}]
 },
 {
-  "name":"be.alpago.website.libs.repository.BooleanValue$Companion",
+  "name":"be.alpago.website.libs.firestore.BooleanValue$Companion",
   "methods":[{"name":"serializer","parameterTypes":[] }]
 },
 {
-  "name":"be.alpago.website.libs.repository.Document",
+  "name":"be.alpago.website.libs.firestore.Document",
   "fields":[{"name":"Companion"}]
 },
 {
-  "name":"be.alpago.website.libs.repository.Document$Companion",
+  "name":"be.alpago.website.libs.firestore.Document$Companion",
   "methods":[{"name":"serializer","parameterTypes":[] }]
 },
 {
-  "name":"be.alpago.website.libs.repository.GoogleToken",
+  "name":"be.alpago.website.libs.firestore.GoogleToken",
   "fields":[{"name":"Companion"}]
 },
 {
-  "name":"be.alpago.website.libs.repository.GoogleToken$Companion",
+  "name":"be.alpago.website.libs.firestore.GoogleToken$Companion",
   "methods":[{"name":"serializer","parameterTypes":[] }]
 },
 {
-  "name":"be.alpago.website.libs.repository.IntValue",
+  "name":"be.alpago.website.libs.firestore.IntValue",
   "fields":[{"name":"Companion"}]
 },
 {
-  "name":"be.alpago.website.libs.repository.IntValue$Companion",
+  "name":"be.alpago.website.libs.firestore.IntValue$Companion",
   "methods":[{"name":"serializer","parameterTypes":[] }]
 },
 {
-  "name":"be.alpago.website.libs.repository.ListDocumentsResponse",
+  "name":"be.alpago.website.libs.firestore.ListDocumentsResponse",
   "fields":[{"name":"Companion"}]
 },
 {
-  "name":"be.alpago.website.libs.repository.ListDocumentsResponse$Companion",
+  "name":"be.alpago.website.libs.firestore.ListDocumentsResponse$Companion",
   "methods":[{"name":"serializer","parameterTypes":[] }]
 },
 {
-  "name":"be.alpago.website.libs.repository.NullValue",
+  "name":"be.alpago.website.libs.firestore.NullValue",
   "fields":[{"name":"Companion"}]
 },
 {
-  "name":"be.alpago.website.libs.repository.NullValue$Companion",
+  "name":"be.alpago.website.libs.firestore.NullValue$Companion",
   "methods":[{"name":"serializer","parameterTypes":[] }]
 },
 {
-  "name":"be.alpago.website.libs.repository.Query",
+  "name":"be.alpago.website.libs.firestore.Query",
   "fields":[{"name":"Companion"}]
 },
 {
-  "name":"be.alpago.website.libs.repository.Query$Companion",
+  "name":"be.alpago.website.libs.firestore.Query$Companion",
   "methods":[{"name":"serializer","parameterTypes":[] }]
 },
 {
-  "name":"be.alpago.website.libs.repository.QueryResponse",
+  "name":"be.alpago.website.libs.firestore.QueryResponse",
   "fields":[{"name":"Companion"}]
 },
 {
-  "name":"be.alpago.website.libs.repository.QueryResponse$Companion",
+  "name":"be.alpago.website.libs.firestore.QueryResponse$Companion",
   "methods":[{"name":"serializer","parameterTypes":[] }]
 },
 {
-  "name":"be.alpago.website.libs.repository.StringValue",
+  "name":"be.alpago.website.libs.firestore.StringValue",
   "fields":[{"name":"Companion"}]
 },
 {
-  "name":"be.alpago.website.libs.repository.StringValue$Companion",
+  "name":"be.alpago.website.libs.firestore.StringValue$Companion",
   "methods":[{"name":"serializer","parameterTypes":[] }]
 },
 {
@@ -205,14 +205,6 @@
 {
   "name":"ch.qos.logback.core.spi.ContextAware",
   "methods":[{"name":"valueOf","parameterTypes":["java.lang.String"] }]
-},
-{
-  "name":"com.sun.crypto.provider.GaloisCounterMode$AESGCM",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"com.sun.crypto.provider.HmacCore$HmacSHA256",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
   "name":"com.sun.org.apache.xerces.internal.jaxp.SAXParserFactoryImpl",
@@ -351,13 +343,7 @@
   "methods":[{"name":"<init>","parameterTypes":["java.lang.String","java.lang.String"] }]
 },
 {
-  "name":"java.security.AlgorithmParametersSpi"
-},
-{
   "name":"java.security.AllPermission"
-},
-{
-  "name":"java.security.KeyStoreSpi"
 },
 {
   "name":"java.security.MessageDigestSpi"
@@ -367,12 +353,6 @@
 },
 {
   "name":"java.security.SecurityPermission"
-},
-{
-  "name":"java.security.interfaces.ECPrivateKey"
-},
-{
-  "name":"java.security.interfaces.ECPublicKey"
 },
 {
   "name":"java.security.interfaces.RSAPrivateKey"
@@ -546,18 +526,6 @@
   "fields":[{"name":"_availablePermits"}, {"name":"deqIdx"}, {"name":"enqIdx"}, {"name":"head"}, {"name":"tail"}]
 },
 {
-  "name":"sun.security.pkcs12.PKCS12KeyStore",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"sun.security.pkcs12.PKCS12KeyStore$DualFormatPKCS12",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"sun.security.provider.JavaKeyStore$JKS",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
   "name":"sun.security.provider.NativePRNG",
   "methods":[{"name":"<init>","parameterTypes":[] }, {"name":"<init>","parameterTypes":["java.security.SecureRandomParameters"] }]
 },
@@ -570,15 +538,7 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "name":"sun.security.provider.SHA5$SHA512",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
   "name":"sun.security.provider.X509Factory",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"sun.security.provider.certpath.PKIXCertPathValidator",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
@@ -590,62 +550,10 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "name":"sun.security.rsa.RSASignature$SHA512withRSA",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"sun.security.ssl.TrustManagerFactoryImpl$PKIXFactory",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
   "name":"sun.security.util.ObjectIdentifier"
 },
 {
-  "name":"sun.security.x509.AuthorityInfoAccessExtension",
-  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
-},
-{
-  "name":"sun.security.x509.AuthorityKeyIdentifierExtension",
-  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
-},
-{
-  "name":"sun.security.x509.BasicConstraintsExtension",
-  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
-},
-{
-  "name":"sun.security.x509.CRLDistributionPointsExtension",
-  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
-},
-{
   "name":"sun.security.x509.CertificateExtensions"
-},
-{
-  "name":"sun.security.x509.CertificatePoliciesExtension",
-  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
-},
-{
-  "name":"sun.security.x509.ExtendedKeyUsageExtension",
-  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
-},
-{
-  "name":"sun.security.x509.IssuerAlternativeNameExtension",
-  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
-},
-{
-  "name":"sun.security.x509.KeyUsageExtension",
-  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
-},
-{
-  "name":"sun.security.x509.NetscapeCertTypeExtension",
-  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
-},
-{
-  "name":"sun.security.x509.PrivateKeyUsageExtension",
-  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
-},
-{
-  "name":"sun.security.x509.SubjectAlternativeNameExtension",
-  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
 },
 {
   "name":"sun.security.x509.SubjectKeyIdentifierExtension",
