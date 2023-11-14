@@ -83,7 +83,6 @@ graalvmNative {
     binaries {
         named("main") {
             fallback.set(false)
-            verbose.set(true)
 
             buildArgs.add("-R:MaxHeapSize=200m")
 
@@ -107,7 +106,6 @@ graalvmNative {
                 buildArgs.add("--static")
                 buildArgs.add("--libc=musl")
             } else {
-                buildArgs.add("-O0")
                 buildArgs.add("-march=armv8-a")
             }
 
