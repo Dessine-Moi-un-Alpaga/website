@@ -106,6 +106,7 @@ graalvmNative {
                 buildArgs.add("--static")
                 buildArgs.add("--libc=musl")
             } else {
+                buildArgs.add("-Ob")
                 buildArgs.add("-march=armv8-a")
             }
 
