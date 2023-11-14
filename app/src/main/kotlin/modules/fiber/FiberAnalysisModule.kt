@@ -4,9 +4,9 @@ import be.alpago.website.domain.fiber.FiberAnalysis
 import be.alpago.website.domain.fiber.FirestoreFiberAnalysisTransformer
 import be.alpago.website.libs.environment.Environment
 import be.alpago.website.libs.repository.CachingRepository
-import be.alpago.website.libs.repository.FirestoreAggregateTransformer
-import be.alpago.website.libs.repository.Repository
-import be.alpago.website.libs.repository.FirestoreRepository
+import be.alpago.website.libs.firestore.FirestoreAggregateTransformer
+import be.alpago.website.libs.domain.ports.Repository
+import be.alpago.website.libs.firestore.FirestoreRepository
 import be.alpago.website.pages.fiber.fiberAnalysisRoutes
 import io.ktor.client.HttpClient
 import io.ktor.server.application.Application

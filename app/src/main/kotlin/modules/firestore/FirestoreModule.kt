@@ -1,4 +1,4 @@
-package be.alpago.website.libs.repository
+package be.alpago.website.modules.firestore
 
 import be.alpago.website.libs.ktor.registerCloseable
 import io.ktor.client.HttpClient

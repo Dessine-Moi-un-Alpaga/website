@@ -3,7 +3,7 @@ package be.alpago.website
 import be.alpago.website.modules.environment.environment
 import be.alpago.website.libs.ktor.httpCaching
 import be.alpago.website.libs.ktor.registerShutdownHook
-import be.alpago.website.libs.repository.firestore
+import be.alpago.website.modules.firestore.firestore
 import be.alpago.website.modules.animal.animals
 import be.alpago.website.modules.article.articles
 import be.alpago.website.modules.article.highlights

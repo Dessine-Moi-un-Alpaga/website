@@ -6,17 +6,7 @@ import be.alpago.website.libs.page.template.style.EscapeVelocity
 import be.alpago.website.libs.page.template.style.Photoswipe
 import io.ktor.server.html.Template
 import io.ktor.server.html.insert
-import kotlinx.html.FlowContent
-import kotlinx.html.a
-import kotlinx.html.classes
-import kotlinx.html.div
-import kotlinx.html.figure
-import kotlinx.html.h2
-import kotlinx.html.header
-import kotlinx.html.id
-import kotlinx.html.img
-import kotlinx.html.p
-import kotlinx.html.unsafe
+import kotlinx.html.*
 
 class PhotoGallerySectionTemplate(
     private val environment: Environment,
@@ -25,7 +15,7 @@ class PhotoGallerySectionTemplate(
 
     override fun FlowContent.apply() {
         insert(SectionTemplate(model)) {
-            title {
+            pageTitle {
                 +model.sectionTitle
             }
             content {

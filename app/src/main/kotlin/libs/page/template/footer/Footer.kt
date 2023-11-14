@@ -2,21 +2,11 @@ package be.alpago.website.libs.page.template.footer
 
 import be.alpago.website.libs.environment.Environment
 import be.alpago.website.libs.i18n.Messages
-import be.alpago.website.libs.i18n.capitalize
+import be.alpago.website.libs.kotlin.i18n.capitalize
 import be.alpago.website.libs.page.template.footer.contact.contact
 import be.alpago.website.libs.page.template.footer.legal.legalNotice
 import be.alpago.website.libs.page.template.style.EscapeVelocity
-import kotlinx.html.DIV
-import kotlinx.html.Entities
-import kotlinx.html.SECTION
-import kotlinx.html.classes
-import kotlinx.html.div
-import kotlinx.html.h2
-import kotlinx.html.header
-import kotlinx.html.id
-import kotlinx.html.p
-import kotlinx.html.section
-import kotlinx.html.unsafe
+import kotlinx.html.*
 
 fun DIV.footer(environment: Environment) {
     section {

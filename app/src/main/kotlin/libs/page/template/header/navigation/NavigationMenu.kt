@@ -1,16 +1,11 @@
 package be.alpago.website.libs.page.template.header.navigation
 
 import be.alpago.website.libs.i18n.Messages
-import be.alpago.website.libs.i18n.capitalize
+import be.alpago.website.libs.kotlin.i18n.capitalize
 import be.alpago.website.libs.page.model.NavigationModel
 import be.alpago.website.libs.page.model.PageModel
 import be.alpago.website.libs.page.template.style.EscapeVelocity
-import kotlinx.html.SECTION
-import kotlinx.html.a
-import kotlinx.html.id
-import kotlinx.html.li
-import kotlinx.html.nav
-import kotlinx.html.ul
+import kotlinx.html.*
 
 private val NavigationModel.Category.text
     get() = when (this) {

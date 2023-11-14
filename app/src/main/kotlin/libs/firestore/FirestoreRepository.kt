@@ -1,7 +1,8 @@
-package be.alpago.website.libs.repository
+package be.alpago.website.libs.firestore
 
 import be.alpago.website.libs.domain.AggregateRoot
-import be.alpago.website.libs.domain.AggregateRootNotFound
+import be.alpago.website.libs.domain.ports.AggregateRootNotFound
+import be.alpago.website.libs.domain.ports.Repository
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.delete

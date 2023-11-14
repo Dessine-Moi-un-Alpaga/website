@@ -29,7 +29,6 @@ val i18n4kVersion = "0.6.2"
 val junitVersion = "5.10.1"
 val koinVersion = "3.5.1"
 val kotestVersion = "5.8.0"
-val kotlinCssVersion = "1.0.0-pre.640"
 val logbackVersion = "1.4.11"
 val photoswipeVersion = "5.3.7"
 val toastrVersion = "2.1.2"
@@ -38,7 +37,6 @@ dependencies {
     implementation("at.favre.lib:bcrypt:$bcryptVersion")
     implementation("de.comahe.i18n4k:i18n4k-core:$i18n4kVersion")
     implementation("io.insert-koin:koin-ktor:$koinVersion")
-    implementation("org.jetbrains.kotlin-wrappers:kotlin-css:$kotlinCssVersion")
     implementation("io.ktor:ktor-client-cio")
     implementation("io.ktor:ktor-client-content-negotiation")
     implementation("io.ktor:ktor-client-core")
@@ -87,7 +85,6 @@ graalvmNative {
             fallback.set(false)
             verbose.set(true)
 
-            buildArgs.add("-march=x86-64-v3")
             buildArgs.add("-R:MaxHeapSize=200m")
 
             buildArgs.add("--initialize-at-build-time=ch.qos.logback")
@@ -106,8 +103,12 @@ graalvmNative {
             buildArgs.add("-Duser.language=fr")
 
             if (OperatingSystem.current().familyName == OperatingSystemFamily.LINUX) {
+                buildArgs.add("-march=x86-64-v3")
                 buildArgs.add("--static")
                 buildArgs.add("--libc=musl")
+            } else {
+                buildArgs.add("-O0")
+                buildArgs.add("-march=armv8-a")
             }
 
             configurationFileDirectories.from(file("src/main/native"))

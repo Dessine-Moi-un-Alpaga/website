@@ -1,13 +1,11 @@
 package be.alpago.website.libs.page.template.head.icon
 
-import kotlinx.css.Color
-import kotlinx.html.HEAD
-import kotlinx.html.meta
+import kotlinx.html.*
 
 fun HEAD.microsoftIcons() {
     meta {
         name = "msapplication-TileColor"
-        content = "${Color.white}"
+        content = "white"
     }
 
     meta {

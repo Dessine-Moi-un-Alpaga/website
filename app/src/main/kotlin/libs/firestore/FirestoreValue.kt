@@ -1,4 +1,4 @@
-package be.alpago.website.libs.repository
+package be.alpago.website.libs.firestore
 
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonContentPolymorphicSerializer

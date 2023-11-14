@@ -4,10 +4,10 @@ import be.alpago.website.domain.animal.Animal
 import be.alpago.website.domain.article.Article
 import be.alpago.website.domain.highlight.Highlight
 import be.alpago.website.libs.i18n.Messages
-import be.alpago.website.libs.i18n.capitalize
+import be.alpago.website.libs.kotlin.i18n.capitalize
 import be.alpago.website.libs.page.model.PageModel
 import be.alpago.website.libs.page.model.SectionColor
-import be.alpago.website.libs.repository.Repository
+import be.alpago.website.libs.domain.ports.Repository
 
 private val DESCRIPTION = "${Messages.factsheetPageDescription}"
 private val TITLE = "${Messages.dmua} :: ${capitalize(Messages.factsheets)}"

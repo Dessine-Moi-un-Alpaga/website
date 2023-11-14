@@ -1,6 +1,6 @@
 package be.alpago.website.domain.animal
 
-import be.alpago.website.libs.repository.FirestoreAggregateTransformer
+import be.alpago.website.libs.firestore.FirestoreAggregateTransformer
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 

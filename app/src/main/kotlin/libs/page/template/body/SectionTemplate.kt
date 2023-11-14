@@ -6,18 +6,14 @@ import be.alpago.website.libs.page.template.style.EscapeVelocity
 import io.ktor.server.html.Placeholder
 import io.ktor.server.html.Template
 import io.ktor.server.html.insert
-import kotlinx.html.FlowContent
-import kotlinx.html.classes
-import kotlinx.html.div
-import kotlinx.html.id
-import kotlinx.html.section
+import kotlinx.html.*
 
 class SectionTemplate(sectionModel: SectionModel) : Template<FlowContent> {
 
     private val id = sectionModel.id
     private val color = sectionModel.color
 
-    val title = Placeholder<FlowContent>()
+    val pageTitle = Placeholder<FlowContent>()
     val content = Placeholder<FlowContent>()
 
     override fun FlowContent.apply() {
@@ -31,7 +27,7 @@ class SectionTemplate(sectionModel: SectionModel) : Template<FlowContent> {
             div {
                 classes = setOf(EscapeVelocity.title)
 
-                insert(title)
+                insert(pageTitle)
             }
 
             div {

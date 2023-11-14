@@ -1,4 +1,4 @@
-package be.alpago.website.libs.repository
+package be.alpago.website.libs.domain.ports
 
 import be.alpago.website.libs.domain.AggregateRoot
 

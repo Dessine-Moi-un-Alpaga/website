@@ -1,7 +1,7 @@
 package be.alpago.website.domain.animal
 
 import be.alpago.website.libs.domain.AggregateRoot
-import be.alpago.website.libs.serialization.SerializableLocalDate
+import be.alpago.website.libs.kotlin.serialization.SerializableLocalDate
 import kotlinx.serialization.Serializable
 
 @Serializable

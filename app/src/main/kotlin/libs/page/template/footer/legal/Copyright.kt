@@ -1,9 +1,6 @@
 package be.alpago.website.libs.page.template.footer.legal
 
-import kotlinx.html.Entities
-import kotlinx.html.UL
-import kotlinx.html.li
-import kotlinx.html.unsafe
+import kotlinx.html.*
 import java.time.LocalDate.now
 
 fun UL.copyright() {

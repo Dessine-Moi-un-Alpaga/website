@@ -1,9 +1,7 @@
 package be.alpago.website.libs.page.template.head.stylesheet
 
 import be.alpago.website.libs.page.model.PageModel
-import kotlinx.html.HEAD
-import kotlinx.html.LinkRel
-import kotlinx.html.link
+import kotlinx.html.*
 
 fun HEAD.photoswipeStylesheet(pageModel: PageModel) {
     if (pageModel.hasPhotoGallery()) {

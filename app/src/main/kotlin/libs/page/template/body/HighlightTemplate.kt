@@ -1,21 +1,11 @@
 package be.alpago.website.libs.page.template.body
 
+import be.alpago.website.domain.highlight.Highlight
 import be.alpago.website.libs.environment.Environment
 import be.alpago.website.libs.i18n.Messages
 import be.alpago.website.libs.page.template.style.EscapeVelocity
-import be.alpago.website.domain.highlight.Highlight
 import io.ktor.server.html.Template
-import kotlinx.html.FlowContent
-import kotlinx.html.a
-import kotlinx.html.classes
-import kotlinx.html.div
-import kotlinx.html.h3
-import kotlinx.html.img
-import kotlinx.html.li
-import kotlinx.html.p
-import kotlinx.html.section
-import kotlinx.html.ul
-import kotlinx.html.unsafe
+import kotlinx.html.*
 
 private fun Highlight.resolveLink(environment: Environment) = link.replace("{{baseAssetUrl}}", environment.baseAssetUrl)
 

@@ -5,7 +5,7 @@ import be.alpago.website.domain.highlight.Highlight
 import be.alpago.website.libs.environment.Environment
 import be.alpago.website.libs.ktor.managementRoutes
 import be.alpago.website.libs.page.template.LayoutTemplate
-import be.alpago.website.libs.repository.Repository
+import be.alpago.website.libs.domain.ports.Repository
 import be.alpago.website.modules.factsheet.FACTSHEET_ARTICLE_REPOSITORY
 import be.alpago.website.modules.factsheet.FACTSHEET_HIGHLIGHT_REPOSITORY
 import io.ktor.server.application.Application

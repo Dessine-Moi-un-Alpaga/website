@@ -1,10 +1,7 @@
 package be.alpago.website.libs.page.template.footer.legal
 
 import be.alpago.website.libs.page.template.style.EscapeVelocity
-import kotlinx.html.DIV
-import kotlinx.html.div
-import kotlinx.html.id
-import kotlinx.html.ul
+import kotlinx.html.*
 
 fun DIV.legalNotice() {
     div {

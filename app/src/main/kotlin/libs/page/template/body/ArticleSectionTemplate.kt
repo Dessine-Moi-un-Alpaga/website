@@ -5,15 +5,7 @@ import be.alpago.website.libs.page.model.ArticleSectionModel
 import be.alpago.website.libs.page.template.style.EscapeVelocity
 import io.ktor.server.html.Template
 import io.ktor.server.html.insert
-import kotlinx.html.FlowContent
-import kotlinx.html.a
-import kotlinx.html.article
-import kotlinx.html.classes
-import kotlinx.html.h2
-import kotlinx.html.header
-import kotlinx.html.img
-import kotlinx.html.p
-import kotlinx.html.unsafe
+import kotlinx.html.*
 
 class ArticleSectionTemplate(
     private val environment: Environment,
@@ -22,7 +14,7 @@ class ArticleSectionTemplate(
 
     override fun FlowContent.apply() {
         insert(SectionTemplate(model)) {
-            title {
+            pageTitle {
                 +model.sectionTitle
             }
             content {
