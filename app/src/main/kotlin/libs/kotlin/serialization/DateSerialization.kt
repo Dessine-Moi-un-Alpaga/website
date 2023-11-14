@@ -1,4 +1,4 @@
-package be.alpago.website.libs.serialization
+package be.alpago.website.libs.kotlin.serialization
 
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializable

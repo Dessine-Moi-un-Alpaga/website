@@ -1,7 +1,6 @@
 package be.alpago.website.libs.page.template.head.script
 
-import kotlinx.html.HEAD
-import kotlinx.html.script
+import kotlinx.html.*
 
 fun HEAD.responsiveTools() {
     script {

@@ -1,10 +1,10 @@
 package libs.repository
 
 import be.alpago.website.libs.domain.AggregateRoot
-import be.alpago.website.libs.domain.AggregateRootNotFound
-import be.alpago.website.libs.repository.FirestoreAggregateTransformer
-import be.alpago.website.libs.repository.FirestoreRepository
-import be.alpago.website.libs.repository.createClient
+import be.alpago.website.libs.domain.ports.AggregateRootNotFound
+import be.alpago.website.libs.firestore.FirestoreAggregateTransformer
+import be.alpago.website.libs.firestore.FirestoreRepository
+import be.alpago.website.modules.firestore.createClient
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.collections.shouldContainAll
 import io.kotest.matchers.shouldBe

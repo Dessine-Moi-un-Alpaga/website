@@ -1,7 +1,6 @@
 package be.alpago.website.libs.page.template.head
 
-import kotlinx.html.HEAD
-import kotlinx.html.meta
+import kotlinx.html.*
 
 fun HEAD.viewport() {
     meta {

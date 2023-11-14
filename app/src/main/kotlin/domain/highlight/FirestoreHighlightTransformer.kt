@@ -1,6 +1,6 @@
 package be.alpago.website.domain.highlight
 
-import be.alpago.website.libs.repository.FirestoreAggregateTransformer
+import be.alpago.website.libs.firestore.FirestoreAggregateTransformer
 
 class FirestoreHighlightTransformer : FirestoreAggregateTransformer<Highlight> {
 

@@ -5,9 +5,9 @@ import be.alpago.website.domain.article.Article
 import be.alpago.website.domain.highlight.Highlight
 import be.alpago.website.libs.environment.Environment
 import be.alpago.website.libs.repository.CachingRepository
-import be.alpago.website.libs.repository.FirestoreAggregateTransformer
-import be.alpago.website.libs.repository.Repository
-import be.alpago.website.libs.repository.FirestoreRepository
+import be.alpago.website.libs.firestore.FirestoreAggregateTransformer
+import be.alpago.website.libs.domain.ports.Repository
+import be.alpago.website.libs.firestore.FirestoreRepository
 import be.alpago.website.modules.animal.ANIMAL_REPOSITORY
 import be.alpago.website.modules.article.ARTICLE_TRANSFORMER
 import be.alpago.website.modules.article.HIGHLIGHT_TRANSFORMER

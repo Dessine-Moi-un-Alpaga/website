@@ -1,9 +1,7 @@
 package be.alpago.website.libs.page.template.head.script
 
 import be.alpago.website.libs.page.model.PageModel
-import kotlinx.html.HEAD
-import kotlinx.html.script
-import kotlinx.html.unsafe
+import kotlinx.html.*
 
 fun HEAD.photoswipe(pageModel: PageModel) {
     if (pageModel.hasPhotoGallery()) {

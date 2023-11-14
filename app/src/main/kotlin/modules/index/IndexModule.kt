@@ -9,8 +9,8 @@ import be.alpago.website.domain.image.FirestoreImageMetadataTransformer
 import be.alpago.website.domain.image.ImageMetadata
 import be.alpago.website.libs.environment.Environment
 import be.alpago.website.libs.repository.CachingRepository
-import be.alpago.website.libs.repository.Repository
-import be.alpago.website.libs.repository.FirestoreRepository
+import be.alpago.website.libs.domain.ports.Repository
+import be.alpago.website.libs.firestore.FirestoreRepository
 import be.alpago.website.modules.animal.ANIMAL_REPOSITORY
 import be.alpago.website.pages.index.IndexPageModelFactory
 import be.alpago.website.pages.index.indexRoutes

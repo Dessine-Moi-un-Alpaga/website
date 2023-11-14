@@ -3,7 +3,7 @@ package be.alpago.website.pages.gallery
 import be.alpago.website.libs.environment.Environment
 import be.alpago.website.libs.ktor.managementRoutes
 import be.alpago.website.libs.page.template.LayoutTemplate
-import be.alpago.website.libs.repository.Repository
+import be.alpago.website.libs.domain.ports.Repository
 import be.alpago.website.domain.image.ImageMetadata
 import be.alpago.website.modules.gallery.PHOTO_GALLERY_IMAGE_REPOSITORY
 import io.ktor.server.application.Application

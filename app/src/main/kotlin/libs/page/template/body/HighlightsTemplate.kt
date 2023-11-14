@@ -5,9 +5,7 @@ import be.alpago.website.libs.page.model.HighlightsSectionModel
 import be.alpago.website.libs.page.template.style.EscapeVelocity
 import io.ktor.server.html.Template
 import io.ktor.server.html.insert
-import kotlinx.html.FlowContent
-import kotlinx.html.classes
-import kotlinx.html.div
+import kotlinx.html.*
 
 class HighlightsTemplate(
     private val environment: Environment,
@@ -16,7 +14,7 @@ class HighlightsTemplate(
 
     override fun FlowContent.apply() {
         insert(SectionTemplate(model)) {
-            title {
+            pageTitle {
                 +model.sectionTitle
             }
             content {

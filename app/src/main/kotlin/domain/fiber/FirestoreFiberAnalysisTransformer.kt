@@ -1,6 +1,6 @@
 package be.alpago.website.domain.fiber
 
-import be.alpago.website.libs.repository.FirestoreAggregateTransformer
+import be.alpago.website.libs.firestore.FirestoreAggregateTransformer
 
 class FirestoreFiberAnalysisTransformer : FirestoreAggregateTransformer<FiberAnalysis> {
 

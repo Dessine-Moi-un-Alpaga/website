@@ -4,9 +4,7 @@ import be.alpago.website.libs.environment.Environment
 import be.alpago.website.libs.page.template.footer.contact.form.contactForm
 import be.alpago.website.libs.page.template.footer.contact.info.contactInformation
 import be.alpago.website.libs.page.template.style.EscapeVelocity
-import kotlinx.html.DIV
-import kotlinx.html.classes
-import kotlinx.html.div
+import kotlinx.html.*
 
 fun DIV.contact(environment: Environment) {
     div {

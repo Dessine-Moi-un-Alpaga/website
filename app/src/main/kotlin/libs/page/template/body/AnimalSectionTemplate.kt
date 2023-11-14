@@ -1,34 +1,14 @@
 package be.alpago.website.libs.page.template.body
 
+import be.alpago.website.domain.animal.Animal
 import be.alpago.website.libs.environment.Environment
 import be.alpago.website.libs.i18n.Messages
-import be.alpago.website.libs.i18n.capitalize
+import be.alpago.website.libs.kotlin.i18n.capitalize
 import be.alpago.website.libs.page.model.AnimalSectionModel
 import be.alpago.website.libs.page.template.style.EscapeVelocity
-import be.alpago.website.domain.animal.Animal
 import io.ktor.server.html.Template
 import io.ktor.server.html.insert
-import kotlinx.html.FlowContent
-import kotlinx.html.LI
-import kotlinx.html.a
-import kotlinx.html.article
-import kotlinx.html.b
-import kotlinx.html.classes
-import kotlinx.html.div
-import kotlinx.html.h2
-import kotlinx.html.header
-import kotlinx.html.id
-import kotlinx.html.img
-import kotlinx.html.li
-import kotlinx.html.p
-import kotlinx.html.section
-import kotlinx.html.span
-import kotlinx.html.table
-import kotlinx.html.td
-import kotlinx.html.th
-import kotlinx.html.tr
-import kotlinx.html.ul
-import kotlinx.html.unsafe
+import kotlinx.html.*
 import java.time.LocalDate.now
 import java.time.Period
 import java.time.format.DateTimeFormatter
@@ -86,7 +66,7 @@ class AnimalSectionTemplate(
 
     override fun FlowContent.apply() {
         insert(SectionTemplate(model)) {
-            title {
+            pageTitle {
                 +model.sectionTitle
             }
             content {

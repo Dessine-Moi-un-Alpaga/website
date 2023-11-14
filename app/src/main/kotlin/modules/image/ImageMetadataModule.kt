@@ -2,7 +2,7 @@ package be.alpago.website.modules.image
 
 import be.alpago.website.domain.image.FirestoreImageMetadataTransformer
 import be.alpago.website.domain.image.ImageMetadata
-import be.alpago.website.libs.repository.FirestoreAggregateTransformer
+import be.alpago.website.libs.firestore.FirestoreAggregateTransformer
 import io.ktor.server.application.Application
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
