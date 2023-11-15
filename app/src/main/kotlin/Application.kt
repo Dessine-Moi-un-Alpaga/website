@@ -1,24 +1,33 @@
 package be.alpago.website
 
-import be.alpago.website.modules.environment.environment
-import be.alpago.website.libs.ktor.httpCaching
-import be.alpago.website.libs.ktor.registerShutdownHook
-import be.alpago.website.modules.firestore.firestore
-import be.alpago.website.modules.animal.animals
-import be.alpago.website.modules.article.articles
-import be.alpago.website.modules.article.highlights
-import be.alpago.website.modules.assets.assets
-import be.alpago.website.modules.auth.authentication
-import be.alpago.website.modules.email.email
-import be.alpago.website.modules.fiber.fiberAnalyses
-import be.alpago.website.modules.i18n.i18n
-import be.alpago.website.modules.factsheet.factsheets
-import be.alpago.website.modules.gallery.photoGallery
-import be.alpago.website.modules.image.imageMetadata
-import be.alpago.website.modules.serialization.serialization
-import be.alpago.website.modules.index.index
-import be.alpago.website.modules.news.news
-import be.alpago.website.modules.validation.validation
+import be.alpago.website.interfaces.i18n4k.i18n
+import be.alpago.website.interfaces.koin.animalModule
+import be.alpago.website.interfaces.koin.articleModule
+import be.alpago.website.interfaces.koin.authenticationModule
+import be.alpago.website.interfaces.koin.emailModule
+import be.alpago.website.interfaces.koin.environmentModule
+import be.alpago.website.interfaces.koin.factsheetModule
+import be.alpago.website.interfaces.koin.fiberAnalysisModule
+import be.alpago.website.interfaces.koin.firestoreModule
+import be.alpago.website.interfaces.koin.highlightModule
+import be.alpago.website.interfaces.koin.imageMetadataModule
+import be.alpago.website.interfaces.koin.indexModule
+import be.alpago.website.interfaces.koin.newsModule
+import be.alpago.website.interfaces.koin.photoGallery
+import be.alpago.website.interfaces.koin.templateModule
+import be.alpago.website.interfaces.ktor.animalRoutes
+import be.alpago.website.interfaces.ktor.assets
+import be.alpago.website.interfaces.ktor.authentication
+import be.alpago.website.interfaces.ktor.emailRoute
+import be.alpago.website.interfaces.ktor.factsheetRoutes
+import be.alpago.website.interfaces.ktor.fiberAnalysisRoutes
+import be.alpago.website.interfaces.ktor.httpCaching
+import be.alpago.website.interfaces.ktor.indexRoutes
+import be.alpago.website.interfaces.ktor.newsRoutes
+import be.alpago.website.interfaces.ktor.photoGalleryRoutes
+import be.alpago.website.interfaces.ktor.registerShutdownHook
+import be.alpago.website.interfaces.ktor.serialization
+import be.alpago.website.interfaces.ktor.validation
 import io.ktor.server.application.Application
 import io.ktor.server.cio.CIO
 import io.ktor.server.engine.embeddedServer
@@ -39,26 +48,46 @@ fun main() {
 }
 
 fun Application.main() {
-    environment()
+    environmentModule()
 
     assets()
+
+    authenticationModule()
     authentication()
+
     httpCaching()
+
     i18n()
+
     serialization()
+
     validation()
 
-    firestore()
+    firestoreModule()
+    templateModule()
 
-    animals()
-    articles()
-    fiberAnalyses()
-    highlights()
-    imageMetadata()
+    articleModule()
+    highlightModule()
+    imageMetadataModule()
 
-    email()
-    factsheets()
-    index()
-    news()
+    animalModule()
+    animalRoutes()
+
+    fiberAnalysisModule()
+    fiberAnalysisRoutes()
+
+    emailModule()
+    emailRoute()
+
+    factsheetModule()
+    factsheetRoutes()
+
+    indexModule()
+    indexRoutes()
+
+    newsModule()
+    newsRoutes()
+
     photoGallery()
+    photoGalleryRoutes()
 }
