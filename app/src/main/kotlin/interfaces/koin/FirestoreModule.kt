@@ -6,7 +6,6 @@ import be.alpago.website.interfaces.ktor.registerCloseable
 import io.ktor.client.HttpClient
 import io.ktor.server.application.Application
 import org.koin.dsl.module
-import org.koin.ktor.ext.getProperty
 import org.koin.ktor.ext.inject
 import org.koin.ktor.plugin.koin
 
