@@ -6,8 +6,12 @@ import be.alpago.website.interfaces.ktor.registerCloseable
 import io.ktor.client.HttpClient
 import io.ktor.server.application.Application
 import org.koin.dsl.module
+import org.koin.ktor.ext.getProperty
 import org.koin.ktor.ext.inject
 import org.koin.ktor.plugin.koin
+
+private const val DEFAULT_ENVIRONMENT_NAME = "local"
+private const val DEFAULT_FIRESTORE_URL = "https://firestore.googleapis.com"
 
 fun Application.firestoreModule() {
     koin {
@@ -19,9 +23,9 @@ fun Application.firestoreModule() {
 
                 single<FirestoreProperties> {
                     FirestoreProperties(
-                        environmentName = getPropertyOrNull("DMUA_ENVIRONMENT"),
+                        environmentName = getProperty("DMUA_ENVIRONMENT", DEFAULT_ENVIRONMENT_NAME),
                         project = getProperty("DMUA_PROJECT"),
-                        url = getPropertyOrNull("DMUA_FIRESTORE_URL"),
+                        url = getProperty("DMUA_FIRESTORE_URL", DEFAULT_FIRESTORE_URL),
                     )
                 }
             }

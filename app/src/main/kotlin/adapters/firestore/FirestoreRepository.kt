@@ -14,17 +14,14 @@ import io.ktor.client.request.setBody
 import io.ktor.http.HttpStatusCode
 import kotlinx.serialization.Serializable
 
-private const val DEFAULT_ENVIRONMENT_NAME = "local"
-private const val DEFAULT_FIRESTORE_URL = "https://firestore.googleapis.com"
 private const val ID_FIELD = "id"
 private const val NEXT_PAGE_PARMAETER = "pageToken"
 
 data class FirestoreProperties(
-    val environmentName: String? = DEFAULT_ENVIRONMENT_NAME,
+    val environmentName: String,
     val project: String,
-    val url: String? = DEFAULT_FIRESTORE_URL,
+    val url: String,
 )
-
 
 class FirestoreRepository<T : AggregateRoot>(
     private val client: HttpClient,

@@ -19,9 +19,9 @@ interface FirestoreAggregateTransformer<T : AggregateRoot> {
     private fun unwrap(fields: Map<String, Value>) = fields.mapValues {
         when (it.value) {
             is BooleanValue -> (it.value as BooleanValue).booleanValue
-            is IntValue -> (it.value as IntValue).integerValue
-            is NullValue -> null
-            is StringValue -> (it.value as StringValue).stringValue
+            is IntValue     -> (it.value as IntValue).integerValue
+            is NullValue    -> null
+            is StringValue  -> (it.value as StringValue).stringValue
         }
     }
 

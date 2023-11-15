@@ -24,7 +24,6 @@ import kotlinx.serialization.json.Json
 import java.util.concurrent.atomic.AtomicReference
 
 private const val FIRESTORE_HOSTNAME = "firestore.googleapis.com"
-
 private const val GOOGLE_METADATA_ENDPOINT = "http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/token"
 
 fun createHttpClient(): HttpClient {
