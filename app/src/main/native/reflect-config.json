@@ -17,131 +17,131 @@
   "methods":[{"name":"main","parameterTypes":[] }, {"name":"main","parameterTypes":["io.ktor.server.application.Application"] }]
 },
 {
-  "name":"be.alpago.website.domain.animal.Animal",
+  "name":"be.alpago.website.adapters.firestore.BooleanValue",
   "fields":[{"name":"Companion"}]
 },
 {
-  "name":"be.alpago.website.domain.animal.Animal$Companion",
+  "name":"be.alpago.website.adapters.firestore.BooleanValue$Companion",
   "methods":[{"name":"serializer","parameterTypes":[] }]
 },
 {
-  "name":"be.alpago.website.domain.article.Article",
+  "name":"be.alpago.website.adapters.firestore.Document",
   "fields":[{"name":"Companion"}]
 },
 {
-  "name":"be.alpago.website.domain.article.Article$Companion",
+  "name":"be.alpago.website.adapters.firestore.Document$Companion",
   "methods":[{"name":"serializer","parameterTypes":[] }]
 },
 {
-  "name":"be.alpago.website.domain.fiber.FiberAnalysis",
+  "name":"be.alpago.website.adapters.firestore.GoogleToken",
   "fields":[{"name":"Companion"}]
 },
 {
-  "name":"be.alpago.website.domain.fiber.FiberAnalysis$Companion",
+  "name":"be.alpago.website.adapters.firestore.GoogleToken$Companion",
   "methods":[{"name":"serializer","parameterTypes":[] }]
 },
 {
-  "name":"be.alpago.website.domain.highlight.Highlight",
+  "name":"be.alpago.website.adapters.firestore.IntValue",
   "fields":[{"name":"Companion"}]
 },
 {
-  "name":"be.alpago.website.domain.highlight.Highlight$Companion",
+  "name":"be.alpago.website.adapters.firestore.IntValue$Companion",
   "methods":[{"name":"serializer","parameterTypes":[] }]
 },
 {
-  "name":"be.alpago.website.domain.image.ImageMetadata",
+  "name":"be.alpago.website.adapters.firestore.ListDocumentsResponse",
   "fields":[{"name":"Companion"}]
 },
 {
-  "name":"be.alpago.website.domain.image.ImageMetadata$Companion",
+  "name":"be.alpago.website.adapters.firestore.ListDocumentsResponse$Companion",
   "methods":[{"name":"serializer","parameterTypes":[] }]
 },
 {
-  "name":"be.alpago.website.libs.firestore.BooleanValue",
+  "name":"be.alpago.website.adapters.firestore.NullValue",
   "fields":[{"name":"Companion"}]
 },
 {
-  "name":"be.alpago.website.libs.firestore.BooleanValue$Companion",
+  "name":"be.alpago.website.adapters.firestore.NullValue$Companion",
   "methods":[{"name":"serializer","parameterTypes":[] }]
 },
 {
-  "name":"be.alpago.website.libs.firestore.Document",
+  "name":"be.alpago.website.adapters.firestore.Query",
   "fields":[{"name":"Companion"}]
 },
 {
-  "name":"be.alpago.website.libs.firestore.Document$Companion",
+  "name":"be.alpago.website.adapters.firestore.Query$Companion",
   "methods":[{"name":"serializer","parameterTypes":[] }]
 },
 {
-  "name":"be.alpago.website.libs.firestore.GoogleToken",
+  "name":"be.alpago.website.adapters.firestore.QueryResponse",
   "fields":[{"name":"Companion"}]
 },
 {
-  "name":"be.alpago.website.libs.firestore.GoogleToken$Companion",
+  "name":"be.alpago.website.adapters.firestore.QueryResponse$Companion",
   "methods":[{"name":"serializer","parameterTypes":[] }]
 },
 {
-  "name":"be.alpago.website.libs.firestore.IntValue",
+  "name":"be.alpago.website.adapters.firestore.StringValue",
   "fields":[{"name":"Companion"}]
 },
 {
-  "name":"be.alpago.website.libs.firestore.IntValue$Companion",
+  "name":"be.alpago.website.adapters.firestore.StringValue$Companion",
   "methods":[{"name":"serializer","parameterTypes":[] }]
 },
 {
-  "name":"be.alpago.website.libs.firestore.ListDocumentsResponse",
+  "name":"be.alpago.website.adapters.sendgrid.SendGridEmail",
   "fields":[{"name":"Companion"}]
 },
 {
-  "name":"be.alpago.website.libs.firestore.ListDocumentsResponse$Companion",
+  "name":"be.alpago.website.adapters.sendgrid.SendGridEmail$Companion",
   "methods":[{"name":"serializer","parameterTypes":[] }]
 },
 {
-  "name":"be.alpago.website.libs.firestore.NullValue",
+  "name":"be.alpago.website.domain.Animal",
   "fields":[{"name":"Companion"}]
 },
 {
-  "name":"be.alpago.website.libs.firestore.NullValue$Companion",
+  "name":"be.alpago.website.domain.Animal$Companion",
   "methods":[{"name":"serializer","parameterTypes":[] }]
 },
 {
-  "name":"be.alpago.website.libs.firestore.Query",
+  "name":"be.alpago.website.domain.Article",
   "fields":[{"name":"Companion"}]
 },
 {
-  "name":"be.alpago.website.libs.firestore.Query$Companion",
+  "name":"be.alpago.website.domain.Article$Companion",
   "methods":[{"name":"serializer","parameterTypes":[] }]
 },
 {
-  "name":"be.alpago.website.libs.firestore.QueryResponse",
+  "name":"be.alpago.website.domain.Email",
   "fields":[{"name":"Companion"}]
 },
 {
-  "name":"be.alpago.website.libs.firestore.QueryResponse$Companion",
+  "name":"be.alpago.website.domain.Email$Companion",
   "methods":[{"name":"serializer","parameterTypes":[] }]
 },
 {
-  "name":"be.alpago.website.libs.firestore.StringValue",
+  "name":"be.alpago.website.domain.FiberAnalysis",
   "fields":[{"name":"Companion"}]
 },
 {
-  "name":"be.alpago.website.libs.firestore.StringValue$Companion",
+  "name":"be.alpago.website.domain.FiberAnalysis$Companion",
   "methods":[{"name":"serializer","parameterTypes":[] }]
 },
 {
-  "name":"be.alpago.website.modules.email.Email",
+  "name":"be.alpago.website.domain.Highlight",
   "fields":[{"name":"Companion"}]
 },
 {
-  "name":"be.alpago.website.modules.email.Email$Companion",
+  "name":"be.alpago.website.domain.Highlight$Companion",
   "methods":[{"name":"serializer","parameterTypes":[] }]
 },
 {
-  "name":"be.alpago.website.modules.email.SendGridEmail",
+  "name":"be.alpago.website.domain.ImageMetadata",
   "fields":[{"name":"Companion"}]
 },
 {
-  "name":"be.alpago.website.modules.email.SendGridEmail$Companion",
+  "name":"be.alpago.website.domain.ImageMetadata$Companion",
   "methods":[{"name":"serializer","parameterTypes":[] }]
 },
 {
@@ -205,6 +205,14 @@
 {
   "name":"ch.qos.logback.core.spi.ContextAware",
   "methods":[{"name":"valueOf","parameterTypes":["java.lang.String"] }]
+},
+{
+  "name":"com.sun.crypto.provider.GaloisCounterMode$AESGCM",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.sun.crypto.provider.HmacCore$HmacSHA256",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
   "name":"com.sun.org.apache.xerces.internal.jaxp.SAXParserFactoryImpl",
@@ -343,7 +351,13 @@
   "methods":[{"name":"<init>","parameterTypes":["java.lang.String","java.lang.String"] }]
 },
 {
+  "name":"java.security.AlgorithmParametersSpi"
+},
+{
   "name":"java.security.AllPermission"
+},
+{
+  "name":"java.security.KeyStoreSpi"
 },
 {
   "name":"java.security.MessageDigestSpi"
@@ -353,6 +367,12 @@
 },
 {
   "name":"java.security.SecurityPermission"
+},
+{
+  "name":"java.security.interfaces.ECPrivateKey"
+},
+{
+  "name":"java.security.interfaces.ECPublicKey"
 },
 {
   "name":"java.security.interfaces.RSAPrivateKey"
@@ -526,6 +546,18 @@
   "fields":[{"name":"_availablePermits"}, {"name":"deqIdx"}, {"name":"enqIdx"}, {"name":"head"}, {"name":"tail"}]
 },
 {
+  "name":"sun.security.pkcs12.PKCS12KeyStore",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"sun.security.pkcs12.PKCS12KeyStore$DualFormatPKCS12",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"sun.security.provider.JavaKeyStore$JKS",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
   "name":"sun.security.provider.NativePRNG",
   "methods":[{"name":"<init>","parameterTypes":[] }, {"name":"<init>","parameterTypes":["java.security.SecureRandomParameters"] }]
 },
@@ -538,7 +570,15 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "name":"sun.security.provider.SHA5$SHA512",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
   "name":"sun.security.provider.X509Factory",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"sun.security.provider.certpath.PKIXCertPathValidator",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
@@ -550,10 +590,62 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "name":"sun.security.rsa.RSASignature$SHA512withRSA",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"sun.security.ssl.TrustManagerFactoryImpl$PKIXFactory",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
   "name":"sun.security.util.ObjectIdentifier"
 },
 {
+  "name":"sun.security.x509.AuthorityInfoAccessExtension",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
+},
+{
+  "name":"sun.security.x509.AuthorityKeyIdentifierExtension",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
+},
+{
+  "name":"sun.security.x509.BasicConstraintsExtension",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
+},
+{
+  "name":"sun.security.x509.CRLDistributionPointsExtension",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
+},
+{
   "name":"sun.security.x509.CertificateExtensions"
+},
+{
+  "name":"sun.security.x509.CertificatePoliciesExtension",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
+},
+{
+  "name":"sun.security.x509.ExtendedKeyUsageExtension",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
+},
+{
+  "name":"sun.security.x509.IssuerAlternativeNameExtension",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
+},
+{
+  "name":"sun.security.x509.KeyUsageExtension",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
+},
+{
+  "name":"sun.security.x509.NetscapeCertTypeExtension",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
+},
+{
+  "name":"sun.security.x509.PrivateKeyUsageExtension",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
+},
+{
+  "name":"sun.security.x509.SubjectAlternativeNameExtension",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.Boolean","java.lang.Object"] }]
 },
 {
   "name":"sun.security.x509.SubjectKeyIdentifierExtension",

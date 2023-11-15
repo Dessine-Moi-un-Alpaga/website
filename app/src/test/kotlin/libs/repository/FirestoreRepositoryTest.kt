@@ -1,10 +1,11 @@
 package libs.repository
 
+import be.alpago.website.adapters.firestore.FirestoreAggregateTransformer
+import be.alpago.website.adapters.firestore.FirestoreProperties
+import be.alpago.website.adapters.firestore.FirestoreRepository
+import be.alpago.website.adapters.firestore.createHttpClient
 import be.alpago.website.libs.domain.AggregateRoot
 import be.alpago.website.libs.domain.ports.AggregateRootNotFound
-import be.alpago.website.libs.firestore.FirestoreAggregateTransformer
-import be.alpago.website.libs.firestore.FirestoreRepository
-import be.alpago.website.modules.firestore.createClient
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.collections.shouldContainAll
 import io.kotest.matchers.shouldBe
@@ -48,14 +49,16 @@ class FirestoreRepositoryTest {
     private val repository: FirestoreRepository<TestAggregateRoot>
 
     init {
-        val client = createClient()
+        val client = createHttpClient()
         repository = FirestoreRepository(
             collection = "test",
             client = client,
-            environment = "test",
-            project = "gitops-8ab10a6068",
+            properties = FirestoreProperties(
+                environmentName = "test",
+                project = "gitops-8ab10a6068",
+                url = "http://127.0.0.1:8181",
+            ),
             transformer = TestTransformer(),
-            url = "http://127.0.0.1:8181",
         )
     }
 

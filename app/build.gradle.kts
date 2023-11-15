@@ -168,6 +168,7 @@ tasks.named<JavaExec>("run") {
 
     environment("DMUA_BASE_ASSET_URL", "https://storage.googleapis.com/${devBucket}")
     environment("DMUA_CREDENTIALS", credentials)
+    environment("DMUA_EMAIL_ADDRESS", "contact@dessinemoiunalpaga.com")
     environment("DMUA_ENVIRONMENT", "local")
     environment("DMUA_FIRESTORE_URL", "http://localhost:${firestorePort}")
     environment("DMUA_PROJECT", googleProject)

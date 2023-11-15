@@ -69,6 +69,11 @@ resource "google_cloud_run_v2_service" "cloud_run_service" {
       }
 
       env {
+        name = "DMUA_EMAIL_ADDRESS"
+        value = "contact@dessinemoiunalpaga.com"
+      }
+
+      env {
         name  = "DMUA_ENVIRONMENT"
         value = var.environment
       }
