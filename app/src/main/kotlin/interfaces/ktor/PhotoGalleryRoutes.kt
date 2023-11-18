@@ -1,6 +1,6 @@
 package be.alpago.website.interfaces.ktor
 
-import be.alpago.website.application.PhotoGalleryPageModelFactory
+import be.alpago.website.application.usecases.ShowPhotoGalleryPage
 import be.alpago.website.domain.ImageMetadata
 import be.alpago.website.interfaces.koin.PHOTO_GALLERY_IMAGE_REPOSITORY
 import be.alpago.website.interfaces.kotlinx.html.LayoutTemplate
@@ -17,10 +17,10 @@ import org.koin.ktor.ext.inject
 fun Application.photoGalleryRoutes() {
     routing {
         val properties by inject<TemplateProperties>()
-        val pageModelFactory by inject<PhotoGalleryPageModelFactory>()
+        val query by inject<ShowPhotoGalleryPage>()
 
         get("/photos.html") {
-            val pageModel = pageModelFactory.create()
+            val pageModel = query.execute()
             val template = LayoutTemplate(properties, pageModel)
             call.respondHtmlTemplate(template) { }
         }

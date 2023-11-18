@@ -1,8 +1,8 @@
 package be.alpago.website.adapters.sendgrid
 
-import be.alpago.website.application.EmailService
-import be.alpago.website.application.InvalidEmailException
-import be.alpago.website.application.UnexpectedEmailException
+import be.alpago.website.application.usecases.InvalidEmailException
+import be.alpago.website.application.usecases.SendEmail
+import be.alpago.website.application.usecases.UnexpectedEmailException
 import be.alpago.website.domain.Email
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.cio.CIO
@@ -27,7 +27,7 @@ data class SendGridProperties(
 
 class SendGridEmailService(
     private val properties: SendGridProperties,
-) : EmailService {
+) : SendEmail {
 
     override suspend fun send(email: Email) {
         HttpClient(CIO) {

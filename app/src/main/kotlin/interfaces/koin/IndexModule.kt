@@ -5,7 +5,8 @@ import be.alpago.website.adapters.firestore.FirestoreHighlightTransformer
 import be.alpago.website.adapters.firestore.FirestoreImageMetadataTransformer
 import be.alpago.website.adapters.firestore.FirestoreProperties
 import be.alpago.website.adapters.firestore.FirestoreRepository
-import be.alpago.website.application.IndexPageModelFactory
+import be.alpago.website.application.queries.ShowIndexPageQuery
+import be.alpago.website.application.usecases.ShowIndexPage
 import be.alpago.website.domain.Animal
 import be.alpago.website.domain.Article
 import be.alpago.website.domain.Highlight
@@ -92,7 +93,7 @@ fun Application.indexModule() {
                     )
                 }
 
-                single<IndexPageModelFactory> {
+                single<ShowIndexPage> {
                     val animalRepository by inject<Repository<Animal>>(
                         named(ANIMAL_REPOSITORY)
                     )
@@ -109,7 +110,7 @@ fun Application.indexModule() {
                         named(INDEX_TRAININGS_REPOSITORY)
                     )
 
-                    IndexPageModelFactory(
+                    ShowIndexPageQuery(
                         animalRepository,
                         articleRepository,
                         guildRepository,

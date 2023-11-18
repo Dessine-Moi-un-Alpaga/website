@@ -1,6 +1,6 @@
 package be.alpago.website.interfaces.ktor
 
-import be.alpago.website.application.FactsheetPageModelFactory
+import be.alpago.website.application.usecases.ShowFactsheetPage
 import be.alpago.website.domain.Article
 import be.alpago.website.domain.Highlight
 import be.alpago.website.interfaces.koin.FACTSHEET_ARTICLE_REPOSITORY
@@ -19,10 +19,10 @@ import org.koin.ktor.ext.inject
 fun Application.factsheetRoutes() {
     routing {
         val properties by inject<TemplateProperties>()
-        val pageModelFactory by inject<FactsheetPageModelFactory>()
+        val query by inject<ShowFactsheetPage>()
 
         get("/factsheets.html") {
-            val pageModel = pageModelFactory.create()
+            val pageModel = query.execute()
             val template = LayoutTemplate(properties, pageModel)
             call.respondHtmlTemplate(template) { }
         }

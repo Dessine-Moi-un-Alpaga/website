@@ -42,10 +42,10 @@ class NavigationModel(
 
     private val Category.order: Int
         get() = when (this) {
-            Category.STUD -> 0
-            Category.MARE -> 1
+            Category.STUD    -> 0
+            Category.MARE    -> 1
             Category.GELDING -> 2
-            Category.SOLD -> 3
-            Category.DOG -> 4
+            Category.SOLD    -> 3
+            Category.DOG     -> 4
         }
 }

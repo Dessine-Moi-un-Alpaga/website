@@ -1,6 +1,6 @@
 package be.alpago.website.interfaces.ktor
 
-import be.alpago.website.application.AnimalPageModelFactory
+import be.alpago.website.application.usecases.ShowAnimalPage
 import be.alpago.website.domain.Animal
 import be.alpago.website.interfaces.koin.ANIMAL_REPOSITORY
 import be.alpago.website.interfaces.kotlinx.html.LayoutTemplate
@@ -20,7 +20,7 @@ fun Application.animalRoutes() {
     val animalRepository by inject<Repository<Animal>>(
         named(ANIMAL_REPOSITORY)
     )
-    val pageModelFactory by inject<AnimalPageModelFactory>()
+    val query by inject<ShowAnimalPage>()
 
     routing {
         get("/animals/{id}.html") {
@@ -29,7 +29,7 @@ fun Application.animalRoutes() {
             if (id == null) {
                 call.response.status(HttpStatusCode.BadRequest)
             } else {
-                val pageModel = pageModelFactory.create(id)
+                val pageModel = query.execute(id)
                 val template = LayoutTemplate(properties, pageModel)
                 call.respondHtmlTemplate(template) { }
             }

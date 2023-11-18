@@ -3,7 +3,8 @@ package be.alpago.website.interfaces.koin
 import be.alpago.website.adapters.firestore.FirestoreAggregateTransformer
 import be.alpago.website.adapters.firestore.FirestoreProperties
 import be.alpago.website.adapters.firestore.FirestoreRepository
-import be.alpago.website.application.FactsheetPageModelFactory
+import be.alpago.website.application.queries.ShowFactsheetPageQuery
+import be.alpago.website.application.usecases.ShowFactsheetPage
 import be.alpago.website.domain.Animal
 import be.alpago.website.domain.Article
 import be.alpago.website.domain.Highlight
@@ -61,7 +62,7 @@ fun Application.factsheetModule() {
                     )
                 }
 
-                single<FactsheetPageModelFactory> {
+                single<ShowFactsheetPage> {
                     val animalRepository by inject<Repository<Animal>>(
                         named(ANIMAL_REPOSITORY)
                     )
@@ -71,7 +72,7 @@ fun Application.factsheetModule() {
                     val factsheetRepository by inject<Repository<Highlight>>(
                         named(FACTSHEET_HIGHLIGHT_REPOSITORY)
                     )
-                    FactsheetPageModelFactory(
+                    ShowFactsheetPageQuery(
                         animalRepository,
                         articleRepository,
                         factsheetRepository,

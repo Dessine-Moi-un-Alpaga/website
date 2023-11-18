@@ -3,7 +3,8 @@ package be.alpago.website.interfaces.koin
 import be.alpago.website.adapters.firestore.FirestoreImageMetadataTransformer
 import be.alpago.website.adapters.firestore.FirestoreProperties
 import be.alpago.website.adapters.firestore.FirestoreRepository
-import be.alpago.website.application.PhotoGalleryPageModelFactory
+import be.alpago.website.application.queries.ShowPhotoGalleryPageQuery
+import be.alpago.website.application.usecases.ShowPhotoGalleryPage
 import be.alpago.website.domain.Animal
 import be.alpago.website.domain.ImageMetadata
 import be.alpago.website.libs.domain.ports.Repository
@@ -37,14 +38,14 @@ fun Application.photoGallery() {
                     )
                 }
 
-                single<PhotoGalleryPageModelFactory> {
+                single<ShowPhotoGalleryPage> {
                     val animalRepository by inject<Repository<Animal>>(
                         named(ANIMAL_REPOSITORY)
                     )
                     val imageRepository by inject<Repository<ImageMetadata>>(
                         named(PHOTO_GALLERY_IMAGE_REPOSITORY)
                     )
-                    PhotoGalleryPageModelFactory(animalRepository, imageRepository)
+                    ShowPhotoGalleryPageQuery(animalRepository, imageRepository)
                 }
             }
         )

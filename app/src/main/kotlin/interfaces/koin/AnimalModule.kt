@@ -4,7 +4,8 @@ import be.alpago.website.adapters.firestore.FirestoreAggregateTransformer
 import be.alpago.website.adapters.firestore.FirestoreAnimalTransformer
 import be.alpago.website.adapters.firestore.FirestoreProperties
 import be.alpago.website.adapters.firestore.FirestoreRepository
-import be.alpago.website.application.AnimalPageModelFactory
+import be.alpago.website.application.queries.ShowAnimalPageQuery
+import be.alpago.website.application.usecases.ShowAnimalPage
 import be.alpago.website.domain.Animal
 import be.alpago.website.domain.FiberAnalysis
 import be.alpago.website.libs.domain.ports.Repository
@@ -48,14 +49,14 @@ fun Application.animalModule() {
                     )
                 }
 
-                single<AnimalPageModelFactory> {
+                single<ShowAnimalPage> {
                     val animalRepository by inject<Repository<Animal>>(
                         named(ANIMAL_REPOSITORY)
                     )
                     val fiberAnalysisRepository by inject<Repository<FiberAnalysis>>(
                         named(FIBER_ANALYSIS_REPOSITORY)
                     )
-                    AnimalPageModelFactory(
+                    ShowAnimalPageQuery(
                         animalRepository = animalRepository,
                         fiberAnalysisRepository = fiberAnalysisRepository,
                     )
