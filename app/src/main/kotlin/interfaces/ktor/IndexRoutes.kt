@@ -1,6 +1,6 @@
 package be.alpago.website.interfaces.ktor
 
-import be.alpago.website.application.IndexPageModelFactory
+import be.alpago.website.application.usecases.ShowIndexPage
 import be.alpago.website.domain.Article
 import be.alpago.website.domain.Highlight
 import be.alpago.website.domain.ImageMetadata
@@ -22,10 +22,10 @@ import org.koin.ktor.ext.inject
 private fun Application.indexRoute() {
     routing {
         val properties by inject<TemplateProperties>()
-        val indexPageModelFactory by inject<IndexPageModelFactory>()
+        val query by inject<ShowIndexPage>()
 
         get(Regex("/(index.html)?")) {
-            val pageModel = indexPageModelFactory.create()
+            val pageModel = query.execute()
             val template = LayoutTemplate(properties, pageModel)
             call.respondHtmlTemplate(template) { }
         }

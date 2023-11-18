@@ -3,7 +3,8 @@ package be.alpago.website.interfaces.koin
 import be.alpago.website.adapters.firestore.FirestoreArticleTransformer
 import be.alpago.website.adapters.firestore.FirestoreProperties
 import be.alpago.website.adapters.firestore.FirestoreRepository
-import be.alpago.website.application.NewsPageModelFactory
+import be.alpago.website.application.queries.ShowNewsPageQuery
+import be.alpago.website.application.usecases.ShowNewsPage
 import be.alpago.website.domain.Animal
 import be.alpago.website.domain.Article
 import be.alpago.website.libs.domain.ports.Repository
@@ -37,14 +38,14 @@ fun Application.newsModule() {
                     )
                 }
 
-                single<NewsPageModelFactory> {
+                single<ShowNewsPage> {
                     val animalRepository by inject<Repository<Animal>>(
                         named(ANIMAL_REPOSITORY)
                     )
                     val articleRepository by inject<Repository<Article>>(
                         named(NEWS_ARTICLE_REPOSITORY)
                     )
-                    NewsPageModelFactory(
+                    ShowNewsPageQuery(
                         animalRepository,
                         articleRepository,
                     )

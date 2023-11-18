@@ -1,6 +1,6 @@
 package be.alpago.website.interfaces.ktor
 
-import be.alpago.website.application.NewsPageModelFactory
+import be.alpago.website.application.usecases.ShowNewsPage
 import be.alpago.website.domain.Article
 import be.alpago.website.interfaces.koin.NEWS_ARTICLE_REPOSITORY
 import be.alpago.website.interfaces.kotlinx.html.LayoutTemplate
@@ -17,10 +17,10 @@ import org.koin.ktor.ext.inject
 fun Application.newsRoutes() {
     routing {
         val properties by inject<TemplateProperties>()
-        val pageModelFactory by inject<NewsPageModelFactory>()
+        val query by inject<ShowNewsPage>()
 
         get("/news.html") {
-            val pageModel = pageModelFactory.create()
+            val pageModel = query.execute()
             val template = LayoutTemplate(properties, pageModel)
             call.respondHtmlTemplate(template) { }
         }

@@ -1,7 +1,7 @@
 package be.alpago.website.interfaces.ktor
 
-import be.alpago.website.application.EmailService
-import be.alpago.website.application.InvalidEmailException
+import be.alpago.website.application.usecases.InvalidEmailException
+import be.alpago.website.application.usecases.SendEmail
 import be.alpago.website.domain.Email
 import io.ktor.http.HttpStatusCode
 import io.ktor.server.application.Application
@@ -26,13 +26,13 @@ fun Application.emailRoute() {
             }
         }
 
-        val emailService by inject<EmailService>()
+        val service by inject<SendEmail>()
 
         post("/api/email") {
             val email = call.receive<Email>()
 
             try {
-                emailService.send(email)
+                service.send(email)
                 call.response.status(HttpStatusCode.OK)
             } catch (e: InvalidEmailException) {
                 call.response.status(HttpStatusCode.BadRequest)
