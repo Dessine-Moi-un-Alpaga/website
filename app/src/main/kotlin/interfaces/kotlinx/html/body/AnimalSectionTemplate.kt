@@ -17,7 +17,7 @@ import java.util.Locale
 
 private fun Animal.Sex.text() = when (this) {
     Animal.Sex.FEMALE -> "${Messages.female}"
-    Animal.Sex.MALE -> "${Messages.male}"
+    Animal.Sex.MALE   -> "${Messages.male}"
 }
 
 private fun Animal.age(): String {
@@ -37,10 +37,10 @@ private fun Animal.formattedDateOfBirth() = dateOfBirth.format(
 )
 
 private fun Animal.Color.text() = when (this) {
-    Animal.Color.BAY_BLACK -> "${Messages.bayBlack}"
+    Animal.Color.BAY_BLACK   -> "${Messages.bayBlack}"
     Animal.Color.MEDIUM_FAWN -> "${Messages.mediumFawn}"
-    Animal.Color.DARK_FAWN -> "${Messages.darkFawn}"
-    Animal.Color.WHITE -> "${Messages.white}"
+    Animal.Color.DARK_FAWN   -> "${Messages.darkFawn}"
+    Animal.Color.WHITE       -> "${Messages.white}"
 }
 
 private fun LI.reference(reference: Animal.Reference) {
