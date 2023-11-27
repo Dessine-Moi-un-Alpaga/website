@@ -25,7 +25,7 @@ val webjars by configurations.creating
 
 val bcryptVersion = "0.10.2"
 val escapeVelocityVersion = "1.0.0-1"
-val i18n4kVersion = "0.6.2"
+val i18n4kVersion = "0.7.0"
 val junitVersion = "5.10.1"
 val koinVersion = "3.5.1"
 val kotestVersion = "5.8.0"
