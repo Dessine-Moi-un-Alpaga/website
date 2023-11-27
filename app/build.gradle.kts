@@ -2,7 +2,7 @@ import com.github.psxpaul.task.ExecFork
 import org.gradle.internal.os.OperatingSystem
 
 plugins {
-    kotlin("jvm") version "1.9.20"
+    kotlin("jvm") version "1.9.21"
     id("de.comahe.i18n4k") version "0.6.2"
     kotlin("plugin.serialization") version "1.9.20"
     id("io.ktor.plugin") version "2.3.6"
