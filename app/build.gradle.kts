@@ -3,7 +3,7 @@ import org.gradle.internal.os.OperatingSystem
 
 plugins {
     kotlin("jvm") version "1.9.21"
-    id("de.comahe.i18n4k") version "0.6.2"
+    id("de.comahe.i18n4k") version "0.7.0"
     kotlin("plugin.serialization") version "1.9.21"
     id("io.ktor.plugin") version "2.3.6"
     id("org.graalvm.buildtools.native") version "0.9.28"
