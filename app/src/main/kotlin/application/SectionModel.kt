@@ -7,18 +7,18 @@ import be.alpago.website.domain.Highlight
 import be.alpago.website.domain.ImageMetadata
 
 sealed class SectionModel(
-    val id: String,
     val color: SectionColor,
-    val isPhotoGallery: Boolean = false,
+    val id: String,
     val sectionTitle: String,
+    val isPhotoGallery: Boolean = false,
 )
 
 class AnimalSectionModel(
     val animal: Animal,
     val fiberAnalyses: List<FiberAnalysis>,
 ) : SectionModel(
-    id = animal.id,
     color = SectionColor.WHITE,
+    id = animal.id,
     sectionTitle = animal.name,
 )
 
@@ -26,7 +26,7 @@ class ArticleSectionModel(
     val article: Article,
     color: SectionColor,
 ) : SectionModel(
-    color = color,
+    color,
     id = "article",
     sectionTitle = article.sectionTitle,
 )
@@ -38,10 +38,10 @@ class PhotoGallerySectionModel(
     val subtitle: String? = null,
     val title: String? = null,
 ) : SectionModel(
-    color = color,
+    color,
     id = "photos",
+    sectionTitle,
     isPhotoGallery = true,
-    sectionTitle = sectionTitle,
 )
 
 class HighlightsSectionModel(
@@ -49,9 +49,9 @@ class HighlightsSectionModel(
     val highlights: List<Highlight>,
     sectionTitle: String,
 ) : SectionModel(
-    color = color,
+    color,
     id = "highlights",
-    sectionTitle = sectionTitle,
+    sectionTitle,
 )
 
 enum class SectionColor {

@@ -14,6 +14,7 @@ import io.ktor.client.HttpClient
 import io.ktor.server.application.Application
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
+import org.koin.ktor.ext.inject
 import org.koin.ktor.plugin.koin
 
 const val FACTSHEET_ARTICLE_REPOSITORY = "factsheets/article"
@@ -29,53 +30,44 @@ fun Application.factsheetModule() {
                 single<Repository<Article>>(
                     named(FACTSHEET_ARTICLE_REPOSITORY)
                 ) {
-                    val client by inject<HttpClient>()
-                    val properties by inject<FirestoreProperties>()
-                    val transformer by inject<FirestoreAggregateTransformer<Article>>(
-                        named(ARTICLE_TRANSFORMER)
-                    )
-                    CachingRepository(
-                        FirestoreRepository(
-                            client,
-                            collection = FACTSHEET_ARTICLE_COLLECTION,
-                            properties,
-                            transformer,
+                        CachingRepository(
+                            FirestoreRepository(
+                                client = get<HttpClient>(),
+                                collection = FACTSHEET_ARTICLE_COLLECTION,
+                                properties = get<FirestoreProperties>(),
+                                transformer = get<FirestoreAggregateTransformer<Article>>(
+                                    named(ARTICLE_TRANSFORMER)
+                                )
+                            )
                         )
-                    )
                 }
 
                 single<Repository<Highlight>>(
                     named(FACTSHEET_HIGHLIGHT_REPOSITORY)
                 ) {
-                    val client by inject<HttpClient>()
-                    val properties by inject<FirestoreProperties>()
-                    val transformer by inject<FirestoreAggregateTransformer<Highlight>>(
-                        named(HIGHLIGHT_TRANSFORMER)
-                    )
                     CachingRepository(
                         FirestoreRepository(
-                            client,
+                            client = get<HttpClient>(),
                             collection = FACTSHEET_HIGHLIGHT_COLLECTION,
-                            properties,
-                            transformer,
+                            properties = get<FirestoreProperties>(),
+                            transformer = get<FirestoreAggregateTransformer<Highlight>>(
+                                named(HIGHLIGHT_TRANSFORMER)
+                            )
                         )
                     )
                 }
 
                 single<ShowFactsheetPage> {
-                    val animalRepository by inject<Repository<Animal>>(
-                        named(ANIMAL_REPOSITORY)
-                    )
-                    val articleRepository by inject<Repository<Article>>(
-                        named(FACTSHEET_ARTICLE_REPOSITORY)
-                    )
-                    val factsheetRepository by inject<Repository<Highlight>>(
-                        named(FACTSHEET_HIGHLIGHT_REPOSITORY)
-                    )
                     ShowFactsheetPageQuery(
-                        animalRepository,
-                        articleRepository,
-                        factsheetRepository,
+                        animalRepository = get<Repository<Animal>>(
+                            named(ANIMAL_REPOSITORY)
+                        ),
+                        articleRepository = get<Repository<Article>>(
+                            named(FACTSHEET_ARTICLE_REPOSITORY)
+                        ),
+                        factsheetRepository = get<Repository<Highlight>>(
+                            named(FACTSHEET_HIGHLIGHT_REPOSITORY)
+                        )
                     )
                 }
             }

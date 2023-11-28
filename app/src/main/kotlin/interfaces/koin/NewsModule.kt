@@ -1,6 +1,6 @@
 package be.alpago.website.interfaces.koin
 
-import be.alpago.website.adapters.firestore.FirestoreArticleTransformer
+import be.alpago.website.adapters.firestore.FirestoreAggregateTransformer
 import be.alpago.website.adapters.firestore.FirestoreProperties
 import be.alpago.website.adapters.firestore.FirestoreRepository
 import be.alpago.website.application.queries.ShowNewsPageQuery
@@ -26,28 +26,26 @@ fun Application.newsModule() {
                 single<Repository<Article>>(
                     named(NEWS_ARTICLE_REPOSITORY)
                 ) {
-                    val client by inject<HttpClient>()
-                    val properties by inject<FirestoreProperties>()
                     CachingRepository(
                         FirestoreRepository(
-                            client,
+                            client = get<HttpClient>(),
                             collection = NEWS_ARTICLE_COLLECTION,
-                            properties,
-                            transformer = FirestoreArticleTransformer(),
+                            properties = get<FirestoreProperties>(),
+                            transformer = get<FirestoreAggregateTransformer<Article>>(
+                                named(ARTICLE_TRANSFORMER)
+                            )
                         )
                     )
                 }
 
                 single<ShowNewsPage> {
-                    val animalRepository by inject<Repository<Animal>>(
-                        named(ANIMAL_REPOSITORY)
-                    )
-                    val articleRepository by inject<Repository<Article>>(
-                        named(NEWS_ARTICLE_REPOSITORY)
-                    )
                     ShowNewsPageQuery(
-                        animalRepository,
-                        articleRepository,
+                        animalRepository = get<Repository<Animal>>(
+                            named(ANIMAL_REPOSITORY)
+                        ),
+                        articleRepository = get<Repository<Article>>(
+                            named(NEWS_ARTICLE_REPOSITORY)
+                        )
                     )
                 }
             }

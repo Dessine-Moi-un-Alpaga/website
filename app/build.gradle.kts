@@ -136,7 +136,7 @@ tasks.register<Copy>("explodeWebjars") {
 }
 
 tasks.processResources.configure {
-    dependsOn(":explodeWebjars", ":generateI18n4kFiles")
+    dependsOn(":explodeWebjars")
 }
 
 val home = System.getProperty("user.home")

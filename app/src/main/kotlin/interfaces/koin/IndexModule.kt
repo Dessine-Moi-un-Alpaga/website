@@ -1,8 +1,6 @@
 package be.alpago.website.interfaces.koin
 
-import be.alpago.website.adapters.firestore.FirestoreArticleTransformer
-import be.alpago.website.adapters.firestore.FirestoreHighlightTransformer
-import be.alpago.website.adapters.firestore.FirestoreImageMetadataTransformer
+import be.alpago.website.adapters.firestore.FirestoreAggregateTransformer
 import be.alpago.website.adapters.firestore.FirestoreProperties
 import be.alpago.website.adapters.firestore.FirestoreRepository
 import be.alpago.website.application.queries.ShowIndexPageQuery
@@ -36,14 +34,14 @@ fun Application.indexModule() {
                 single<Repository<Article>>(
                     named(INDEX_ARTICLE_REPOSITORY)
                 ) {
-                    val client by inject<HttpClient>()
-                    val properties by inject<FirestoreProperties>()
                     CachingRepository(
                         FirestoreRepository(
-                            client,
+                            client = get<HttpClient>(),
                             collection = INDEX_ARTICLE_COLLECTION,
-                            properties,
-                            transformer = FirestoreArticleTransformer(),
+                            properties = get<FirestoreProperties>(),
+                            transformer = get<FirestoreAggregateTransformer<Article>>(
+                                named(ARTICLE_TRANSFORMER)
+                            )
                         )
                     )
                 }
@@ -51,14 +49,14 @@ fun Application.indexModule() {
                 single<Repository<Highlight>>(
                     named(INDEX_GUILD_REPOSITORY)
                 ) {
-                    val client by inject<HttpClient>()
-                    val properties by inject<FirestoreProperties>()
                     CachingRepository(
                         FirestoreRepository(
-                            client,
+                            client = get<HttpClient>(),
                             collection = INDEX_GUILD_COLLECTION,
-                            properties,
-                            transformer = FirestoreHighlightTransformer(),
+                            properties = get<FirestoreProperties>(),
+                            transformer = get<FirestoreAggregateTransformer<Highlight>>(
+                                named(HIGHLIGHT_TRANSFORMER)
+                            )
                         )
                     )
                 }
@@ -66,14 +64,14 @@ fun Application.indexModule() {
                 single<Repository<Highlight>>(
                     named(INDEX_NEWS_REPOSITORY)
                 ) {
-                    val client by inject<HttpClient>()
-                    val properties by inject<FirestoreProperties>()
                     CachingRepository(
                         FirestoreRepository(
-                            client = client,
+                            client = get<HttpClient>(),
                             collection = INDEX_NEWS_COLLECTION,
-                            properties,
-                            transformer = FirestoreHighlightTransformer(),
+                            properties = get<FirestoreProperties>(),
+                            transformer = get<FirestoreAggregateTransformer<Highlight>>(
+                                named(HIGHLIGHT_TRANSFORMER)
+                            )
                         )
                     )
                 }
@@ -81,41 +79,35 @@ fun Application.indexModule() {
                 single<Repository<ImageMetadata>>(
                     named(INDEX_TRAININGS_REPOSITORY)
                 ) {
-                    val client by inject<HttpClient>()
-                    val properties by inject<FirestoreProperties>()
                     CachingRepository(
                         FirestoreRepository(
-                            client,
+                            client = get<HttpClient>(),
                             collection = INDEX_TRAININGS_COLLECTION,
-                            properties,
-                            transformer = FirestoreImageMetadataTransformer(),
+                            properties = get<FirestoreProperties>(),
+                            transformer = get<FirestoreAggregateTransformer<ImageMetadata>>(
+                                named(IMAGE_METADATA_TRANSFORMER)
+                            )
                         )
                     )
                 }
 
                 single<ShowIndexPage> {
-                    val animalRepository by inject<Repository<Animal>>(
-                        named(ANIMAL_REPOSITORY)
-                    )
-                    val articleRepository by inject<Repository<Article>>(
-                        named(INDEX_ARTICLE_REPOSITORY)
-                    )
-                    val guildRepository by inject<Repository<Highlight>>(
-                        named(INDEX_GUILD_REPOSITORY)
-                    )
-                    val newsRepository by inject<Repository<Highlight>>(
-                        named(INDEX_NEWS_REPOSITORY)
-                    )
-                    val trainingRepository by inject<Repository<ImageMetadata>>(
-                        named(INDEX_TRAININGS_REPOSITORY)
-                    )
-
                     ShowIndexPageQuery(
-                        animalRepository,
-                        articleRepository,
-                        guildRepository,
-                        newsRepository,
-                        trainingRepository,
+                        animalRepository = get<Repository<Animal>>(
+                            named(ANIMAL_REPOSITORY)
+                        ),
+                        articleRepository = get<Repository<Article>>(
+                            named(INDEX_ARTICLE_REPOSITORY)
+                        ),
+                        guildRepository = get<Repository<Highlight>>(
+                            named(INDEX_GUILD_REPOSITORY)
+                        ),
+                        newsRepository = get<Repository<Highlight>>(
+                            named(INDEX_NEWS_REPOSITORY)
+                        ),
+                        trainingRepository = get<Repository<ImageMetadata>>(
+                            named(INDEX_TRAININGS_REPOSITORY)
+                        )
                     )
                 }
             }

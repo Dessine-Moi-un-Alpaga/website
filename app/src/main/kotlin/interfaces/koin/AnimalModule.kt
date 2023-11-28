@@ -1,6 +1,5 @@
 package be.alpago.website.interfaces.koin
 
-import be.alpago.website.adapters.firestore.FirestoreAggregateTransformer
 import be.alpago.website.adapters.firestore.FirestoreAnimalTransformer
 import be.alpago.website.adapters.firestore.FirestoreProperties
 import be.alpago.website.adapters.firestore.FirestoreRepository
@@ -25,40 +24,27 @@ fun Application.animalModule() {
     koin {
         modules(
             module {
-                single<FirestoreAggregateTransformer<Animal>>(
-                    named(ANIMAL_TRANSFORMER)
-                ) {
-                    FirestoreAnimalTransformer()
-                }
-
                 single<Repository<Animal>>(
                     named(ANIMAL_REPOSITORY)
                 ) {
-                    val client by inject<HttpClient>()
-                    val properties by inject<FirestoreProperties>()
-                    val transformer by inject<FirestoreAggregateTransformer<Animal>>(
-                        named(ANIMAL_TRANSFORMER)
-                    )
                     CachingRepository(
                         FirestoreRepository(
-                            client,
+                            client = get<HttpClient>(),
                             collection = ANIMAL_COLLECTION,
-                            properties,
-                            transformer,
+                            properties = get<FirestoreProperties>(),
+                            transformer = FirestoreAnimalTransformer()
                         )
                     )
                 }
 
                 single<ShowAnimalPage> {
-                    val animalRepository by inject<Repository<Animal>>(
-                        named(ANIMAL_REPOSITORY)
-                    )
-                    val fiberAnalysisRepository by inject<Repository<FiberAnalysis>>(
-                        named(FIBER_ANALYSIS_REPOSITORY)
-                    )
                     ShowAnimalPageQuery(
-                        animalRepository = animalRepository,
-                        fiberAnalysisRepository = fiberAnalysisRepository,
+                        animalRepository = get<Repository<Animal>>(
+                            named(ANIMAL_REPOSITORY)
+                        ),
+                        fiberAnalysisRepository = get<Repository<FiberAnalysis>>(
+                            named(FIBER_ANALYSIS_REPOSITORY)
+                        )
                     )
                 }
             }
