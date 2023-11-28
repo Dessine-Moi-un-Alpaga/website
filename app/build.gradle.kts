@@ -4,7 +4,7 @@ import org.gradle.internal.os.OperatingSystem
 plugins {
     kotlin("jvm") version "1.9.21"
     id("de.comahe.i18n4k") version "0.6.2"
-    kotlin("plugin.serialization") version "1.9.20"
+    kotlin("plugin.serialization") version "1.9.21"
     id("io.ktor.plugin") version "2.3.6"
     id("org.graalvm.buildtools.native") version "0.9.28"
     id("com.github.psxpaul.execfork") version "0.2.2"
