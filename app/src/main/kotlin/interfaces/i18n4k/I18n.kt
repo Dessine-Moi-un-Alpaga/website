@@ -6,10 +6,6 @@ import de.comahe.i18n4k.i18n4k
 import de.comahe.i18n4k.messages.formatter.MessageFormatterDefault
 
 fun i18n() {
-    i18n4k = I18n4kConfigImmutable(
-        defaultLocale = Locale.ENGLISH,
-        locale = Locale.FRENCH,
-        messageFormatter = MessageFormatterDefault,
-        treadBlankStringAsNull = true
-    )
+    i18n4k = I18n4kConfigImmutable()
+        .withLocale(Locale.FRENCH)
 }
