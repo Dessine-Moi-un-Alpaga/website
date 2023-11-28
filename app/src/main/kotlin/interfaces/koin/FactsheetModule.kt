@@ -14,7 +14,6 @@ import io.ktor.client.HttpClient
 import io.ktor.server.application.Application
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
-import org.koin.ktor.ext.inject
 import org.koin.ktor.plugin.koin
 
 const val FACTSHEET_ARTICLE_REPOSITORY = "factsheets/article"
