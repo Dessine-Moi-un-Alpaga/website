@@ -31,14 +31,14 @@ fun Application.fiberAnalysisModule() {
                 single<Repository<FiberAnalysis>>(
                     named(FIBER_ANALYSIS_REPOSITORY)
                 ) {
-                    val client by inject<HttpClient>()
-                    val properties by inject<FirestoreProperties>()
                     CachingRepository(
                         FirestoreRepository(
-                            client,
+                            client = get<HttpClient>(),
                             collection = FIBER_ANALYSIS_COLLECTION,
-                            properties,
-                            transformer = FirestoreFiberAnalysisTransformer(),
+                            properties = get<FirestoreProperties>(),
+                            transformer = get<FirestoreAggregateTransformer<FiberAnalysis>>(
+                                named(FIBER_ANALYSIS_TRANSFORMER)
+                            )
                         )
                     )
                 }

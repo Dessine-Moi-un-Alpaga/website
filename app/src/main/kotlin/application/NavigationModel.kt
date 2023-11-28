@@ -1,6 +1,9 @@
 package be.alpago.website.application
 
 import be.alpago.website.domain.Animal
+import java.util.SortedMap
+
+typealias Categories = SortedMap<NavigationModel.Category, MutableSet<Animal>>
 
 class NavigationModel(
     animals: List<Animal>,
@@ -9,7 +12,7 @@ class NavigationModel(
     val animalsByCategory: Map<Category, Set<Animal>>
 
     init {
-        val categories = sortedMapOf<Category, MutableSet<Animal>>(compareBy { it.order })
+        val categories: Categories = sortedMapOf(compareBy { it.order })
 
         animals.forEach { animal ->
             val category = animal.category
@@ -30,7 +33,7 @@ class NavigationModel(
     }
 
     private val Animal.Type.category: Category
-        get() = when (this) {
+        inline get() = when (this) {
             Animal.Type.DOG     -> Category.DOG
             Animal.Type.GELDING -> Category.GELDING
             Animal.Type.MARE    -> Category.MARE
@@ -41,7 +44,7 @@ class NavigationModel(
         get() = if (sold) Category.SOLD else type.category
 
     private val Category.order: Int
-        get() = when (this) {
+        inline get() = when (this) {
             Category.STUD    -> 0
             Category.MARE    -> 1
             Category.GELDING -> 2
