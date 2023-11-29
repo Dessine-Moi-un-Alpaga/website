@@ -33,7 +33,7 @@ class NavigationModel(
     }
 
     private val Animal.Type.category: Category
-        inline get() = when (this) {
+        get() = when (this) {
             Animal.Type.DOG     -> Category.DOG
             Animal.Type.GELDING -> Category.GELDING
             Animal.Type.MARE    -> Category.MARE
@@ -44,7 +44,7 @@ class NavigationModel(
         get() = if (sold) Category.SOLD else type.category
 
     private val Category.order: Int
-        inline get() = when (this) {
+        get() = when (this) {
             Category.STUD    -> 0
             Category.MARE    -> 1
             Category.GELDING -> 2
