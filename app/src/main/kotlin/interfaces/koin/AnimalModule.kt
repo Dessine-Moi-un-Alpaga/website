@@ -16,7 +16,6 @@ import org.koin.dsl.module
 import org.koin.ktor.plugin.koin
 
 const val ANIMAL_REPOSITORY = "animals"
-const val ANIMAL_TRANSFORMER = "animals"
 
 private const val ANIMAL_COLLECTION = "animals"
 
