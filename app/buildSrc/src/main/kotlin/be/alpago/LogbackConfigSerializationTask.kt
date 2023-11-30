@@ -1,10 +1,9 @@
 package be.alpago
 
-import ch.qos.logback.classic.joran.JoranConfigurator
 import ch.qos.logback.classic.LoggerContext
+import ch.qos.logback.classic.joran.JoranConfigurator
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.InputFile
-import org.gradle.api.tasks.OutputDirectory
 import org.gradle.api.tasks.OutputFile
 import org.gradle.api.tasks.TaskAction
 import java.io.File
