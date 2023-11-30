@@ -1,3 +1,4 @@
+import be.alpago.LogbackConfigSerializationGradlePlugin
 import com.github.psxpaul.task.ExecFork
 import org.gradle.internal.os.OperatingSystem
 
@@ -9,6 +10,8 @@ plugins {
     id("org.graalvm.buildtools.native") version "0.9.28"
     id("com.github.psxpaul.execfork") version "0.2.2"
 }
+
+apply<LogbackConfigSerializationGradlePlugin>()
 
 group = "be.alpago"
 version = "latest"

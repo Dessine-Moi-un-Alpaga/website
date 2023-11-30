@@ -1,6 +1,7 @@
 **/*
 
 !gradle/**
+!buildSrc/**
 !src/**
 !build.gradle.kts
 !gradlew
