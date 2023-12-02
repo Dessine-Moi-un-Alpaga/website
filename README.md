@@ -19,10 +19,10 @@
 [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=Dessine-Moi-un-Alpaga_website&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=Dessine-Moi-un-Alpaga_website)
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg?logo=gnu)](https://www.gnu.org/licenses/gpl-3.0)
-[![Terraform](https://img.shields.io/badge/terraform-1.6.2-darkred.svg?logo=terraform)](http://terraform.io)
-[![Gradle](https://img.shields.io/badge/gradle-8.4-darkgreen.svg?logo=gradle)](http://gradle.org)
-[![GrralVM](https://img.shields.io/badge/graalvm-17.0.9-blue.svg?logo=openjdk)](http://graalvm.org)
-[![Kotlin](https://img.shields.io/badge/kotlin-1.9.20-darkblue.svg?logo=kotlin)](http://kotlinlang.org)
+[![Terraform](https://img.shields.io/badge/terraform-1.6.5-darkred.svg?logo=terraform)](http://terraform.io)
+[![Gradle](https://img.shields.io/badge/gradle-8.5-darkgreen.svg?logo=gradle)](http://gradle.org)
+[![GrralVM](https://img.shields.io/badge/graalvm-21.0.1-blue.svg?logo=openjdk)](http://graalvm.org)
+[![Kotlin](https://img.shields.io/badge/kotlin-1.9.21-darkblue.svg?logo=kotlin)](http://kotlinlang.org)
 [![Ktor](https://img.shields.io/badge/ktor-2.3.6-red.svg)](http://ktor.io)
 
 # What is this?
