@@ -68,6 +68,7 @@ TERRAFORM_UNLOCK_OPTIONS = -force ${LOCK_ID}
 run:
 	@cd app && ./gradlew run
 
+push: BUILDKIT_PROGRESS="tty"
 push:
 	@cd app \
 		&& gcloud auth configure-docker $(ARTIFACT_REGISTRY) --quiet \
@@ -137,3 +138,4 @@ local-assets-to-dev:
 
 dev-assets-to-prod:
 	@gsutil -m rsync -r -d gs://$(DEV_BUCKET) gs://$(PROD_BUCKET)
+
