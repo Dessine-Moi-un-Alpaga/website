@@ -104,6 +104,8 @@ graalvmNative {
             buildArgs.add("-Duser.country=BE")
             buildArgs.add("-Duser.language=fr")
 
+            buildArgs.add("--color=always")
+
             if (OperatingSystem.current().familyName == OperatingSystemFamily.LINUX) {
                 buildArgs.add("-march=x86-64-v3")
                 buildArgs.add("--static")
