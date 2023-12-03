@@ -135,7 +135,7 @@ tasks.register<Copy>("explodeWebjars") {
             }
         }
     }
-    into("${project.buildDir}/resources/main/static/webjars")
+    into("${project.layout.buildDirectory.asFile.get()}/resources/main/static/webjars")
 }
 
 tasks.processResources.configure {

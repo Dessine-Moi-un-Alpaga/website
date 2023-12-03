@@ -16,7 +16,7 @@ open class LogbackConfigSerializationTask : DefaultTask() {
     open fun getInputFile() = project.file("src/main/logback/logback.xml")
 
     @OutputFile
-    open fun getOutputFile() = File(project.buildDir, "${OUTPUT_DIRECTORY}/logback.scmo")
+    open fun getOutputFile() = File(project.layout.buildDirectory.asFile.get(), "${OUTPUT_DIRECTORY}/logback.scmo")
 
     @TaskAction
     fun execute() {

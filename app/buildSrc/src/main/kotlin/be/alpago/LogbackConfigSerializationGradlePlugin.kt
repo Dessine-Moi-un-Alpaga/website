@@ -35,7 +35,7 @@ class LogbackConfigSerializationGradlePlugin : Plugin<Project> {
     }
 
     private fun addSerializedLogbackConfigToResources(project: Project) {
-        val outputDirectory = File(project.buildDir, OUTPUT_DIRECTORY)
+        val outputDirectory = File(project.layout.buildDirectory.asFile.get(), OUTPUT_DIRECTORY)
         outputDirectory.mkdirs()
         val sourceSets = project.properties["sourceSets"] as SourceSetContainer
         val resources = sourceSets.getByName(SourceSet.MAIN_SOURCE_SET_NAME).resources
