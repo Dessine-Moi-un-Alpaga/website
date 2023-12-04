@@ -68,11 +68,10 @@ TERRAFORM_UNLOCK_OPTIONS = -force ${LOCK_ID}
 run:
 	@cd app && ./gradlew run
 
-push: export BUILDKIT_PROGRESS="tty"
 push:
 	@cd app \
 		&& gcloud auth configure-docker $(ARTIFACT_REGISTRY) --quiet \
-		&& docker buildx build --push --tag $(DOCKER_TAG) --cache-from type=gha,scope=main --cache-to type=gha,mode=max,scope=main .
+		&& BUILDKIT_PROGRESS="tty" docker buildx build --push --tag $(DOCKER_TAG) --cache-from type=gha,scope=main --cache-to type=gha,mode=max,scope=main .
 
 bootstrap:
 	@bash infrastructure/bootstrap/install.sh
