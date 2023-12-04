@@ -6,7 +6,7 @@ repositories {
     mavenCentral()
 }
 
-val logbackVersion = "1.4.11"
+val logbackVersion = "1.4.14"
 
 dependencies {
     compileOnly(gradleApi())
