@@ -32,7 +32,7 @@ val i18n4kVersion = "0.7.0"
 val junitVersion = "5.10.1"
 val koinVersion = "3.5.1"
 val kotestVersion = "5.8.0"
-val logbackVersion = "1.4.11"
+val logbackVersion = "1.4.14"
 val photoswipeVersion = "5.3.7"
 val toastrVersion = "2.1.2"
 
