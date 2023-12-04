@@ -4,7 +4,7 @@ RUN microdnf -y install findutils
 
 WORKDIR /app
 COPY . .
-RUN ./gradlew --console=rich nativeCompile
+RUN ./gradlew nativeCompile
 
 FROM scratch
 WORKDIR /app
