@@ -34,7 +34,7 @@ val koinVersion = "3.5.1"
 val kotestVersion = "5.8.0"
 val logbackVersion = "1.4.14"
 val photoswipeVersion = "5.3.7"
-val toastrVersion = "2.1.2"
+val toastrVersion = "2.1.4"
 
 dependencies {
     implementation("at.favre.lib:bcrypt:$bcryptVersion")
