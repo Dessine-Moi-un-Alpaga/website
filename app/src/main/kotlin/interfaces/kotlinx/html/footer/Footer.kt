@@ -38,24 +38,10 @@ private fun DIV.footerHeader() {
 
         h2 {
             +capitalize(Messages.footerHeaderLine1)
-
-            unsafe {
-                +Entities.nbsp.text
-            }
-
-            +"?"
         }
-
-
 
         p {
             +capitalize(Messages.footerHeaderLine2)
-
-            unsafe {
-                +Entities.nbsp.text
-            }
-
-            +"!"
         }
     }
 }
