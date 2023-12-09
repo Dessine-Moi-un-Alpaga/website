@@ -3,12 +3,12 @@ import com.github.psxpaul.task.ExecFork
 import org.gradle.internal.os.OperatingSystem
 
 plugins {
-    kotlin("jvm") version "1.9.21"
-    id("de.comahe.i18n4k") version "0.7.0"
-    kotlin("plugin.serialization") version "1.9.21"
-    id("io.ktor.plugin") version "2.3.7"
-    id("org.graalvm.buildtools.native") version "0.9.28"
-    id("com.github.psxpaul.execfork") version "0.2.2"
+    kotlin("jvm")
+    id("de.comahe.i18n4k")
+    kotlin("plugin.serialization")
+    id("io.ktor.plugin")
+    id("org.graalvm.buildtools.native")
+    id("com.github.psxpaul.execfork")
 }
 
 apply<LogbackConfigSerializationGradlePlugin>()
@@ -26,15 +26,15 @@ repositories {
 
 val webjars by configurations.creating
 
-val bcryptVersion = "0.10.2"
-val escapeVelocityVersion = "1.0.0-1"
-val i18n4kVersion = "0.7.0"
-val junitVersion = "5.10.1"
-val koinVersion = "3.5.1"
-val kotestVersion = "5.8.0"
-val logbackVersion = "1.4.14"
-val photoswipeVersion = "5.3.7"
-val toastrVersion = "2.1.4"
+val bcryptVersion: String by project
+val escapeVelocityVersion: String by project
+val i18n4kVersion: String by project
+val junitVersion: String by project
+val koinVersion: String by project
+val kotestVersion: String by project
+val logbackVersion: String by project
+val photoswipeVersion: String by project
+val toastrVersion: String by project
 
 dependencies {
     implementation("at.favre.lib:bcrypt:$bcryptVersion")
