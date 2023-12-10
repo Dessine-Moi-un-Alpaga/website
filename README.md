@@ -31,10 +31,41 @@ An application for serving and managing [the website of our alpaca breeding farm
 
 # Prerequisites
 
+## Bootstrap
+
 The following is required to bootstrap the project:
+* the [Google Cloud CLI](https://cloud.google.com/sdk/docs/install)
 * a Google Cloud organization
 * a Google user account that is `Organization Administrator`
-* a Google Firestore Emulator installation properly initialized at `~/.firestore` and running on port 8181
+
+## Gradle
+
+Running the Gradle build requires:
+* an installation of the [GraalVM 21 SDK](https://www.graalvm.org/downloads/)
+* a [Google Firestore Emulator installation](https://firebase.google.com/docs/emulator-suite/install_and_configure)
+    properly initialized at `~/.firestore` and configured to run on port `8181`
+
+By default, the native compilation task is configured for Apple Silicon (`-march=armv8-a`). You can override the build arguments using the
+`nativeCompileExtraBuildArgs` project variable:
+```shell
+$ ./gradlew nativeCompile -PnativeCompileExtraBuildArgs=-0b,-march=x86-64-v3
+```
+
+It is probably simpler to include your defaults in your `~/.gradle/gradle.properties` file:
+```properties
+nativeCompileExtraBuildArgs=-0b,-march=x86-64-v3
+```
+
+## Docker
+
+Building and pushing the docker image requires a recent [Docker installation](https://www.docker.com/products/docker-desktop/)
+that includes `buildx`.
+
+The Docker build works exclusively on Linux/x86-64.
+
+## Terraform
+
+Provisioning the infrastructure requires a recent [Terraform installation](https://developer.hashicorp.com/terraform/install?product_intent=terraform).
 
 # Bootstrapping the Project
 
