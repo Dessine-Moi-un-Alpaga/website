@@ -1,7 +1,21 @@
 resource "google_artifact_registry_repository" "artifact_registry" {
+  cleanup_policy_dry_run = true
   format        = "docker"
   location      = var.artifact_registry_location
   repository_id = var.artifact_repository
+
+  cleanup_policies {
+    id = "keep-dev-and-prod-releases"
+    action = "KEEP"
+
+    condition {
+      tag_state = "TAGGED"
+      tag_prefixes = [
+        "dev",
+        "prod"
+      ]
+    }
+  }
 }
 
 resource "google_project_service" "cloud_resource_manager_api" {
