@@ -70,6 +70,8 @@ i18n4k {
     sourceCodeLocales = listOf("fr", "en")
 }
 
+val nativeCompileExtraBuildArgs: String by project
+
 graalvmNative {
     agent {
         defaultMode = "direct"
@@ -106,14 +108,9 @@ graalvmNative {
 
             buildArgs.add("--color=always")
 
-            if (OperatingSystem.current().familyName == OperatingSystemFamily.LINUX) {
-                buildArgs.add("-march=x86-64-v3")
-                buildArgs.add("--static")
-                buildArgs.add("--libc=musl")
-            } else {
-                buildArgs.add("-Ob")
-                buildArgs.add("-march=armv8-a")
-            }
+            buildArgs.addAll()
+
+            buildArgs.addAll(nativeCompileExtraBuildArgs.split(","))
 
             configurationFileDirectories.from(file("src/main/native"))
 
