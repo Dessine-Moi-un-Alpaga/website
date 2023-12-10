@@ -88,7 +88,7 @@ graalvmNative {
         named("main") {
             fallback.set(false)
 
-            buildArgs.add("-R:MaxHeapSize=200m")
+            buildArgs.add("-R:MaxHeapSize=100m")
 
             buildArgs.add("--initialize-at-build-time=ch.qos.logback")
             buildArgs.add("--initialize-at-build-time=io.ktor,kotlin")
