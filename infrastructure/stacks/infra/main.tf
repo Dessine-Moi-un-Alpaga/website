@@ -1,4 +1,6 @@
 resource "google_artifact_registry_repository" "artifact_registry" {
+  provider = google-beta
+
   cleanup_policy_dry_run = true
   format        = "docker"
   location      = var.artifact_registry_location
