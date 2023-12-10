@@ -4,7 +4,7 @@ RUN microdnf -y install findutils
 
 WORKDIR /app
 COPY . .
-RUN ./gradlew nativeCompile -PnativeCompileExtraBuildArgs=--libc=musl -march=x86-64-v3 --static
+RUN ./gradlew nativeCompile -PnativeCompileExtraBuildArgs="--libc=musl -march=x86-64-v3 --static"
 
 FROM scratch
 WORKDIR /app
