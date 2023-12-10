@@ -16,6 +16,7 @@ else
 endif
 
 DEV_BUCKET ?= $(shell cat "$(DMUA_VARIABLES)/DEV_BUCKET")
+DOCKER_IMAGE = $(ARTIFACT_REGISTRY)/$(GOOGLE_PROJECT)/$(ARTIFACT_REPOSITORY)/website
 DOCKER_TAG = $(ARTIFACT_REGISTRY)/$(GOOGLE_PROJECT)/$(ARTIFACT_REPOSITORY)/website:$(VERSION)
 DOMAIN_NAME ?= $(shell cat "$(DMUA_VARIABLES)/DOMAIN_NAME")
 FIRESTORE_LOCATION ?= $(shell cat "$(DMUA_VARIABLES)/FIRESTORE_LOCATION")
@@ -71,7 +72,7 @@ run:
 push:
 	@cd app \
 		&& gcloud auth configure-docker $(ARTIFACT_REGISTRY) --quiet \
-		&& docker buildx build --push --tag $(DOCKER_TAG) --cache-from type=gha,scope=main --cache-to type=gha,mode=max,scope=main .
+		&& docker buildx build --push --tag $(DOCKER_TAG) --tag $(DOCKER_IMAGE):$(CHANNEL) --cache-from type=gha,scope=main --cache-to type=gha,mode=max,scope=main .
 
 bootstrap:
 	@bash infrastructure/bootstrap/install.sh
@@ -112,14 +113,14 @@ unlock-app:
 dev:
 	$(MAKE) init-infra \
 		&& $(MAKE) apply-infra \
-		&& $(MAKE) push \
+		&& $(MAKE) CHANNEL=dev push \
 		&& $(MAKE) init-dev \
 		&& $(MAKE) apply-dev
 
 prod:
 	$(MAKE) init-infra \
 		&& $(MAKE) apply-infra \
-		&& $(MAKE) push \
+		&& $(MAKE) CHANNEL=prod push \
 		&& $(MAKE) init-prod \
 		&& $(MAKE) apply-prod
 
