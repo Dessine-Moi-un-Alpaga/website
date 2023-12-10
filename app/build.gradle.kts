@@ -1,6 +1,5 @@
 import be.alpago.LogbackConfigSerializationGradlePlugin
 import com.github.psxpaul.task.ExecFork
-import org.gradle.internal.os.OperatingSystem
 
 plugins {
     kotlin("jvm")
