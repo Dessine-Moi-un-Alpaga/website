@@ -107,8 +107,6 @@ graalvmNative {
 
             buildArgs.add("--color=always")
 
-            buildArgs.addAll()
-
             buildArgs.addAll(nativeCompileExtraBuildArgs.split(","))
 
             configurationFileDirectories.from(file("src/main/native"))
