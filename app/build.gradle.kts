@@ -2,12 +2,12 @@ import be.alpago.LogbackConfigSerializationGradlePlugin
 import com.github.psxpaul.task.ExecFork
 
 plugins {
-    kotlin("jvm")
-    id("de.comahe.i18n4k")
-    kotlin("plugin.serialization")
-    id("io.ktor.plugin")
-    id("org.graalvm.buildtools.native")
-    id("com.github.psxpaul.execfork")
+    alias(libs.plugins.kotlin)
+    alias(libs.plugins.execFork)
+    alias(libs.plugins.graalvmPlugin)
+    alias(libs.plugins.i18n4k)
+    alias(libs.plugins.ktor)
+    alias(libs.plugins.kotlinSerialization)
 }
 
 apply<LogbackConfigSerializationGradlePlugin>()
@@ -25,44 +25,25 @@ repositories {
 
 val webjars by configurations.creating
 
-val bcryptVersion: String by project
-val escapeVelocityVersion: String by project
-val i18n4kVersion: String by project
-val junitVersion: String by project
-val koinVersion: String by project
-val kotestVersion: String by project
-val logbackVersion: String by project
-val photoswipeVersion: String by project
-val toastrVersion: String by project
-
 dependencies {
-    implementation("at.favre.lib:bcrypt:$bcryptVersion")
-    implementation("de.comahe.i18n4k:i18n4k-core:$i18n4kVersion")
-    implementation("io.insert-koin:koin-ktor:$koinVersion")
-    implementation("io.ktor:ktor-client-cio")
-    implementation("io.ktor:ktor-client-content-negotiation")
-    implementation("io.ktor:ktor-client-core")
-    implementation("io.ktor:ktor-serialization-kotlinx-json")
-    implementation("io.ktor:ktor-server-auth")
-    implementation("io.ktor:ktor-server-caching-headers")
-    implementation("io.ktor:ktor-server-content-negotiation")
-    implementation("io.ktor:ktor-server-core")
-    implementation("io.ktor:ktor-server-cio")
-    implementation("io.ktor:ktor-server-html-builder")
-    implementation("io.ktor:ktor-server-request-validation")
-    implementation("io.ktor:ktor-server-status-pages")
+    implementation(libs.bcrypt)
+    implementation(libs.i18n4k)
+    implementation(libs.koin)
 
-    runtimeOnly("io.insert-koin:koin-logger-slf4j:$koinVersion")
-    runtimeOnly("ch.qos.logback:logback-classic:$logbackVersion")
+    implementation(libs.bundles.ktor.client)
+    implementation(libs.bundles.ktor.server)
 
-    webjars("org.webjars:escape-velocity:$escapeVelocityVersion")
-    webjars("org.webjars.npm:photoswipe:$photoswipeVersion")
-    webjars("org.webjars:toastr:$toastrVersion")
+    runtimeOnly(libs.koin.logger.slf4j)
+    runtimeOnly(libs.logback.classic)
 
-    testImplementation(platform("org.junit:junit-bom:$junitVersion"))
+    webjars(libs.escape.velocity)
+    webjars(libs.photoswipe)
+    webjars(libs.toastr)
 
-    testImplementation("org.junit.jupiter:junit-jupiter")
-    testImplementation("io.kotest:kotest-assertions-core:$kotestVersion")
+    testImplementation(platform(libs.junit.bom))
+
+    testImplementation(libs.junit.jupiter)
+    testImplementation(libs.kotest.assertions.core)
 }
 
 i18n4k {
