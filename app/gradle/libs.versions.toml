@@ -1,52 +1,66 @@
 [versions]
-bcrypt = "0.10.2"
+bcrypt         = "0.10.2"
 execForkPlugin = "0.2.2"
 escapeVelocity = "1.0.0-1"
-graalvmPlugin = "0.9.28"
-i18n4k = "0.7.0"
-junit = "5.10.1"
-koin = "3.5.1"
-kotest = "5.8.0"
-kotlin = "1.9.22"
-ktor = "2.3.7"
-logback = "1.4.14"
-photoswipe = "5.3.7"
-toastr = "2.1.4"
+graalvmPlugin  = "0.9.28"
+i18n4k         = "0.7.0"
+junit          = "5.10.1"
+koin           = "3.5.1"
+kotest         = "5.8.0"
+kotlin         = "1.9.22"
+ktor           = "2.3.7"
+logback        = "1.4.14"
+photoswipe     = "5.3.7"
+toastr         = "2.1.4"
 
 [libraries]
-bcrypt = { module = "at.favre.lib:bcrypt", version.ref = "bcrypt" }
-escape-velocity = { module = "org.webjars:escape-velocity", version.ref = "escapeVelocity" }
-i18n4k = { module = "de.comahe.i18n4k:i18n4k-core", version.ref = "i18n4k" }
-koin = { module = "io.insert-koin:koin-ktor", version.ref = "koin" }
-koin-logger-slf4j = { module = "io.insert-koin:koin-logger-slf4j", version.ref = "koin" }
-kotest-assertions-core = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
-kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
-ktor-client-cio = { module = "io.ktor:ktor-client-cio" }
+bcrypt                          = { module = "at.favre.lib:bcrypt",                       version.ref = "bcrypt" }
+escape-velocity                 = { module = "org.webjars:escape-velocity",               version.ref = "escapeVelocity" }
+i18n4k                          = { module = "de.comahe.i18n4k:i18n4k-core",              version.ref = "i18n4k" }
+koin                            = { module = "io.insert-koin:koin-ktor",                  version.ref = "koin" }
+koin-logger-slf4j               = { module = "io.insert-koin:koin-logger-slf4j",          version.ref = "koin" }
+kotest-assertions-core          = { module = "io.kotest:kotest-assertions-core",          version.ref = "kotest" }
+kotlin-gradle-plugin            = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+ktor-client-cio                 = { module = "io.ktor:ktor-client-cio" }
 ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation" }
-ktor-client-core = { module = "io.ktor:ktor-client-core" }
-ktor-serialization-json = { module = "io.ktor:ktor-serialization-kotlinx-json" }
-ktor-server-auth = { module = "io.ktor:ktor-server-auth" }
-ktor-server-caching-headers = { module = "io.ktor:ktor-server-caching-headers" }
+ktor-client-core                = { module = "io.ktor:ktor-client-core" }
+ktor-serialization-json         = { module = "io.ktor:ktor-serialization-kotlinx-json" }
+ktor-server-auth                = { module = "io.ktor:ktor-server-auth" }
+ktor-server-caching-headers     = { module = "io.ktor:ktor-server-caching-headers" }
 ktor-server-content-negotiation = { module = "io.ktor:ktor-server-content-negotiation" }
-ktor-server-core = { module = "io.ktor:ktor-server-core" }
-ktor-server-cio = { module = "io.ktor:ktor-server-cio" }
-ktor-server-html-builder = { module = "io.ktor:ktor-server-html-builder" }
-ktor-server-request-validation = { module = "io.ktor:ktor-server-request-validation" }
-ktor-server-status-pages = { module = "io.ktor:ktor-server-status-pages" }
-junit-bom = { module = "org.junit:junit-bom", version.ref = "junit" }
-junit-jupiter = { module = "org.junit.jupiter:junit-jupiter" }
-logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
-photoswipe = { module = "org.webjars.npm:photoswipe", version.ref = "photoswipe" }
-toastr = { module = "org.webjars:toastr", version.ref = "toastr" }
+ktor-server-core                = { module = "io.ktor:ktor-server-core" }
+ktor-server-cio                 = { module = "io.ktor:ktor-server-cio" }
+ktor-server-html-builder        = { module = "io.ktor:ktor-server-html-builder" }
+ktor-server-request-validation  = { module = "io.ktor:ktor-server-request-validation" }
+ktor-server-status-pages        = { module = "io.ktor:ktor-server-status-pages" }
+junit-bom                       = { module = "org.junit:junit-bom",                       version.ref = "junit" }
+junit-jupiter                   = { module = "org.junit.jupiter:junit-jupiter" }
+logback-classic                 = { module = "ch.qos.logback:logback-classic",            version.ref = "logback" }
+photoswipe                      = { module = "org.webjars.npm:photoswipe",                version.ref = "photoswipe" }
+toastr                          = { module = "org.webjars:toastr",                        version.ref = "toastr" }
 
 [bundles]
-ktor-client = [ "ktor-client-cio", "ktor-client-content-negotiation", "ktor-client-core", "ktor-serialization-json" ]
-ktor-server = [ "ktor-server-auth", "ktor-server-caching-headers", "ktor-server-content-negotiation", "ktor-server-core", "ktor-server-cio", "ktor-server-html-builder", "ktor-server-request-validation", "ktor-server-status-pages" ]
+ktor-client = [
+    "ktor-client-cio",
+    "ktor-client-content-negotiation",
+    "ktor-client-core",
+    "ktor-serialization-json"
+]
+ktor-server = [
+    "ktor-server-auth",
+    "ktor-server-caching-headers",
+    "ktor-server-content-negotiation",
+    "ktor-server-core",
+    "ktor-server-cio",
+    "ktor-server-html-builder",
+    "ktor-server-request-validation",
+    "ktor-server-status-pages"
+]
 
 [plugins]
-kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
-execFork = { id = "com.github.psxpaul.execfork", version.ref = "execForkPlugin" }
-graalvmPlugin = { id = "org.graalvm.buildtools.native", version.ref = "graalvmPlugin" }
-i18n4k = { id = "de.comahe.i18n4k", version.ref = "i18n4k" }
-ktor = { id = "io.ktor.plugin", version.ref = "ktor" }
+kotlin              = { id = "org.jetbrains.kotlin.jvm",                  version.ref = "kotlin" }
+execFork            = { id = "com.github.psxpaul.execfork",               version.ref = "execForkPlugin" }
+graalvmPlugin       = { id = "org.graalvm.buildtools.native",             version.ref = "graalvmPlugin" }
+i18n4k              = { id = "de.comahe.i18n4k",                          version.ref = "i18n4k" }
+ktor                = { id = "io.ktor.plugin",                            version.ref = "ktor" }
 kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
