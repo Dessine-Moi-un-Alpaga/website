@@ -22,7 +22,7 @@
 [![Terraform](https://img.shields.io/badge/terraform-1.6.5-darkred.svg?logo=terraform)](http://terraform.io)
 [![Gradle](https://img.shields.io/badge/gradle-8.5-darkgreen.svg?logo=gradle)](http://gradle.org)
 [![GrralVM](https://img.shields.io/badge/graalvm-21.0.1-blue.svg?logo=openjdk)](http://graalvm.org)
-[![Kotlin](https://img.shields.io/badge/kotlin-1.9.21-darkblue.svg?logo=kotlin)](http://kotlinlang.org)
+[![Kotlin](https://img.shields.io/badge/kotlin-1.9.22-darkblue.svg?logo=kotlin)](http://kotlinlang.org)
 [![Ktor](https://img.shields.io/badge/ktor-2.3.7-red.svg)](http://ktor.io)
 
 # What is this?
