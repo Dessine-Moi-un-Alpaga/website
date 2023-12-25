@@ -3,11 +3,11 @@ import com.github.psxpaul.task.ExecFork
 
 plugins {
     alias(libs.plugins.kotlin)
-    alias(libs.plugins.execFork)
-    alias(libs.plugins.graalvmPlugin)
+    alias(libs.plugins.exec.fork)
+    alias(libs.plugins.graalvm.plugin)
     alias(libs.plugins.i18n4k)
     alias(libs.plugins.ktor)
-    alias(libs.plugins.kotlinSerialization)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 apply<LogbackConfigSerializationGradlePlugin>()
