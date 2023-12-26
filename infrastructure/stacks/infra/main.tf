@@ -9,6 +9,8 @@ resource "google_artifact_registry_repository" "artifact_registry" {
   cleanup_policies {
     id = "delete-all"
     action = "DELETE"
+
+    condition {}
   }
 
   cleanup_policies {
