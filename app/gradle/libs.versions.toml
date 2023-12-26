@@ -47,6 +47,7 @@ ktor-client = [
     "ktor-serialization-json"
 ]
 ktor-server = [
+    "ktor-serialization-json",
     "ktor-server-auth",
     "ktor-server-caching-headers",
     "ktor-server-content-negotiation",
