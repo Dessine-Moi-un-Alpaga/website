@@ -7,6 +7,11 @@ resource "google_artifact_registry_repository" "artifact_registry" {
   repository_id = var.artifact_repository
 
   cleanup_policies {
+    id = "delete-all"
+    action = "DELETE"
+  }
+
+  cleanup_policies {
     id = "keep-dev-and-prod-releases"
     action = "KEEP"
 
