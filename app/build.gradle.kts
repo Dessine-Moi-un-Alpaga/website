@@ -99,6 +99,9 @@ graalvmNative {
 }
 
 tasks.register<Copy>("explodeWebjars") {
+    description = "Explodes WebJars to the build resources."
+    group = "build"
+
     webjars.forEach { jar ->
         from(zipTree(jar)) {
             val config = webjars.resolvedConfiguration
@@ -125,10 +128,12 @@ val home = System.getProperty("user.home")
 val firestorePort = 8181
 
 val firestoreEmulator = tasks.register<ExecFork>("firestoreEmulator") {
-    executable = "firebase"
     args = mutableListOf("emulators:start")
-    workingDir = File(home, ".firestore")
+    description = "Starts & stops the Firetore emulator."
+    executable = "firebase"
+    group = "application"
     waitForPort = firestorePort
+    workingDir = File(home, ".firestore")
 }
 
 tasks.named<JavaExec>("run") {
