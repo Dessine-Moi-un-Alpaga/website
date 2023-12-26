@@ -71,6 +71,8 @@ graalvmNative {
 
             buildArgs.add("-R:MaxHeapSize=100m")
 
+            buildArgs.add("--color=always")
+
             buildArgs.add("--initialize-at-build-time=ch.qos.logback")
             buildArgs.add("--initialize-at-build-time=io.ktor,kotlin")
             buildArgs.add("--initialize-at-build-time=org.slf4j.LoggerFactory")
@@ -78,15 +80,14 @@ graalvmNative {
 
             buildArgs.add("--initialize-at-run-time=io.ktor.serialization.kotlinx.json.JsonSupportKt")
 
+            buildArgs.add("--install-exit-handlers")
+            buildArgs.add("--report-unsupported-elements-at-runtime")
+
             buildArgs.add("-H:IncludeLocales=fr,en")
-            buildArgs.add("-H:+InstallExitHandlers")
-            buildArgs.add("-H:+ReportUnsupportedElementsAtRuntime")
             buildArgs.add("-H:+ReportExceptionStackTraces")
 
             buildArgs.add("-Duser.country=BE")
             buildArgs.add("-Duser.language=fr")
-
-            buildArgs.add("--color=always")
 
             buildArgs.addAll(nativeCompileExtraBuildArgs.split(","))
 
