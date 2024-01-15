@@ -46,6 +46,8 @@ jobs:
         run: curl -sL https://firebase.tools | bash
 
       - name: Test
+        env:
+          GOOGLE_PROJECT: ${{ vars.GOOGLE_PROJECT }}
         run: make test
 
       - name: Set up Docker Buildx
