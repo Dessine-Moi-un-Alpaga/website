@@ -130,7 +130,9 @@ tasks.processResources.configure {
 val home = System.getProperty("user.home")
 val configurationDirectory = File(home, ".dmua")
 val variableDirectory = File(configurationDirectory, "variables")
-val googleProject = File(variableDirectory, "GOOGLE_PROJECT").readText()
+
+val googleProject: String by project
+val googleCloudStorageDevBucket: String by project
 
 val firestorePort = 8181
 
@@ -157,10 +159,9 @@ tasks.named<JavaExec>("run") {
     val secretDirectory = File(configurationDirectory, "secrets")
 
     val credentials = File(secretDirectory, "CREDENTIALS").readText()
-    val devBucket = File(variableDirectory, "DEV_BUCKET").readText()
     val sendGridApiKey = File(secretDirectory, "SEND_GRID_API_KEY").readText()
 
-    environment("DMUA_BASE_ASSET_URL", "https://storage.googleapis.com/${devBucket}")
+    environment("DMUA_BASE_ASSET_URL", "https://storage.googleapis.com/${googleCloudStorageDevBucket}")
     environment("DMUA_CREDENTIALS", credentials)
     environment("DMUA_EMAIL_ADDRESS", "contact@dessinemoiunalpaga.com")
     environment("DMUA_ENVIRONMENT", "local")

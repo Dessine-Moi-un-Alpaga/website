@@ -138,3 +138,9 @@ local-assets-to-dev:
 
 dev-assets-to-prod:
 	@gsutil -m rsync -r -d gs://$(DEV_BUCKET) gs://$(PROD_BUCKET)
+
+test:
+	@cd app \
+		&& ./gradlew \
+			-PgoogleProject=$(GOOGLE_PROJECT) \
+			check
