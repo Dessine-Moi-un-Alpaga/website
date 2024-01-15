@@ -1,9 +1,9 @@
 **/*
 
-!gradle/**
 !buildSrc/src/**
 !buildSrc/build.gradle.kts
 !buildSrc/settings.gradle.kts
+!gradle/**
 !src/**
 !build.gradle.kts
 !gradle.properties
