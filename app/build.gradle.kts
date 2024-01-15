@@ -128,16 +128,23 @@ tasks.processResources.configure {
 }
 
 val home = System.getProperty("user.home")
+val configurationDirectory = File(home, ".dmua")
+val variableDirectory = File(configurationDirectory, "variables")
+val googleProject = File(variableDirectory, "GOOGLE_PROJECT").readText()
 
 val firestorePort = 8181
 
 val firestoreEmulator = tasks.register<ExecFork>("firestoreEmulator") {
-    args = mutableListOf("emulators:start")
+    args = mutableListOf(
+        "--project",
+        googleProject,
+        "emulators:start"
+    )
     description = "Starts & stops the Firestore emulator."
     executable = "firebase"
     group = "application"
     waitForPort = firestorePort
-    workingDir = File(home, ".firestore")
+    workingDir = File(projectDir, "firebase-emulator")
 }
 
 tasks.named<JavaExec>("run") {
@@ -147,13 +154,10 @@ tasks.named<JavaExec>("run") {
         systemProperty("io.ktor.development", "true")
     }
 
-    val configurationDirectory = File(home, ".dmua")
     val secretDirectory = File(configurationDirectory, "secrets")
-    val variableDirectory = File(configurationDirectory, "variables")
 
     val credentials = File(secretDirectory, "CREDENTIALS").readText()
     val devBucket = File(variableDirectory, "DEV_BUCKET").readText()
-    val googleProject = File(variableDirectory, "GOOGLE_PROJECT").readText()
     val sendGridApiKey = File(secretDirectory, "SEND_GRID_API_KEY").readText()
 
     environment("DMUA_BASE_ASSET_URL", "https://storage.googleapis.com/${devBucket}")
