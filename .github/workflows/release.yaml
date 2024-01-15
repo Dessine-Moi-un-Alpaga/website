@@ -50,12 +50,6 @@ jobs:
           GOOGLE_PROJECT: ${{ vars.GOOGLE_PROJECT }}
         run: make test
 
-      - name: Test results
-        if: always()
-        uses: test-summary/action@v2
-        with:
-          paths: app/build/test-results/**/TEST-*.xml
-
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
