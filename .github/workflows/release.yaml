@@ -83,6 +83,7 @@ jobs:
         run: npx semantic-release@22
 
 permissions:
+  checks: write
   contents: write
   id-token: write
   issues: write
