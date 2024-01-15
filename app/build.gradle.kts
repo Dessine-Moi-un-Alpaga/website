@@ -1,5 +1,6 @@
 import be.alpago.LogbackConfigSerializationGradlePlugin
 import com.github.psxpaul.task.ExecFork
+import java.util.Locale
 
 plugins {
     alias(libs.plugins.kotlin)
@@ -47,7 +48,10 @@ dependencies {
 }
 
 i18n4k {
-    sourceCodeLocales = listOf("fr", "en")
+    sourceCodeLocales = listOf(
+        Locale.FRENCH.language,
+        Locale.ENGLISH.language
+    )
 }
 
 val nativeCompileExtraBuildArgs: String by project
@@ -129,7 +133,7 @@ val firestorePort = 8181
 
 val firestoreEmulator = tasks.register<ExecFork>("firestoreEmulator") {
     args = mutableListOf("emulators:start")
-    description = "Starts & stops the Firetore emulator."
+    description = "Starts & stops the Firestore emulator."
     executable = "firebase"
     group = "application"
     waitForPort = firestorePort
