@@ -94,14 +94,17 @@ provided below.
 
 ## GitHub Actions Secrets
 
-Values can be found in the corresponding files located in `~/.dmua/secrets`:
+[Generate a Sonarcloud token](https://sonarcloud.io/account/security) and save it as the `SONARCLOUD_TOKEN` GitHub
+Actions secret.
+
+The other secret values can be found in the corresponding files located in `~/.dmua/secrets`:
 
 * `CREDENTIALS`
 * `SEND_GRID_API_KEY`
 
 ## GitHub Actions Variables
 
-Values can be found in the corresponding files located in `~/.dmua/variables`:
+Variable values can be found in the corresponding files located in `~/.dmua/variables`:
 
 * `ARTIFACT_REGISTRY_LOCATION`
 * `DEV_BUCKET`
