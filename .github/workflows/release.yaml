@@ -54,7 +54,12 @@ jobs:
       - name: Test
         env:
           GOOGLE_PROJECT: ${{ vars.GOOGLE_PROJECT }}
-        run: make SONAR_TOKEN=${{ secrets.SONARCLOUD_TOKEN }} test
+        run: make test
+
+      - name: Analyze
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONARCLOUD_TOKEN }}
 
       - name: Init Terraform cache
         run: mkdir -p $TF_PLUGIN_CACHE_DIR
