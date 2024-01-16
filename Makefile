@@ -143,4 +143,4 @@ test:
 	@cd app \
 		&& ./gradlew \
 			-PgoogleProject=$(GOOGLE_PROJECT) \
-			test jacocoTestReport sonarqube
+			test jacocoTestReport sonar
