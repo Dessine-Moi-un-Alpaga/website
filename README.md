@@ -17,6 +17,7 @@
 
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=Dessine-Moi-un-Alpaga_website&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=Dessine-Moi-un-Alpaga_website)
 [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=Dessine-Moi-un-Alpaga_website&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=Dessine-Moi-un-Alpaga_website)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=Dessine-Moi-un-Alpaga_website&metric=coverage)](https://sonarcloud.io/summary/new_code?id=Dessine-Moi-un-Alpaga_website)
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg?logo=gnu)](https://www.gnu.org/licenses/gpl-3.0)
 [![Terraform](https://img.shields.io/badge/terraform-1.6.6-darkred.svg?logo=terraform)](http://terraform.io)
