@@ -70,8 +70,12 @@ class FirestoreRepository<T : AggregateRoot>(
                 val body = response.body<ListDocumentsResponse>()
 
                 for (document in body.documents) {
-                    val id = (document.fields[ID_FIELD]!! as StringValue).stringValue
-                    delete(id)
+                    val idValue = document.fields[ID_FIELD]
+
+                    if (idValue != null) {
+                        val id = (idValue as StringValue).stringValue
+                        delete(id)
+                    }
                 }
 
                 nextPageToken = body.nextPageToken
