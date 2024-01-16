@@ -11,7 +11,6 @@ kotlin           = "1.9.22"
 ktor             = "2.3.7"
 logback          = "1.4.14"
 photoswipe       = "5.3.7"
-sonarqube-plugin = "4.4.1.3373"
 toastr           = "2.1.4"
 
 [libraries]
@@ -66,4 +65,3 @@ graalvm-plugin       = { id = "org.graalvm.buildtools.native",             versi
 i18n4k               = { id = "de.comahe.i18n4k",                          version.ref = "i18n4k"           }
 ktor                 = { id = "io.ktor.plugin",                            version.ref = "ktor"             }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin"           }
-sonarqube            = { id = "org.sonarqube",                             version.ref = "sonarqube-plugin" }

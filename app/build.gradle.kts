@@ -10,7 +10,6 @@ plugins {
     id("jacoco")
     alias(libs.plugins.ktor)
     alias(libs.plugins.kotlin.serialization)
-    alias(libs.plugins.sonarqube)
 }
 
 apply<LogbackConfigSerializationGradlePlugin>()
