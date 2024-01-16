@@ -7,8 +7,10 @@ plugins {
     alias(libs.plugins.exec.fork)
     alias(libs.plugins.graalvm.plugin)
     alias(libs.plugins.i18n4k)
+    id("jacoco")
     alias(libs.plugins.ktor)
     alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.sonarqube)
 }
 
 apply<LogbackConfigSerializationGradlePlugin>()
@@ -171,4 +173,11 @@ tasks.named<JavaExec>("run") {
 tasks.test.configure {
     dependsOn(firestoreEmulator)
     useJUnitPlatform()
+}
+
+tasks.jacocoTestReport.configure {
+    reports {
+        html.required = false
+        xml.required = true
+    }
 }
