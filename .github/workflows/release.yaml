@@ -45,6 +45,11 @@ jobs:
       - name: Set up Firebase CLI
         run: curl -sL https://firebase.tools | bash
 
+      - uses: actions/setup-java@v3
+        with:
+          java-version: 21
+          distribution: temurin
+
       - name: Test
         env:
           GOOGLE_PROJECT: ${{ vars.GOOGLE_PROJECT }}
