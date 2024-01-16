@@ -15,6 +15,8 @@ jobs:
 
       - name: Check out source code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v2
@@ -40,10 +42,10 @@ jobs:
           GOOGLE_PROJECT: ${{ vars.GOOGLE_PROJECT }}
         run: make SONAR_TOKEN=${{ secrets.SONARCLOUD_TOKEN }} test
 
-      - name: Init terraform cache
+      - name: Init Terraform cache
         run: mkdir -p $TF_PLUGIN_CACHE_DIR
 
-      - name: Setup terraform cache
+      - name: Setup Terraform cache
         uses: actions/cache@v3
         with:
           path: ${{ env.TF_PLUGIN_CACHE_DIR }}
