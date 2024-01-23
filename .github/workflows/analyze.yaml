@@ -1,0 +1,65 @@
+name: Analyze
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  analyze:
+    name: Analyze
+    runs-on: ubuntu-latest
+    environment: ${{ github.ref_name == 'main' && 'production' || 'development' }}
+    steps:
+
+      - name: Check out source code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          export_environment_variables: true
+          service_account: terraform@${{ vars.GOOGLE_PROJECT }}.iam.gserviceaccount.com
+          workload_identity_provider: projects/${{ vars.GOOGLE_PROJECT_NUMBER }}/locations/global/workloadIdentityPools/github-actions-workflows/providers/github-actions
+
+      - name: Set up Firebase CLI
+        run: curl -sL https://firebase.tools | bash
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: 21
+          distribution: temurin
+
+      - name: Cache SonarCloud packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.sonar/cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
+
+      - name: Cache Gradle packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
+          restore-keys: ${{ runner.os }}-gradle
+
+      - name: Test
+        env:
+          GOOGLE_PROJECT: ${{ vars.GOOGLE_PROJECT }}
+        run: make test
+
+      - name: Analyze
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONARCLOUD_TOKEN }}
+
+permissions:
+  contents: write
+  id-token: write
+  issues: write
+  pull-requests: write
