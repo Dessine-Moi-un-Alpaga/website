@@ -1,5 +1,8 @@
 name: Release
 on:
+  pull_request:
+    branches:
+      - main
   push:
     branches:
       - beta
@@ -37,6 +40,13 @@ jobs:
           java-version: 21
           distribution: temurin
 
+      - name: Cache SonarCloud packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.sonar/cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
+
       - name: Cache Gradle packages
         uses: actions/cache@v4
         with:
@@ -48,6 +58,11 @@ jobs:
         env:
           GOOGLE_PROJECT: ${{ vars.GOOGLE_PROJECT }}
         run: make test
+
+      - name: Analyze
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONARCLOUD_TOKEN }}
 
       - name: Init Terraform cache
         run: mkdir -p $TF_PLUGIN_CACHE_DIR
