@@ -68,11 +68,11 @@ graalvmNative {
         }
     }
     metadataRepository {
-        enabled.set(true)
+        enabled = true
     }
     binaries {
         named("main") {
-            fallback.set(false)
+            fallback = false
 
             buildArgs.add("-R:MaxHeapSize=100m")
 
@@ -98,7 +98,7 @@ graalvmNative {
 
             configurationFileDirectories.from(file("src/main/native"))
 
-            imageName.set("graalvm-server")
+            imageName = "graalvm-server"
         }
     }
 }
