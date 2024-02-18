@@ -19,6 +19,7 @@ DEV_BUCKET ?= $(shell cat "$(DMUA_VARIABLES)/DEV_BUCKET")
 DOCKER_IMAGE = $(ARTIFACT_REGISTRY)/$(GOOGLE_PROJECT)/$(ARTIFACT_REPOSITORY)/website
 DOCKER_TAG = $(ARTIFACT_REGISTRY)/$(GOOGLE_PROJECT)/$(ARTIFACT_REPOSITORY)/website:$(VERSION)
 DOMAIN_NAME ?= $(shell cat "$(DMUA_VARIABLES)/DOMAIN_NAME")
+FIREBASE_LOCATION ?= $(shell which firebase)
 FIRESTORE_LOCATION ?= $(shell cat "$(DMUA_VARIABLES)/FIRESTORE_LOCATION")
 GOOGLE_REGION ?= $(shell cat "$(DMUA_VARIABLES)/GOOGLE_REGION")
 GOOGLE_ZONE ?= $(shell cat "$(DMUA_VARIABLES)/GOOGLE_ZONE")
@@ -67,7 +68,19 @@ TERRAFORM_PLAN_OPTIONS = -input=false
 TERRAFORM_UNLOCK_OPTIONS = -force ${LOCK_ID}
 
 run:
-	@cd app && ./gradlew run
+	@cd app \
+		&& ./gradlew \
+			-PfirebaseLocation=$(FIREBASE_LOCATION) \
+			-PgoogleProject=$(GOOGLE_PROJECT) \
+			run
+
+run-with-native-agent:
+	@cd app \
+		&& ./gradlew \
+			-PfirebaseLocation=$(FIREBASE_LOCATION) \
+			-PgoogleProject=$(GOOGLE_PROJECT) \
+			-Pagent \
+			run
 
 push:
 	@cd app \
@@ -142,5 +155,7 @@ dev-assets-to-prod:
 test:
 	@cd app \
 		&& ./gradlew \
+			-PfirebaseLocation=$(FIREBASE_LOCATION) \
 			-PgoogleProject=$(GOOGLE_PROJECT) \
-			test jacocoTestReport
+			test \
+			jacocoTestReport

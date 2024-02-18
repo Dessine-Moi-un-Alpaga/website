@@ -126,10 +126,9 @@ tasks.processResources.configure {
     dependsOn(":explodeWebjars")
 }
 
-val home = System.getProperty("user.home")
-val googleProject: String by project
-
+val firebaseLocation: String by project
 val firestorePort = 8181
+val googleProject: String by project
 
 val firestoreEmulator = tasks.register<ExecFork>("firestoreEmulator") {
     args = mutableListOf(
@@ -138,11 +137,13 @@ val firestoreEmulator = tasks.register<ExecFork>("firestoreEmulator") {
         "emulators:start"
     )
     description = "Starts & stops the Firestore emulator."
-    executable = "firebase"
+    executable = firebaseLocation
     group = "application"
     waitForPort = firestorePort
     workingDir = File(projectDir, "firebase-emulator")
 }
+
+val home = System.getProperty("user.home")
 
 tasks.named<JavaExec>("run") {
     dependsOn(firestoreEmulator)
