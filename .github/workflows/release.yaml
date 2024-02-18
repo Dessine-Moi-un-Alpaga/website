@@ -34,6 +34,15 @@ jobs:
       - name: Set up Firebase CLI
         run: curl -sL https://firebase.tools | bash
 
+      - name: Retrieve firebase location
+        id: locate-firebase
+        run: echo "FIREBASE_LOCATION=$(which firebase)" >> "$GITHUB_OUTPUT"
+
+      - name: Print firebase location
+        env:
+          FIREBASE_LOCATION: ${{ steps.locate-firebase.outputs.FIREBASE_LOCATION }}
+        run: echo "$FIREBASE_LOCATION"
+
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
