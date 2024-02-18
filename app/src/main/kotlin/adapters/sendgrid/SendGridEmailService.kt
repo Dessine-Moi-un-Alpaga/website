@@ -62,7 +62,7 @@ private fun Email.body(subject: String, to: String) = SendGridEmail(
         SendGridContent(
             type = "${ContentType.Text.Plain}",
             value = message
-    )   ,
+        ),
     ),
     from = SendGridSender(
         email = from,
