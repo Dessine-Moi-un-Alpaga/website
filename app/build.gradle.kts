@@ -72,32 +72,30 @@ graalvmNative {
     }
     binaries {
         named("main") {
-            fallback = false
+            buildArgs.addAll(
+                "-Duser.country=BE",
+                "-Duser.language=fr",
 
-            buildArgs.add("-R:MaxHeapSize=100m")
+                "-H:IncludeLocales=fr,en",
+                "-H:+ReportExceptionStackTraces",
 
-            buildArgs.add("--color=always")
+                "-R:MaxHeapSize=100m",
 
-            buildArgs.add("--initialize-at-build-time=ch.qos.logback")
-            buildArgs.add("--initialize-at-build-time=io.ktor,kotlin")
-            buildArgs.add("--initialize-at-build-time=org.slf4j.LoggerFactory")
-            buildArgs.add("--initialize-at-build-time=kotlinx.coroutines")
+                "--color=always",
 
-            buildArgs.add("--initialize-at-run-time=io.ktor.serialization.kotlinx.json.JsonSupportKt")
+                "--initialize-at-build-time=ch.qos.logback",
+                "--initialize-at-build-time=io.ktor,kotlin",
+                "--initialize-at-build-time=org.slf4j.LoggerFactory",
+                "--initialize-at-build-time=kotlinx.coroutines",
 
-            buildArgs.add("--install-exit-handlers")
-            buildArgs.add("--report-unsupported-elements-at-runtime")
+                "--initialize-at-run-time=io.ktor.serialization.kotlinx.json.JsonSupportKt",
 
-            buildArgs.add("-H:IncludeLocales=fr,en")
-            buildArgs.add("-H:+ReportExceptionStackTraces")
-
-            buildArgs.add("-Duser.country=BE")
-            buildArgs.add("-Duser.language=fr")
-
+                "--install-exit-handlers",
+                "--report-unsupported-elements-at-runtime",
+            )
             buildArgs.addAll(nativeCompileExtraBuildArgs.split(","))
-
             configurationFileDirectories.from(file("src/main/native"))
-
+            fallback = false
             imageName = "graalvm-server"
         }
     }

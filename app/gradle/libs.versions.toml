@@ -3,13 +3,13 @@ bcrypt           = "0.10.2"
 exec-fork-plugin = "0.2.2"
 escape-velocity  = "1.0.0-1"
 graalvm-plugin   = "0.10.0"
-i18n4k           = "0.7.0"
+i18n4k           = "0.7.1"
 junit            = "5.10.2"
 koin             = "3.5.3"
 kotest           = "5.8.0"
 kotlin           = "1.9.22"
 ktor             = "2.3.8"
-logback          = "1.4.14"
+logback          = "1.5.0"
 photoswipe       = "5.3.7"
 toastr           = "2.1.4"
 
@@ -17,6 +17,8 @@ toastr           = "2.1.4"
 bcrypt                          = { module = "at.favre.lib:bcrypt",                       version.ref = "bcrypt"          }
 escape-velocity                 = { module = "org.webjars:escape-velocity",               version.ref = "escape-velocity" }
 i18n4k                          = { module = "de.comahe.i18n4k:i18n4k-core",              version.ref = "i18n4k"          }
+junit-bom                       = { module = "org.junit:junit-bom",                       version.ref = "junit"           }
+junit-jupiter                   = { module = "org.junit.jupiter:junit-jupiter"                                            }
 koin                            = { module = "io.insert-koin:koin-ktor",                  version.ref = "koin"            }
 koin-logger-slf4j               = { module = "io.insert-koin:koin-logger-slf4j",          version.ref = "koin"            }
 kotest-assertions-core          = { module = "io.kotest:kotest-assertions-core",          version.ref = "kotest"          }
@@ -33,8 +35,6 @@ ktor-server-cio                 = { module = "io.ktor:ktor-server-cio"          
 ktor-server-html-builder        = { module = "io.ktor:ktor-server-html-builder"                                           }
 ktor-server-request-validation  = { module = "io.ktor:ktor-server-request-validation"                                     }
 ktor-server-status-pages        = { module = "io.ktor:ktor-server-status-pages"                                           }
-junit-bom                       = { module = "org.junit:junit-bom",                       version.ref = "junit"           }
-junit-jupiter                   = { module = "org.junit.jupiter:junit-jupiter"                                            }
 logback-classic                 = { module = "ch.qos.logback:logback-classic",            version.ref = "logback"         }
 photoswipe                      = { module = "org.webjars.npm:photoswipe",                version.ref = "photoswipe"      }
 toastr                          = { module = "org.webjars:toastr",                        version.ref = "toastr"          }
@@ -50,18 +50,18 @@ ktor-server = [
     "ktor-serialization-json",
     "ktor-server-auth",
     "ktor-server-caching-headers",
+    "ktor-server-cio",
     "ktor-server-content-negotiation",
     "ktor-server-core",
-    "ktor-server-cio",
     "ktor-server-html-builder",
     "ktor-server-request-validation",
     "ktor-server-status-pages"
 ]
 
 [plugins]
-kotlin               = { id = "org.jetbrains.kotlin.jvm",                  version.ref = "kotlin"           }
 exec-fork            = { id = "com.github.psxpaul.execfork",               version.ref = "exec-fork-plugin" }
 graalvm-plugin       = { id = "org.graalvm.buildtools.native",             version.ref = "graalvm-plugin"   }
 i18n4k               = { id = "de.comahe.i18n4k",                          version.ref = "i18n4k"           }
-ktor                 = { id = "io.ktor.plugin",                            version.ref = "ktor"             }
+kotlin               = { id = "org.jetbrains.kotlin.jvm",                  version.ref = "kotlin"           }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin"           }
+ktor                 = { id = "io.ktor.plugin",                            version.ref = "ktor"             }

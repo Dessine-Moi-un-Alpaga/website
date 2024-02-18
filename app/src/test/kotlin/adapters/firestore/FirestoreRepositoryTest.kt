@@ -1,9 +1,5 @@
-package libs.repository
+package be.alpago.website.adapters.firestore
 
-import be.alpago.website.adapters.firestore.FirestoreAggregateTransformer
-import be.alpago.website.adapters.firestore.FirestoreProperties
-import be.alpago.website.adapters.firestore.FirestoreRepository
-import be.alpago.website.adapters.firestore.createHttpClient
 import be.alpago.website.libs.domain.AggregateRoot
 import be.alpago.website.libs.domain.ports.AggregateRootNotFound
 import io.kotest.assertions.throwables.shouldThrow
@@ -24,9 +20,9 @@ private object TestFields {
 
 @Serializable
 data class TestAggregateRoot(
-    override val id: String = UUID.randomUUID().toString(),
+    override val id: String = "${UUID.randomUUID()}",
     val intField: Int? = 0,
-    val stringField: String = UUID.randomUUID().toString(),
+    val stringField: String = "${UUID.randomUUID()}",
 ) : AggregateRoot
 
 class TestTransformer : FirestoreAggregateTransformer<TestAggregateRoot> {

@@ -25,9 +25,8 @@ import java.util.concurrent.atomic.AtomicReference
 
 private const val FIRESTORE_HOSTNAME = "firestore.googleapis.com"
 private const val GOOGLE_METADATA_ENDPOINT = "http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/token"
-
-private val GOOGLE_METADATA_HEADER_NAME = "Metadata-Flavor"
-private val GOOGLE_METADATA_HEADER_VALUE = "Google"
+private const val GOOGLE_METADATA_HEADER_NAME = "Metadata-Flavor"
+private const val GOOGLE_METADATA_HEADER_VALUE = "Google"
 
 fun createHttpClient(): HttpClient {
 
