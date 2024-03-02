@@ -59,6 +59,12 @@ jobs:
           GOOGLE_PROJECT: ${{ vars.GOOGLE_PROJECT }}
         run: make test
 
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: app/build/reports/tests/
+
       - name: Analyze
         uses: SonarSource/sonarcloud-github-action@master
         env:
