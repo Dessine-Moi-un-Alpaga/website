@@ -6,6 +6,7 @@ import be.alpago.website.application.PageModel
 import be.alpago.website.application.usecases.ShowAnimalPage
 import be.alpago.website.domain.Animal
 import be.alpago.website.domain.FiberAnalysis
+import be.alpago.website.libs.domain.ports.AggregateRootNotFound
 import be.alpago.website.libs.domain.ports.Repository
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
@@ -16,14 +17,14 @@ class ShowAnimalPageQuery(
 ): ShowAnimalPage {
 
     override suspend fun execute(id: String) = coroutineScope {
-        val animals = async { animalRepository.findAll() }
         val fiberAnalyses = async { fiberAnalysisRepository.findBy("animalId", id) }
-        val animal = animalRepository.get(id)
+        val animals = animalRepository.findAll()
+        val animal = animals.find { it.id == id } ?: throw AggregateRootNotFound()
 
         PageModel(
             title = "${Messages.dmua} :: ${animal.name}",
             description = animal.pageDescription,
-            animals = animals.await(),
+            animals = animals,
             sections = listOf(
                 AnimalSectionModel(
                     animal = animal,
