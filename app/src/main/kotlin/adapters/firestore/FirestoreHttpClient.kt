@@ -1,6 +1,7 @@
 package be.alpago.website.adapters.firestore
 
 import io.ktor.client.HttpClient
+import io.ktor.client.call.HttpClientCall
 import io.ktor.client.call.body
 import io.ktor.client.engine.cio.CIO
 import io.ktor.client.plugins.DefaultRequest
@@ -47,20 +48,23 @@ fun createHttpClient(): HttpClient {
     val tokenStorage = AtomicReference<String>()
 
     client.plugin(HttpSend).intercept { request ->
+        var firstTry: HttpClientCall? = null
+
         if (request.url.host == FIRESTORE_HOSTNAME) {
             var token = tokenStorage.get()
 
             if (token != null) {
                 // try with existing token
                 request.bearerAuth(token)
-                val call = execute(request)
+                firstTry = execute(request)
 
-                if (call.response.status == HttpStatusCode.Forbidden) {
+                if (firstTry.response.status == HttpStatusCode.Forbidden) {
                     // token has expired
                     request.headers {
                         remove(HttpHeaders.Authorization)
                     }
 
+                    firstTry = null
                     token = null
                 }
             }
@@ -84,7 +88,7 @@ fun createHttpClient(): HttpClient {
             }
         }
 
-        execute(request)
+        firstTry ?: execute(request)
     }
 
     return client
