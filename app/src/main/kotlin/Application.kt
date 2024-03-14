@@ -1,20 +1,6 @@
 package be.alpago.website
 
 import be.alpago.website.interfaces.i18n4k.i18n
-import be.alpago.website.interfaces.koin.animalModule
-import be.alpago.website.interfaces.koin.articleModule
-import be.alpago.website.interfaces.koin.authenticationModule
-import be.alpago.website.interfaces.koin.emailModule
-import be.alpago.website.interfaces.koin.environmentModule
-import be.alpago.website.interfaces.koin.factsheetModule
-import be.alpago.website.interfaces.koin.fiberAnalysisModule
-import be.alpago.website.interfaces.koin.firestoreModule
-import be.alpago.website.interfaces.koin.highlightModule
-import be.alpago.website.interfaces.koin.imageMetadataModule
-import be.alpago.website.interfaces.koin.indexModule
-import be.alpago.website.interfaces.koin.newsModule
-import be.alpago.website.interfaces.koin.photoGallery
-import be.alpago.website.interfaces.koin.templateModule
 import be.alpago.website.interfaces.ktor.animalRoutes
 import be.alpago.website.interfaces.ktor.assets
 import be.alpago.website.interfaces.ktor.authentication
@@ -28,6 +14,19 @@ import be.alpago.website.interfaces.ktor.photoGalleryRoutes
 import be.alpago.website.interfaces.ktor.registerShutdownHook
 import be.alpago.website.interfaces.ktor.serialization
 import be.alpago.website.interfaces.ktor.validation
+import be.alpago.website.interfaces.modules.animalModule
+import be.alpago.website.interfaces.modules.articleModule
+import be.alpago.website.interfaces.modules.authenticationModule
+import be.alpago.website.interfaces.modules.emailModule
+import be.alpago.website.interfaces.modules.factsheetModule
+import be.alpago.website.interfaces.modules.fiberAnalysisModule
+import be.alpago.website.interfaces.modules.firestoreModule
+import be.alpago.website.interfaces.modules.highlightModule
+import be.alpago.website.interfaces.modules.imageMetadataModule
+import be.alpago.website.interfaces.modules.indexModule
+import be.alpago.website.interfaces.modules.newsModule
+import be.alpago.website.interfaces.modules.photoGalleryModule
+import be.alpago.website.interfaces.modules.templateModule
 import io.ktor.server.application.Application
 import io.ktor.server.cio.CIO
 import io.ktor.server.engine.embeddedServer
@@ -48,8 +47,6 @@ fun main() {
 }
 
 fun Application.main() {
-    environmentModule()
-
     assets()
 
     authenticationModule()
@@ -88,6 +85,6 @@ fun Application.main() {
     newsModule()
     newsRoutes()
 
-    photoGallery()
+    photoGalleryModule()
     photoGalleryRoutes()
 }
