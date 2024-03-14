@@ -1,4 +1,4 @@
-package be.alpago.website.interfaces.modules
+package be.alpago.website.modules
 
 import be.alpago.website.adapters.firestore.FirestoreAggregateTransformer
 import be.alpago.website.adapters.firestore.FirestoreFiberAnalysisTransformer

@@ -1,4 +1,4 @@
-package be.alpago.website.interfaces.modules
+package be.alpago.website.modules
 
 import be.alpago.website.getEnvironmentVariable
 import be.alpago.website.interfaces.ktor.AuthenticationProperties

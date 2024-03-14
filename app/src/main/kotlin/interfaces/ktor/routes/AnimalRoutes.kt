@@ -1,11 +1,11 @@
-package be.alpago.website.interfaces.ktor
+package be.alpago.website.interfaces.ktor.routes
 
 import be.alpago.website.application.usecases.ShowAnimalPage
 import be.alpago.website.domain.Animal
 import be.alpago.website.inject
 import be.alpago.website.interfaces.kotlinx.html.LayoutTemplate
 import be.alpago.website.interfaces.kotlinx.html.TemplateProperties
-import be.alpago.website.interfaces.modules.ANIMAL_REPOSITORY
+import be.alpago.website.modules.ANIMAL_REPOSITORY
 import be.alpago.website.libs.domain.ports.Repository
 import io.ktor.http.HttpStatusCode
 import io.ktor.server.application.Application

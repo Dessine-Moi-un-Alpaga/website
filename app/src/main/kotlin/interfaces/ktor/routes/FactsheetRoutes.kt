@@ -1,4 +1,4 @@
-package be.alpago.website.interfaces.ktor
+package be.alpago.website.interfaces.ktor.routes
 
 import be.alpago.website.application.usecases.ShowFactsheetPage
 import be.alpago.website.domain.Article
@@ -6,8 +6,8 @@ import be.alpago.website.domain.Highlight
 import be.alpago.website.inject
 import be.alpago.website.interfaces.kotlinx.html.LayoutTemplate
 import be.alpago.website.interfaces.kotlinx.html.TemplateProperties
-import be.alpago.website.interfaces.modules.FACTSHEET_ARTICLE_REPOSITORY
-import be.alpago.website.interfaces.modules.FACTSHEET_HIGHLIGHT_REPOSITORY
+import be.alpago.website.modules.FACTSHEET_ARTICLE_REPOSITORY
+import be.alpago.website.modules.FACTSHEET_HIGHLIGHT_REPOSITORY
 import be.alpago.website.libs.domain.ports.Repository
 import io.ktor.server.application.Application
 import io.ktor.server.application.call
