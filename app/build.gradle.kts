@@ -30,12 +30,10 @@ val webjars by configurations.creating
 dependencies {
     implementation(libs.bcrypt)
     implementation(libs.i18n4k)
-    implementation(libs.koin)
 
     implementation(libs.bundles.ktor.client)
     implementation(libs.bundles.ktor.server)
 
-    runtimeOnly(libs.koin.logger.slf4j)
     runtimeOnly(libs.logback.classic)
 
     webjars(libs.escape.velocity)
