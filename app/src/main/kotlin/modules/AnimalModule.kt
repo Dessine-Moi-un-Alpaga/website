@@ -1,4 +1,4 @@
-package be.alpago.website.interfaces.modules
+package be.alpago.website.modules
 
 import be.alpago.website.adapters.firestore.FirestoreAnimalTransformer
 import be.alpago.website.adapters.firestore.FirestoreProperties

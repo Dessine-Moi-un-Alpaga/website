@@ -1,4 +1,4 @@
-package be.alpago.website.interfaces.ktor
+package be.alpago.website.interfaces.ktor.routes
 
 import be.alpago.website.application.usecases.ShowIndexPage
 import be.alpago.website.domain.Article
@@ -7,10 +7,10 @@ import be.alpago.website.domain.ImageMetadata
 import be.alpago.website.inject
 import be.alpago.website.interfaces.kotlinx.html.LayoutTemplate
 import be.alpago.website.interfaces.kotlinx.html.TemplateProperties
-import be.alpago.website.interfaces.modules.INDEX_ARTICLE_REPOSITORY
-import be.alpago.website.interfaces.modules.INDEX_GUILD_REPOSITORY
-import be.alpago.website.interfaces.modules.INDEX_NEWS_REPOSITORY
-import be.alpago.website.interfaces.modules.INDEX_TRAININGS_REPOSITORY
+import be.alpago.website.modules.INDEX_ARTICLE_REPOSITORY
+import be.alpago.website.modules.INDEX_GUILD_REPOSITORY
+import be.alpago.website.modules.INDEX_NEWS_REPOSITORY
+import be.alpago.website.modules.INDEX_TRAININGS_REPOSITORY
 import be.alpago.website.libs.domain.ports.Repository
 import io.ktor.server.application.Application
 import io.ktor.server.application.call

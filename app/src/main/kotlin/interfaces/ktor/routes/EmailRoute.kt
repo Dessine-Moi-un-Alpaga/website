@@ -1,4 +1,4 @@
-package be.alpago.website.interfaces.ktor
+package be.alpago.website.interfaces.ktor.routes
 
 import be.alpago.website.application.usecases.InvalidEmailException
 import be.alpago.website.application.usecases.SendEmail
