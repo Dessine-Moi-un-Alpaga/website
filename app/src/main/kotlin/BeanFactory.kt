@@ -27,6 +27,11 @@ inline fun <reified T : Any> register(name: String? = null, noinline block: Bean
     beanFactories[key] = block
 }
 
+inline fun <reified T : Any> mock(name: String? = null, noinline block: BeanFactory<out T>) {
+    val key = BeanFactoryKey(T::class, name)
+    beanFactories[key] = block
+}
+
 inline fun <reified T : Any> inject(name: String? = null): T {
     val key = BeanFactoryKey(T::class, name)
     var bean = beans[key]
