@@ -2,85 +2,73 @@ DMUA_HOME := $(HOME)/.dmua
 DMUA_SECRETS := $(DMUA_HOME)/secrets
 DMUA_VARIABLES := $(DMUA_HOME)/variables
 
-GOOGLE_PROJECT ?= $(shell cat "$(DMUA_VARIABLES)/GOOGLE_PROJECT")
-VERSION ?= $(shell git describe --tags --always --first-parent)
-
 ARTIFACT_REGISTRY_LOCATION ?= $(shell cat "$(DMUA_VARIABLES)/ARTIFACT_REGISTRY_LOCATION")
-ARTIFACT_REGISTRY = $(ARTIFACT_REGISTRY_LOCATION)-docker.pkg.dev
-ARTIFACT_REPOSITORY = common
-
-ifdef CREDENTIALS
-	export CREDENTIALS
-else
-	export CREDENTIALS := $(shell cat "$(DMUA_SECRETS)/CREDENTIALS")
-endif
-
+CREDENTIALS ?= $(shell cat "$(DMUA_SECRETS)/CREDENTIALS")
 DEV_BUCKET ?= $(shell cat "$(DMUA_VARIABLES)/DEV_BUCKET")
-DOCKER_IMAGE = $(ARTIFACT_REGISTRY)/$(GOOGLE_PROJECT)/$(ARTIFACT_REPOSITORY)/website
-DOCKER_TAG = $(ARTIFACT_REGISTRY)/$(GOOGLE_PROJECT)/$(ARTIFACT_REPOSITORY)/website:$(VERSION)
 DOMAIN_NAME ?= $(shell cat "$(DMUA_VARIABLES)/DOMAIN_NAME")
-FIREBASE_LOCATION ?= $(shell which firebase)
 FIRESTORE_LOCATION ?= $(shell cat "$(DMUA_VARIABLES)/FIRESTORE_LOCATION")
+GOOGLE_PROJECT ?= $(shell cat "$(DMUA_VARIABLES)/GOOGLE_PROJECT")
 GOOGLE_REGION ?= $(shell cat "$(DMUA_VARIABLES)/GOOGLE_REGION")
 GOOGLE_ZONE ?= $(shell cat "$(DMUA_VARIABLES)/GOOGLE_ZONE")
 PROD_BUCKET ?= $(shell cat "$(DMUA_VARIABLES)/PROD_BUCKET")
 SEND_GRID_API_KEY ?= $(shell cat "$(DMUA_SECRETS)/SEND_GRID_API_KEY")
+VERSION ?= $(shell git describe --tags --always --first-parent)
 
-export GOOGLE_PROJECT
-export GOOGLE_REGION
-export GOOGLE_ZONE
+ARTIFACT_REGISTRY := $(ARTIFACT_REGISTRY_LOCATION)-docker.pkg.dev
+ARTIFACT_REPOSITORY := common
+DOCKER_IMAGE := $(ARTIFACT_REGISTRY)/$(GOOGLE_PROJECT)/$(ARTIFACT_REPOSITORY)/website
+DOCKER_TAG := $(ARTIFACT_REGISTRY)/$(GOOGLE_PROJECT)/$(ARTIFACT_REPOSITORY)/website:$(VERSION)
+FIREBASE_LOCATION := $(shell which firebase)
 
-TERRAFORM_INFRA_VARS = -var 'artifact_registry_location=$(ARTIFACT_REGISTRY_LOCATION)'
-TERRAFORM_INFRA_VARS += -var 'artifact_repository=$(ARTIFACT_REPOSITORY)'
-TERRAFORM_INFRA_VARS += -var 'credentials=$(value CREDENTIALS)'
-TERRAFORM_INFRA_VARS += -var 'firestore_location=$(FIRESTORE_LOCATION)'
-TERRAFORM_INFRA_VARS += -var 'send_grid_api_key=$(SEND_GRID_API_KEY)'
+TERRAFORM_INFRA_VARS := 'artifact_registry_location=$(ARTIFACT_REGISTRY_LOCATION)' \
+	'artifact_repository=$(ARTIFACT_REPOSITORY)' \
+	'credentials=$(CREDENTIALS)' \
+	'firestore_location=$(FIRESTORE_LOCATION)' \
+	'send_grid_api_key=$(SEND_GRID_API_KEY)'
 
-TERRAFORM_APP_VARS = \
+TERRAFORM_APP_VARS := \
 	-var 'artifact_registry_location=$(ARTIFACT_REGISTRY_LOCATION)' \
 	-var 'artifact_repository=$(ARTIFACT_REPOSITORY)' \
 	-var 'docker_tag=$(DOCKER_TAG)' \
 	-var 'location=$(GOOGLE_REGION)'
 
-TERRAFORM_DEV_APP_VARS = \
+TERRAFORM_DEV_APP_VARS := \
 	$(TERRAFORM_APP_VARS) \
 	-var-file=variables/development.tfvars \
 	-var 'bucket_name=$(DEV_BUCKET)'
 
-TERRAFORM_PROD_APP_VARS = \
+TERRAFORM_PROD_APP_VARS := \
 	$(TERRAFORM_APP_VARS) \
 	-var-file=variables/production.tfvars \
 	-var 'bucket_name=$(PROD_BUCKET)' \
 	-var 'cors_origins=["https://$(DOMAIN_NAME)"]' \
 	-var 'domain_name=$(DOMAIN_NAME)'
 
-TERRAFORM_INFRA_GLOBAL_OPTIONS = -chdir=infrastructure/stacks/infra
-TERRAFORM_APP_GLOBAL_OPTIONS = -chdir=infrastructure/stacks/app
+TERRAFORM_INFRA_GLOBAL_OPTIONS := -chdir=infrastructure/stacks/infra
+TERRAFORM_APP_GLOBAL_OPTIONS := -chdir=infrastructure/stacks/app
 
-TERRAFORM_BACKEND_OPTIONS = -backend-config=bucket=terraform-state-$(GOOGLE_PROJECT)
-TERRAFORM_INFRA_BACKEND_OPTIONS = $(TERRAFORM_BACKEND_OPTIONS) -backend-config=prefix=common/infra
-TERRAFORM_DEV_APP_BACKEND_OPTIONS = $(TERRAFORM_BACKEND_OPTIONS) -backend-config=prefix=development/app
-TERRAFORM_PROD_APP_BACKEND_OPTIONS = $(TERRAFORM_BACKEND_OPTIONS) -backend-config=prefix=production/app
+TERRAFORM_BACKEND_OPTIONS := -backend-config=bucket=terraform-state-$(GOOGLE_PROJECT)
+TERRAFORM_INFRA_BACKEND_OPTIONS := $(TERRAFORM_BACKEND_OPTIONS) -backend-config=prefix=common/infra
+TERRAFORM_DEV_APP_BACKEND_OPTIONS := $(TERRAFORM_BACKEND_OPTIONS) -backend-config=prefix=development/app
+TERRAFORM_PROD_APP_BACKEND_OPTIONS := $(TERRAFORM_BACKEND_OPTIONS) -backend-config=prefix=production/app
 
-TERRAFORM_APPLY_OPTIONS = -input=false -auto-approve
-TERRAFORM_INIT_OPTIONS = -input=false -reconfigure -upgrade
-TERRAFORM_PLAN_OPTIONS = -input=false
-TERRAFORM_UNLOCK_OPTIONS = -force ${LOCK_ID}
+TERRAFORM_APPLY_OPTIONS := -input=false -auto-approve
+TERRAFORM_INIT_OPTIONS := -input=false -reconfigure -upgrade
+TERRAFORM_PLAN_OPTIONS := -input=false
+TERRAFORM_UNLOCK_OPTIONS := -force ${LOCK_ID}
 
-run:
-	@cd app \
-		&& ./gradlew \
-			-PfirebaseLocation=$(FIREBASE_LOCATION) \
-			-PgoogleProject=$(GOOGLE_PROJECT) \
-			run
+GRADLE_PROJECT_VARIABLES := -Pcredentials=$(CREDENTIALS) \
+	-PdevBucket=$(DEV_BUCKET) \
+	-PfirebaseLocation=$(FIREBASE_LOCATION) \
+	-PgoogleProject=$(GOOGLE_PROJECT) \
+	-PsendGridApiKey=$(SEND_GRID_API_KEY) \
+	-Pversion=$(VERSION)
 
-run-with-native-agent:
-	@cd app \
-		&& ./gradlew \
-			-PfirebaseLocation=$(FIREBASE_LOCATION) \
-			-PgoogleProject=$(GOOGLE_PROJECT) \
-			-Pagent \
-			run
+gradle-prepare-native-build:
+	@cd app && ./gradlew $(GRADLE_PROJECT_VARIABLES) -Pagent run
+
+gradle-%:
+	@cd app && ./gradlew $(GRADLE_PROJECT_VARIABLES) $*
 
 push:
 	@cd app \
@@ -151,11 +139,3 @@ local-assets-to-dev:
 
 dev-assets-to-prod:
 	@gsutil -m rsync -r -d gs://$(DEV_BUCKET) gs://$(PROD_BUCKET)
-
-test:
-	@cd app \
-		&& ./gradlew \
-			-PfirebaseLocation=$(FIREBASE_LOCATION) \
-			-PgoogleProject=$(GOOGLE_PROJECT) \
-			test \
-			jacocoTestReport

@@ -125,7 +125,7 @@ class SendEmailTest {
 
     @Test
     fun `emails can be sent`() = testApplication {
-        val response = sendEmailTest {_ ->
+        val response = sendEmailTest {
             respond(
                 content = ByteReadChannel.Empty,
                 status = HttpStatusCode.OK,
