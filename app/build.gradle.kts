@@ -150,13 +150,7 @@ val credentials: String by project
 val devBucket: String by project
 val sendGridApiKey: String by project
 
-tasks.named<JavaExec>("run") {
-    dependsOn(firestoreEmulator)
-
-    if (!project.hasProperty("agent")) {
-        systemProperty("io.ktor.development", "true")
-    }
-
+fun ProcessForkOptions.environmentVariables() {
     environment("DMUA_BASE_ASSET_URL", "https://storage.googleapis.com/${devBucket}")
     environment("DMUA_CREDENTIALS", credentials)
     environment("DMUA_EMAIL_ADDRESS", "contact@dessinemoiunalpaga.com")
@@ -166,16 +160,20 @@ tasks.named<JavaExec>("run") {
     environment("DMUA_SEND_GRID_API_KEY", sendGridApiKey)
 }
 
+tasks.named<JavaExec>("run") {
+    dependsOn(firestoreEmulator)
+
+    if (!project.hasProperty("agent")) {
+        systemProperty("io.ktor.development", "true")
+    }
+
+    environmentVariables()
+}
+
 tasks.test.configure {
     dependsOn(firestoreEmulator)
     useJUnitPlatform()
-    environment("DMUA_BASE_ASSET_URL", "https://storage.googleapis.com/${devBucket}")
-    environment("DMUA_CREDENTIALS", credentials)
-    environment("DMUA_EMAIL_ADDRESS", "contact@dessinemoiunalpaga.com")
-    environment("DMUA_ENVIRONMENT", "local")
-    environment("DMUA_FIRESTORE_URL", "http://localhost:${firestorePort}")
-    environment("DMUA_PROJECT", googleProject)
-    environment("DMUA_SEND_GRID_API_KEY", sendGridApiKey)
+    environmentVariables()
 }
 
 tasks.jacocoTestReport.configure {

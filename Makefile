@@ -20,11 +20,7 @@ DOCKER_IMAGE := $(ARTIFACT_REGISTRY)/$(GOOGLE_PROJECT)/$(ARTIFACT_REPOSITORY)/we
 DOCKER_TAG := $(ARTIFACT_REGISTRY)/$(GOOGLE_PROJECT)/$(ARTIFACT_REPOSITORY)/website:$(VERSION)
 FIREBASE_LOCATION := $(shell which firebase)
 
-TERRAFORM_INFRA_VARS := 'artifact_registry_location=$(ARTIFACT_REGISTRY_LOCATION)' \
-	'artifact_repository=$(ARTIFACT_REPOSITORY)' \
-	'credentials=$(CREDENTIALS)' \
-	'firestore_location=$(FIRESTORE_LOCATION)' \
-	'send_grid_api_key=$(SEND_GRID_API_KEY)'
+TERRAFORM_INFRA_VARS := -var 'artifact_registry_location=$(ARTIFACT_REGISTRY_LOCATION)' -var 'artifact_repository=$(ARTIFACT_REPOSITORY)' -var 'credentials=$(CREDENTIALS)' -var 'firestore_location=$(FIRESTORE_LOCATION)' -var 'send_grid_api_key=$(SEND_GRID_API_KEY)'
 
 TERRAFORM_APP_VARS := \
 	-var 'artifact_registry_location=$(ARTIFACT_REGISTRY_LOCATION)' \
@@ -57,7 +53,8 @@ TERRAFORM_INIT_OPTIONS := -input=false -reconfigure -upgrade
 TERRAFORM_PLAN_OPTIONS := -input=false
 TERRAFORM_UNLOCK_OPTIONS := -force ${LOCK_ID}
 
-GRADLE_PROJECT_VARIABLES := -Pcredentials=$(CREDENTIALS) \
+GRADLE_PROJECT_VARIABLES := \
+	-Pcredentials=$(CREDENTIALS) \
 	-PdevBucket=$(DEV_BUCKET) \
 	-PfirebaseLocation=$(FIREBASE_LOCATION) \
 	-PgoogleProject=$(GOOGLE_PROJECT) \
