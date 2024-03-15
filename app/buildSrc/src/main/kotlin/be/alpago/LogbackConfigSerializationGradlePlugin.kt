@@ -9,7 +9,7 @@ import java.io.File
 
 const val OUTPUT_DIRECTORY = "generated/resources/serialized-logback-config"
 
-private const val TASK_NAME = "generateSerializedLogbackConfig"
+private const val TASK_NAME = "serializeLogbackConfig"
 
 class LogbackConfigSerializationGradlePlugin : Plugin<Project> {
 
