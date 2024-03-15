@@ -134,8 +134,7 @@ val googleProject: String by project
 
 val firestoreEmulator = tasks.register<ExecFork>("firestoreEmulator") {
     args = mutableListOf(
-        "--project",
-        googleProject,
+        "--project", googleProject,
         "emulators:start"
     )
     description = "Starts & stops the Firestore emulator."
@@ -147,19 +146,16 @@ val firestoreEmulator = tasks.register<ExecFork>("firestoreEmulator") {
 
 val home = System.getProperty("user.home")
 
+val credentials: String by project
+val devBucket: String by project
+val sendGridApiKey: String by project
+
 tasks.named<JavaExec>("run") {
     dependsOn(firestoreEmulator)
 
     if (!project.hasProperty("agent")) {
         systemProperty("io.ktor.development", "true")
     }
-    val configurationDirectory = File(home, ".dmua")
-    val secretDirectory = File(configurationDirectory, "secrets")
-    val variableDirectory = File(configurationDirectory, "variables")
-
-    val credentials = File(secretDirectory, "CREDENTIALS").readText()
-    val devBucket = File(variableDirectory, "DEV_BUCKET").readText()
-    val sendGridApiKey = File(secretDirectory, "SEND_GRID_API_KEY").readText()
 
     environment("DMUA_BASE_ASSET_URL", "https://storage.googleapis.com/${devBucket}")
     environment("DMUA_CREDENTIALS", credentials)
@@ -173,6 +169,13 @@ tasks.named<JavaExec>("run") {
 tasks.test.configure {
     dependsOn(firestoreEmulator)
     useJUnitPlatform()
+    environment("DMUA_BASE_ASSET_URL", "https://storage.googleapis.com/${devBucket}")
+    environment("DMUA_CREDENTIALS", credentials)
+    environment("DMUA_EMAIL_ADDRESS", "contact@dessinemoiunalpaga.com")
+    environment("DMUA_ENVIRONMENT", "local")
+    environment("DMUA_FIRESTORE_URL", "http://localhost:${firestorePort}")
+    environment("DMUA_PROJECT", googleProject)
+    environment("DMUA_SEND_GRID_API_KEY", sendGridApiKey)
 }
 
 tasks.jacocoTestReport.configure {

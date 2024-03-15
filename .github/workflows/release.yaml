@@ -56,8 +56,10 @@ jobs:
 
       - name: Test
         env:
+          DEV_BUCKET: ${{ vars.DEV_BUCKET }}
           GOOGLE_PROJECT: ${{ vars.GOOGLE_PROJECT }}
-        run: make test
+          SEND_GRID_API_KEY: ${{ secrets.SEND_GRID_API_KEY }}
+        run: make gradle-test gradle-jacocoTestReport
 
       - name: Save test results and logs
         if: always()
