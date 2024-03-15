@@ -5,7 +5,7 @@ import be.alpago.website.application.usecases.SendEmail
 import be.alpago.website.application.usecases.UnexpectedEmailException
 import be.alpago.website.domain.Email
 import io.ktor.client.HttpClient
-import io.ktor.client.engine.cio.CIO
+import io.ktor.client.engine.HttpClientEngine
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.request.bearerAuth
 import io.ktor.client.request.headers
@@ -26,11 +26,12 @@ data class SendGridProperties(
 )
 
 class SendGridEmailService(
+    private val engine: HttpClientEngine,
     private val properties: SendGridProperties,
 ) : SendEmail {
 
     override suspend fun send(email: Email) {
-        HttpClient(CIO) {
+        HttpClient(engine) {
             install(ContentNegotiation) {
                 json()
             }
@@ -41,7 +42,7 @@ class SendGridEmailService(
                     bearerAuth(properties.apiKey)
                 }
                 setBody(
-                    email.body(
+                    email.toSendGrid(
                         subject = Messages.emailSubject(email.name),
                         to = properties.address
                     )
@@ -57,7 +58,7 @@ class SendGridEmailService(
     }
 }
 
-private fun Email.body(subject: String, to: String) = SendGridEmail(
+private fun Email.toSendGrid(subject: String, to: String) = SendGridEmail(
     content = listOf(
         SendGridContent(
             type = "${ContentType.Text.Plain}",
