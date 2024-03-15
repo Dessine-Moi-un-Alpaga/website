@@ -1,32 +1,24 @@
 package be.alpago.website
 
 import be.alpago.website.interfaces.i18n4k.i18n
-import be.alpago.website.interfaces.ktor.routes.animalRoutes
+import be.alpago.website.interfaces.ktor.animals
+import be.alpago.website.interfaces.ktor.articles
 import be.alpago.website.interfaces.ktor.assets
 import be.alpago.website.interfaces.ktor.authentication
-import be.alpago.website.interfaces.ktor.routes.emailRoute
-import be.alpago.website.interfaces.ktor.routes.factsheetRoutes
-import be.alpago.website.interfaces.ktor.routes.fiberAnalysisRoutes
+import be.alpago.website.interfaces.ktor.email
+import be.alpago.website.interfaces.ktor.factsheets
+import be.alpago.website.interfaces.ktor.fiberAnalyses
+import be.alpago.website.interfaces.ktor.firestore
+import be.alpago.website.interfaces.ktor.highlights
 import be.alpago.website.interfaces.ktor.httpCaching
-import be.alpago.website.interfaces.ktor.routes.indexRoutes
-import be.alpago.website.interfaces.ktor.routes.newsRoutes
-import be.alpago.website.interfaces.ktor.routes.photoGalleryRoutes
+import be.alpago.website.interfaces.ktor.imageMetadata
+import be.alpago.website.interfaces.ktor.index
+import be.alpago.website.interfaces.ktor.newsModule
+import be.alpago.website.interfaces.ktor.photoGallery
 import be.alpago.website.interfaces.ktor.registerShutdownHook
 import be.alpago.website.interfaces.ktor.serialization
+import be.alpago.website.interfaces.ktor.templates
 import be.alpago.website.interfaces.ktor.validation
-import be.alpago.website.modules.animalModule
-import be.alpago.website.modules.articleModule
-import be.alpago.website.modules.authenticationModule
-import be.alpago.website.modules.emailModule
-import be.alpago.website.modules.factsheetModule
-import be.alpago.website.modules.fiberAnalysisModule
-import be.alpago.website.modules.firestoreModule
-import be.alpago.website.modules.highlightModule
-import be.alpago.website.modules.imageMetadataModule
-import be.alpago.website.modules.indexModule
-import be.alpago.website.modules.newsModule
-import be.alpago.website.modules.photoGalleryModule
-import be.alpago.website.modules.templateModule
 import io.ktor.server.application.Application
 import io.ktor.server.cio.CIO
 import io.ktor.server.engine.embeddedServer
@@ -36,7 +28,7 @@ fun main() {
         embeddedServer(
             factory = CIO,
             port = 8080,
-            module = Application::main
+            module = Application::modules
         )
     ) {
         registerShutdownHook()
@@ -46,45 +38,26 @@ fun main() {
     }
 }
 
-fun Application.main() {
+fun Application.modules() {
     assets()
-
-    authenticationModule()
     authentication()
-
     httpCaching()
-
     i18n()
-
     serialization()
-
     validation()
 
-    firestoreModule()
-    templateModule()
+    firestore()
+    templates()
 
-    articleModule()
-    highlightModule()
-    imageMetadataModule()
+    articles()
+    highlights()
+    imageMetadata()
 
-    animalModule()
-    animalRoutes()
-
-    fiberAnalysisModule()
-    fiberAnalysisRoutes()
-
-    emailModule()
-    emailRoute()
-
-    factsheetModule()
-    factsheetRoutes()
-
-    indexModule()
-    indexRoutes()
-
+    animals()
+    fiberAnalyses()
+    factsheets()
+    index()
     newsModule()
-    newsRoutes()
-
-    photoGalleryModule()
-    photoGalleryRoutes()
+    photoGallery()
+    email()
 }

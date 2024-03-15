@@ -1,7 +1,6 @@
 package be.alpago.website.interfaces.ktor
 
 import at.favre.lib.crypto.bcrypt.BCrypt
-import be.alpago.website.inject
 import io.ktor.server.application.Application
 import io.ktor.server.application.install
 import io.ktor.server.auth.Authentication
@@ -14,6 +13,12 @@ data class AuthenticationProperties(
 )
 
 fun Application.authentication() {
+    register {
+        AuthenticationProperties(
+            credentials = getEnvironmentVariable("DMUA_CREDENTIALS"),
+        )
+    }
+
     val properties by lazy { inject<AuthenticationProperties>() }
     val allowedCredentials by lazy { parseCredentials(properties) }
     val verifyer by lazy { BCrypt.verifyer() }

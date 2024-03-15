@@ -1,14 +1,12 @@
-package be.alpago.website.modules
+package be.alpago.website.interfaces.ktor
 
 import be.alpago.website.adapters.firestore.FirestoreAggregateTransformer
 import be.alpago.website.adapters.firestore.FirestoreFiberAnalysisTransformer
 import be.alpago.website.adapters.firestore.FirestoreProperties
 import be.alpago.website.adapters.firestore.FirestoreRepository
 import be.alpago.website.domain.FiberAnalysis
-import be.alpago.website.inject
+import be.alpago.website.libs.domain.ports.CachingRepository
 import be.alpago.website.libs.domain.ports.Repository
-import be.alpago.website.libs.repository.CachingRepository
-import be.alpago.website.register
 import io.ktor.client.HttpClient
 import io.ktor.server.application.Application
 
@@ -17,7 +15,7 @@ const val FIBER_ANALYSIS_TRANSFORMER = "fiberAnalyses"
 
 private const val FIBER_ANALYSIS_COLLECTION = "fiberAnalyses"
 
-fun Application.fiberAnalysisModule() {
+fun Application.fiberAnalyses() {
     register<FirestoreAggregateTransformer<FiberAnalysis>>(FIBER_ANALYSIS_TRANSFORMER) {
         FirestoreFiberAnalysisTransformer()
     }
@@ -32,4 +30,8 @@ fun Application.fiberAnalysisModule() {
             )
         )
     }
+
+    val fiberAnalysisRepository by lazy { inject<Repository<FiberAnalysis>>(FIBER_ANALYSIS_REPOSITORY) }
+
+    managementRoutes("/api/fiberAnalyses", fiberAnalysisRepository)
 }

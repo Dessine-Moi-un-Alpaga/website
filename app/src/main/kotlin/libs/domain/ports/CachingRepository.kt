@@ -1,7 +1,6 @@
-package be.alpago.website.libs.repository
+package be.alpago.website.libs.domain.ports
 
 import be.alpago.website.libs.domain.AggregateRoot
-import be.alpago.website.libs.domain.ports.Repository
 
 private data class FindByCacheKey(
     val argumentName: String,

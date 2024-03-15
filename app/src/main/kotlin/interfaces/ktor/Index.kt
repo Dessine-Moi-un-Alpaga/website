@@ -1,4 +1,4 @@
-package be.alpago.website.modules
+package be.alpago.website.interfaces.ktor
 
 import be.alpago.website.adapters.firestore.FirestoreAggregateTransformer
 import be.alpago.website.adapters.firestore.FirestoreProperties
@@ -9,12 +9,16 @@ import be.alpago.website.domain.Animal
 import be.alpago.website.domain.Article
 import be.alpago.website.domain.Highlight
 import be.alpago.website.domain.ImageMetadata
-import be.alpago.website.inject
+import be.alpago.website.interfaces.kotlinx.html.LayoutTemplate
+import be.alpago.website.interfaces.kotlinx.html.TemplateProperties
+import be.alpago.website.libs.domain.ports.CachingRepository
 import be.alpago.website.libs.domain.ports.Repository
-import be.alpago.website.libs.repository.CachingRepository
-import be.alpago.website.register
 import io.ktor.client.HttpClient
 import io.ktor.server.application.Application
+import io.ktor.server.application.call
+import io.ktor.server.html.respondHtmlTemplate
+import io.ktor.server.routing.get
+import io.ktor.server.routing.routing
 
 const val INDEX_ARTICLE_REPOSITORY = "pages/index/articles"
 const val INDEX_GUILD_REPOSITORY = "pages/index/guilds"
@@ -26,7 +30,7 @@ private const val INDEX_GUILD_COLLECTION = "pages/index/guilds"
 private const val INDEX_NEWS_COLLECTION = "pages/index/news"
 private const val INDEX_TRAININGS_COLLECTION = "pages/index/trainings"
 
-fun Application.indexModule() {
+fun Application.index() {
     register<Repository<Article>>(INDEX_ARTICLE_REPOSITORY) {
         CachingRepository(
             FirestoreRepository(
@@ -80,4 +84,27 @@ fun Application.indexModule() {
             trainingRepository = inject<Repository<ImageMetadata>>(INDEX_TRAININGS_REPOSITORY),
         )
     }
+
+    val properties by lazy { inject<TemplateProperties>() }
+    val query by lazy { inject<ShowIndexPage>() }
+
+    routing {
+        get(Regex("/(index.html)?")) {
+            val pageModel = query.execute()
+            val template = LayoutTemplate(properties, pageModel)
+            call.respondHtmlTemplate(template) { }
+        }
+    }
+
+    val articleRepository by lazy { inject<Repository<Article>>(INDEX_ARTICLE_REPOSITORY) }
+    managementRoutes("/api/index/article", articleRepository)
+
+    val guildRepository by lazy { inject<Repository<Highlight>>(INDEX_GUILD_REPOSITORY) }
+    managementRoutes("/api/index/guilds", guildRepository)
+
+    val newsRepository by lazy { inject<Repository<Highlight>>(INDEX_NEWS_REPOSITORY) }
+    managementRoutes("/api/index/news", newsRepository)
+
+    val trainingRepository by lazy { inject<Repository<ImageMetadata>>(INDEX_TRAININGS_REPOSITORY) }
+    managementRoutes("/api/index/trainings", trainingRepository)
 }
