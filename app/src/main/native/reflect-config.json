@@ -14,7 +14,7 @@
 {
   "name":"be.alpago.website.ApplicationKt",
   "queryAllPublicMethods":true,
-  "methods":[{"name":"main","parameterTypes":[] }, {"name":"main","parameterTypes":["io.ktor.server.application.Application"] }]
+  "methods":[{"name":"main","parameterTypes":[] }, {"name":"modules","parameterTypes":["io.ktor.server.application.Application"] }]
 },
 {
   "name":"be.alpago.website.adapters.firestore.BooleanValue",
