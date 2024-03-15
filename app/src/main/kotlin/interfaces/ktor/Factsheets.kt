@@ -1,4 +1,4 @@
-package be.alpago.website.modules
+package be.alpago.website.interfaces.ktor
 
 import be.alpago.website.adapters.firestore.FirestoreAggregateTransformer
 import be.alpago.website.adapters.firestore.FirestoreProperties
@@ -8,12 +8,16 @@ import be.alpago.website.application.usecases.ShowFactsheetPage
 import be.alpago.website.domain.Animal
 import be.alpago.website.domain.Article
 import be.alpago.website.domain.Highlight
-import be.alpago.website.inject
+import be.alpago.website.interfaces.kotlinx.html.LayoutTemplate
+import be.alpago.website.interfaces.kotlinx.html.TemplateProperties
+import be.alpago.website.libs.domain.ports.CachingRepository
 import be.alpago.website.libs.domain.ports.Repository
-import be.alpago.website.libs.repository.CachingRepository
-import be.alpago.website.register
 import io.ktor.client.HttpClient
 import io.ktor.server.application.Application
+import io.ktor.server.application.call
+import io.ktor.server.html.respondHtmlTemplate
+import io.ktor.server.routing.get
+import io.ktor.server.routing.routing
 
 const val FACTSHEET_ARTICLE_REPOSITORY = "factsheets/article"
 const val FACTSHEET_HIGHLIGHT_REPOSITORY = "factsheets/highlights"
@@ -21,7 +25,7 @@ const val FACTSHEET_HIGHLIGHT_REPOSITORY = "factsheets/highlights"
 private const val FACTSHEET_ARTICLE_COLLECTION = "pages/factsheeets/article"
 private const val FACTSHEET_HIGHLIGHT_COLLECTION = "pages/factsheets/highlights"
 
-fun Application.factsheetModule() {
+fun Application.factsheets() {
     register<Repository<Article>>(FACTSHEET_ARTICLE_REPOSITORY) {
         CachingRepository(
             FirestoreRepository(
@@ -51,4 +55,21 @@ fun Application.factsheetModule() {
             factsheetRepository = inject<Repository<Highlight>>(FACTSHEET_HIGHLIGHT_REPOSITORY),
         )
     }
+
+    val properties by lazy { inject<TemplateProperties>() }
+    val query by lazy { inject<ShowFactsheetPage>() }
+
+    routing {
+        get("/factsheets.html") {
+            val pageModel = query.execute()
+            val template = LayoutTemplate(properties, pageModel)
+            call.respondHtmlTemplate(template) { }
+        }
+    }
+
+    val articleRepository by lazy { inject<Repository<Article>>(FACTSHEET_ARTICLE_REPOSITORY) }
+    managementRoutes("/api/factsheets/article", articleRepository)
+
+    val factsheetRepository by lazy { inject<Repository<Highlight>>(FACTSHEET_HIGHLIGHT_REPOSITORY) }
+    managementRoutes("/api/factsheets/factsheets", factsheetRepository)
 }

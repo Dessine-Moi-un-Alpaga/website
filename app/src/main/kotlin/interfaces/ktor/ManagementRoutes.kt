@@ -1,4 +1,4 @@
-package be.alpago.website.interfaces.ktor.routes
+package be.alpago.website.interfaces.ktor
 
 import be.alpago.website.libs.domain.AggregateRoot
 import be.alpago.website.libs.domain.ports.AggregateRootNotFound
