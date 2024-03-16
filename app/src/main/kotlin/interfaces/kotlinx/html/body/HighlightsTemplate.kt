@@ -14,7 +14,7 @@ class HighlightsTemplate(
 
     override fun FlowContent.apply() {
         insert(SectionTemplate(model)) {
-            pageTitle {
+            title {
                 +model.sectionTitle
             }
             content {

@@ -13,7 +13,7 @@ class SectionTemplate(sectionModel: SectionModel) : Template<FlowContent> {
     private val id = sectionModel.id
     private val color = sectionModel.color
 
-    val pageTitle = Placeholder<FlowContent>()
+    val title = Placeholder<FlowContent>()
     val content = Placeholder<FlowContent>()
 
     override fun FlowContent.apply() {
@@ -27,7 +27,7 @@ class SectionTemplate(sectionModel: SectionModel) : Template<FlowContent> {
             div {
                 classes = setOf(EscapeVelocity.title)
 
-                insert(pageTitle)
+                insert(this@SectionTemplate.title)
             }
 
             div {
