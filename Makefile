@@ -20,7 +20,12 @@ DOCKER_IMAGE := $(ARTIFACT_REGISTRY)/$(GOOGLE_PROJECT)/$(ARTIFACT_REPOSITORY)/we
 DOCKER_TAG := $(ARTIFACT_REGISTRY)/$(GOOGLE_PROJECT)/$(ARTIFACT_REPOSITORY)/website:$(VERSION)
 FIREBASE_LOCATION := $(shell which firebase)
 
-TERRAFORM_INFRA_VARS := -var 'artifact_registry_location=$(ARTIFACT_REGISTRY_LOCATION)' -var 'artifact_repository=$(ARTIFACT_REPOSITORY)' -var 'credentials=$(CREDENTIALS)' -var 'firestore_location=$(FIRESTORE_LOCATION)' -var 'send_grid_api_key=$(SEND_GRID_API_KEY)'
+TERRAFORM_INFRA_VARS := \
+	-var 'artifact_registry_location=$(ARTIFACT_REGISTRY_LOCATION)' \
+	-var 'artifact_repository=$(ARTIFACT_REPOSITORY)' \
+	-var 'credentials=$(CREDENTIALS)' \
+	-var 'firestore_location=$(FIRESTORE_LOCATION)' \
+	-var 'send_grid_api_key=$(SEND_GRID_API_KEY)'
 
 TERRAFORM_APP_VARS := \
 	-var 'artifact_registry_location=$(ARTIFACT_REGISTRY_LOCATION)' \
