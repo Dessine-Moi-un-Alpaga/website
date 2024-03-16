@@ -45,6 +45,7 @@ dependencies {
     testImplementation(libs.junit.jupiter)
     testImplementation(libs.kotest.assertions.core)
     testImplementation(libs.kotest.assertions.json)
+    testImplementation(libs.jsoup)
     testImplementation(libs.kotest.assertions.ktor)
     testImplementation(libs.ktor.client.mock)
     testImplementation(libs.ktor.server.test.host)
