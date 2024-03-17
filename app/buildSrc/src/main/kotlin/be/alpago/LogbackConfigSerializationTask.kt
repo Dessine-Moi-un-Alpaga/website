@@ -10,13 +10,15 @@ import java.io.File
 import java.io.FileOutputStream
 import java.io.ObjectOutputStream
 
+const val OUTPUT_DIRECTORY = "generated/resources/serialized-logback-config"
+
 open class LogbackConfigSerializationTask : DefaultTask() {
 
     @InputFile
     open fun getInputFile() = project.file("src/main/logback/logback.xml")
 
     @OutputFile
-    open fun getOutputFile() = File(project.layout.buildDirectory.asFile.get(), "${OUTPUT_DIRECTORY}/logback.scmo")
+    open fun getOutputFile() = File(project.layout.buildDirectory.asFile.get(), "$OUTPUT_DIRECTORY/logback.scmo")
 
     @TaskAction
     fun execute() {
