@@ -2,7 +2,11 @@ package be.alpago.website.interfaces.kotlinx.html.header
 
 import be.alpago.website.interfaces.kotlinx.html.Messages
 import be.alpago.website.interfaces.kotlinx.html.TemplateProperties
-import kotlinx.html.*
+import kotlinx.html.SECTION
+import kotlinx.html.classes
+import kotlinx.html.div
+import kotlinx.html.id
+import kotlinx.html.img
 
 const val LOGO_PATH = "images/logo.png"
 

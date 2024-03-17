@@ -4,7 +4,10 @@ import be.alpago.website.application.PageModel
 import be.alpago.website.interfaces.kotlinx.html.TemplateProperties
 import be.alpago.website.interfaces.kotlinx.html.header.navigation.navigationMenu
 import be.alpago.website.interfaces.kotlinx.html.style.EscapeVelocity
-import kotlinx.html.*
+import kotlinx.html.DIV
+import kotlinx.html.classes
+import kotlinx.html.id
+import kotlinx.html.section
 
 fun DIV.header(
     properties: TemplateProperties,

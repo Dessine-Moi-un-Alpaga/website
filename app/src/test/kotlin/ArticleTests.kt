@@ -65,9 +65,6 @@ suspend fun ApplicationTestBuilder.articleTest(
     val baseAssetUrl = templateProperties.baseAssetUrl
 
     val document = Jsoup.parse(response.bodyAsText())
-
-    println(document)
-
     document.select(articleSection) shouldHaveSize 1
     document.select(articleSectionTitle).text() shouldBe sectionTitle
     document.select(articleTitle).text() shouldBe title

@@ -6,7 +6,15 @@ import be.alpago.website.interfaces.kotlinx.html.footer.contact.contact
 import be.alpago.website.interfaces.kotlinx.html.footer.legal.legalNotice
 import be.alpago.website.interfaces.kotlinx.html.style.EscapeVelocity
 import be.alpago.website.libs.kotlin.i18n.capitalize
-import kotlinx.html.*
+import kotlinx.html.DIV
+import kotlinx.html.SECTION
+import kotlinx.html.classes
+import kotlinx.html.div
+import kotlinx.html.h2
+import kotlinx.html.header
+import kotlinx.html.id
+import kotlinx.html.p
+import kotlinx.html.section
 
 fun DIV.footer(properties: TemplateProperties) {
     section {

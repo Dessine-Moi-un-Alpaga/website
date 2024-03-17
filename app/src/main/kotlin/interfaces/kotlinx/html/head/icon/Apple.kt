@@ -1,6 +1,7 @@
 package be.alpago.website.interfaces.kotlinx.html.head.icon
 
-import kotlinx.html.*
+import kotlinx.html.HEAD
+import kotlinx.html.link
 
 private const val APPLE_TOUCH_ICON = "apple-touch-icon"
 
