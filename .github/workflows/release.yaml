@@ -67,7 +67,7 @@ jobs:
           GOOGLE_ZONE: ${{ vars.GOOGLE_ZONE }}
           PROD_BUCKET: ${{ vars.PROD_BUCKET }}
           SEND_GRID_API_KEY: ${{ secrets.SEND_GRID_API_KEY }}
-        run: make gradle-test gradle-jacocoTestReport
+        run: make test-app jacocoTestReport-app
 
       - name: Save test results and logs
         if: always()
