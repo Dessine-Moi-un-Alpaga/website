@@ -13,7 +13,7 @@ import be.alpago.website.interfaces.ktor.highlights
 import be.alpago.website.interfaces.ktor.httpCaching
 import be.alpago.website.interfaces.ktor.imageMetadata
 import be.alpago.website.interfaces.ktor.index
-import be.alpago.website.interfaces.ktor.newsModule
+import be.alpago.website.interfaces.ktor.news
 import be.alpago.website.interfaces.ktor.photoGallery
 import be.alpago.website.interfaces.ktor.registerShutdownHook
 import be.alpago.website.interfaces.ktor.serialization
@@ -57,7 +57,7 @@ fun Application.modules() {
     fiberAnalyses()
     factsheets()
     index()
-    newsModule()
+    news()
     photoGallery()
     email()
 }
