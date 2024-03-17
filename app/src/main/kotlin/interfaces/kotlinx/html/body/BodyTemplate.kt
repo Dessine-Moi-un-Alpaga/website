@@ -7,11 +7,7 @@ import be.alpago.website.interfaces.kotlinx.html.header.header
 import be.alpago.website.interfaces.kotlinx.html.style.EscapeVelocity
 import io.ktor.server.html.Template
 import io.ktor.server.html.insert
-import kotlinx.html.HTML
-import kotlinx.html.body
-import kotlinx.html.classes
-import kotlinx.html.div
-import kotlinx.html.id
+import kotlinx.html.*
 
 class BodyTemplate(
     private val model: PageModel,

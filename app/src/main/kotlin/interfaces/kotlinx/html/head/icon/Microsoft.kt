@@ -1,7 +1,6 @@
 package be.alpago.website.interfaces.kotlinx.html.head.icon
 
-import kotlinx.html.HEAD
-import kotlinx.html.meta
+import kotlinx.html.*
 
 fun HEAD.microsoftIcons() {
     meta {

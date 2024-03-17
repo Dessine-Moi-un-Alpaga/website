@@ -1,19 +1,12 @@
 package be.alpago.website.interfaces.kotlinx.html.header.navigation
 
-import be.alpago.website.application.Categories
 import be.alpago.website.application.NavigationModel
 import be.alpago.website.application.PageModel
 import be.alpago.website.domain.Animal
 import be.alpago.website.interfaces.kotlinx.html.Messages
 import be.alpago.website.interfaces.kotlinx.html.style.EscapeVelocity
 import be.alpago.website.libs.kotlin.i18n.capitalize
-import kotlinx.html.SECTION
-import kotlinx.html.UL
-import kotlinx.html.a
-import kotlinx.html.id
-import kotlinx.html.li
-import kotlinx.html.nav
-import kotlinx.html.ul
+import kotlinx.html.*
 
 private val NavigationModel.Category.text
     get() = when (this) {

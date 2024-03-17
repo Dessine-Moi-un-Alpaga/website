@@ -1,16 +1,7 @@
 package be.alpago.website.interfaces.kotlinx.html.footer.contact.form
 
 import be.alpago.website.interfaces.kotlinx.html.style.EscapeVelocity
-import kotlinx.html.DIV
-import kotlinx.html.FlowContent
-import kotlinx.html.HTMLTag
-import kotlinx.html.HtmlBlockTag
-import kotlinx.html.TagConsumer
-import kotlinx.html.attributesMapOf
-import kotlinx.html.classes
-import kotlinx.html.div
-import kotlinx.html.section
-import kotlinx.html.visit
+import kotlinx.html.*
 
 open class CONTACTFORM(
     initialAttributes : Map<String, String>,

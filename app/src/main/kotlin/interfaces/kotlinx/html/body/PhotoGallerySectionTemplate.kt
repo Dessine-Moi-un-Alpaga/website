@@ -8,18 +8,7 @@ import be.alpago.website.interfaces.kotlinx.html.style.Photoswipe
 import be.alpago.website.interfaces.kotlinx.html.style.testId
 import io.ktor.server.html.Template
 import io.ktor.server.html.insert
-import kotlinx.html.DIV
-import kotlinx.html.FlowContent
-import kotlinx.html.a
-import kotlinx.html.classes
-import kotlinx.html.div
-import kotlinx.html.figure
-import kotlinx.html.h2
-import kotlinx.html.header
-import kotlinx.html.id
-import kotlinx.html.img
-import kotlinx.html.p
-import kotlinx.html.unsafe
+import kotlinx.html.*
 
 class PhotoGallerySectionTemplate(
     private val model: PhotoGallerySectionModel,
