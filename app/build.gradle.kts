@@ -1,5 +1,3 @@
-import be.alpago.environmentVariables
-
 plugins {
     id("firestore-emulator")
     id("i18n")
