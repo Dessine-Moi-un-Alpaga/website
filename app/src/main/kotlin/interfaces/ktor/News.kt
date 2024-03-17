@@ -22,7 +22,7 @@ const val NEWS_ARTICLE_REPOSITORY = "pages/news/articles"
 
 private const val NEWS_ARTICLE_COLLECTION = "pages/news/articles"
 
-fun Application.newsModule() {
+fun Application.news() {
     register<Repository<Article>>(NEWS_ARTICLE_REPOSITORY) {
         CachingRepository(
             FirestoreRepository(
