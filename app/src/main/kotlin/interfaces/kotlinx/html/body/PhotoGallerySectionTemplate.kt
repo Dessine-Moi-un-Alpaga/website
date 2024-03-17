@@ -4,6 +4,7 @@ import be.alpago.website.application.PhotoGallerySectionModel
 import be.alpago.website.interfaces.kotlinx.html.TemplateProperties
 import be.alpago.website.interfaces.kotlinx.html.style.EscapeVelocity
 import be.alpago.website.interfaces.kotlinx.html.style.Photoswipe
+import be.alpago.website.interfaces.kotlinx.html.style.testId
 import io.ktor.server.html.Template
 import io.ktor.server.html.insert
 import kotlinx.html.*
@@ -53,6 +54,7 @@ class PhotoGallerySectionTemplate(
 
                     for (image in model.images) {
                         figure {
+                            testId("${this@PhotoGallerySectionTemplate.model.id}-photo", properties)
                             attributes["itemprop"] = "associatedMedia"
                             attributes["itemscope"] = "itemscope"
                             attributes["itemtype"] = "http://schema.org/ImageObject"
@@ -60,12 +62,14 @@ class PhotoGallerySectionTemplate(
                             classes = setOf("gallery-image")
 
                             a {
+                                testId("${this@PhotoGallerySectionTemplate.model.id}-photo-image", properties)
                                 attributes["itemprop"] = "contentUrl"
                                 attributes[Photoswipe.height] = "${image.height}"
                                 attributes[Photoswipe.width] = "${image.width}"
                                 href = "${properties.baseAssetUrl}/${image.path}"
 
                                 img {
+                                    testId("${this@PhotoGallerySectionTemplate.model.id}-photo-thumbnail", properties)
                                     alt = image.description
                                     src = "${properties.baseAssetUrl}/${image.thumbnailPath}"
                                 }
