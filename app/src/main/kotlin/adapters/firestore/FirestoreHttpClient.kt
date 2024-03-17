@@ -6,8 +6,10 @@ import io.ktor.client.call.body
 import io.ktor.client.engine.cio.CIO
 import io.ktor.client.plugins.DefaultRequest
 import io.ktor.client.plugins.HttpSend
+import io.ktor.client.plugins.Sender
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.plugin
+import io.ktor.client.request.HttpRequestBuilder
 import io.ktor.client.request.accept
 import io.ktor.client.request.bearerAuth
 import io.ktor.client.request.header
@@ -47,48 +49,48 @@ fun createHttpClient(): HttpClient {
 
     val tokenStorage = AtomicReference<String>()
 
-    client.plugin(HttpSend).intercept { request ->
-        var firstTry: HttpClientCall? = null
+    suspend fun Sender.tryExistingToken(request: HttpRequestBuilder): HttpClientCall? {
+        var result: HttpClientCall? = null
+        val token = tokenStorage.get()
 
-        if (request.url.host == FIRESTORE_HOSTNAME) {
-            var token = tokenStorage.get()
+        if (token != null) {
+            request.bearerAuth(token)
+            result = execute(request)
 
-            if (token != null) {
-                // try with existing token
-                request.bearerAuth(token)
-                firstTry = execute(request)
-
-                if (firstTry.response.status == HttpStatusCode.Forbidden) {
-                    // token has expired
-                    request.headers {
-                        remove(HttpHeaders.Authorization)
-                    }
-
-                    firstTry = null
-                    token = null
-                }
-            }
-
-            if (token == null) {
-                // get new token
-                val response = client.request(GOOGLE_METADATA_ENDPOINT) {
-                    headers {
-                        header(GOOGLE_METADATA_HEADER_NAME, GOOGLE_METADATA_HEADER_VALUE)
-                    }
-                }
-
-                if (response.status.isSuccess()) {
-                    token = response.body<GoogleToken>().value
-                    tokenStorage.set(token)
-                }
-            }
-
-            if (token != null) {
-                request.bearerAuth(token)
+            if (result.response.status == HttpStatusCode.Forbidden) {
+                result = null
             }
         }
 
-        firstTry ?: execute(request)
+        return result
+    }
+
+    suspend fun getNewToken(request: HttpRequestBuilder) {
+        val response = client.request(GOOGLE_METADATA_ENDPOINT) {
+            headers {
+                header(GOOGLE_METADATA_HEADER_NAME, GOOGLE_METADATA_HEADER_VALUE)
+            }
+        }
+
+        if (response.status.isSuccess()) {
+            val token = response.body<GoogleToken>().value
+            request.bearerAuth(token)
+            tokenStorage.set(token)
+        }
+    }
+
+    client.plugin(HttpSend).intercept { request ->
+        var result: HttpClientCall? = null
+
+        if (request.url.host == FIRESTORE_HOSTNAME) {
+            result = tryExistingToken(request)
+
+            if (result == null) {
+                getNewToken(request)
+            }
+        }
+
+        result ?: execute(request)
     }
 
     return client
