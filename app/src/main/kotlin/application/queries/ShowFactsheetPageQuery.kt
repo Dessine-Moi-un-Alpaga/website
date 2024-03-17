@@ -36,6 +36,7 @@ class ShowFactsheetPageQuery(
                 ArticleSectionModel(
                     article,
                     color = SectionColor.WHITE,
+                    id = "article"
                 )
             )
         }
@@ -44,6 +45,7 @@ class ShowFactsheetPageQuery(
             HighlightsSectionModel(
                 color = SectionColor.GREY,
                 highlights = factsheets.await(),
+                id = "highlights",
                 sectionTitle = "${Messages.factsheetDownloadButton}",
             )
         )

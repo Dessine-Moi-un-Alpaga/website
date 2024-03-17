@@ -41,6 +41,7 @@ class ShowIndexPageQuery(
                 ArticleSectionModel(
                     article = it,
                     color = SectionColor.WHITE,
+                    id = "article",
                 )
             )
         }
@@ -49,15 +50,17 @@ class ShowIndexPageQuery(
             HighlightsSectionModel(
                 color = SectionColor.GREY,
                 highlights = news.await(),
+                id = "news",
                 sectionTitle = "${Messages.news}",
             )
         )
 
         sections.add(
             PhotoGallerySectionModel(
-                images = trainings.await(),
                 color = SectionColor.RED,
-                sectionTitle = "${Messages.trainings}"
+                id = "trainings",
+                images = trainings.await(),
+                sectionTitle = "${Messages.trainings}",
             )
         )
 
@@ -65,6 +68,7 @@ class ShowIndexPageQuery(
             HighlightsSectionModel(
                 color = SectionColor.GREY,
                 highlights = guilds.await(),
+                id = "guilds",
                 sectionTitle = "${Messages.guilds}",
             )
         )

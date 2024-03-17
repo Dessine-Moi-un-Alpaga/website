@@ -3,17 +3,26 @@ package be.alpago.website.interfaces.kotlinx.html.body
 import be.alpago.website.application.ArticleSectionModel
 import be.alpago.website.interfaces.kotlinx.html.TemplateProperties
 import be.alpago.website.interfaces.kotlinx.html.style.EscapeVelocity
+import be.alpago.website.interfaces.kotlinx.html.style.testId
 import io.ktor.server.html.Template
 import io.ktor.server.html.insert
-import kotlinx.html.*
+import kotlinx.html.FlowContent
+import kotlinx.html.a
+import kotlinx.html.article
+import kotlinx.html.classes
+import kotlinx.html.h2
+import kotlinx.html.header
+import kotlinx.html.img
+import kotlinx.html.p
+import kotlinx.html.unsafe
 
 class ArticleSectionTemplate(
-    private val properties: TemplateProperties,
     private val model: ArticleSectionModel,
+    private val properties: TemplateProperties,
 ) : Template<FlowContent> {
 
     override fun FlowContent.apply() {
-        insert(SectionTemplate(model)) {
+        insert(SectionTemplate(model, properties)) {
             title {
                 +model.sectionTitle
             }
@@ -29,6 +38,7 @@ class ArticleSectionTemplate(
                             classes = setOf(EscapeVelocity.style1)
 
                             h2 {
+                                testId("article-title", properties)
                                 unsafe {
                                     +model.article.title
                                 }
@@ -36,6 +46,7 @@ class ArticleSectionTemplate(
 
                             if (model.article.subtitle != null) {
                                 p {
+                                    testId("article-subtitle", properties)
                                     unsafe {
                                         +model.article.subtitle
                                     }
@@ -52,6 +63,8 @@ class ArticleSectionTemplate(
                             )
 
                             img {
+                                testId("article-banner", properties)
+
                                 if (model.article.bannerDescription != null) {
                                     alt = model.article.bannerDescription
                                 }

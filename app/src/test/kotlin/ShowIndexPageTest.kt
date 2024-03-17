@@ -1,6 +1,5 @@
 package be.alpago.website
 
-import be.alpago.website.adapters.firestore.FirestoreProperties
 import be.alpago.website.interfaces.i18n4k.i18n
 import be.alpago.website.interfaces.kotlinx.html.TemplateProperties
 import be.alpago.website.interfaces.ktor.AuthenticationProperties
@@ -18,6 +17,8 @@ import be.alpago.website.interfaces.ktor.serialization
 import be.alpago.website.interfaces.ktor.templates
 import be.alpago.website.interfaces.ktor.validation
 import io.kotest.assertions.ktor.client.shouldHaveStatus
+import io.kotest.matchers.collections.shouldBeEmpty
+import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.shouldBe
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.request.basicAuth
@@ -33,6 +34,7 @@ import io.ktor.serialization.kotlinx.json.json
 import io.ktor.server.testing.ApplicationTestBuilder
 import io.ktor.server.testing.testApplication
 import org.jsoup.Jsoup
+import org.jsoup.nodes.Document
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import java.util.UUID
@@ -40,6 +42,32 @@ import java.util.UUID
 private const val USERNAME = "test"
 private const val PASSWORD = "**SECRET**"
 private const val CREDENTIALS = "$USERNAME:\$2y\$12\$MEq8DuMADQU85PFGw844zuAVbEXOtyC1oTorFISvrsPIoQ9Rn92qy"
+
+private const val ARTICLE_BANNER = "[data-test-id=article-banner]"
+private const val ARTICLE_CONTENT_TEST_ATTRIBUTE = "data-test-id=article-contents"
+private const val ARTICLE_CONTENT = "[$ARTICLE_CONTENT_TEST_ATTRIBUTE]"
+private const val ARTICLE_SECTION = "[data-test-id=article]"
+private const val ARTICLE_SECTION_TITLE = "[data-test-id=article-section-title]"
+private const val ARTICLE_SUBTITLE = "[data-test-id=article-subtitle]"
+private const val ARTICLE_TTTLE = "[data-test-id=article-title]"
+
+private const val GUILD_HIGHLIGHTS_SECTION = "[data-test-id=guilds]"
+private const val GUILD_HIGHLIGHT = "[data-test-id=guilds-highlight]"
+private const val GUILD_HIGHLIGHT_BUTTON = "[data-test-id=guilds-highlight-button]"
+private const val GUILD_HIGHLIGHT_TEXT = "[data-test-id=guilds-highlight-text]"
+private const val GUILD_HIGHLIGHT_THUMBNAIL = "[data-test-id=guilds-highlight-thumbnail]"
+private const val GUILD_HIGHLIGHT_THUMBNAIL_IMAGE = "[data-test-id=guilds-highlight-thumbnail-image]"
+private const val GUILD_HIGHLIGHT_TITLE = "[data-test-id=guilds-highlight-title]"
+
+private const val NEWS_HIGHLIGHTS_SECTION = "[data-test-id=news]"
+private const val NEWS_HIGHLIGHT = "[data-test-id=news-highlight]"
+private const val NEWS_HIGHLIGHT_BUTTON = "[data-test-id=news-highlight-button]"
+private const val NEWS_HIGHLIGHT_TEXT = "[data-test-id=news-highlight-text]"
+private const val NEWS_HIGHLIGHT_THUMBNAIL = "[data-test-id=news-highlight-thumbnail]"
+private const val NEWS_HIGHLIGHT_THUMBNAIL_IMAGE = "[data-test-id=news-highlight-thumbnail-image]"
+private const val NEWS_HIGHLIGHT_TITLE = "[data-test-id=news-highlight-title]"
+
+private const val TRAININGS_SECTION = "[data-test-id=trainings-photo]"
 
 class ShowIndexPageTest {
 
@@ -98,10 +126,10 @@ class ShowIndexPageTest {
         response shouldHaveStatus HttpStatusCode.OK
 
         val document = Jsoup.parse(response.bodyAsText())
-        document.select("html > body > div section#article").isEmpty() shouldBe true
-        document.select("html > body > div section#highlights:eq(0) > div.container > div > *").isEmpty() shouldBe true
-        document.select("html > body > div section#photos > div.container > div > *").isEmpty() shouldBe true
-        document.select("html > body > div section#highlights:eq(1) > div.container > div > *").isEmpty() shouldBe true
+        document.select(ARTICLE_SECTION).shouldBeEmpty()
+        document.select("$NEWS_HIGHLIGHTS_SECTION $NEWS_HIGHLIGHT").shouldBeEmpty()
+        document.select(TRAININGS_SECTION).shouldBeEmpty()
+        document.select("$GUILD_HIGHLIGHTS_SECTION $GUILD_HIGHLIGHT").shouldBeEmpty()
     }
 
     @Test
@@ -112,8 +140,8 @@ class ShowIndexPageTest {
         val bannerDescription = "bannerDescription"
         val sectionTitle = "sectionTitle"
         val subtitle = "subtitle"
-        val contents = "text"
-        val text = "<p>$contents</p>"
+        val content = "text"
+        val text = "<p $ARTICLE_CONTENT_TEST_ATTRIBUTE>$content</p>"
         val title = "title"
 
         var response = jsonClient.put("/api/index/article") {
@@ -141,11 +169,58 @@ class ShowIndexPageTest {
         val baseAssetUrl = templateProperties.baseAssetUrl
 
         val document = Jsoup.parse(response.bodyAsText())
-        document.select("html > body > div section#article > div.title").text() shouldBe sectionTitle
-        document.select("html > body > div section#article > div.container > article > header > h2").text() shouldBe title
-        document.select("html > body > div section#article > div.container > article > header > p").text() shouldBe subtitle
-        document.select("html > body > div section#article > div.container > article > a > img").attr("alt") shouldBe bannerDescription
-        document.select("html > body > div section#article > div.container > article > a > img").attr("src") shouldBe "$baseAssetUrl/$banner"
-        document.select("html > body > div section#article > div.container > article > p").text() shouldBe contents
+        println(document)
+        document.select(ARTICLE_SECTION) shouldHaveSize 1
+        document.select(ARTICLE_SECTION_TITLE).text() shouldBe sectionTitle
+        document.select(ARTICLE_TTTLE).text() shouldBe title
+        document.select(ARTICLE_SUBTITLE).text() shouldBe subtitle
+        document.select(ARTICLE_BANNER).attr("alt") shouldBe bannerDescription
+        document.select(ARTICLE_BANNER).attr("src") shouldBe "$baseAssetUrl/$banner"
+        document.select(ARTICLE_CONTENT).text() shouldBe content
+    }
+
+    @Test
+    fun `news highlights can be created`() = indexPageTestApplication {
+        val jsonClient = createJsonClient()
+        val id = "${UUID.randomUUID()}"
+        val link = "link"
+        val text = "text"
+        val thumbnail = "thumbnail"
+        val thumbnailDescription = "thumbnailDescription"
+        val title = "title"
+
+        var response = jsonClient.put("/api/index/news") {
+            contentType(ContentType.Application.Json)
+            basicAuth(USERNAME, PASSWORD)
+            setBody("""
+                {
+                  "id": "$id",
+                  "link": "$link",
+                  "text": "$text",
+                  "thumbnail": "$thumbnail",
+                  "thumbnailDescription": "$thumbnailDescription",
+                  "title": "$title"
+                }
+            """.trimIndent())
+        }
+
+        response shouldHaveStatus HttpStatusCode.OK
+
+        response = client.get("/index.html")
+        response shouldHaveStatus HttpStatusCode.OK
+
+        val templateProperties = inject<TemplateProperties>()
+        val baseAssetUrl = templateProperties.baseAssetUrl
+
+        val document = Jsoup.parse(response.bodyAsText())
+        document.select(NEWS_HIGHLIGHTS_SECTION) shouldHaveSize 1
+        document.select(NEWS_HIGHLIGHT) shouldHaveSize 1
+        document.select(NEWS_HIGHLIGHT_THUMBNAIL).attr("href") shouldBe link
+        document.select(NEWS_HIGHLIGHT_THUMBNAIL_IMAGE).attr("alt") shouldBe thumbnailDescription
+        document.select(NEWS_HIGHLIGHT_THUMBNAIL_IMAGE).attr("src") shouldBe "$baseAssetUrl/$thumbnail"
+        document.select(NEWS_HIGHLIGHT_TITLE).attr("href") shouldBe link
+        document.select(NEWS_HIGHLIGHT_TITLE).text() shouldBe title
+        document.select(NEWS_HIGHLIGHT_TEXT).text() shouldBe text
+        document.select(NEWS_HIGHLIGHT_BUTTON).attr("href") shouldBe link
     }
 }

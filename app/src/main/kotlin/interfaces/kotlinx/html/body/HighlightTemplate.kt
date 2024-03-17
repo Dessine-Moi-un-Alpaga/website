@@ -4,14 +4,16 @@ import be.alpago.website.domain.Highlight
 import be.alpago.website.interfaces.kotlinx.html.Messages
 import be.alpago.website.interfaces.kotlinx.html.TemplateProperties
 import be.alpago.website.interfaces.kotlinx.html.style.EscapeVelocity
+import be.alpago.website.interfaces.kotlinx.html.style.testId
 import io.ktor.server.html.Template
 import kotlinx.html.*
 
 private fun Highlight.resolveLink(properties: TemplateProperties) = link.replace("{{baseAssetUrl}}", properties.baseAssetUrl)
 
 class HighlightTemplate(
+    private val id: String,
+    private val model: Highlight,
     private val properties: TemplateProperties,
-    private val highlight: Highlight,
 ) : Template<FlowContent> {
 
     override fun FlowContent.apply() {
@@ -20,6 +22,9 @@ class HighlightTemplate(
                 EscapeVelocity.col4,
                 EscapeVelocity.col12Medium
             )
+
+            testId("${this@HighlightTemplate.id}-highlight", properties)
+
             section {
                 classes = setOf(EscapeVelocity.highlight)
 
@@ -28,28 +33,32 @@ class HighlightTemplate(
                         EscapeVelocity.image,
                         EscapeVelocity.featured
                     )
-                    href = highlight.resolveLink(properties)
+                    testId("${this@HighlightTemplate.id}-highlight-thumbnail", properties)
+                    href = model.resolveLink(properties)
 
                     img {
-                        alt = highlight.thumbnailDescription
-                        src = "${properties.baseAssetUrl}/${highlight.thumbnail}"
+                        testId("${this@HighlightTemplate.id}-highlight-thumbnail-image", properties)
+                        alt = model.thumbnailDescription
+                        src = "${properties.baseAssetUrl}/${model.thumbnail}"
                     }
                 }
 
                 h3 {
                     a {
-                        href = highlight.resolveLink(properties)
+                        testId("${this@HighlightTemplate.id}-highlight-title", properties)
+                        href = model.resolveLink(properties)
 
                         unsafe {
-                            +highlight.title
+                            +model.title
                         }
                     }
                 }
 
-                if (highlight.text != null) {
+                if (model.text != null) {
                     p {
+                        testId("${this@HighlightTemplate.id}-highlight-text", properties)
                         unsafe {
-                            +highlight.text
+                            +model.text
                         }
                     }
                 }
@@ -63,7 +72,8 @@ class HighlightTemplate(
                                 EscapeVelocity.button,
                                 EscapeVelocity.style1
                             )
-                            href = highlight.resolveLink(properties)
+                            testId("${this@HighlightTemplate.id}-highlight-button", properties)
+                            href = model.resolveLink(properties)
                             +"${Messages.moreAbout}"
                         }
                     }

@@ -10,8 +10,8 @@ import io.ktor.server.html.insert
 import kotlinx.html.*
 
 class BodyTemplate(
+    private val model: PageModel,
     private val properties: TemplateProperties,
-    private val pageModel: PageModel,
 ) : Template<HTML> {
 
     override fun HTML.apply() {
@@ -21,9 +21,9 @@ class BodyTemplate(
             div {
                 id = EscapeVelocity.pageWrapper
 
-                header(properties, pageModel)
+                header(properties, model)
 
-                for (section in pageModel.sections) {
+                for (section in model.sections) {
                     val template = SectionTemplateFactory.createSectionTemplate(properties, section)
                     insert(template) { }
                 }

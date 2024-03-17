@@ -9,12 +9,12 @@ import io.ktor.server.html.insert
 import kotlinx.html.*
 
 class PhotoGallerySectionTemplate(
+    private val model: PhotoGallerySectionModel,
     private val properties: TemplateProperties,
-    private val model: PhotoGallerySectionModel
 ) : Template<FlowContent> {
 
     override fun FlowContent.apply() {
-        insert(SectionTemplate(model)) {
+        insert(SectionTemplate(model, properties)) {
             title {
                 +model.sectionTitle
             }

@@ -23,7 +23,7 @@ class ShowNewsPageQuery(
         val animals = async { animalRepository.findAll() }
         val articles = async { articleRepository.findAll() }
 
-        var color = 0
+        var index = 0
 
         PageModel(
             animals = animals.await(),
@@ -32,9 +32,10 @@ class ShowNewsPageQuery(
             sections = articles.await().map { article ->
                 val model = ArticleSectionModel(
                     article = article,
-                    color = COLORS[color++],
+                    color = COLORS[index % 2],
+                    id = "news-${index}"
                 )
-                color %= 2
+                index++
                 model
             },
         )

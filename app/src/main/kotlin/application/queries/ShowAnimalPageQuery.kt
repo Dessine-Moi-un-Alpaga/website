@@ -29,6 +29,7 @@ class ShowAnimalPageQuery(
                 AnimalSectionModel(
                     animal = animal,
                     fiberAnalyses = fiberAnalyses.await(),
+                    id = "animal"
                 )
             )
         )
