@@ -8,19 +8,7 @@ import be.alpago.website.interfaces.kotlinx.html.style.EscapeVelocity
 import be.alpago.website.interfaces.kotlinx.html.style.testId
 import io.ktor.server.html.Template
 import io.ktor.server.html.insert
-import kotlinx.html.DIV
-import kotlinx.html.FlowContent
-import kotlinx.html.SECTION
-import kotlinx.html.a
-import kotlinx.html.classes
-import kotlinx.html.div
-import kotlinx.html.h3
-import kotlinx.html.img
-import kotlinx.html.li
-import kotlinx.html.p
-import kotlinx.html.section
-import kotlinx.html.ul
-import kotlinx.html.unsafe
+import kotlinx.html.*
 
 private fun Highlight.resolveLink(properties: TemplateProperties) = link.replace("{{baseAssetUrl}}", properties.baseAssetUrl)
 

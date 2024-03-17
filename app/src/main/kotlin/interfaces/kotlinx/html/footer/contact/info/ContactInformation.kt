@@ -2,10 +2,7 @@ package be.alpago.website.interfaces.kotlinx.html.footer.contact.info
 
 import be.alpago.website.interfaces.kotlinx.html.TemplateProperties
 import be.alpago.website.interfaces.kotlinx.html.style.EscapeVelocity
-import kotlinx.html.DIV
-import kotlinx.html.classes
-import kotlinx.html.div
-import kotlinx.html.section
+import kotlinx.html.*
 
 fun DIV.contactInformation(properties: TemplateProperties) {
     div {

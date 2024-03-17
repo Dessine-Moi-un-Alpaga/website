@@ -6,16 +6,7 @@ import be.alpago.website.interfaces.kotlinx.html.style.EscapeVelocity
 import be.alpago.website.interfaces.kotlinx.html.style.testId
 import io.ktor.server.html.Template
 import io.ktor.server.html.insert
-import kotlinx.html.ARTICLE
-import kotlinx.html.FlowContent
-import kotlinx.html.a
-import kotlinx.html.article
-import kotlinx.html.classes
-import kotlinx.html.h2
-import kotlinx.html.header
-import kotlinx.html.img
-import kotlinx.html.p
-import kotlinx.html.unsafe
+import kotlinx.html.*
 
 class ArticleSectionTemplate(
     private val model: ArticleSectionModel,

@@ -2,13 +2,7 @@ package be.alpago.website.interfaces.kotlinx.html.footer.contact.info
 
 import be.alpago.website.interfaces.kotlinx.html.style.EscapeVelocity
 import be.alpago.website.interfaces.kotlinx.html.style.FontAwesome
-import kotlinx.html.DIV
-import kotlinx.html.a
-import kotlinx.html.classes
-import kotlinx.html.div
-import kotlinx.html.h3
-import kotlinx.html.p
-import kotlinx.html.section
+import kotlinx.html.*
 
 fun DIV.social() {
     div {
