@@ -1,7 +1,8 @@
 package be.alpago.website.interfaces.kotlinx.html.head.icon
 
 import io.ktor.http.ContentType
-import kotlinx.html.*
+import kotlinx.html.HEAD
+import kotlinx.html.link
 
 
 private const val ICON = "icon"

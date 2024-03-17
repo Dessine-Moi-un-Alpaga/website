@@ -4,9 +4,10 @@ import org.gradle.kotlin.dsl.creating
 import org.gradle.kotlin.dsl.getValue
 import org.gradle.kotlin.dsl.register
 
+val taskName = "explodeWebjars"
 val webjars by configurations.creating
 
-tasks.register<Copy>("explodeWebjars") {
+tasks.register<Copy>(taskName) {
     description = "Explodes WebJars to the build resources."
     group = "build"
 
@@ -28,5 +29,5 @@ tasks.register<Copy>("explodeWebjars") {
 }
 
 tasks.named("processResources").configure {
-    dependsOn(":explodeWebjars")
+    dependsOn(":$taskName")
 }

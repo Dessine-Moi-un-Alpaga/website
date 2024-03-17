@@ -5,7 +5,8 @@ import be.alpago.website.interfaces.kotlinx.html.body.BodyTemplate
 import be.alpago.website.interfaces.kotlinx.html.head.HeadTemplate
 import io.ktor.server.html.Template
 import io.ktor.server.html.insert
-import kotlinx.html.*
+import kotlinx.html.HTML
+import kotlinx.html.lang
 
 class LayoutTemplate(
     private val properties: TemplateProperties,

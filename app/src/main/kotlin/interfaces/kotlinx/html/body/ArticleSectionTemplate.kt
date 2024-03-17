@@ -6,6 +6,7 @@ import be.alpago.website.interfaces.kotlinx.html.style.EscapeVelocity
 import be.alpago.website.interfaces.kotlinx.html.style.testId
 import io.ktor.server.html.Template
 import io.ktor.server.html.insert
+import kotlinx.html.ARTICLE
 import kotlinx.html.FlowContent
 import kotlinx.html.a
 import kotlinx.html.article
@@ -21,6 +22,51 @@ class ArticleSectionTemplate(
     private val properties: TemplateProperties,
 ) : Template<FlowContent> {
 
+    private fun ARTICLE.title() {
+        if (model.article.title != null) {
+            header {
+                classes = setOf(EscapeVelocity.style1)
+
+                h2 {
+                    testId("${this@ArticleSectionTemplate.model.id}-title", properties)
+                    unsafe {
+                        +model.article.title
+                    }
+                }
+
+                if (model.article.subtitle != null) {
+                    p {
+                        testId("${this@ArticleSectionTemplate.model.id}-subtitle", properties)
+                        unsafe {
+                            +model.article.subtitle
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun ARTICLE.banner() {
+        if (model.article.banner != null) {
+            a {
+                classes = setOf(
+                    EscapeVelocity.image,
+                    EscapeVelocity.featured
+                )
+
+                img {
+                    testId("${this@ArticleSectionTemplate.model.id}-banner", properties)
+
+                    if (model.article.bannerDescription != null) {
+                        alt = model.article.bannerDescription
+                    }
+
+                    src = "${properties.baseAssetUrl}/${model.article.banner}"
+                }
+            }
+        }
+    }
+
     override fun FlowContent.apply() {
         insert(SectionTemplate(model, properties)) {
             title {
@@ -33,46 +79,8 @@ class ArticleSectionTemplate(
                         EscapeVelocity.post
                     )
 
-                    if (model.article.title != null) {
-                        header {
-                            classes = setOf(EscapeVelocity.style1)
-
-                            h2 {
-                                testId("${this@ArticleSectionTemplate.model.id}-title", properties)
-                                unsafe {
-                                    +model.article.title
-                                }
-                            }
-
-                            if (model.article.subtitle != null) {
-                                p {
-                                    testId("${this@ArticleSectionTemplate.model.id}-subtitle", properties)
-                                    unsafe {
-                                        +model.article.subtitle
-                                    }
-                                }
-                            }
-                        }
-                    }
-
-                    if (model.article.banner != null) {
-                        a {
-                            classes = setOf(
-                                EscapeVelocity.image,
-                                EscapeVelocity.featured
-                            )
-
-                            img {
-                                testId("${this@ArticleSectionTemplate.model.id}-banner", properties)
-
-                                if (model.article.bannerDescription != null) {
-                                    alt = model.article.bannerDescription
-                                }
-
-                                src = "${properties.baseAssetUrl}/${model.article.banner}"
-                            }
-                        }
-                    }
+                    title()
+                    banner()
 
                     unsafe {
                         +model.article.text

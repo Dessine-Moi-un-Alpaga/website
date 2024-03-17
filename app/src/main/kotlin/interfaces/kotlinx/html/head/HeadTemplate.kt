@@ -5,7 +5,10 @@ import be.alpago.website.interfaces.kotlinx.html.head.icon.icons
 import be.alpago.website.interfaces.kotlinx.html.head.script.scripts
 import be.alpago.website.interfaces.kotlinx.html.head.stylesheet.stylesheets
 import io.ktor.server.html.Template
-import kotlinx.html.*
+import kotlinx.html.HTML
+import kotlinx.html.head
+import kotlinx.html.meta
+import kotlinx.html.title
 
 class HeadTemplate(private val pageModel: PageModel) : Template<HTML> {
 

@@ -2,13 +2,39 @@ package be.alpago.website.interfaces.kotlinx.html.body
 
 import be.alpago.website.application.AnimalSectionModel
 import be.alpago.website.domain.Animal
+import be.alpago.website.domain.FiberAnalysis
 import be.alpago.website.interfaces.kotlinx.html.Messages
 import be.alpago.website.interfaces.kotlinx.html.TemplateProperties
 import be.alpago.website.interfaces.kotlinx.html.style.EscapeVelocity
 import be.alpago.website.libs.kotlin.i18n.capitalize
 import io.ktor.server.html.Template
 import io.ktor.server.html.insert
-import kotlinx.html.*
+import kotlinx.html.ARTICLE
+import kotlinx.html.DIV
+import kotlinx.html.FlowContent
+import kotlinx.html.HEADER
+import kotlinx.html.LI
+import kotlinx.html.TABLE
+import kotlinx.html.UL
+import kotlinx.html.a
+import kotlinx.html.article
+import kotlinx.html.b
+import kotlinx.html.classes
+import kotlinx.html.div
+import kotlinx.html.h2
+import kotlinx.html.header
+import kotlinx.html.id
+import kotlinx.html.img
+import kotlinx.html.li
+import kotlinx.html.p
+import kotlinx.html.section
+import kotlinx.html.span
+import kotlinx.html.table
+import kotlinx.html.td
+import kotlinx.html.th
+import kotlinx.html.tr
+import kotlinx.html.ul
+import kotlinx.html.unsafe
 import java.time.LocalDate.now
 import java.time.Period
 import java.time.format.DateTimeFormatter
@@ -64,6 +90,226 @@ class AnimalSectionTemplate(
     private val properties: TemplateProperties,
 ) : Template<FlowContent> {
 
+    private fun HEADER.sidebarTitle() {
+        h2 {
+            +"${capitalize(Messages.about)} "
+
+            span {
+                +model.animal.name
+            }
+        }
+    }
+
+    private fun HEADER.mugshot() {
+        a {
+            classes = setOf(
+                EscapeVelocity.image
+            )
+
+            img {
+                alt = model.animal.thumbnailDescription
+                src = "${properties.baseAssetUrl}/images/animals/${model.animal.id}_thumb.png"
+            }
+        }
+    }
+
+    private fun UL.name() {
+        li {
+            b {
+                +"${capitalize(Messages.name)} : "
+            }
+            span {
+                +model.animal.fullName
+            }
+        }
+    }
+
+    private fun UL.sex() {
+        li {
+            b {
+                +"${capitalize(Messages.sex)} : "
+            }
+            span {
+                +model.animal.sex.text()
+            }
+        }
+    }
+
+    private fun UL.age() {
+        li {
+            b {
+                +"${capitalize(Messages.age)} : "
+            }
+
+            span {
+                +model.animal.age()
+            }
+        }
+    }
+
+    private fun UL.birthDate() {
+        li {
+            b {
+                +"${capitalize(Messages.birthDate)} : "
+            }
+
+            span {
+                +model.animal.formattedDateOfBirth()
+            }
+        }
+    }
+
+    private fun UL.color() {
+        li {
+            b {
+                +"${capitalize(Messages.color)} : "
+            }
+
+            span {
+                +model.animal.color.text()
+            }
+        }
+    }
+
+    private fun UL.dam() {
+        li {
+            b {
+                +"${capitalize(Messages.dam)} : "
+            }
+
+            reference(model.animal.dam)
+        }
+    }
+
+    private fun UL.sire() {
+        li {
+            b {
+                +"${capitalize(Messages.sire)} : "
+            }
+
+            reference(model.animal.sire)
+        }
+    }
+
+    private fun DIV.sidebar() {
+        div {
+            classes = setOf(
+                EscapeVelocity.col4,
+                EscapeVelocity.col12Medium,
+            )
+
+            section {
+                classes = setOf(
+                    EscapeVelocity.box
+                )
+
+                header {
+                    sidebarTitle()
+                    mugshot()
+
+                    ul {
+                        classes = setOf(
+                            EscapeVelocity.style3
+                        )
+
+                        name()
+                        sex()
+                        age()
+                        birthDate()
+                        color()
+                        dam()
+                        sire()
+                    }
+                }
+            }
+
+            fiberAnalyses()
+        }
+    }
+
+    private fun TABLE.fiberAnalysis(fibreAnalysis: FiberAnalysis) {
+        tr {
+            td {
+                b {
+                    span {
+                        +"${fibreAnalysis.year}"
+                    }
+                }
+            }
+            td { +fibreAnalysis.averageFiberDiameter }
+            td { +fibreAnalysis.standardDeviation }
+            td { +fibreAnalysis.coefficientOfVariation }
+            td { +fibreAnalysis.comfortFactor }
+        }
+    }
+
+    private fun DIV.fiberAnalyses() {
+        if (model.fiberAnalyses.isNotEmpty()) {
+            section {
+                classes = setOf(
+                    EscapeVelocity.box
+                )
+
+                header {
+                    h2 {
+                        +capitalize(Messages.fiberAnalyses)
+                    }
+                }
+
+                table {
+                    classes = setOf(
+                        EscapeVelocity.default
+                    )
+
+                    tr {
+                        th { }
+                        th { +"${Messages.averageFiberDiamterAbbreviation}" }
+                        th { +"${Messages.standardDeviationAbbreviation}" }
+                        th { +"${Messages.coefficientOfVariationAbbreviation}" }
+                        th { +"${Messages.comfortFactorAbbreviation}" }
+                    }
+
+                    for (fiberAnalysis in model.fiberAnalyses) {
+                        fiberAnalysis(fiberAnalysis)
+                    }
+                }
+            }
+        }
+    }
+
+    private fun ARTICLE.header() {
+        header {
+            classes = setOf(
+                EscapeVelocity.style1
+            )
+
+            h2 {
+                unsafe {
+                    +model.animal.title
+                }
+            }
+            p {
+                unsafe {
+                    +model.animal.subtitle
+                }
+            }
+        }
+    }
+
+    private fun ARTICLE.banner() {
+        a {
+            classes = setOf(
+                EscapeVelocity.image,
+                EscapeVelocity.featured,
+            )
+
+            img {
+                alt = model.animal.bannerDescription
+                src = "${properties.baseAssetUrl}/images/animals/${model.animal.id}_banner.png"
+            }
+        }
+    }
+
     override fun FlowContent.apply() {
         insert(SectionTemplate(model, properties)) {
             title {
@@ -76,153 +322,8 @@ class AnimalSectionTemplate(
                         EscapeVelocity.gtr150,
                     )
 
-                    div {
-                        classes = setOf(
-                            EscapeVelocity.col4,
-                            EscapeVelocity.col12Medium,
-                        )
+                    sidebar()
 
-                        section {
-                            classes = setOf(
-                                EscapeVelocity.box
-                            )
-
-                            header {
-                                h2 {
-                                    +"${capitalize(Messages.about)} "
-
-                                    span {
-                                        +model.animal.name
-                                    }
-                                }
-
-                                a {
-                                    classes = setOf(
-                                        EscapeVelocity.image
-                                    )
-
-                                    img {
-                                        alt = model.animal.thumbnailDescription
-                                        src = "${properties.baseAssetUrl}/images/animals/${model.animal.id}_thumb.png"
-                                    }
-                                }
-
-                                ul {
-                                    classes = setOf(
-                                        EscapeVelocity.style3
-                                    )
-
-                                    li {
-                                        b {
-                                            +"${capitalize(Messages.name)} : "
-                                        }
-                                        span {
-                                            +model.animal.fullName
-                                        }
-                                    }
-
-                                    li {
-                                        b {
-                                            +"${capitalize(Messages.sex)} : "
-                                        }
-                                        span {
-                                            +model.animal.sex.text()
-                                        }
-                                    }
-
-                                    li {
-                                        b {
-                                            +"${capitalize(Messages.age)} : "
-                                        }
-
-                                        span {
-                                            +model.animal.age()
-                                        }
-                                    }
-
-                                    li {
-                                        b {
-                                            +"${capitalize(Messages.birthDate)} : "
-                                        }
-
-                                        span {
-                                            +model.animal.formattedDateOfBirth()
-                                        }
-                                    }
-
-                                    li {
-                                        b {
-                                            +"${capitalize(Messages.color)} : "
-                                        }
-
-                                        span {
-                                            +model.animal.color.text()
-                                        }
-                                    }
-
-                                    li {
-                                        b {
-                                            +"${capitalize(Messages.dam)} : "
-                                        }
-
-                                        reference(model.animal.dam)
-                                    }
-
-                                    li {
-                                        b {
-                                            +"${capitalize(Messages.sire)} : "
-                                        }
-
-                                        reference(model.animal.sire)
-                                    }
-                                }
-                            }
-                        }
-
-                        if (model.fiberAnalyses.isNotEmpty()) {
-                            section {
-                                classes = setOf(
-                                    EscapeVelocity.box
-                                )
-
-                                header {
-                                    h2 {
-                                        +capitalize(Messages.fiberAnalyses)
-                                    }
-                                }
-
-                                table {
-                                    classes = setOf(
-                                        EscapeVelocity.default
-                                    )
-
-                                    tr {
-                                        th { }
-                                        th { +"${Messages.averageFiberDiamterAbbreviation}" }
-                                        th { +"${Messages.standardDeviationAbbreviation}" }
-                                        th { +"${Messages.coefficientOfVariationAbbreviation}" }
-                                        th { +"${Messages.comfortFactorAbbreviation}" }
-                                    }
-
-                                    for (fibreAnalysis in model.fiberAnalyses) {
-                                        tr {
-                                            td {
-                                                b {
-                                                    span {
-                                                        +"${fibreAnalysis.year}"
-                                                    }
-                                                }
-                                            }
-                                            td { +fibreAnalysis.averageFiberDiameter }
-                                            td { +fibreAnalysis.standardDeviation }
-                                            td { +fibreAnalysis.coefficientOfVariation }
-                                            td { +fibreAnalysis.comfortFactor }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
                     div {
                         classes = setOf(
                             EscapeVelocity.col8,
@@ -239,33 +340,9 @@ class AnimalSectionTemplate(
                                     EscapeVelocity.post,
                                 )
 
-                                header {
-                                    classes = setOf(
-                                        EscapeVelocity.style1
-                                    )
+                                header()
+                                banner()
 
-                                    h2 {
-                                        unsafe {
-                                            +model.animal.title
-                                        }
-                                    }
-                                    p {
-                                        unsafe {
-                                            +model.animal.subtitle
-                                        }
-                                    }
-                                }
-                                a {
-                                    classes = setOf(
-                                        EscapeVelocity.image,
-                                        EscapeVelocity.featured,
-                                    )
-
-                                    img {
-                                        alt = model.animal.bannerDescription
-                                        src = "${properties.baseAssetUrl}/images/animals/${model.animal.id}_banner.png"
-                                    }
-                                }
                                 unsafe {
                                     +model.animal.text
                                 }
