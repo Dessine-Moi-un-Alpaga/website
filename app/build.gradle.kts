@@ -159,6 +159,7 @@ fun ProcessForkOptions.environmentVariables() {
     environment("DMUA_FIRESTORE_URL", "http://localhost:${firestorePort}")
     environment("DMUA_PROJECT", googleProject)
     environment("DMUA_SEND_GRID_API_KEY", sendGridApiKey)
+    environment("DMUA_TEST", true)
 }
 
 tasks.named<JavaExec>("run") {

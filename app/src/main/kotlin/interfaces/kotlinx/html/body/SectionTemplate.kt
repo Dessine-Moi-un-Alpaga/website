@@ -2,16 +2,22 @@ package be.alpago.website.interfaces.kotlinx.html.body
 
 import be.alpago.website.application.SectionColor
 import be.alpago.website.application.SectionModel
+import be.alpago.website.interfaces.kotlinx.html.TemplateProperties
 import be.alpago.website.interfaces.kotlinx.html.style.EscapeVelocity
+import be.alpago.website.interfaces.kotlinx.html.style.testId
 import io.ktor.server.html.Placeholder
 import io.ktor.server.html.Template
 import io.ktor.server.html.insert
 import kotlinx.html.*
 
-class SectionTemplate(sectionModel: SectionModel) : Template<FlowContent> {
+class SectionTemplate(
+    model: SectionModel,
+    private val properties: TemplateProperties,
+) : Template<FlowContent> {
 
-    private val id = sectionModel.id
-    private val color = sectionModel.color
+    private val color = model.color
+    private val id = model.id
+    private val type = model.type
 
     val title = Placeholder<FlowContent>()
     val content = Placeholder<FlowContent>()
@@ -22,17 +28,19 @@ class SectionTemplate(sectionModel: SectionModel) : Template<FlowContent> {
                 EscapeVelocity.wrapper,
                 color.toStyle()
             )
-            id = this@SectionTemplate.id
+            id = type
 
             div {
                 classes = setOf(EscapeVelocity.title)
 
+                testId("${this@SectionTemplate.id}-section-title", properties)
                 insert(this@SectionTemplate.title)
             }
 
             div {
                 classes = setOf(EscapeVelocity.container)
 
+                testId(this@SectionTemplate.id, properties)
                 insert(content)
             }
         }

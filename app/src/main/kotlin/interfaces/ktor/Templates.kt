@@ -7,7 +7,8 @@ fun Application.templates() {
     register {
         TemplateProperties(
             baseAssetUrl = getEnvironmentVariable("DMUA_BASE_ASSET_URL"),
-            emailAddress = getEnvironmentVariable("DMUA_EMAIL_ADDRESS")
+            emailAddress = getEnvironmentVariable("DMUA_EMAIL_ADDRESS"),
+            includeTestIds = getEnvironmentVariable("DMUA_TEST", "false").toBoolean()
         )
     }
 }

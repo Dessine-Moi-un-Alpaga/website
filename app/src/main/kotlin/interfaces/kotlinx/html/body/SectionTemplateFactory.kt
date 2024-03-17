@@ -9,10 +9,13 @@ import be.alpago.website.interfaces.kotlinx.html.TemplateProperties
 
 object SectionTemplateFactory {
 
-    fun createSectionTemplate(properties: TemplateProperties, sectionModel: SectionModel) = when (sectionModel) {
-        is AnimalSectionModel       -> AnimalSectionTemplate(properties, sectionModel)
-        is ArticleSectionModel      -> ArticleSectionTemplate(properties, sectionModel)
-        is HighlightsSectionModel   -> HighlightsTemplate(properties, sectionModel)
-        is PhotoGallerySectionModel -> PhotoGallerySectionTemplate(properties, sectionModel)
+    fun createSectionTemplate(
+        properties: TemplateProperties,
+        sectionModel: SectionModel
+    ) = when (sectionModel) {
+        is AnimalSectionModel       -> AnimalSectionTemplate(sectionModel, properties)
+        is ArticleSectionModel      -> ArticleSectionTemplate(sectionModel, properties)
+        is HighlightsSectionModel   -> HighlightsTemplate(sectionModel, properties)
+        is PhotoGallerySectionModel -> PhotoGallerySectionTemplate(sectionModel, properties)
     }
 }

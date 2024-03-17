@@ -31,6 +31,7 @@ class  ShowPhotoGalleryPageQuery(
             sections = listOf(
                 PhotoGallerySectionModel(
                     color = SectionColor.WHITE,
+                    id = "photos",
                     images = images.await(),
                     sectionTitle = "${Messages.photos}",
                     subtitle = "${Messages.photoGallerySubtitle}",

@@ -5,15 +5,17 @@ import be.alpago.website.interfaces.kotlinx.html.TemplateProperties
 import be.alpago.website.interfaces.kotlinx.html.style.EscapeVelocity
 import io.ktor.server.html.Template
 import io.ktor.server.html.insert
-import kotlinx.html.*
+import kotlinx.html.FlowContent
+import kotlinx.html.classes
+import kotlinx.html.div
 
 class HighlightsTemplate(
+    private val model: HighlightsSectionModel,
     private val properties: TemplateProperties,
-    private val model: HighlightsSectionModel
 ) : Template<FlowContent> {
 
     override fun FlowContent.apply() {
-        insert(SectionTemplate(model)) {
+        insert(SectionTemplate(model, properties)) {
             title {
                 +model.sectionTitle
             }
@@ -25,7 +27,13 @@ class HighlightsTemplate(
                     )
 
                     for (highlight in model.highlights) {
-                        insert(HighlightTemplate(properties, highlight)) { }
+                        insert(
+                            HighlightTemplate(
+                                id = model.id,
+                                model = highlight,
+                                properties,
+                            )
+                        ) { }
                     }
                 }
             }

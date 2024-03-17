@@ -60,12 +60,12 @@ private fun LI.reference(reference: Animal.Reference) {
 }
 
 class AnimalSectionTemplate(
-    private val properties: TemplateProperties,
     private val model: AnimalSectionModel,
+    private val properties: TemplateProperties,
 ) : Template<FlowContent> {
 
     override fun FlowContent.apply() {
-        insert(SectionTemplate(model)) {
+        insert(SectionTemplate(model, properties)) {
             title {
                 +model.sectionTitle
             }

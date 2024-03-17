@@ -16,6 +16,6 @@ class LayoutTemplate(
         lang = "fr"
 
         insert(HeadTemplate(pageModel)) { }
-        insert(BodyTemplate(properties, pageModel)) { }
+        insert(BodyTemplate(pageModel, properties)) { }
     }
 }
