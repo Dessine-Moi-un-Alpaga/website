@@ -82,7 +82,7 @@ Configuration will be saved in the `~/.dmua` directory.
 You are now all set to run the project locally:
 
 ```shell
-$ make run
+$ make run-app
 ```
 
 # Configuring GitHub Actions
