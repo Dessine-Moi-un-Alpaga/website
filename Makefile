@@ -12,7 +12,7 @@ export SEND_GRID_API_KEY ?= $(shell cat "$(DMUA_SECRETS)/SEND_GRID_API_KEY")
 export VERSION ?= $(shell git describe --tags --always --first-parent)
 
 export ARTIFACT_REGISTRY := $(ARTIFACT_REGISTRY_LOCATION)-docker.pkg.dev
-
+export ARTIFACT_REPOSITORY := common
 export DOCKER_IMAGE := $(ARTIFACT_REGISTRY)/$(GOOGLE_PROJECT)/$(ARTIFACT_REPOSITORY)/website
 export DOCKER_TAG := $(ARTIFACT_REGISTRY)/$(GOOGLE_PROJECT)/$(ARTIFACT_REPOSITORY)/website:$(VERSION)
 
