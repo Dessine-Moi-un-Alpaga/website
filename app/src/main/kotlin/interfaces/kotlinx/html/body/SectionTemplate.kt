@@ -11,13 +11,9 @@ import io.ktor.server.html.insert
 import kotlinx.html.*
 
 class SectionTemplate(
-    model: SectionModel,
+    private val model: SectionModel,
     private val properties: TemplateProperties,
 ) : Template<FlowContent> {
-
-    private val color = model.color
-    private val id = model.id
-    private val type = model.type
 
     val title = Placeholder<FlowContent>()
     val content = Placeholder<FlowContent>()
@@ -26,21 +22,21 @@ class SectionTemplate(
         section {
             classes = setOf(
                 EscapeVelocity.wrapper,
-                color.toStyle()
+                model.color.toStyle()
             )
-            id = type
+            id = model.type
 
             div {
                 classes = setOf(EscapeVelocity.title)
 
-                testId("${this@SectionTemplate.id}-section-title", properties)
+                testId("${model.id}-section-title", properties)
                 insert(this@SectionTemplate.title)
             }
 
             div {
                 classes = setOf(EscapeVelocity.container)
 
-                testId(this@SectionTemplate.id, properties)
+                testId(model.id, properties)
                 insert(content)
             }
         }

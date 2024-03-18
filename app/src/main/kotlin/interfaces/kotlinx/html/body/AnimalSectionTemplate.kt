@@ -285,6 +285,34 @@ class AnimalSectionTemplate(
         }
     }
 
+    private fun DIV.article() {
+        div {
+            classes = setOf(
+                EscapeVelocity.col8,
+                EscapeVelocity.col12Medium,
+                EscapeVelocity.impMedium,
+            )
+
+            div {
+                id = EscapeVelocity.content
+
+                article {
+                    classes = setOf(
+                        EscapeVelocity.box,
+                        EscapeVelocity.post,
+                    )
+
+                    header()
+                    banner()
+
+                    unsafe {
+                        +model.animal.text
+                    }
+                }
+            }
+        }
+    }
+
     override fun FlowContent.apply() {
         insert(SectionTemplate(model, properties)) {
             title {
@@ -298,32 +326,7 @@ class AnimalSectionTemplate(
                     )
 
                     sidebar()
-
-                    div {
-                        classes = setOf(
-                            EscapeVelocity.col8,
-                            EscapeVelocity.col12Medium,
-                            EscapeVelocity.impMedium,
-                        )
-
-                        div {
-                            id = EscapeVelocity.content
-
-                            article {
-                                classes = setOf(
-                                    EscapeVelocity.box,
-                                    EscapeVelocity.post,
-                                )
-
-                                header()
-                                banner()
-
-                                unsafe {
-                                    +model.animal.text
-                                }
-                            }
-                        }
-                    }
+                    article()
                 }
             }
         }
