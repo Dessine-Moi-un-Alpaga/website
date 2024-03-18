@@ -28,6 +28,6 @@ tasks.register<Copy>(taskName) {
     into("${project.layout.buildDirectory.asFile.get()}/resources/main/static/webjars")
 }
 
-tasks.named("processResources").configure {
+tasks.withType(ProcessResources::class.java).configureEach {
     dependsOn(":$taskName")
 }
