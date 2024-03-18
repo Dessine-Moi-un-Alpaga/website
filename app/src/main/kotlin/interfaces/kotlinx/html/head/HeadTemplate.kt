@@ -1,7 +1,6 @@
 package be.alpago.website.interfaces.kotlinx.html.head
 
 import be.alpago.website.application.PageModel
-import be.alpago.website.interfaces.kotlinx.html.head.icon.icons
 import be.alpago.website.interfaces.kotlinx.html.head.script.scripts
 import be.alpago.website.interfaces.kotlinx.html.head.stylesheet.stylesheets
 import io.ktor.server.html.Template
