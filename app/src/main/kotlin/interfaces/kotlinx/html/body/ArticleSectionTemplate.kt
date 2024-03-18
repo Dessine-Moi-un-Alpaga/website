@@ -19,7 +19,7 @@ class ArticleSectionTemplate(
                 classes = setOf(EscapeVelocity.style1)
 
                 h2 {
-                    testId("${this@ArticleSectionTemplate.model.id}-title", properties)
+                    testId("${model.id}-title", properties)
                     unsafe {
                         +model.article.title
                     }
@@ -27,7 +27,7 @@ class ArticleSectionTemplate(
 
                 if (model.article.subtitle != null) {
                     p {
-                        testId("${this@ArticleSectionTemplate.model.id}-subtitle", properties)
+                        testId("${model.id}-subtitle", properties)
                         unsafe {
                             +model.article.subtitle
                         }
@@ -46,7 +46,7 @@ class ArticleSectionTemplate(
                 )
 
                 img {
-                    testId("${this@ArticleSectionTemplate.model.id}-banner", properties)
+                    testId("${model.id}-banner", properties)
 
                     if (model.article.bannerDescription != null) {
                         alt = model.article.bannerDescription
