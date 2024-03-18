@@ -13,7 +13,6 @@ plugins {
 }
 
 group = "be.alpago"
-version = "latest"
 
 application {
     mainClass.set("be.alpago.website.ApplicationKt")
