@@ -10,7 +10,7 @@ val firebaseLocation: String by project
 val firestorePort = 8181
 val googleProject: String by project
 
-val firestoreEmulator = tasks.register<ExecFork>("firestoreEmulator") {
+tasks.register<ExecFork>("firestoreEmulator") {
     args = mutableListOf(
         "--project", googleProject,
         "emulators:start"
