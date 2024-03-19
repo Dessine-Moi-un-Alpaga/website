@@ -65,6 +65,22 @@ suspend fun ApplicationTestBuilder.animalTest(id: String) {
     }
     response shouldHaveStatus HttpStatusCode.OK
 
+    response = jsonClient.put("/api/fiberAnalyses") {
+        contentType(ContentType.Application.Json)
+        basicAuth(USERNAME, PASSWORD)
+        setBody("""
+            {
+              "animalId": "$id",
+              "averageFiberDiameter": "5µ",
+              "coefficientOfVariation": "10%",
+              "comfortFactor": "100%",
+              "standardDeviation": "1µ",
+              "year": 2024
+            }
+        """.trimIndent())
+    }
+    response shouldHaveStatus HttpStatusCode.OK
+
     response = client.get("/animals/${id}.html")
     response shouldHaveStatus HttpStatusCode.OK
 }
