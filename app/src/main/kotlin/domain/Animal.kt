@@ -35,7 +35,7 @@ data class Animal(
     }
 
     @Serializable
-    data class Reference(val name: String, val link: String?)
+    data class Reference(val name: String, val link: String? = null)
 
     enum class Sex {
         FEMALE,
