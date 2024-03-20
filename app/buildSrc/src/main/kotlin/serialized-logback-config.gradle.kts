@@ -1,9 +1,5 @@
 import be.alpago.LogbackConfigSerializationTask
 import be.alpago.OUTPUT_DIRECTORY
-import org.gradle.api.tasks.SourceSet
-import org.gradle.api.tasks.SourceSetContainer
-import org.gradle.language.jvm.tasks.ProcessResources
-import java.io.File
 
 val taskName = "serializeLogbackConfig"
 

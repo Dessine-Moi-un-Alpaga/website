@@ -1,5 +1,4 @@
 import be.alpago.environmentVariables
-import org.gradle.testing.jacoco.tasks.JacocoReport
 
 plugins {
     id("jacoco")
