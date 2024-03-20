@@ -1,12 +1,9 @@
-package be.alpago.website.interfaces.ktor
+package be.alpago.website.interfaces.ktor.routes
 
-import be.alpago.website.adapters.sendgrid.SendGridEmailService
-import be.alpago.website.adapters.sendgrid.SendGridProperties
 import be.alpago.website.application.usecases.InvalidEmailException
 import be.alpago.website.application.usecases.SendEmail
 import be.alpago.website.domain.Email
-import io.ktor.client.engine.HttpClientEngine
-import io.ktor.client.engine.cio.CIO
+import be.alpago.website.libs.di.inject
 import io.ktor.http.HttpStatusCode
 import io.ktor.server.application.Application
 import io.ktor.server.application.call
@@ -18,23 +15,6 @@ import io.ktor.server.routing.post
 import io.ktor.server.routing.routing
 
 fun Application.email() {
-    register<HttpClientEngine> {
-        CIO.create()
-    }
-
-    register<SendGridProperties> {
-        SendGridProperties(
-            address = getEnvironmentVariable("DMUA_EMAIL_ADDRESS"),
-            apiKey = getEnvironmentVariable("DMUA_SEND_GRID_API_KEY"),
-        )
-    }
-    register<SendEmail> {
-        SendGridEmailService(
-            engine = inject<HttpClientEngine>(),
-            properties = inject<SendGridProperties>(),
-        )
-    }
-
     val service by lazy { inject<SendEmail>() }
 
     routing {

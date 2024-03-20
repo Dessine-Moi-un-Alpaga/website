@@ -10,7 +10,6 @@ import io.ktor.http.ContentType
 import io.ktor.http.HttpStatusCode
 import io.ktor.http.contentType
 import io.ktor.server.testing.ApplicationTestBuilder
-import kotlinx.serialization.json.Json
 
 suspend fun ApplicationTestBuilder.animalTest(id: String) {
     val bannerDescription = "bannerDescription"
