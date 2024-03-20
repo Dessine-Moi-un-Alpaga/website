@@ -1,6 +1,5 @@
 package be.alpago.website.interfaces.ktor.routes
 
-import be.alpago.website.application.queries.PHOTO_GALLERY_IMAGE_REPOSITORY
 import be.alpago.website.application.usecases.ShowPhotoGalleryPage
 import be.alpago.website.domain.ImageMetadata
 import be.alpago.website.interfaces.kotlinx.html.LayoutTemplate
@@ -25,6 +24,6 @@ fun Application.photoGallery() {
         }
     }
 
-    val imageRepository by lazy { inject<Repository<ImageMetadata>>(PHOTO_GALLERY_IMAGE_REPOSITORY) }
+    val imageRepository by lazy { inject<Repository<ImageMetadata>>(ShowPhotoGalleryPage::class) }
     managementRoutes("/api/gallery/photos", imageRepository)
 }

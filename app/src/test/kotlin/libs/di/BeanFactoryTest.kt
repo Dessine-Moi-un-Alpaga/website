@@ -96,15 +96,15 @@ class BeanFactoryTest {
     }
 
     @Test
-    fun `beans of the same type can be further discriminated with a name`() {
+    fun `beans of the same type can be further discriminated with a use case type`() {
         val expected1 = TestBean()
         val expected2 = TestBean()
 
-        register<TestBeanInterface>("expected1") {
+        register<TestBeanInterface>(UseCase1::class) {
             expected1
         }
 
-        register<TestBeanInterface>("expected2") {
+        register<TestBeanInterface>(UseCase2::class) {
             expected2
         }
 
@@ -112,8 +112,8 @@ class BeanFactoryTest {
             inject<TestBeanInterface>()
         }
 
-        val actual1 = inject<TestBeanInterface>("expected1")
-        val actual2 = inject<TestBeanInterface>("expected2")
+        val actual1 = inject<TestBeanInterface>(UseCase1::class)
+        val actual2 = inject<TestBeanInterface>(UseCase2::class)
 
         actual1 shouldBeEqual expected1
         actual2 shouldBeEqual expected2
@@ -143,3 +143,7 @@ class BeanFactoryTest {
         }
     }
 }
+
+interface UseCase1
+
+interface UseCase2

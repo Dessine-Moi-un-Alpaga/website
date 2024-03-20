@@ -1,6 +1,6 @@
 package be.alpago.website.interfaces.ktor.routes
 
-import be.alpago.website.application.queries.ANIMAL_REPOSITORY
+import be.alpago.website.application.usecases.ManageAnimals
 import be.alpago.website.application.usecases.ShowAnimalPage
 import be.alpago.website.domain.Animal
 import be.alpago.website.interfaces.kotlinx.html.LayoutTemplate
@@ -16,7 +16,7 @@ import io.ktor.server.routing.routing
 
 fun Application.animals() {
     val properties by lazy { inject<TemplateProperties>() }
-    val animalRepository by lazy { inject<Repository<Animal>>(ANIMAL_REPOSITORY) }
+    val animalRepository by lazy { inject<Repository<Animal>>(ManageAnimals::class) }
     val query by lazy { inject<ShowAnimalPage>() }
 
     routing {
