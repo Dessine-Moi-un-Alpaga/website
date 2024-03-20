@@ -1,6 +1,5 @@
 package be.alpago.website.interfaces.ktor.routes
 
-import be.alpago.website.application.queries.NEWS_ARTICLE_REPOSITORY
 import be.alpago.website.application.usecases.ShowNewsPage
 import be.alpago.website.domain.Article
 import be.alpago.website.interfaces.kotlinx.html.LayoutTemplate
@@ -25,6 +24,6 @@ fun Application.news() {
         }
     }
 
-    val articleRepository by lazy { inject<Repository<Article>>(NEWS_ARTICLE_REPOSITORY) }
+    val articleRepository by lazy { inject<Repository<Article>>(ShowNewsPage::class) }
     managementRoutes("/api/news/articles", articleRepository)
 }

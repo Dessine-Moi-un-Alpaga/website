@@ -2,9 +2,9 @@ package be.alpago.website.libs.di
 
 import kotlin.reflect.KClass
 
-data class BeanFactoryKey(private val type: KClass<*>, private val name: String? = null)
+data class BeanFactoryKey(private val type: KClass<*>, private val useCase: KClass<*>? = null)
 
-typealias BeanFactory<T> = (String?) -> T
+typealias BeanFactory<T> = (KClass<*>?) -> T
 
 val beanFactories = mutableMapOf<BeanFactoryKey, BeanFactory<out Any>>()
 
@@ -17,8 +17,8 @@ fun clear() {
 
 fun getEnvironmentVariable(name: String, default: String? = null) = System.getenv(name) ?: default ?: throw NoSuchEnvironmentVariableException(name)
 
-inline fun <reified T : Any> register(name: String? = null, noinline block: BeanFactory<out T>) {
-    val key = BeanFactoryKey(T::class, name)
+inline fun <reified T : Any> register(useCase: KClass<*>? = null, noinline block: BeanFactory<out T>) {
+    val key = BeanFactoryKey(T::class, useCase)
 
     if (beanFactories.containsKey(key)) {
         throw DuplicateBeanException(key)
@@ -27,18 +27,18 @@ inline fun <reified T : Any> register(name: String? = null, noinline block: Bean
     beanFactories[key] = block
 }
 
-inline fun <reified T : Any> mock(name: String? = null, noinline block: BeanFactory<out T>) {
-    val key = BeanFactoryKey(T::class, name)
+inline fun <reified T : Any> mock(useCase: KClass<*>? = null, noinline block: BeanFactory<out T>) {
+    val key = BeanFactoryKey(T::class, useCase)
     beanFactories[key] = block
 }
 
-inline fun <reified T : Any> inject(name: String? = null): T {
-    val key = BeanFactoryKey(T::class, name)
+inline fun <reified T : Any> inject(useCase: KClass<*>? = null): T {
+    val key = BeanFactoryKey(T::class, useCase)
     var bean = beans[key]
 
     if (bean == null) {
         val beanFactory = beanFactories[key] ?: throw NoSuchBeanException(key)
-        bean = beanFactory.invoke(name)
+        bean = beanFactory.invoke(useCase)
         beans[key] = bean
     }
 
