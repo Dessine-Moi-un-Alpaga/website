@@ -1,4 +1,4 @@
-package be.alpago.website.interfaces.ktor
+package be.alpago.website.libs.di
 
 import kotlin.reflect.KClass
 

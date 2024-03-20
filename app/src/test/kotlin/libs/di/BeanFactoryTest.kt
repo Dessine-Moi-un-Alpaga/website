@@ -1,4 +1,4 @@
-package be.alpago.website.interfaces.ktor
+package be.alpago.website.libs.di
 
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.equals.shouldBeEqual
