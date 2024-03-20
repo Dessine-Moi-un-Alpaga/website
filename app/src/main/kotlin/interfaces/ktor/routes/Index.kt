@@ -1,10 +1,10 @@
 package be.alpago.website.interfaces.ktor.routes
 
-import be.alpago.website.application.queries.INDEX_ARTICLE_REPOSITORY
-import be.alpago.website.application.queries.INDEX_GUILD_REPOSITORY
-import be.alpago.website.application.queries.INDEX_NEWS_REPOSITORY
-import be.alpago.website.application.queries.INDEX_TRAININGS_REPOSITORY
+import be.alpago.website.application.usecases.ShowIndexArticle
+import be.alpago.website.application.usecases.ShowIndexGuildHighlights
+import be.alpago.website.application.usecases.ShowIndexNewsHighlights
 import be.alpago.website.application.usecases.ShowIndexPage
+import be.alpago.website.application.usecases.ShowIndexTrainingsPhotoGallery
 import be.alpago.website.domain.Article
 import be.alpago.website.domain.Highlight
 import be.alpago.website.domain.ImageMetadata
@@ -30,15 +30,15 @@ fun Application.index() {
         }
     }
 
-    val articleRepository by lazy { inject<Repository<Article>>(INDEX_ARTICLE_REPOSITORY) }
+    val articleRepository by lazy { inject<Repository<Article>>(ShowIndexArticle::class) }
     managementRoutes("/api/index/article", articleRepository)
 
-    val guildRepository by lazy { inject<Repository<Highlight>>(INDEX_GUILD_REPOSITORY) }
+    val guildRepository by lazy { inject<Repository<Highlight>>(ShowIndexGuildHighlights::class) }
     managementRoutes("/api/index/guilds", guildRepository)
 
-    val newsRepository by lazy { inject<Repository<Highlight>>(INDEX_NEWS_REPOSITORY) }
+    val newsRepository by lazy { inject<Repository<Highlight>>(ShowIndexNewsHighlights::class) }
     managementRoutes("/api/index/news", newsRepository)
 
-    val trainingRepository by lazy { inject<Repository<ImageMetadata>>(INDEX_TRAININGS_REPOSITORY) }
+    val trainingRepository by lazy { inject<Repository<ImageMetadata>>(ShowIndexTrainingsPhotoGallery::class) }
     managementRoutes("/api/index/trainings", trainingRepository)
 }

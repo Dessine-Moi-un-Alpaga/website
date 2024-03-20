@@ -1,7 +1,7 @@
 package be.alpago.website.interfaces.ktor.routes
 
-import be.alpago.website.application.queries.FACTSHEET_ARTICLE_REPOSITORY
-import be.alpago.website.application.queries.FACTSHEET_HIGHLIGHT_REPOSITORY
+import be.alpago.website.application.usecases.ShowFactsheetArticle
+import be.alpago.website.application.usecases.ShowFactsheetHighlights
 import be.alpago.website.application.usecases.ShowFactsheetPage
 import be.alpago.website.domain.Article
 import be.alpago.website.domain.Highlight
@@ -27,9 +27,9 @@ fun Application.factsheets() {
         }
     }
 
-    val articleRepository by lazy { inject<Repository<Article>>(FACTSHEET_ARTICLE_REPOSITORY) }
+    val articleRepository by lazy { inject<Repository<Article>>(ShowFactsheetArticle::class) }
     managementRoutes("/api/factsheets/article", articleRepository)
 
-    val factsheetRepository by lazy { inject<Repository<Highlight>>(FACTSHEET_HIGHLIGHT_REPOSITORY) }
+    val factsheetRepository by lazy { inject<Repository<Highlight>>(ShowFactsheetHighlights::class) }
     managementRoutes("/api/factsheets/factsheets", factsheetRepository)
 }

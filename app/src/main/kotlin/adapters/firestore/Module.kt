@@ -1,20 +1,20 @@
 package be.alpago.website.adapters.firestore
 
-import be.alpago.website.application.queries.ANIMAL_REPOSITORY
-import be.alpago.website.application.queries.FACTSHEET_ARTICLE_REPOSITORY
-import be.alpago.website.application.queries.FACTSHEET_HIGHLIGHT_REPOSITORY
-import be.alpago.website.application.queries.INDEX_ARTICLE_REPOSITORY
-import be.alpago.website.application.queries.INDEX_GUILD_REPOSITORY
-import be.alpago.website.application.queries.INDEX_NEWS_REPOSITORY
-import be.alpago.website.application.queries.INDEX_TRAININGS_REPOSITORY
-import be.alpago.website.application.queries.NEWS_ARTICLE_REPOSITORY
-import be.alpago.website.application.queries.PHOTO_GALLERY_IMAGE_REPOSITORY
+import be.alpago.website.application.usecases.ManageAnimals
+import be.alpago.website.application.usecases.ManageFiberAnalyses
+import be.alpago.website.application.usecases.ShowFactsheetArticle
+import be.alpago.website.application.usecases.ShowFactsheetHighlights
+import be.alpago.website.application.usecases.ShowIndexArticle
+import be.alpago.website.application.usecases.ShowIndexGuildHighlights
+import be.alpago.website.application.usecases.ShowIndexNewsHighlights
+import be.alpago.website.application.usecases.ShowIndexTrainingsPhotoGallery
+import be.alpago.website.application.usecases.ShowNewsPage
+import be.alpago.website.application.usecases.ShowPhotoGalleryPage
 import be.alpago.website.domain.Animal
 import be.alpago.website.domain.Article
 import be.alpago.website.domain.FiberAnalysis
 import be.alpago.website.domain.Highlight
 import be.alpago.website.domain.ImageMetadata
-import be.alpago.website.domain.ports.FIBER_ANALYSIS_REPOSITORY
 import be.alpago.website.interfaces.ktor.registerCloseable
 import be.alpago.website.libs.di.getEnvironmentVariable
 import be.alpago.website.libs.di.inject
@@ -37,11 +37,6 @@ private const val INDEX_NEWS_COLLECTION = "pages/index/news"
 private const val INDEX_TRAININGS_COLLECTION = "pages/index/trainings"
 private const val NEWS_ARTICLE_COLLECTION = "pages/news/articles"
 private const val PHOTO_GALLERY_IMAGE_COLLECTION = "pages/gallery/images"
-
-private const val ARTICLE_TRANSFORMER = "articles"
-private const val FIBER_ANALYSIS_TRANSFORMER = "fiberAnalyses"
-private const val HIGHLIGHT_TRANSFORMER = "highlights"
-private const val IMAGE_METADATA_TRANSFORMER = "imageMetadata"
 
 fun Application.firestore() {
     httpClient()
@@ -78,7 +73,7 @@ private fun firestoreProperties() {
 }
 
 private fun animals() {
-    register<Repository<Animal>>(ANIMAL_REPOSITORY) {
+    register<Repository<Animal>>(ManageAnimals::class) {
         CachingRepository(
             FirestoreRepository(
                 client = inject<HttpClient>(),
@@ -91,36 +86,36 @@ private fun animals() {
 }
 
 private fun articles() {
-    register<FirestoreAggregateTransformer<Article>>(ARTICLE_TRANSFORMER) {
+    register<FirestoreAggregateTransformer<Article>>(Article::class) {
         FirestoreArticleTransformer()
     }
 }
 
 private fun fiberAnalyses() {
-    register<FirestoreAggregateTransformer<FiberAnalysis>>(FIBER_ANALYSIS_TRANSFORMER) {
+    register<FirestoreAggregateTransformer<FiberAnalysis>>(FiberAnalysis::class) {
         FirestoreFiberAnalysisTransformer()
     }
 
-    register<Repository<FiberAnalysis>>(FIBER_ANALYSIS_REPOSITORY) {
+    register<Repository<FiberAnalysis>>(ManageFiberAnalyses::class) {
         CachingRepository(
             FirestoreRepository(
                 client = inject<HttpClient>(),
                 collection = FIBER_ANALYSIS_COLLECTION,
                 properties = inject<FirestoreProperties>(),
-                transformer = inject<FirestoreAggregateTransformer<FiberAnalysis>>(FIBER_ANALYSIS_TRANSFORMER),
+                transformer = inject<FirestoreAggregateTransformer<FiberAnalysis>>(FiberAnalysis::class),
             )
         )
     }
 }
 
 private fun highlights() {
-    register<FirestoreAggregateTransformer<Highlight>>(HIGHLIGHT_TRANSFORMER) {
+    register<FirestoreAggregateTransformer<Highlight>>(Highlight::class) {
         FirestoreHighlightTransformer()
     }
 }
 
 private fun imageMetadata() {
-    register<FirestoreAggregateTransformer<ImageMetadata>>(IMAGE_METADATA_TRANSFORMER) {
+    register<FirestoreAggregateTransformer<ImageMetadata>>(ImageMetadata::class) {
         FirestoreImageMetadataTransformer()
     }
 }
@@ -133,65 +128,65 @@ private fun indexPage() {
 }
 
 private fun indexArticle() {
-    register<Repository<Article>>(INDEX_ARTICLE_REPOSITORY) {
+    register<Repository<Article>>(ShowIndexArticle::class) {
         CachingRepository(
             FirestoreRepository(
                 client = inject<HttpClient>(),
                 collection = INDEX_ARTICLE_COLLECTION,
                 properties = inject<FirestoreProperties>(),
-                transformer = inject<FirestoreAggregateTransformer<Article>>(ARTICLE_TRANSFORMER),
+                transformer = inject<FirestoreAggregateTransformer<Article>>(Article::class),
             )
         )
     }
 }
 
 private fun indexNewsHighlights() {
-    register<Repository<Highlight>>(INDEX_NEWS_REPOSITORY) {
+    register<Repository<Highlight>>(ShowIndexNewsHighlights::class) {
         CachingRepository(
             FirestoreRepository(
                 client = inject<HttpClient>(),
                 collection = INDEX_NEWS_COLLECTION,
                 properties = inject<FirestoreProperties>(),
-                transformer = inject<FirestoreAggregateTransformer<Highlight>>(HIGHLIGHT_TRANSFORMER),
+                transformer = inject<FirestoreAggregateTransformer<Highlight>>(Highlight::class),
             )
         )
     }
 }
 
 private fun indexTrainingImages() {
-    register<Repository<ImageMetadata>>(INDEX_TRAININGS_REPOSITORY) {
+    register<Repository<ImageMetadata>>(ShowIndexTrainingsPhotoGallery::class) {
         CachingRepository(
             FirestoreRepository(
                 client = inject<HttpClient>(),
                 collection = INDEX_TRAININGS_COLLECTION,
                 properties = inject<FirestoreProperties>(),
-                transformer = inject<FirestoreAggregateTransformer<ImageMetadata>>(IMAGE_METADATA_TRANSFORMER),
+                transformer = inject<FirestoreAggregateTransformer<ImageMetadata>>(ImageMetadata::class),
             )
         )
     }
 }
 
 private fun indexGuildHighlights() {
-    register<Repository<Highlight>>(INDEX_GUILD_REPOSITORY) {
+    register<Repository<Highlight>>(ShowIndexGuildHighlights::class) {
         CachingRepository(
             FirestoreRepository(
                 client = inject<HttpClient>(),
                 collection = INDEX_GUILD_COLLECTION,
                 properties = inject<FirestoreProperties>(),
-                transformer = inject<FirestoreAggregateTransformer<Highlight>>(HIGHLIGHT_TRANSFORMER),
+                transformer = inject<FirestoreAggregateTransformer<Highlight>>(Highlight::class),
             )
         )
     }
 }
 
 private fun newsPage() {
-    register<Repository<Article>>(NEWS_ARTICLE_REPOSITORY) {
+    register<Repository<Article>>(ShowNewsPage::class) {
         CachingRepository(
             FirestoreRepository(
                 client = inject<HttpClient>(),
                 collection = NEWS_ARTICLE_COLLECTION,
                 properties = inject<FirestoreProperties>(),
-                transformer = inject<FirestoreAggregateTransformer<Article>>(ARTICLE_TRANSFORMER),
+                transformer = inject<FirestoreAggregateTransformer<Article>>(Article::class),
             )
         )
     }
@@ -203,39 +198,39 @@ private fun factsheetPage() {
 }
 
 private fun factsheetArticle() {
-    register<Repository<Article>>(FACTSHEET_ARTICLE_REPOSITORY) {
+    register<Repository<Article>>(ShowFactsheetArticle::class) {
         CachingRepository(
             FirestoreRepository(
                 client = inject<HttpClient>(),
                 collection = FACTSHEET_ARTICLE_COLLECTION,
                 properties = inject<FirestoreProperties>(),
-                transformer = inject<FirestoreAggregateTransformer<Article>>(ARTICLE_TRANSFORMER),
+                transformer = inject<FirestoreAggregateTransformer<Article>>(Article::class),
             )
         )
     }
 }
 
 private fun factsheetHighlight() {
-    register<Repository<Highlight>>(FACTSHEET_HIGHLIGHT_REPOSITORY) {
+    register<Repository<Highlight>>(ShowFactsheetHighlights::class) {
         CachingRepository(
             FirestoreRepository(
                 client = inject<HttpClient>(),
                 collection = FACTSHEET_HIGHLIGHT_COLLECTION,
                 properties = inject<FirestoreProperties>(),
-                transformer = inject<FirestoreAggregateTransformer<Highlight>>(HIGHLIGHT_TRANSFORMER),
+                transformer = inject<FirestoreAggregateTransformer<Highlight>>(Highlight::class),
             )
         )
     }
 }
 
 private fun photoGalleryPage() {
-    register<Repository<ImageMetadata>>(PHOTO_GALLERY_IMAGE_REPOSITORY) {
+    register<Repository<ImageMetadata>>(ShowPhotoGalleryPage::class) {
         CachingRepository(
             FirestoreRepository(
                 client = inject<HttpClient>(),
                 collection = PHOTO_GALLERY_IMAGE_COLLECTION,
                 properties = inject<FirestoreProperties>(),
-                transformer = inject<FirestoreAggregateTransformer<ImageMetadata>>(IMAGE_METADATA_TRANSFORMER),
+                transformer = inject<FirestoreAggregateTransformer<ImageMetadata>>(ImageMetadata::class),
             )
         )
     }
