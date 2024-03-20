@@ -1,6 +1,4 @@
 import com.github.psxpaul.task.ExecFork
-import org.gradle.kotlin.dsl.provideDelegate
-import java.io.File
 
 plugins {
     id("com.github.psxpaul.execfork")
