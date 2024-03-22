@@ -98,6 +98,6 @@ fun createHttpClient(): HttpClient {
 }
 
 @Serializable
-data class GoogleToken(
+private data class GoogleToken(
     @SerialName("access_token") val value: String
 )
