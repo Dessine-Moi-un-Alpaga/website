@@ -1,7 +1,7 @@
 FIREBASE_LOCATION := $(shell which firebase)
 
 GRADLE_PROJECT_VARIABLES := \
-	-Pcredentials=$(CREDENTIALS) \
+	-Pcredentials='$(value CREDENTIALS)' \
 	-PdevBucket=$(DEV_BUCKET) \
 	-PfirebaseLocation=$(FIREBASE_LOCATION) \
 	-PgoogleProject=$(GOOGLE_PROJECT) \
