@@ -3,7 +3,12 @@ export DMUA_SECRETS := $(DMUA_HOME)/secrets
 export DMUA_VARIABLES := $(DMUA_HOME)/variables
 
 export ARTIFACT_REGISTRY_LOCATION ?= $(shell cat "$(DMUA_VARIABLES)/ARTIFACT_REGISTRY_LOCATION")
-export CREDENTIALS ?= $(shell cat "$(DMUA_SECRETS)/CREDENTIALS")
+
+ifndef CREDENTIALS
+	CREDENTIALS := $(shell cat "$(DMUA_SECRETS)/CREDENTIALS")
+endif
+
+export CREDENTIALS
 export DEV_BUCKET ?= $(shell cat "$(DMUA_VARIABLES)/DEV_BUCKET")
 export GOOGLE_PROJECT ?= $(shell cat "$(DMUA_VARIABLES)/GOOGLE_PROJECT")
 
