@@ -56,7 +56,7 @@ fun Application.firestore() {
 
 private fun Application.httpClient() {
     register<HttpClient> {
-        createNewHttpClient().also {
+        createHttpClient().also {
             registerCloseable(it)
         }
     }
