@@ -64,7 +64,8 @@ fun createHttpClient(): HttpClient {
         return result
     }
 
-    suspend fun getNewToken(request: HttpRequestBuilder) {
+    suspend fun getNewToken(): String? {
+        var result: String? = null
         val response = client.request(GOOGLE_METADATA_ENDPOINT) {
             headers {
                 header(GOOGLE_METADATA_HEADER_NAME, GOOGLE_METADATA_HEADER_VALUE)
@@ -72,10 +73,10 @@ fun createHttpClient(): HttpClient {
         }
 
         if (response.status.isSuccess()) {
-            val token = response.body<GoogleToken>().value
-            request.bearerAuth(token)
-            tokenStorage.set(token)
+            result = response.body<GoogleToken>().value
         }
+
+        return result
     }
 
     client.plugin(HttpSend).intercept { request ->
@@ -85,7 +86,8 @@ fun createHttpClient(): HttpClient {
             result = tryExistingToken(request)
 
             if (result == null) {
-                getNewToken(request)
+                val token = getNewToken()
+                tokenStorage.set(token)
             }
         }
 
@@ -96,6 +98,6 @@ fun createHttpClient(): HttpClient {
 }
 
 @Serializable
-private data class GoogleToken(
+data class GoogleToken(
     @SerialName("access_token") val value: String
 )
