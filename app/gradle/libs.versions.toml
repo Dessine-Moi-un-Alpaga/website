@@ -28,6 +28,7 @@ kotest-assertions-core          = { module = "io.kotest:kotest-assertions-core",
 kotest-assertions-json          = { module = "io.kotest:kotest-assertions-json",                version.ref = "kotest"                 }
 kotest-assertions-ktor          = { module = "io.kotest.extensions:kotest-assertions-ktor",     version.ref = "kotest-assertions-ktor" }
 kotlin-gradle-plugin            = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin",       version.ref = "kotlin"                 }
+ktor-client-auth                = { module = "io.ktor:ktor-client-auth"                                                                }
 ktor-client-cio                 = { module = "io.ktor:ktor-client-cio"                                                                 }
 ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation"                                                 }
 ktor-client-core                = { module = "io.ktor:ktor-client-core"                                                                }
@@ -49,6 +50,7 @@ toastr                          = { module = "org.webjars:toastr",              
 
 [bundles]
 ktor-client = [
+    "ktor-client-auth",
     "ktor-client-cio",
     "ktor-client-content-negotiation",
     "ktor-client-core",
