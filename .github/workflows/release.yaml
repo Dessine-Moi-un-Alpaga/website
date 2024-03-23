@@ -121,7 +121,7 @@ jobs:
           GOOGLE_ZONE: ${{ vars.GOOGLE_ZONE }}
           PROD_BUCKET: ${{ vars.PROD_BUCKET }}
           SEND_GRID_API_KEY: ${{ secrets.SEND_GRID_API_KEY }}
-        run: npx semantic-release@22
+        run: npx semantic-release@23
 
 permissions:
   contents: write
