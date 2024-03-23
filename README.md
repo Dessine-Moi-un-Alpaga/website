@@ -32,41 +32,14 @@ An application for serving and managing [the website of our alpaca breeding farm
 
 # Prerequisites
 
-## Bootstrap
-
-The following is required to bootstrap the project:
+The following is required:
 * the [Google Cloud CLI](https://cloud.google.com/sdk/docs/install)
 * a Google Cloud organization
 * a Google user account that is `Organization Administrator`
-
-## Gradle
-
-Running the Gradle build requires:
-* an installation of the [GraalVM 21 SDK](https://www.graalvm.org/downloads/)
-* a [Google Firestore Emulator installation](https://firebase.google.com/docs/emulator-suite/install_and_configure)
-    properly initialized at `~/.firestore` and configured to run on port `8181`
-
-By default, the native compilation task is configured for Apple Silicon (`-march=armv8-a`). You can override the build arguments using the
-`nativeCompileExtraBuildArgs` project variable:
-```shell
-$ ./gradlew nativeCompile -PnativeCompileExtraBuildArgs=-0b,-march=x86-64-v3
-```
-
-It is probably simpler to include your defaults in your `~/.gradle/gradle.properties` file:
-```properties
-nativeCompileExtraBuildArgs=-0b,-march=x86-64-v3
-```
-
-## Docker
-
-Building and pushing the docker image requires a recent [Docker installation](https://www.docker.com/products/docker-desktop/)
-that includes `buildx`.
-
-The Docker build works exclusively on Linux/x86-64.
-
-## Terraform
-
-Provisioning the infrastructure requires a recent [Terraform installation](https://developer.hashicorp.com/terraform/install?product_intent=terraform).
+* the [GraalVM 21 SDK](https://www.graalvm.org/downloads/)
+* the [Google Firestore Emulator](https://firebase.google.com/docs/emulator-suite/install_and_configure)
+* a recent [Docker installation](https://www.docker.com/products/docker-desktop/) that includes `buildx`.
+* a recent [Terraform installation](https://developer.hashicorp.com/terraform/install?product_intent=terraform).
 
 # Bootstrapping the Project
 
@@ -77,13 +50,47 @@ everything is set up for deploying the application to Google Cloud Run from your
 $ make bootstrap
 ```
 
-Configuration will be saved in the `~/.dmua` directory.
+Configuration files will be saved in the `~/.dmua` directory.
 
 You are now all set to run the project locally:
 
 ```shell
-$ make run-app
+$ make test-app run-app
 ```
+
+# Building with Gradle
+
+The `app/gradle.properties` file lists the required Gradle project properties. All of them are automatically set when
+building using the Makefile. If you want to use Gradle directly (which is useful when working in an IDE), you should
+set the properties directly in your `~/.gradle/gradle.properties` file.
+
+In particular, you might want to set the `nativeCompileExtraBuildArgs` according to your CPU architecture:
+
+```properties
+# fewer optimizations/faster builds, support for Apple arm64 architecture
+nativeCompileExtraBuildArgs=-0b,-march=armv8-a
+```
+
+You can then run build tasks using Gradle directly, which is useful when working in an IDE:
+
+```shell
+$ ./gradlew test run
+```
+
+# Preparing the Native Build
+
+Compiling a native executable with GraalVM requires some configuration, which can be automatically generated:
+
+```shell
+$ make prepare-native-build-app
+
+# or
+
+$ ./gradlew -Pagent run
+```
+
+You must then make sure that all relevant code paths are covered by your interactions with the app and all the
+configuration files in `app/src/main/native` will be updated accordingly.
 
 # Configuring GitHub Actions
 
@@ -152,3 +159,24 @@ Coming from a JVM background, I opted for [Kotlin](https://kotlinlang.org), comp
 [GraalVM](https://graalvm.org).
 
 [Ktor](https://ktor.io) was the next logical choice, as most of its features can be compiled into native binaries quite easily.
+
+## Design Considerations
+
+### Hexagonal architecture
+
+The goal is to decouple the domain and application use cases from the underlying technologies, which end up being
+isolated under the adapters and interfaces packages.
+
+Pretending to be domain-driven would be abusive, as there is no real business logic. We recognize that the
+domain layer is anemic and live happily with it.
+
+### Avoid obese and invasive frameworks and libraries
+
+This project initially used the standard libraries made for interacting with the external services on
+which it depends (Firestore and SendGrid) and the Koin Dependency Injection library.
+
+Replacing those with a few lines of custom code cut the resulting binary's size in half (from ~120MB to ~60MB).
+
+A nice optimization was also introduced by replacing the XML Logback configuration at runtime by a
+serialized configuration created at build time. This prevents the whole XML parsing code to be included in the
+executable.
