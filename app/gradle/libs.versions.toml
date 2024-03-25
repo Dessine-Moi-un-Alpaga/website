@@ -12,7 +12,7 @@ kotlin                 = "1.9.23"
 ktor                   = "2.3.9"
 logback                = "1.5.3"
 mockk                  = "1.13.10"
-photoswipe             = "5.3.7"
+photoswipe             = "5.4.3"
 toastr                 = "2.1.4"
 
 [libraries]
