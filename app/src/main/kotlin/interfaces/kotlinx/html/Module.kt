@@ -1,9 +1,13 @@
-package be.alpago.website.interfaces.ktor
+package be.alpago.website.interfaces.kotlinx.html
 
-import be.alpago.website.interfaces.kotlinx.html.TemplateProperties
-import io.ktor.server.application.Application
+import be.alpago.website.libs.di.getEnvironmentVariable
+import be.alpago.website.libs.di.register
 
-fun Application.templates() {
+fun templates() {
+    templateProperties()
+}
+
+private fun templateProperties() {
     register {
         TemplateProperties(
             baseAssetUrl = getEnvironmentVariable("DMUA_BASE_ASSET_URL"),

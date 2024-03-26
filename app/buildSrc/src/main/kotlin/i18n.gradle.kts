@@ -1,7 +1,7 @@
 import java.util.Locale
 
 plugins {
-    id("org.jetbrains.kotlin.jvm")
+    id("org.jetbrains.kotlin.jvm").apply(false)
     id("de.comahe.i18n4k")
 }
 

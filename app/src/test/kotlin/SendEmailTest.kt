@@ -1,13 +1,12 @@
 package be.alpago.website
 
+import be.alpago.website.adapters.adapters
 import be.alpago.website.adapters.sendgrid.SendGridProperties
+import be.alpago.website.application.queries.queries
 import be.alpago.website.application.usecases.UnexpectedEmailException
-import be.alpago.website.interfaces.i18n4k.i18n
-import be.alpago.website.interfaces.ktor.clear
-import be.alpago.website.interfaces.ktor.email
-import be.alpago.website.interfaces.ktor.mock
-import be.alpago.website.interfaces.ktor.serialization
-import be.alpago.website.interfaces.ktor.validation
+import be.alpago.website.interfaces.interfaces
+import be.alpago.website.libs.di.clear
+import be.alpago.website.libs.di.mock
 import io.kotest.assertions.json.shouldEqualJson
 import io.kotest.assertions.ktor.client.shouldHaveStatus
 import io.kotest.assertions.throwables.shouldThrow
@@ -76,11 +75,9 @@ class SendEmailTest {
         """.trimIndent()
 
         application {
-            i18n()
-            serialization()
-            validation()
-
-            email()
+            adapters()
+            queries()
+            interfaces()
 
             mock<HttpClientEngine> {
                 MockEngine { request ->

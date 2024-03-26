@@ -1,6 +1,4 @@
 import be.alpago.environmentVariables
-import org.gradle.api.tasks.JavaExec
-import org.gradle.kotlin.dsl.named
 
 afterEvaluate {
     tasks.named<JavaExec>("run") {

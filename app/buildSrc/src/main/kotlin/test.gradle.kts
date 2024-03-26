@@ -1,18 +1,17 @@
 import be.alpago.environmentVariables
-import org.gradle.testing.jacoco.tasks.JacocoReport
 
 plugins {
     id("jacoco")
 }
 
 afterEvaluate {
-    tasks.named<Test>("test").configure {
+    tasks.withType(Test::class.java).configureEach {
         dependsOn(":firestoreEmulator")
         useJUnitPlatform()
         environmentVariables(project)
     }
 
-    tasks.named<JacocoReport>("jacocoTestReport").configure {
+    tasks.withType(JacocoReport::class.java).configureEach {
         reports {
             html.required = false
             xml.required = true

@@ -22,8 +22,6 @@ repositories {
     mavenCentral()
 }
 
-val webjars by configurations.named("webjars")
-
 dependencies {
     implementation(libs.bcrypt)
     implementation(libs.i18n4k)

@@ -1,9 +1,3 @@
-import org.gradle.api.file.RelativePath
-import org.gradle.api.tasks.Copy
-import org.gradle.kotlin.dsl.creating
-import org.gradle.kotlin.dsl.getValue
-import org.gradle.kotlin.dsl.register
-
 val taskName = "explodeWebjars"
 val webjars by configurations.creating
 
@@ -28,6 +22,6 @@ tasks.register<Copy>(taskName) {
     into("${project.layout.buildDirectory.asFile.get()}/resources/main/static/webjars")
 }
 
-tasks.named("processResources").configure {
+tasks.withType(ProcessResources::class.java).configureEach {
     dependsOn(":$taskName")
 }

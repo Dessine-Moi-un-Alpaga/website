@@ -6,3 +6,7 @@ fun interface ShowFactsheetPage {
 
     suspend fun execute(): PageModel
 }
+
+interface ShowFactsheetArticle
+
+interface ShowFactsheetHighlights

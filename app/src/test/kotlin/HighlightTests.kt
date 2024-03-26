@@ -1,7 +1,7 @@
 package be.alpago.website
 
 import be.alpago.website.interfaces.kotlinx.html.TemplateProperties
-import be.alpago.website.interfaces.ktor.inject
+import be.alpago.website.libs.di.inject
 import io.kotest.assertions.ktor.client.shouldHaveStatus
 import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.shouldBe

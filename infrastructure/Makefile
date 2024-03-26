@@ -6,7 +6,7 @@ GOOGLE_ZONE ?= $(shell cat "$(DMUA_VARIABLES)/GOOGLE_ZONE")
 TERRAFORM_INFRA_VARS := \
 	-var 'artifact_registry_location=$(ARTIFACT_REGISTRY_LOCATION)' \
 	-var 'artifact_repository=$(ARTIFACT_REPOSITORY)' \
-	-var 'credentials=$(CREDENTIALS)' \
+	-var 'credentials=$(value CREDENTIALS)' \
 	-var 'firestore_location=$(FIRESTORE_LOCATION)' \
 	-var 'send_grid_api_key=$(SEND_GRID_API_KEY)'
 
