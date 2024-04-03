@@ -38,11 +38,11 @@ class CachingRepository<T : AggregateRoot>(private val delegate: Repository<T>) 
     }
 
     override suspend fun findAll(): List<T> {
-        var result = findAllCache.get(null)
+        var result = findAllCache[null]
 
         if (result == null) {
             result = delegate.findAll()
-            findAllCache.put(null, result)
+            findAllCache[null] = result
         }
 
         return result
@@ -50,22 +50,22 @@ class CachingRepository<T : AggregateRoot>(private val delegate: Repository<T>) 
 
     override suspend fun findBy(field: String, value: String): List<T> {
         val key = FindByCacheKey(field, value)
-        var result = findByCache.get(key)
+        var result = findByCache[key]
 
         if (result == null) {
             result = delegate.findBy(field, value)
-            findByCache.put(key, result)
+            findByCache[key] = result
         }
 
         return result
     }
 
     override suspend fun get(id: String): T {
-        var result = getCache.get(id)
+        var result = getCache[id]
 
         if (result == null) {
             result = delegate.get(id)
-            getCache.put(id, result)
+            getCache[id] = result
         }
 
         return result
