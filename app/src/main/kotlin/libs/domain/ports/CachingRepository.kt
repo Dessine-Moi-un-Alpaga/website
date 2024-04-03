@@ -1,6 +1,7 @@
 package be.alpago.website.libs.domain.ports
 
 import be.alpago.website.libs.domain.AggregateRoot
+import java.util.Collections.synchronizedMap
 
 private data class FindByCacheKey(
     val argumentName: String,
@@ -9,35 +10,35 @@ private data class FindByCacheKey(
 
 class CachingRepository<T : AggregateRoot>(private val delegate: Repository<T>) : Repository<T> {
 
-    private val findAllCache = RepositoryOperationCache<String?, List<T>>()
+    private val findAllCache: MutableMap<Nothing?, List<T>> = synchronizedMap(mutableMapOf())
 
-    private val findByCache = RepositoryOperationCache<FindByCacheKey, List<T>>()
+    private val findByCache: MutableMap<FindByCacheKey, List<T>> = synchronizedMap(mutableMapOf())
 
-    private val getCache = RepositoryOperationCache<String, T>()
+    private val getCache: MutableMap<String, T> = synchronizedMap(mutableMapOf())
 
     override suspend fun create(aggregateRoot: T) {
         delegate.create(aggregateRoot)
-        findAllCache.evictAll()
-        findByCache.evictAll()
-        getCache.evict(aggregateRoot.id)
+        findAllCache.clear()
+        findByCache.clear()
+        getCache.remove(aggregateRoot.id)
     }
 
     override suspend fun delete(id: String) {
         delegate.delete(id)
-        findAllCache.evictAll()
-        findByCache.evictAll()
-        getCache.evict(id)
+        findAllCache.clear()
+        findByCache.clear()
+        getCache.remove(id)
     }
 
     override suspend fun deleteAll() {
         delegate.deleteAll()
-        findAllCache.evictAll()
-        findByCache.evictAll()
-        getCache.evictAll()
+        findAllCache.clear()
+        findByCache.clear()
+        getCache.clear()
     }
 
     override suspend fun findAll(): List<T> {
-        var result = findAllCache.get()
+        var result = findAllCache.get(null)
 
         if (result == null) {
             result = delegate.findAll()
