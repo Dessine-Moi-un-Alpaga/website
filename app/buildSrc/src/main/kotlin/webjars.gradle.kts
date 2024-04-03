@@ -9,7 +9,7 @@ tasks.register<Copy>(taskName) {
         from(zipTree(jar)) {
             val config = webjars.resolvedConfiguration
             val artifact = config.resolvedArtifacts.find {
-                it.file.toString() == jar.absolutePath
+                "${it.file}" == jar.absolutePath
             }
             exclude("META-INF/maven/**")
             exclude("META-INF/MANIFEST.MF")
