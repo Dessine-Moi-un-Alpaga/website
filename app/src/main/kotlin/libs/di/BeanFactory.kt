@@ -15,8 +15,6 @@ fun clear() {
     beanFactories.clear()
 }
 
-fun getEnvironmentVariable(name: String, default: String? = null) = System.getenv(name) ?: default ?: throw NoSuchEnvironmentVariableException(name)
-
 inline fun <reified T : Any> register(useCase: KClass<*>? = null, noinline block: BeanFactory<out T>) {
     val key = BeanFactoryKey(T::class, useCase)
 
@@ -48,5 +46,3 @@ inline fun <reified T : Any> inject(useCase: KClass<*>? = null): T {
 class DuplicateBeanException(key: BeanFactoryKey) : Exception("$key")
 
 class NoSuchBeanException(key: BeanFactoryKey) : Exception("$key")
-
-class NoSuchEnvironmentVariableException(name: String) : Exception(name)
