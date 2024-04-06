@@ -11,7 +11,7 @@ resource "google_storage_bucket" "static_resource_bucket" {
   }
   force_destroy               = true
   location                    = var.location
-  name                        = var.bucket_name
+  name                        = var.environments[var.environment].bucket_name
   uniform_bucket_level_access = true
 
   versioning {

@@ -14,19 +14,15 @@ TERRAFORM_APP_VARS := \
 	-var 'artifact_registry_location=$(ARTIFACT_REGISTRY_LOCATION)' \
 	-var 'artifact_repository=$(ARTIFACT_REPOSITORY)' \
 	-var 'docker_tag=$(DOCKER_TAG)' \
-	-var 'environments={"development":{"cors_origins":["*"]},"production":{"create_domain_mapping":true}}' \
+	-var 'environments={"development":{"bucket_name":$(DEV_BUCKET),"cors_origins":["*"]},"production":{"bucket_name":$(PROD_BUCKET),"create_domain_mapping":true}}' \
 	-var 'location=$(GOOGLE_REGION)'
 
 TERRAFORM_DEV_APP_VARS := \
 	$(TERRAFORM_APP_VARS) \
-	-var 'bucket_name=$(DEV_BUCKET)' \
 	-var 'environment=development'
 
 TERRAFORM_PROD_APP_VARS := \
 	$(TERRAFORM_APP_VARS) \
-	-var 'bucket_name=$(PROD_BUCKET)' \
-	-var 'cors_origins=["https://$(DOMAIN_NAME)"]' \
-	-var 'domain_name=$(DOMAIN_NAME)' \
 	-var 'environment=production'
 
 TERRAFORM_INFRA_GLOBAL_OPTIONS := -chdir=stacks/infra
