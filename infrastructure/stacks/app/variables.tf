@@ -6,10 +6,6 @@ variable "artifact_repository" {
   type = string
 }
 
-variable "bucket_name" {
-  type = string
-}
-
 variable "docker_tag" {
   type = string
 }
@@ -25,6 +21,7 @@ variable "environment" {
 
 variable "environments" {
   type = map(object({
+    bucket_name            = string
     cors_origins           = optional(list(string))
     create_domain_mapping  =  optional(bool, false)
   }))
