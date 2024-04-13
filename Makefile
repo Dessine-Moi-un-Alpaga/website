@@ -21,9 +21,6 @@ export ARTIFACT_REPOSITORY := common
 export DOCKER_IMAGE := $(ARTIFACT_REGISTRY)/$(GOOGLE_PROJECT)/$(ARTIFACT_REPOSITORY)/website
 export DOCKER_TAG := $(ARTIFACT_REGISTRY)/$(GOOGLE_PROJECT)/$(ARTIFACT_REPOSITORY)/website:$(VERSION)
 
-bootstrap:
-	@bash infrastructure/bootstrap/install.sh
-
 %-app:
 	$(MAKE) --directory app $*
 
