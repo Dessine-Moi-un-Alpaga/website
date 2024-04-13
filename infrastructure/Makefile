@@ -20,8 +20,8 @@ TERRAFORM_PROD_APP_VARS := \
 	$(TERRAFORM_APP_VARS) \
 	-var 'environment=production'
 
-TERRAFORM_INFRA_GLOBAL_OPTIONS := -chdir=stacks/infra
-TERRAFORM_APP_GLOBAL_OPTIONS := -chdir=stacks/app
+TERRAFORM_INFRA_GLOBAL_OPTIONS := -chdir=infra
+TERRAFORM_APP_GLOBAL_OPTIONS := -chdir=app
 
 TERRAFORM_BACKEND_OPTIONS := -backend-config=bucket=terraform-state-$(GOOGLE_PROJECT)
 TERRAFORM_INFRA_BACKEND_OPTIONS := $(TERRAFORM_BACKEND_OPTIONS) -backend-config=prefix=common/infra
@@ -34,9 +34,9 @@ TERRAFORM_PLAN_OPTIONS := -input=false
 TERRAFORM_UNLOCK_OPTIONS := -force ${LOCK_ID}
 
 bootstrap:
-	@terraform -chdir=stacks/bootstrap init -backend-config=path=$(HOME)/.dmua/bootstrap/terraform.tfstate
-	@terraform -chdir=stacks/bootstrap plan -out=tfplan -var-file=$(HOME)/.dmua/bootstrap/terraform.tfvars
-	@terraform -chdir=stacks/bootstrap apply tfplan
+	@terraform -chdir=bootstrap init -backend-config=path=$(HOME)/.dmua/bootstrap/terraform.tfstate
+	@terraform -chdir=bootstrap plan -out=tfplan -var-file=$(HOME)/.dmua/bootstrap/terraform.tfvars
+	@terraform -chdir=bootstrap apply tfplan
 
 init:
 	@terraform $(TERRAFORM_INFRA_GLOBAL_OPTIONS) init $(TERRAFORM_INIT_OPTIONS) $(TERRAFORM_INFRA_BACKEND_OPTIONS) $(TERRAFORM_INFRA_VARS)
