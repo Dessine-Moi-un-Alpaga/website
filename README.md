@@ -43,11 +43,11 @@ The following is required:
 
 # Bootstrapping the Project
 
-This project includes an interactive script that will prompt you for several configuration items and make sure
+This project includes a Terraform configuration that will prompt you for several configuration items and make sure
 everything is set up for deploying the application to Google Cloud Run from your local box and from GitHub.
 
 ```shell
-$ make bootstrap
+$ make bootstrap-infra
 ```
 
 Configuration files will be saved in the `~/.dmua` directory.
@@ -91,38 +91,6 @@ $ ./gradlew -Pagent run
 
 You must then make sure that all relevant code paths are covered by your interactions with the app and all the
 configuration files in `app/src/main/native` will be updated accordingly.
-
-# Configuring GitHub Actions
-
-Running the GitHub Actions workflows requires you to copy some secrets and variables to GitHub Actions.
-
-Note that not all secrets and variables are required for successfully running GitHub Workflows; the complete list is
-provided below.
-
-## GitHub Actions Secrets
-
-[Generate a Sonarcloud token](https://sonarcloud.io/account/security) and save it as the `SONARCLOUD_TOKEN` GitHub
-Actions secret.
-
-The other secret values can be found in the corresponding files located in `~/.dmua/secrets`:
-
-* `CREDENTIALS`
-* `SEND_GRID_API_KEY`
-
-## GitHub Actions Variables
-
-Variable values can be found in the corresponding files located in `~/.dmua/variables`:
-
-* `ARTIFACT_REGISTRY_LOCATION`
-* `DEV_BUCKET`
-* `DOMAIN_NAME`
-* `FIRESTORE_LOCATION`
-* `GOOGLE_PROJECT`
-* `GOOGLE_PROJECT_NAME`
-* `GOOGLE_PROJECT_NUMBER`
-* `GOOGLE_REGION`
-* `GOOGLE_ZONE`
-* `PROD_BUCKET`
 
 # Contributing
 
