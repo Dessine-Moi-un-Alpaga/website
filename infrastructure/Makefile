@@ -1,8 +1,3 @@
-DOMAIN_NAME ?= $(shell cat "$(DMUA_VARIABLES)/DOMAIN_NAME")
-FIRESTORE_LOCATION ?= $(shell cat "$(DMUA_VARIABLES)/FIRESTORE_LOCATION")
-GOOGLE_REGION ?= $(shell cat "$(DMUA_VARIABLES)/GOOGLE_REGION")
-GOOGLE_ZONE ?= $(shell cat "$(DMUA_VARIABLES)/GOOGLE_ZONE")
-
 TERRAFORM_INFRA_VARS := \
 	-var 'artifact_registry_location=$(ARTIFACT_REGISTRY_LOCATION)' \
 	-var 'artifact_repository=$(ARTIFACT_REPOSITORY)' \
@@ -14,7 +9,7 @@ TERRAFORM_APP_VARS := \
 	-var 'artifact_registry_location=$(ARTIFACT_REGISTRY_LOCATION)' \
 	-var 'artifact_repository=$(ARTIFACT_REPOSITORY)' \
 	-var 'docker_tag=$(DOCKER_TAG)' \
-	-var 'environments={"development":{"bucket_name":$(DEV_BUCKET),"cors_origins":["*"]},"production":{"bucket_name":$(PROD_BUCKET),"create_domain_mapping":true}}' \
+	-var 'environments={"development":{"bucket_name":"$(DEV_BUCKET)","cors_origins":["*"]},"production":{"bucket_name":"$(PROD_BUCKET)","create_domain_mapping":true}}' \
 	-var 'location=$(GOOGLE_REGION)'
 
 TERRAFORM_DEV_APP_VARS := \
