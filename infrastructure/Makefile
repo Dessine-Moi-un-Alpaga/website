@@ -33,6 +33,11 @@ TERRAFORM_INIT_OPTIONS := -input=false -reconfigure -upgrade
 TERRAFORM_PLAN_OPTIONS := -input=false
 TERRAFORM_UNLOCK_OPTIONS := -force ${LOCK_ID}
 
+bootstrap:
+	@terraform -chdir=stacks/bootstrap init -backend-config=path=$(HOME)/.dmua/bootstrap/terraform.tfstate
+	@terraform -chdir=stacks/bootstrap plan -out=tfplan -var-file=$(HOME)/.dmua/bootstrap/terraform.tfvars
+	@terraform -chdir=stacks/bootstrap apply tfplan
+
 init:
 	@terraform $(TERRAFORM_INFRA_GLOBAL_OPTIONS) init $(TERRAFORM_INIT_OPTIONS) $(TERRAFORM_INFRA_BACKEND_OPTIONS) $(TERRAFORM_INFRA_VARS)
 
