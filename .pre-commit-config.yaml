@@ -3,7 +3,7 @@ repos:
     rev: 'v1.83.5' # Get the latest from: https://github.com/antonbabenko/pre-commit-terraform/releases
     hooks:
       - id: terraform_providers_lock
-        files: "^infrastructure/stacks/(.)+/terraform.tf$"
+        files: "^infrastructure/(.)+/terraform.tf$"
         args:
           - --args=-platform=windows_amd64
           - --args=-platform=darwin_amd64
