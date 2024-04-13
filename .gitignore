@@ -15,6 +15,7 @@ build/
 
 # Terraform
 .terraform/
+terraform.tfvars
 tfplan
 
 # Custom
