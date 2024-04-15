@@ -1,9 +1,6 @@
-FIREBASE_LOCATION := $(shell which firebase)
-
 GRADLE_PROJECT_VARIABLES := \
 	-Pcredentials='$(value CREDENTIALS)' \
 	-PdevBucket=$(DEV_BUCKET) \
-	-PfirebaseLocation=$(FIREBASE_LOCATION) \
 	-PgoogleProject=$(GOOGLE_PROJECT) \
 	-PsendGridApiKey=$(SEND_GRID_API_KEY) \
 	-Pversion=$(VERSION)

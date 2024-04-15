@@ -1,10 +1,21 @@
 import com.github.psxpaul.task.ExecFork
+import java.io.ByteArrayOutputStream
 
 plugins {
     id("com.github.psxpaul.execfork")
 }
 
-val firebaseLocation: String by project
+fun String.runCommand(currentWorkingDir: File = file("./")): String {
+    val byteOut = ByteArrayOutputStream()
+    project.exec {
+        workingDir = currentWorkingDir
+        commandLine = this@runCommand.split("\\s".toRegex())
+        standardOutput = byteOut
+    }
+    return String(byteOut.toByteArray()).trim()
+}
+
+val firebaseLocation = "which firebase".runCommand()
 val firestorePort = 8181
 val googleProject: String by project
 
