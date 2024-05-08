@@ -101,7 +101,7 @@ jobs:
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v3
         with:
-          terraform_version: 1.8.2
+          terraform_version: 1.8.3
           terraform_wrapper: false
 
       - name: Set up Docker Buildx
