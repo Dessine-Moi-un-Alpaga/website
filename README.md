@@ -24,7 +24,7 @@
 [![Gradle](https://img.shields.io/badge/gradle-8.7-darkgreen.svg?logo=gradle)](http://gradle.org)
 [![GrralVM](https://img.shields.io/badge/graalvm-21.0.2-blue.svg?logo=openjdk)](http://graalvm.org)
 [![Kotlin](https://img.shields.io/badge/kotlin-1.9.24-darkblue.svg?logo=kotlin)](http://kotlinlang.org)
-[![Ktor](https://img.shields.io/badge/ktor-2.3.10-red.svg)](http://ktor.io)
+[![Ktor](https://img.shields.io/badge/ktor-2.3.11-red.svg)](http://ktor.io)
 
 # What is this?
 
