@@ -15,7 +15,7 @@ fun clear() {
     beanFactories.clear()
 }
 
-inline fun <reified T : Any> register(useCase: KClass<*>? = null, noinline block: BeanFactory<out T>) {
+inline fun <reified T : Any> register(useCase: KClass<*>? = null, noinline block: BeanFactory<T>) {
     val key = BeanFactoryKey(T::class, useCase)
 
     if (beanFactories.containsKey(key)) {
@@ -25,7 +25,7 @@ inline fun <reified T : Any> register(useCase: KClass<*>? = null, noinline block
     beanFactories[key] = block
 }
 
-inline fun <reified T : Any> mock(useCase: KClass<*>? = null, noinline block: BeanFactory<out T>) {
+inline fun <reified T : Any> mock(useCase: KClass<*>? = null, noinline block: BeanFactory<T>) {
     val key = BeanFactoryKey(T::class, useCase)
     beanFactories[key] = block
 }
