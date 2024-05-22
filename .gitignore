@@ -14,8 +14,9 @@ out/
 build/
 
 # Terraform
+*.backup
 .terraform/
-terraform.tfvars
+*.tfvars
 tfplan
 
 # Custom

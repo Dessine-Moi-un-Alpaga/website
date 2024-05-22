@@ -6,12 +6,12 @@ resource "google_storage_bucket" "static_resource_bucket" {
       "HEAD",
       "OPTIONS"
     ]
-    origin          = var.environments[var.environment].cors_origins
+    origin          = var.cors_origins
     response_header = ["*"]
   }
   force_destroy               = true
   location                    = var.location
-  name                        = var.environments[var.environment].bucket_name
+  name                        = var.bucket_name
   uniform_bucket_level_access = true
 
   versioning {
@@ -119,7 +119,7 @@ resource "google_cloud_run_v2_service_iam_member" "anonymous" {
 }
 
 resource "google_cloud_run_domain_mapping" "application_domain_mapping" {
-  count = var.environments[var.environment].create_domain_mapping ? 1 : 0
+  count = var.create_domain_mapping ? 1 : 0
 
   location = google_cloud_run_v2_service.cloud_run_service.location
   name     = var.domain_name
