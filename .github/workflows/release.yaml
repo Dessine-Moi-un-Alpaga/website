@@ -62,6 +62,7 @@ jobs:
       - name: Test
         env:
           ARTIFACT_REGISTRY_LOCATION: ${{ vars.ARTIFACT_REGISTRY_LOCATION }}
+          ARTIFACT_REPOSITORY: ${{ vars.ARTIFACT_REPOSITORY }}
           CREDENTIALS: ${{ secrets.CREDENTIALS }}
           DEV_BUCKET: ${{ vars.DEV_BUCKET }}
           DOMAIN_NAME: ${{ vars.DOMAIN_NAME }}
@@ -116,6 +117,7 @@ jobs:
       - name: Release
         env:
           ARTIFACT_REGISTRY_LOCATION: ${{ vars.ARTIFACT_REGISTRY_LOCATION }}
+          ARTIFACT_REPOSITORY: ${{ vars.ARTIFACT_REPOSITORY }}
           CREDENTIALS: ${{ secrets.CREDENTIALS }}
           DEV_BUCKET: ${{ vars.DEV_BUCKET }}
           DOMAIN_NAME: ${{ vars.DOMAIN_NAME }}
