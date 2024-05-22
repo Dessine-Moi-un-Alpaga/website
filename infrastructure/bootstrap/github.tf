@@ -20,85 +20,67 @@ resource "github_repository" "git_repository" {
   }
 }
 
-resource "random_password" "password" {
-  length = 12
-  lower  = true
+locals {
+  secrets = {
+    CREDENTIALS       = local.credentials
+    SEND_GRID_API_KEY = var.send_grid_api_key
+    SONARCLOUD_TOKEN  = var.sonarcloud_token
+  }
+  variables = {
+    ARTIFACT_REGISTRY_LOCATION = var.artifact_registry_location
+    ARTIFACT_REPOSITORY        = var.artifact_repository
+    DEV_BUCKET                 = var.dev_bucket_name
+    DOMAIN_NAME                = var.domain_name
+    FIRESTORE_LOCATION         = var.firestore_location
+    GOOGLE_PROJECT             = var.project_id
+    GOOGLE_REGION              = var.region
+    GOOGLE_ZONE                = var.zone
+    PROD_BUCKET                = var.prod_bucket_name
+  }
 }
 
-resource "github_actions_variable" "artifact_registry_location" {
+resource "github_repository_environment" "development_environment" {
+  environment = "development"
+  repository  = github_repository.git_repository.name
+}
+
+resource "github_repository_environment" "production_environment" {
+  environment = "production"
+  repository  = github_repository.git_repository.name
+}
+
+resource "github_actions_environment_variable" "development_variables" {
+  for_each = local.variables
+
+  environment   = github_repository_environment.development_environment.environment
   repository    = github_repository.git_repository.name
-  value         = var.artifact_registry_location
-  variable_name = "ARTIFACT_REGISTRY_LOCATION"
+  value         = each.value
+  variable_name = each.key
 }
 
-resource "github_actions_variable" "dev_bucket" {
-  repository    = github_repository.git_repository.name
-  value         = var.dev_bucket_name
-  variable_name = "DEV_BUCKET"
-}
+# resource "github_actions_environment_variable" "production_variables" {
+#   for_each = local.variables
+#
+#   environment   = github_repository_environment.production_environment.environment
+#   repository    = github_repository.git_repository.name
+#   value         = each.value
+#   variable_name = each.key
+# }
 
-resource "github_actions_variable" "domain_name" {
-  repository    = github_repository.git_repository.name
-  value         = var.domain_name
-  variable_name = "DOMAIN_NAME"
-}
+resource "github_actions_environment_secret" "development_secrets" {
+  for_each = local.secrets
 
-resource "github_actions_variable" "firestore_location" {
-  repository    = github_repository.git_repository.name
-  value         = var.firestore_location
-  variable_name = "FIRESTORE_LOCATION"
-}
-
-resource "github_actions_variable" "google_project" {
-  repository    = github_repository.git_repository.name
-  value         = var.project_id
-  variable_name = "GOOGLE_PROJECT"
-}
-
-resource "github_actions_variable" "google_project_name" {
-  repository    = github_repository.git_repository.name
-  value         = var.project_name
-  variable_name = "GOOGLE_PROJECT_NAME"
-}
-
-resource "github_actions_variable" "google_project_number" {
-  repository    = github_repository.git_repository.name
-  value         = var.project_number
-  variable_name = "GOOGLE_PROJECT_NUMBER"
-}
-
-resource "github_actions_variable" "google_region" {
-  repository    = github_repository.git_repository.name
-  value         = var.region
-  variable_name = "GOOGLE_REGION"
-}
-
-resource "github_actions_variable" "google_zone" {
-  repository    = github_repository.git_repository.name
-  value         = var.zone
-  variable_name = "GOOGLE_ZONE"
-}
-
-resource "github_actions_variable" "prod_bucket" {
-  repository    = github_repository.git_repository.name
-  value         = var.prod_bucket_name
-  variable_name = "PROD_BUCKET"
-}
-
-resource "github_actions_secret" "credentials" {
-  plaintext_value = "${var.username}:${random_password.password.bcrypt_hash}"
+  plaintext_value = each.value
+  environment     = github_repository_environment.development_environment.environment
   repository      = github_repository.git_repository.name
-  secret_name     = "CREDENTIALS"
+  secret_name     = each.key
 }
 
-resource "github_actions_secret" "send_grid_api_key" {
-  plaintext_value = var.send_grid_api_key
-  repository      = github_repository.git_repository.name
-  secret_name     = "SEND_GRID_API_KEY"
-}
-
-resource "github_actions_secret" "sonarcloud_token" {
-  plaintext_value = var.sonarcloud_token
-  repository      = github_repository.git_repository.name
-  secret_name     = "SONARCLOUD_TOKEN"
-}
+# resource "github_actions_environment_secret" "production_secrets" {
+#   for_each = local.secrets
+#
+#   plaintext_value = each.value
+#   environment     = github_repository_environment.production_environment.environment
+#   repository      = github_repository.git_repository.name
+#   secret_name     = each.key
+# }
