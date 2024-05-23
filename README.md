@@ -20,7 +20,7 @@
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=Dessine-Moi-un-Alpaga_website&metric=coverage)](https://sonarcloud.io/summary/new_code?id=Dessine-Moi-un-Alpaga_website)
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg?logo=gnu)](https://www.gnu.org/licenses/gpl-3.0)
-[![Terraform](https://img.shields.io/badge/terraform-1.8.3-darkred.svg?logo=terraform)](http://terraform.io)
+[![Terraform](https://img.shields.io/badge/terraform-1.8.4-darkred.svg?logo=terraform)](http://terraform.io)
 [![Gradle](https://img.shields.io/badge/gradle-8.7-darkgreen.svg?logo=gradle)](http://gradle.org)
 [![GrralVM](https://img.shields.io/badge/graalvm-21.0.2-blue.svg?logo=openjdk)](http://graalvm.org)
 [![Kotlin](https://img.shields.io/badge/kotlin-2.0.0-darkblue.svg?logo=kotlin)](http://kotlinlang.org)
