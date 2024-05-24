@@ -16,6 +16,21 @@ updates:
       interval: "daily"
     target-branch: "beta"
   - package-ecosystem: "terraform"
+    directory: "/infrastructure/app"
+    schedule:
+      interval: "daily"
+    target-branch: "beta"
+  - package-ecosystem: "terraform"
+    directory: "/infrastructure/bootstrap"
+    schedule:
+      interval: "daily"
+    target-branch: "beta"
+  - package-ecosystem: "terraform"
+    directory: "/infrastructure/infra"
+    schedule:
+      interval: "daily"
+    target-branch: "beta"
+  - package-ecosystem: "terraform"
     directory: "/infrastructure/stacks/app"
     schedule:
       interval: "daily"
