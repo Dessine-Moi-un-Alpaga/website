@@ -30,3 +30,13 @@ updates:
     schedule:
       interval: "daily"
     target-branch: "beta"
+  - package-ecosystem: "terraform"
+    directory: "/infrastructure/stacks/app"
+    schedule:
+      interval: "daily"
+    target-branch: "beta"
+  - package-ecosystem: "terraform"
+    directory: "/infrastructure/stacks/infra"
+    schedule:
+      interval: "daily"
+    target-branch: "beta"
