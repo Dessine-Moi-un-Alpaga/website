@@ -20,6 +20,7 @@ TERRAFORM_DEV_APP_VARS := \
 TERRAFORM_PROD_APP_VARS := \
 	$(TERRAFORM_APP_VARS) \
 	-var 'bucket_name=$(PROD_BUCKET)' \
+	-var 'cors_origins=["https://$(DOMAIN_NAME)"]' \
 	-var 'create_domain_mapping=true' \
 	-var 'domain_name=$(DOMAIN_NAME)' \
 	-var 'environment=production'
