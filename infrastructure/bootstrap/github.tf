@@ -33,6 +33,7 @@ locals {
     DOMAIN_NAME                = var.domain_name
     FIRESTORE_LOCATION         = var.firestore_location
     GOOGLE_PROJECT             = var.project_id
+    GOOGLE_PROJECT_NUMBER      = var.project_number
     GOOGLE_REGION              = var.region
     GOOGLE_ZONE                = var.zone
     PROD_BUCKET                = var.prod_bucket_name
