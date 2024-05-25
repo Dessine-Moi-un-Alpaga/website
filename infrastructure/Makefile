@@ -21,6 +21,7 @@ TERRAFORM_PROD_APP_VARS := \
 	$(TERRAFORM_APP_VARS) \
 	-var 'bucket_name=$(PROD_BUCKET)' \
 	-var 'create_domain_mapping=true' \
+	-var 'domain_name=$(DOMAIN_NAME)' \
 	-var 'environment=production'
 
 TERRAFORM_INFRA_GLOBAL_OPTIONS := -chdir=infra
