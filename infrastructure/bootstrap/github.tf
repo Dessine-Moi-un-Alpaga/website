@@ -58,14 +58,14 @@ resource "github_actions_environment_variable" "development_variables" {
   variable_name = each.key
 }
 
-# resource "github_actions_environment_variable" "production_variables" {
-#   for_each = local.variables
-#
-#   environment   = github_repository_environment.production_environment.environment
-#   repository    = github_repository.git_repository.name
-#   value         = each.value
-#   variable_name = each.key
-# }
+resource "github_actions_environment_variable" "production_variables" {
+  for_each = local.variables
+
+  environment   = github_repository_environment.production_environment.environment
+  repository    = github_repository.git_repository.name
+  value         = each.value
+  variable_name = each.key
+}
 
 resource "github_actions_environment_secret" "development_secrets" {
   for_each = local.secrets
@@ -76,11 +76,11 @@ resource "github_actions_environment_secret" "development_secrets" {
   secret_name     = each.key
 }
 
-# resource "github_actions_environment_secret" "production_secrets" {
-#   for_each = local.secrets
-#
-#   plaintext_value = each.value
-#   environment     = github_repository_environment.production_environment.environment
-#   repository      = github_repository.git_repository.name
-#   secret_name     = each.key
-# }
+resource "github_actions_environment_secret" "production_secrets" {
+  for_each = local.secrets
+
+  plaintext_value = each.value
+  environment     = github_repository_environment.production_environment.environment
+  repository      = github_repository.git_repository.name
+  secret_name     = each.key
+}
