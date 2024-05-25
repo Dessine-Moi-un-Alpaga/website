@@ -58,6 +58,11 @@ variable "organization_id" {
   type        = string
 }
 
+variable "password" {
+  description = "API Password"
+  type        = string
+}
+
 variable "prod_bucket_name" {
   description = "Website Asset Bucket (Production)"
   type        = string

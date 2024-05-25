@@ -11,6 +11,7 @@ resource "local_sensitive_file" "variables" {
   github_repository_description = "${var.github_repository_description}"
   home_directory                = "${var.home_directory}"
   organization_id               = "${var.organization_id}"
+  password                      = "${var.password}"
   prod_bucket_name              = "${var.prod_bucket_name}"
   project_id                    = "${var.project_id}"
   project_name                  = "${var.project_name}"
@@ -24,13 +25,8 @@ resource "local_sensitive_file" "variables" {
   filename = "${var.home_directory}/.dmua/bootstrap/terraform.tfvars"
 }
 
-resource "random_password" "password" {
-  length = 12
-  lower  = true
-}
-
 locals {
-  credentials = "${var.username}:${random_password.password.bcrypt_hash}"
+  credentials = "${var.username}:${bcrypt(var.password, var.bcrypt_cost)}"
 }
 
 resource "local_file" "artifact_registry_location_variable_file" {
