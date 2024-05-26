@@ -87,7 +87,11 @@ fun createHttpClient(): HttpClient {
 
             if (result == null) {
                 val token = getNewToken()
-                tokenStorage.set(token)
+
+                if (token != null) {
+                    tokenStorage.set(token)
+                    request.bearerAuth(token)
+                }
             }
         }
 
