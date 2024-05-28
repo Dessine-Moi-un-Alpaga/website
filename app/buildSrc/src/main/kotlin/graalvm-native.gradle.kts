@@ -31,14 +31,21 @@ graalvmNative {
                 "--color=always",
 
                 "--initialize-at-build-time=ch.qos.logback",
+                "--initialize-at-build-time=ch.qos.logback.classic.Logger",
                 "--initialize-at-build-time=io.ktor,kotlin",
                 "--initialize-at-build-time=org.slf4j.LoggerFactory",
+                "--initialize-at-build-time=org.slf4j.helpers.NOP_FallbackServiceProvider",
+                "--initialize-at-build-time=org.slf4j.helpers.NOPLoggerFactory",
+                "--initialize-at-build-time=org.slf4j.helpers.SubstituteLoggerFactory",
+                "--initialize-at-build-time=org.slf4j.helpers.SubstituteServiceProvider",
                 "--initialize-at-build-time=kotlinx.coroutines",
 
                 "--initialize-at-run-time=io.ktor.serialization.kotlinx.json.JsonSupportKt",
 
                 "--install-exit-handlers",
                 "--report-unsupported-elements-at-runtime",
+
+                "--strict-image-heap",
             )
             buildArgs.addAll(nativeCompileExtraBuildArgs.split(","))
             configurationFileDirectories.from(file("src/main/native"))
