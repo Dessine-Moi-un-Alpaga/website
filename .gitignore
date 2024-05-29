@@ -21,3 +21,6 @@ tfplan
 
 # Custom
 /assets/
+
+# Kotlin
+.kotlin/
