@@ -79,20 +79,26 @@ fun createHttpClient(): HttpClient {
         return result
     }
 
+    suspend fun Sender.interceptFirestoreRequest(request: HttpRequestBuilder): HttpClientCall? {
+        val result = tryExistingToken(request)
+
+        if (result == null) {
+            val token = getNewToken()
+
+            if (token != null) {
+                tokenStorage.set(token)
+                request.bearerAuth(token)
+            }
+        }
+
+        return result
+    }
+
     client.plugin(HttpSend).intercept { request ->
         var result: HttpClientCall? = null
 
         if (request.url.host == FIRESTORE_HOSTNAME) {
-            result = tryExistingToken(request)
-
-            if (result == null) {
-                val token = getNewToken()
-
-                if (token != null) {
-                    tokenStorage.set(token)
-                    request.bearerAuth(token)
-                }
-            }
+            result = interceptFirestoreRequest(request)
         }
 
         result ?: execute(request)
