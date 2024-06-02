@@ -50,7 +50,7 @@ resource "google_cloud_run_v2_service" "cloud_run_service" {
     service_account       = google_service_account.service_account.email
 
     containers {
-      image = var.docker_tag
+      image = var.image
 
       env {
         name  = "DMUA_BASE_ASSET_URL"

@@ -60,20 +60,7 @@ jobs:
           restore-keys: ${{ runner.os }}-gradle
 
       - name: Test
-        env:
-          ARTIFACT_REGISTRY_LOCATION: ${{ vars.ARTIFACT_REGISTRY_LOCATION }}
-          ARTIFACT_REPOSITORY: ${{ vars.ARTIFACT_REPOSITORY }}
-          CREDENTIALS: ${{ secrets.CREDENTIALS }}
-          DEV_BUCKET: ${{ vars.DEV_BUCKET }}
-          DOMAIN_NAME: ${{ vars.DOMAIN_NAME }}
-          FIRESTORE_LOCATION: ${{ vars.FIRESTORE_LOCATION }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GOOGLE_PROJECT: ${{ vars.GOOGLE_PROJECT }}
-          GOOGLE_REGION: ${{ vars.GOOGLE_REGION }}
-          GOOGLE_ZONE: ${{ vars.GOOGLE_ZONE }}
-          PROD_BUCKET: ${{ vars.PROD_BUCKET }}
-          SEND_GRID_API_KEY: ${{ secrets.SEND_GRID_API_KEY }}
-        run: make test-app jacocoTestReport-app
+        run: make app/test
 
       - name: Save test results and logs
         if: always()
@@ -118,16 +105,19 @@ jobs:
         env:
           ARTIFACT_REGISTRY_LOCATION: ${{ vars.ARTIFACT_REGISTRY_LOCATION }}
           ARTIFACT_REPOSITORY: ${{ vars.ARTIFACT_REPOSITORY }}
-          CREDENTIALS: ${{ secrets.CREDENTIALS }}
-          DEV_BUCKET: ${{ vars.DEV_BUCKET }}
-          DOMAIN_NAME: ${{ vars.DOMAIN_NAME }}
-          FIRESTORE_LOCATION: ${{ vars.FIRESTORE_LOCATION }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GOOGLE_PROJECT: ${{ vars.GOOGLE_PROJECT }}
-          GOOGLE_REGION: ${{ vars.GOOGLE_REGION }}
-          GOOGLE_ZONE: ${{ vars.GOOGLE_ZONE }}
-          PROD_BUCKET: ${{ vars.PROD_BUCKET }}
-          SEND_GRID_API_KEY: ${{ secrets.SEND_GRID_API_KEY }}
+          TF_IN_AUTOMATION: true
+          TF_VAR_artifact_registry_location: ${{ vars.ARTIFACT_REGISTRY_LOCATION }}
+          TF_VAR_artifact_repository: ${{ vars.ARTIFACT_REPOSITORY }}
+          TF_VAR_bucket_name: ${{ vars.BUCKET_NAME }}
+          TF_VAR_cors_origins: ${{ vars.CORS_ORIGINS }}
+          TF_VAR_create_domain_mapping: ${{ vars.CREATE_DOMAIN_MAPPING }}
+          TF_VAR_credentials: ${{ secrets.CREDENTIALS }}
+          TF_VAR_domain_name: ${{ vars.DOMAIN_NAME }}
+          TF_VAR_firestore_location: ${{ vars.FIRESTORE_LOCATION }}
+          TF_VAR_location: ${{ vars.GOOGLE_REGION }}
+          TF_VAR_send_grid_api_key: ${{ secrets.SEND_GRID_API_KEY }}
         run: npx semantic-release@23
 
 permissions:
