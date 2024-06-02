@@ -20,7 +20,9 @@ resource "google_artifact_registry_repository" "artifact_registry" {
       tag_state = "TAGGED"
       tag_prefixes = [
         "dev",
-        "prod"
+        "prod",
+        "development",
+        "production",
       ]
     }
   }

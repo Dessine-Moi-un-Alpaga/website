@@ -41,7 +41,32 @@ resource "local_file" "artifact_repository_location_variable_file" {
 
 resource "local_file" "dev_bucket_name_variable_file" {
   content  = var.dev_bucket_name
-  filename = "${var.home_directory}/.dmua/variables/DEV_BUCKET"
+  filename = "${var.home_directory}/.dmua/variables/development/BUCKET_NAME"
+}
+
+resource "local_file" "prod_bucket_name_variable_file" {
+  content  = var.prod_bucket_name
+  filename = "${var.home_directory}/.dmua/variables/production/BUCKET_NAME"
+}
+
+resource "local_file" "dev_cors_origins_variable_file" {
+  content  = "[\"*\"]"
+  filename = "${var.home_directory}/.dmua/variables/development/CORS_ORIGINS"
+}
+
+resource "local_file" "prod_cors_origins_variable_file" {
+  content  = "[\"https://${var.domain_name}\"]"
+  filename = "${var.home_directory}/.dmua/variables/production/CORS_ORIGINS"
+}
+
+resource "local_file" "dev_create_domain_mapping_variable_file" {
+  content  = false
+  filename = "${var.home_directory}/.dmua/variables/development/CREATE_DOMAIN_MAPPING"
+}
+
+resource "local_file" "prod_create_domain_mapping_variable_file" {
+  content  = true
+  filename = "${var.home_directory}/.dmua/variables/production/CREATE_DOMAIN_MAPPING"
 }
 
 resource "local_file" "domain_name_variable_file" {
@@ -67,11 +92,6 @@ resource "local_file" "google_region_variable_file" {
 resource "local_file" "google_zone_variable_file" {
   content  = var.zone
   filename = "${var.home_directory}/.dmua/variables/GOOGLE_ZONE"
-}
-
-resource "local_file" "prod_bucket_name_variable_file" {
-  content  = var.prod_bucket_name
-  filename = "${var.home_directory}/.dmua/variables/PROD_BUCKET"
 }
 
 resource "local_sensitive_file" "credentials_secret_file" {

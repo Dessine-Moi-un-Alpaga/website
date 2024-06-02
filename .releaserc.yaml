@@ -1,8 +1,8 @@
 branches:
   - name: main
-    channel: prod
+    channel: production
   - name: beta
-    channel: dev
+    channel: development
     prerelease: true
 
 plugins: [
@@ -19,7 +19,7 @@ plugins: [
   [
     "@semantic-release/exec",
     {
-      "publishCmd": "make VERSION=${nextRelease.version} ${nextRelease.channel}"
+      "publishCmd": "make VERSION=${nextRelease.version} release/${nextRelease.channel}"
     }
   ],
   "@semantic-release/release-notes-generator",

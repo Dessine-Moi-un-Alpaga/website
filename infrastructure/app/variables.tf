@@ -20,16 +20,16 @@ variable "create_domain_mapping" {
   type    = bool
 }
 
-variable "docker_tag" {
-  type = string
-}
-
 variable "domain_name" {
   default = null
   type    = string
 }
 
 variable "environment" {
+  type = string
+}
+
+variable "image" {
   type = string
 }
 
