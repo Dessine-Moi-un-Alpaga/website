@@ -1,3 +1,5 @@
+DMUA_VARIABLES := $(HOME)/.dmua/variables
+
 .PHONY: app/%
 app/%:
 	@$(MAKE) --directory=app $*
@@ -16,10 +18,12 @@ release/%:
 		&& $(MAKE) infrastructure/app/plan-$* \
 		&& $(MAKE) infrastructure/app/apply
 
+.PHONY: download-%-assets
 download-%-assets: BUCKET_NAME = $(shell cat "$(DMUA_VARIABLES)/$*/BUCKET_NAME")
 download-%-assets:
 	@gsutil -m rsync -r -d gs://$(BUCKET_NAME) assets/
 
+.PHONY: upload-%-assets
 upload-%-assets: BUCKET_NAME = $(shell cat "$(DMUA_VARIABLES)/$*/BUCKET_NAME")
 upload-%-assets:
 	@gsutil -m rsync -x ".DS_Store" -r -d assets/ gs://$(BUCKET_NAME)

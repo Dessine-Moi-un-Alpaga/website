@@ -3,7 +3,7 @@ test: export ORG_GRADLE_PROJECT_firebaseLocation = $(shell which firebase)
 test:
 	@./gradlew test jacocoTestReport
 
-.PHONY: push
+.PHONY: push-%
 push-%: ARTIFACT_REGISTRY_LOCATION ?= $(shell cat "$(DMUA_VARIABLES)/ARTIFACT_REGISTRY_LOCATION")
 push-%: ARTIFACT_REGISTRY = $(ARTIFACT_REGISTRY_LOCATION)-docker.pkg.dev
 push-%: ARTIFACT_REPOSITORY ?= $(shell cat "$(DMUA_VARIABLES)/ARTIFACT_REPOSITORY")
