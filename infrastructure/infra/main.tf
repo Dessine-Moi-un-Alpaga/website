@@ -19,8 +19,6 @@ resource "google_artifact_registry_repository" "artifact_registry" {
     condition {
       tag_state = "TAGGED"
       tag_prefixes = [
-        "dev",
-        "prod",
         "development",
         "production",
       ]
