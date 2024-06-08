@@ -47,34 +47,27 @@ This project includes a Terraform configuration that will prompt you for several
 everything is set up for deploying the application to Google Cloud Run from your local box and from GitHub.
 
 ```shell
-$ make bootstrap-infra
+$ make infrastructure/bootstrap/plan
+```
+
+Once the plan looks right, apply the changes to bootstrap the infrastructure:
+
+```shell
+$ make infrastructure/bootstrap/apply
 ```
 
 Configuration files will be saved in the `~/.dmua` directory.
 
-You are now all set to run the project locally:
+You are now all set to build using GitHub Actions, or locally:
 
 ```shell
-$ make test-app run-app
+$ make app/run
 ```
 
-# Building with Gradle
-
-The `app/gradle.properties` file lists the required Gradle project properties. All of them are automatically set when
-building using the Makefile. If you want to use Gradle directly (which is useful when working in an IDE), you should
-set the properties directly in your `~/.gradle/gradle.properties` file.
-
-In particular, you might want to set the `nativeCompileExtraBuildArgs` according to your CPU architecture:
-
-```properties
-# fewer optimizations/faster builds, support for Apple arm64 architecture
-nativeCompileExtraBuildArgs=-0b,-march=armv8-a
-```
-
-You can then run build tasks using Gradle directly, which is useful when working in an IDE:
+Running tests:
 
 ```shell
-$ ./gradlew test run
+$ make app/test
 ```
 
 # Preparing the Native Build
@@ -82,11 +75,7 @@ $ ./gradlew test run
 Compiling a native executable with GraalVM requires some configuration, which can be automatically generated:
 
 ```shell
-$ make prepare-native-build-app
-
-# or
-
-$ ./gradlew -Pagent run
+$ make app/prepare-native-build
 ```
 
 You must then make sure that all relevant code paths are covered by your interactions with the app and all the
