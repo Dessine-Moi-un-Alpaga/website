@@ -1,8 +1,10 @@
 plugins {
+    id("org.jetbrains.kotlin.jvm")
+
     id("firestore-emulator")
+    id("graalvm-native")
     id("i18n")
     id("jacoco")
-    id("graalvm-native")
     id("run")
     id("serialized-logback-config")
     id("test")
