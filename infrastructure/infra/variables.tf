@@ -1,21 +1,26 @@
 variable "artifact_registry_location" {
-  type = string
+  nullable = false
+  type     = string
 }
 
 variable "artifact_repository" {
-  type = string
+  nullable = false
+  type     = string
 }
 
 variable "credentials" {
+  nullable  = false
   sensitive = true
   type      = string
 }
 
 variable "firestore_location" {
-  type = string
+  nullable = false
+  type     = string
 }
 
 variable "send_grid_api_key" {
+  nullable  = false
   sensitive = true
   type      = string
 }
