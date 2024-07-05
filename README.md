@@ -38,8 +38,8 @@ The following is required:
 * a Google user account that is `Organization Administrator`
 * the [GraalVM 21 SDK](https://www.graalvm.org/downloads/)
 * the [Google Firestore Emulator](https://firebase.google.com/docs/emulator-suite/install_and_configure)
-* a recent [Docker installation](https://www.docker.com/products/docker-desktop/) that includes `buildx`.
-* a recent [Terraform installation](https://developer.hashicorp.com/terraform/install?product_intent=terraform).
+* a recent [Docker installation](https://www.docker.com/products/docker-desktop/) that includes `buildx`
+* a recent [Terraform installation](https://developer.hashicorp.com/terraform/install?product_intent=terraform)
 
 # Bootstrapping the Project
 
