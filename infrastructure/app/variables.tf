@@ -1,23 +1,28 @@
 variable "artifact_registry_location" {
-  type = string
+  nullable = false
+  type     = string
 }
 
 variable "artifact_repository" {
-  type = string
+  nullable = false
+  type     = string
 }
 
 variable "bucket_name" {
-  type = string
+  nullable = false
+  type     = string
 }
 
 variable "cors_origins" {
   default = []
-  type    = list(string)
+  nullable = false
+  type = list(string)
 }
 
 variable "create_domain_mapping" {
-  default = false
-  type    = bool
+  default  = false
+  nullable = false
+  type     = bool
 }
 
 variable "domain_name" {
@@ -26,13 +31,16 @@ variable "domain_name" {
 }
 
 variable "environment" {
-  type = string
+  nullable = false
+  type     = string
 }
 
 variable "image" {
-  type = string
+  nullable = false
+  type     = string
 }
 
 variable "location" {
-  type = string
+  nullable = false
+  type     = string
 }
