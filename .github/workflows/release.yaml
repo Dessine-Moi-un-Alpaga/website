@@ -37,7 +37,7 @@ jobs:
           workload_identity_provider: projects/${{ vars.GOOGLE_PROJECT_NUMBER }}/locations/global/workloadIdentityPools/github-actions-workflows/providers/github-actions
 
       - name: Set up Firebase CLI
-        run: npm install -g firebase-tools@13.15.2
+        run: npm install -g firebase-tools@13.15.4
 
       - name: Setup Java
         uses: actions/setup-java@v4
