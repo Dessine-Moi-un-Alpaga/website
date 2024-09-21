@@ -6,7 +6,7 @@ terraform {
     }
     google = {
       source = "hashicorp/google"
-      version = "~> 6.1.0"
+      version = "~> 6.3.0"
     }
     local = {
       source = "hashicorp/local"
