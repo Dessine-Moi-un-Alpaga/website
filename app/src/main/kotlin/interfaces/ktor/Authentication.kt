@@ -5,7 +5,6 @@ import be.alpago.website.libs.di.inject
 import io.ktor.server.application.Application
 import io.ktor.server.application.install
 import io.ktor.server.auth.Authentication
-import io.ktor.server.auth.Principal
 import io.ktor.server.auth.UserIdPrincipal
 import io.ktor.server.auth.basic
 
@@ -21,7 +20,7 @@ fun Application.authentication() {
     install(Authentication) {
         basic {
             validate { credentials ->
-                var principal: Principal? = null
+                var principal: Any? = null
                 val username = credentials.name
                 val expectedHash = allowedCredentials[username]
 

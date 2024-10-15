@@ -3,11 +3,12 @@ package be.alpago.website.interfaces.ktor
 import io.ktor.server.application.Application
 import io.ktor.server.application.ApplicationStopped
 import io.ktor.server.engine.ApplicationEngine
+import io.ktor.server.engine.EmbeddedServer
 
 private const val GRACE_PERIOD_MILLIS: Long = 500
 private const val TIMEOUT_MILLIS: Long = 500
 
-fun ApplicationEngine.registerShutdownHook() {
+fun <T : ApplicationEngine, U : ApplicationEngine.Configuration> EmbeddedServer<T, U>.registerShutdownHook() {
     Runtime.getRuntime().addShutdownHook(
         Thread {
             stop(GRACE_PERIOD_MILLIS, TIMEOUT_MILLIS)
@@ -16,7 +17,7 @@ fun ApplicationEngine.registerShutdownHook() {
 }
 
 fun Application.registerCloseable(closeable: AutoCloseable) {
-    environment.monitor.subscribe(ApplicationStopped) {
+    monitor.subscribe(ApplicationStopped) {
         closeable.close()
     }
 }
