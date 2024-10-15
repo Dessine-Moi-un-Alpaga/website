@@ -13,7 +13,6 @@ import be.alpago.website.interfaces.kotlinx.html.TemplateProperties
 import be.alpago.website.libs.di.inject
 import be.alpago.website.libs.domain.ports.Repository
 import io.ktor.server.application.Application
-import io.ktor.server.application.call
 import io.ktor.server.html.respondHtmlTemplate
 import io.ktor.server.routing.get
 import io.ktor.server.routing.routing
