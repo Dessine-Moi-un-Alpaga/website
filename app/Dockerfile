@@ -1,4 +1,4 @@
-FROM ghcr.io/graalvm/native-image-community:21.0.2-muslib-ol9-20240116 AS build
+FROM ghcr.io/graalvm/native-image-community:23.0.1-muslib-ol7-20241015 AS build
 
 RUN microdnf -y install findutils
 
