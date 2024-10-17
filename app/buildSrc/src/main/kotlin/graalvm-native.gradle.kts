@@ -34,14 +34,16 @@ graalvmNative {
                 "--initialize-at-build-time=ch.qos.logback.classic.Logger",
                 "--initialize-at-build-time=io.ktor,kotlin",
                 "--initialize-at-build-time=kotlin.reflect.KTypeProjection",
+                "--initialize-at-build-time=kotlinx.coroutines",
                 "--initialize-at-build-time=kotlinx.io.Buffer",
+                "--initialize-at-build-time=kotlinx.io.Segment",
                 "--initialize-at-build-time=kotlinx.io.bytestring.ByteString",
+                "--initialize-at-build-time=kotlinx.io.bytestring.ByteString\$Companion",
                 "--initialize-at-build-time=org.slf4j.LoggerFactory",
                 "--initialize-at-build-time=org.slf4j.helpers.NOP_FallbackServiceProvider",
                 "--initialize-at-build-time=org.slf4j.helpers.NOPLoggerFactory",
                 "--initialize-at-build-time=org.slf4j.helpers.SubstituteLoggerFactory",
                 "--initialize-at-build-time=org.slf4j.helpers.SubstituteServiceProvider",
-                "--initialize-at-build-time=kotlinx.coroutines",
 
                 "--initialize-at-run-time=io.ktor.serialization.kotlinx.json.JsonSupportKt",
 
