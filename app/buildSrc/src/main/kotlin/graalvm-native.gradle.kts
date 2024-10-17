@@ -33,6 +33,7 @@ graalvmNative {
                 "--initialize-at-build-time=ch.qos.logback",
                 "--initialize-at-build-time=ch.qos.logback.classic.Logger",
                 "--initialize-at-build-time=io.ktor,kotlin",
+                "--initialize-at-build-time=kotlin.reflect.KTypeProjection",
                 "--initialize-at-build-time=org.slf4j.LoggerFactory",
                 "--initialize-at-build-time=org.slf4j.helpers.NOP_FallbackServiceProvider",
                 "--initialize-at-build-time=org.slf4j.helpers.NOPLoggerFactory",
