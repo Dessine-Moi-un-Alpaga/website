@@ -491,6 +491,9 @@
   "name":"kotlin.jvm.internal.DefaultConstructorMarker"
 },
 {
+  "name":"kotlin.reflect.KTypeProjection"
+},
+{
   "name":"kotlin.reflect.jvm.internal.ReflectionFactoryImpl",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },

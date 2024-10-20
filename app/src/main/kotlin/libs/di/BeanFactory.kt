@@ -6,7 +6,7 @@ data class BeanFactoryKey(private val type: KClass<*>, private val useCase: KCla
 
 typealias BeanFactory<T> = (KClass<*>?) -> T
 
-val beanFactories = mutableMapOf<BeanFactoryKey, BeanFactory<out Any>>()
+val beanFactories = mutableMapOf<BeanFactoryKey, BeanFactory<Any>>()
 
 val beans = mutableMapOf<BeanFactoryKey, Any>()
 
