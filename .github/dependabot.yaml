@@ -21,15 +21,11 @@ updates:
       - "/infrastructure/bootstrap"
       - "/infrastructure/infra"
     groups:
-      github-terraform-integration:
-        patterns:
-          - "integrations/github"
-      google-terraform-provider:
+      all:
         patterns:
           - "hashicorp/google"
-      local-terraform-provider:
-        patterhs:
           - "hashicorp/local"
+          - "integrations/github"
     schedule:
       interval: "daily"
     target-branch: "beta"
