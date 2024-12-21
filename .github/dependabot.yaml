@@ -2,6 +2,10 @@ version: 2
 updates:
   - package-ecosystem: "github-actions"
     directory: "/"
+    groups:
+      github-actions:
+        patterns:
+          - "*"
     schedule:
       interval: "daily"
     target-branch: "beta"
@@ -12,6 +16,10 @@ updates:
     target-branch: "beta"
   - package-ecosystem: "gradle"
     directory: "/app"
+    groups:
+      gradle-libraries:
+        patterns:
+          - "*"
     schedule:
       interval: "daily"
     target-branch: "beta"
@@ -21,11 +29,9 @@ updates:
       - "/infrastructure/bootstrap"
       - "/infrastructure/infra"
     groups:
-      all:
+      terraform-providers:
         patterns:
-          - "hashicorp/google"
-          - "hashicorp/local"
-          - "integrations/github"
+          - "*"
     schedule:
       interval: "daily"
     target-branch: "beta"
