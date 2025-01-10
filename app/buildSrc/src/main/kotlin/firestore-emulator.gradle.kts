@@ -1,5 +1,4 @@
 import com.github.psxpaul.task.ExecFork
-import java.io.ByteArrayOutputStream
 
 plugins {
     id("com.github.psxpaul.execfork")
