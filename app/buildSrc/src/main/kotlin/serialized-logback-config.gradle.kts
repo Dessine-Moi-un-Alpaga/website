@@ -3,10 +3,7 @@ import be.alpago.OUTPUT_DIRECTORY
 
 val taskName = "serializeLogbackConfig"
 
-tasks.create(
-    taskName,
-    LogbackConfigSerializationTask::class.java
-) {
+tasks.register<LogbackConfigSerializationTask>(taskName) {
     description = "Serialize Logback configuration"
     group = "serialized-logback-config"
 }
