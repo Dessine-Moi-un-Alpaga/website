@@ -73,7 +73,7 @@ jobs:
             app/firebase-emulator/*.log
 
       - name: Analyze
-        uses: SonarSource/sonarcloud-github-action@master
+        uses: SonarSource/sonarqube-scan-action@v4.2.1
         env:
           SONAR_TOKEN: ${{ secrets.SONARCLOUD_TOKEN }}
 
