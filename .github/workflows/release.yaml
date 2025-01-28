@@ -8,7 +8,7 @@ on:
       - beta
       - main
 env:
-  FIREBASE_TOOLS_VERSION: 13.29.1
+  FIREBASE_TOOLS_VERSION: 13.29.2
 jobs:
   release:
     name: Release
