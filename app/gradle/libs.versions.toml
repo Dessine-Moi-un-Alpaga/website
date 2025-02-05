@@ -2,7 +2,7 @@
 bcrypt                 = "0.10.2"
 exec-fork-plugin       = "0.2.2"
 escape-velocity        = "1.0.0-1"
-graalvm-plugin         = "0.10.4"
+graalvm-plugin         = "0.10.5"
 i18n4k                 = "0.10.0"
 jsoup                  = "1.18.3"
 junit                  = "5.11.4"
