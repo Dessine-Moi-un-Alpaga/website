@@ -114,6 +114,31 @@ variable "send_grid_api_key" {
   type        = string
 }
 
+variable "smtp_server_address" {
+  description = "SMTP Server Address"
+  nullable    = false
+  type        = string
+}
+
+variable "smtp_server_password" {
+  description = "SMTP Server Password"
+  nullable    = false
+  sensitive   = true
+  type        = string
+}
+
+variable "smtp_server_port" {
+  description = "SMTP Server Port"
+  nullable    = false
+  type        = string
+}
+
+variable "smtp_server_username" {
+  description = "SMTP Server Username"
+  nullable    = false
+  type        = string
+}
+
 variable "sonarcloud_token" {
   description = "Sonarcloud Token"
   nullable    = false

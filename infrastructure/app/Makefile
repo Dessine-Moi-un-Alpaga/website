@@ -14,6 +14,9 @@ plan-%: export TF_VAR_domain_name = $(DOMAIN_NAME)
 plan-%: export TF_VAR_environment = $*
 plan-%: export TF_VAR_image = $(DOCKER_IMAGE):$(VERSION)
 plan-%: export TF_VAR_location = $(LOCATION)
+plan-%: export TF_VAR_smtp_server_address = $(SMTP_SERVER_ADDRESS)
+plan-%: export TF_VAR_smtp_server_port = $(SMTP_SERVER_PORT)
+plan-%: export TF_VAR_smtp_server_username = $(SMTP_SERVER_USERNAME)
 plan-%:
 	@terraform plan
 

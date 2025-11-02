@@ -44,3 +44,18 @@ variable "location" {
   nullable = false
   type     = string
 }
+
+variable "smtp_server_address" {
+  nullable = false
+  type     = string
+}
+
+variable "smtp_server_port" {
+  nullable = false
+  type     = number
+}
+
+variable "smtp_server_username" {
+  nullable = false
+  type     = string
+}
