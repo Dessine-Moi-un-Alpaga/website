@@ -10,7 +10,7 @@ kotest                 = "5.9.1"
 kotest-assertions-ktor = "2.0.0"
 kotlin                 = "2.1.10"
 ktor                   = "3.1.0"
-logback                = "1.5.16"
+logback                = "1.5.17"
 photoswipe             = "5.4.3"
 toastr                 = "2.1.4"
 
