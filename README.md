@@ -34,12 +34,20 @@ An application for serving and managing [the website of our alpaca breeding farm
 
 The following is required:
 * the [Google Cloud CLI](https://cloud.google.com/sdk/docs/install)
+* the [Github CLI](https://cli.github.com)
 * a Google Cloud organization
 * a Google user account that is `Organization Administrator`
 * the [GraalVM 22 SDK](https://www.graalvm.org/downloads/)
 * the [Google Firestore Emulator](https://firebase.google.com/docs/emulator-suite/install_and_configure)
 * a recent [Docker installation](https://www.docker.com/products/docker-desktop/) that includes `buildx`
 * a recent [Terraform installation](https://developer.hashicorp.com/terraform/install?product_intent=terraform)
+
+# Logging in
+
+```shell
+$ gcloud auth login
+$ gh auth login
+```
 
 # Bootstrapping the Project
 
