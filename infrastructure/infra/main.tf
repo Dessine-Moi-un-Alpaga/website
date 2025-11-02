@@ -103,6 +103,6 @@ resource "google_secret_manager_secret_version" "send_grid_api_key_secret_versio
 }
 
 resource "google_secret_manager_secret_version" "smtp_server_password_secret_version" {
-  secret      = google_secret_manager_secret.smtp_server_password_secret
+  secret      = google_secret_manager_secret.smtp_server_password_secret.id
   secret_data = var.smtp_server_password
 }
