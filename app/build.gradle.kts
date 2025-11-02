@@ -31,6 +31,8 @@ dependencies {
     implementation(libs.bundles.ktor.client)
     implementation(libs.bundles.ktor.server)
 
+    implementation("net.axay:simplekotlinmail-client:1.4.0")
+
     runtimeOnly(libs.logback.classic)
 
     webjars(libs.escape.velocity)

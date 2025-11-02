@@ -9,6 +9,10 @@ export GOOGLE_PROJECT = $(shell cat "$(DMUA_VARIABLES)/GOOGLE_PROJECT")
 export CREDENTIALS = $(shell cat "$(DMUA_SECRETS)/CREDENTIALS")
 export FIRESTORE_LOCATION = $(shell cat "$(DMUA_VARIABLES)/FIRESTORE_LOCATION")
 export SEND_GRID_API_KEY = $(shell cat "$(DMUA_SECRETS)/SEND_GRID_API_KEY")
+export SMTP_SERVER_ADDRESS = $(shell cat "$(DMUA_VARIABLES)/SMTP_SERVER_ADDRESS")
+export SMTP_SERVER_PASSWORD = $(shell cat "$(DMUA_SECRETS)/SMTP_SERVER_PASSWORD")
+export SMTP_SERVER_PORT = $(shell cat "$(DMUA_VARIABLES)/SMTP_SERVER_PORT")
+export SMTP_SERVER_USERNAME = $(shell cat "$(DMUA_VARIABLES)/SMTP_SERVER_USERNAME")
 export VERSION = $(shell git describe --tags --always --first-parent)
 endif
 

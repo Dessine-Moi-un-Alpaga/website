@@ -18,6 +18,10 @@ resource "local_sensitive_file" "variables" {
   project_number                = "${var.project_number}"
   region                        = "${var.region}"
   send_grid_api_key             = "${var.send_grid_api_key}"
+  smtp_server_address           = "${var.smtp_server_address}"
+  smtp_server_password          = "${var.smtp_server_password}"
+  smtp_server_port              = "${var.smtp_server_port}"
+  smtp_server_username          = "${var.smtp_server_username}"
   sonarcloud_token              = "${var.sonarcloud_token}"
   username                      = "${var.username}"
   zone                          = "${var.zone}"
@@ -94,6 +98,21 @@ resource "local_file" "google_zone_variable_file" {
   filename = "${var.home_directory}/.dmua/variables/GOOGLE_ZONE"
 }
 
+resource "local_file" "smtp_server_address_variable_file" {
+  content = var.smtp_server_address
+  filename = "${var.home_directory}/.dmua/variables/SMTP_SERVER_ADDRESS"
+}
+
+resource "local_file" "smtp_server_port_variable_file" {
+  content = var.smtp_server_port
+  filename = "${var.home_directory}/.dmua/variables/SMTP_SERVER_PORT"
+}
+
+resource "local_file" "smtp_server_username_variable_file" {
+  content = var.smtp_server_username
+  filename = "${var.home_directory}/.dmua/variables/SMTP_SERVER_USERNAME"
+}
+
 resource "local_sensitive_file" "credentials_secret_file" {
   content  = local.credentials
   filename = "${var.home_directory}/.dmua/secrets/CREDENTIALS"
@@ -102,6 +121,11 @@ resource "local_sensitive_file" "credentials_secret_file" {
 resource "local_sensitive_file" "send_grid_api_key_secret_file" {
   content  = var.send_grid_api_key
   filename = "${var.home_directory}/.dmua/secrets/SEND_GRID_API_KEY"
+}
+
+resource "local_sensitive_file" "smt_server_password_secret_file" {
+  content  = var.smtp_server_password
+  filename = "${var.home_directory}/.dmua/secrets/SMTP_SERVER_PASSWORD"
 }
 
 resource "local_sensitive_file" "sonarcloud_token_secret_file" {

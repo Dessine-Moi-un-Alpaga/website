@@ -9,6 +9,10 @@ fun ProcessForkOptions.environmentVariables(project: Project) {
     val firestorePort = project.property("firestorePort")
     val googleProject = project.property("googleProject")
     val sendGridApiKey = project.property("sendGridApiKey")
+    val smtpServerAddress = project.property("smtpServerAddress")
+    val smtpServerPassword = project.property("smtpServerPassword")
+    val smtpServerPort = project.property("smtpServerPort")
+    val smtpServerUsername = project.property("smtpServerUsername")
 
     environment("DMUA_BASE_ASSET_URL", "https://storage.googleapis.com/${devBucket}")
     environment("DMUA_CREDENTIALS", credentials)
@@ -17,5 +21,9 @@ fun ProcessForkOptions.environmentVariables(project: Project) {
     environment("DMUA_FIRESTORE_URL", "http://localhost:${firestorePort}")
     environment("DMUA_PROJECT", googleProject)
     environment("DMUA_SEND_GRID_API_KEY", sendGridApiKey)
+    environment("DMUA_SMTP_SERVER_ADDRESS", smtpServerAddress)
+    environment("DMUA_SMTP_SERVER_PASSWORD", smtpServerPassword)
+    environment("DMUA_SMTP_SERVER_PORT", smtpServerPort)
+    environment("DMUA_SMTP_SERVER_USERNAME", smtpServerUsername)
     environment("DMUA_TEST", true)
 }

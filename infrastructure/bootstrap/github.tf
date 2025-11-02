@@ -22,9 +22,10 @@ resource "github_repository" "git_repository" {
 
 locals {
   secrets = {
-    CREDENTIALS       = local.credentials
-    SEND_GRID_API_KEY = var.send_grid_api_key
-    SONARCLOUD_TOKEN  = var.sonarcloud_token
+    CREDENTIALS          = local.credentials
+    SEND_GRID_API_KEY    = var.send_grid_api_key
+    SMTP_SERVER_PASSWORD = var.smtp_server_password
+    SONARCLOUD_TOKEN     = var.sonarcloud_token
   }
   variables = {
     ARTIFACT_REGISTRY_LOCATION = var.artifact_registry_location
@@ -34,6 +35,9 @@ locals {
     GOOGLE_PROJECT             = var.project_id
     GOOGLE_PROJECT_NUMBER      = var.project_number
     GOOGLE_REGION              = var.region
+    SMTP_SERVER_ADDRESS        = var.smtp_server_address
+    SMTP_SERVER_PORT           = var.smtp_server_port
+    SMTP_SERVER_USERNAME       = var.smtp_server_username
   }
 }
 

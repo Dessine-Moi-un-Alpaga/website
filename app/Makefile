@@ -9,6 +9,10 @@ run: export ORG_GRADLE_PROJECT_devBucket = $(shell cat "$(DMUA_VARIABLES)/develo
 run: export ORG_GRADLE_PROJECT_firebaseLocation = $(FIREBASE_LOCATION)
 run: export ORG_GRADLE_PROJECT_googleProject = $(GOOGLE_PROJECT)
 run: export ORG_GRADLE_PROJECT_sendGridApiKey = $(SEND_GRID_API_KEY)
+run: export ORG_GRADLE_PROJECT_smtpServerAddress = $(SMTP_SERVER_ADDRESS)
+run: export ORG_GRADLE_PROJECT_smtpServerPassword = $(SMTP_SERVER_PASSWORD)
+run: export ORG_GRADLE_PROJECT_smtpServerPort = $(SMTP_SERVER_PORT)
+run: export ORG_GRADLE_PROJECT_smtpServerUsername = $(SMTP_SERVER_USERNAME)
 run:
 	@./gradlew run
 
@@ -23,6 +27,10 @@ prepare-native-build: export ORG_GRADLE_PROJECT_devBucket = $(shell cat "$(DMUA_
 prepare-native-build: export ORG_GRADLE_PROJECT_firebaseLocation = $(FIREBASE_LOCATION)
 prepare-native-build: export ORG_GRADLE_PROJECT_googleProject = $(GOOGLE_PROJECT)
 prepare-native-build: export ORG_GRADLE_PROJECT_sendGridApiKey = $(SEND_GRID_API_KEY)
+prepare-native-build: export ORG_GRADLE_PROJECT_smtpServerAddress = $(SMTP_SERVER_ADDRESS)
+prepare-native-build: export ORG_GRADLE_PROJECT_smtpServerPassword = $(SMTP_SERVER_PASSWORD)
+prepare-native-build: export ORG_GRADLE_PROJECT_smtpServerPort = $(SMTP_SERVER_PORT)
+prepare-native-build: export ORG_GRADLE_PROJECT_smtpServerUsername = $(SMTP_SERVER_USERNAME)
 prepare-native-build:
 	@./gradlew -Pagent run
 

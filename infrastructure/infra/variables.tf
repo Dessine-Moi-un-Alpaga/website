@@ -24,3 +24,9 @@ variable "send_grid_api_key" {
   sensitive = true
   type      = string
 }
+
+variable "smtp_server_password" {
+  nullable  = false
+  sensitive = true
+  type      = string
+}
