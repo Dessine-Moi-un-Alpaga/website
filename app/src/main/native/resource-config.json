@@ -1,9 +1,25 @@
 {
   "resources":{
   "includes":[{
+    "pattern":"\\QMETA-INF/javamail.address.map\\E"
+  }, {
+    "pattern":"\\QMETA-INF/javamail.charset.map\\E"
+  }, {
+    "pattern":"\\QMETA-INF/javamail.default.address.map\\E"
+  }, {
+    "pattern":"\\QMETA-INF/javamail.default.providers\\E"
+  }, {
+    "pattern":"\\QMETA-INF/javamail.providers\\E"
+  }, {
+    "pattern":"\\QMETA-INF/mailcap.default\\E"
+  }, {
+    "pattern":"\\QMETA-INF/mailcap\\E"
+  }, {
     "pattern":"\\QMETA-INF/services/ch.qos.logback.classic.spi.Configurator\\E"
   }, {
     "pattern":"\\QMETA-INF/services/io.ktor.serialization.kotlinx.KotlinxSerializationExtensionProvider\\E"
+  }, {
+    "pattern":"\\QMETA-INF/services/jakarta.mail.Provider\\E"
   }, {
     "pattern":"\\QMETA-INF/services/java.lang.System$LoggerFinder\\E"
   }, {
@@ -26,6 +42,8 @@
     "pattern":"\\Qkotlin/kotlin.kotlin_builtins\\E"
   }, {
     "pattern":"\\Qlogback.scmo\\E"
+  }, {
+    "pattern":"\\Qsimplejavamail.properties\\E"
   }, {
     "pattern":"\\Qstatic/assets/css/main.css\\E"
   }, {
@@ -104,6 +122,29 @@
     "pattern":"java.base:\\Qjdk/internal/icu/impl/data/icudt72b/nfc.nrm\\E"
   }, {
     "pattern":"java.base:\\Qjdk/internal/icu/impl/data/icudt72b/nfkc.nrm\\E"
+  }, {
+    "pattern":"java.base:\\Qjdk/internal/icu/impl/data/icudt74b/nfc.nrm\\E"
+  }, {
+    "pattern":"java.base:\\Qjdk/internal/icu/impl/data/icudt74b/nfkc.nrm\\E"
+  }, {
+    "pattern":"java.base:\\Qjdk/internal/icu/impl/data/icudt74b/uprops.icu\\E"
+  }, {
+    "pattern":"java.base:\\Qsun/net/idn/uidna.spp\\E"
   }]},
-  "bundles":[]
+  "bundles":[{
+    "name":"sun.text.resources.FormatData",
+    "locales":["fr", "und"]
+  }, {
+    "name":"sun.text.resources.JavaTimeSupplementary",
+    "locales":["fr", "und"]
+  }, {
+    "name":"sun.text.resources.cldr.FormatData",
+    "locales":["en", "en-US", "fr", "und"]
+  }, {
+    "name":"sun.util.resources.cldr.CalendarData",
+    "locales":["und"]
+  }, {
+    "name":"sun.util.resources.cldr.TimeZoneNames",
+    "locales":["en", "en-US", "und"]
+  }]
 }
