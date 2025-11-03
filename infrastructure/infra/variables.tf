@@ -19,12 +19,6 @@ variable "firestore_location" {
   type     = string
 }
 
-variable "send_grid_api_key" {
-  nullable  = false
-  sensitive = true
-  type      = string
-}
-
 variable "smtp_server_password" {
   nullable  = false
   sensitive = true

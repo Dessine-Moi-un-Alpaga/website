@@ -115,7 +115,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GOOGLE_PROJECT: ${{ vars.GOOGLE_PROJECT }}
           LOCATION: ${{ vars.GOOGLE_REGION }}
-          SEND_GRID_API_KEY: ${{ secrets.SEND_GRID_API_KEY }}
           SMTP_SERVER_ADDRESS: ${{ vars.SMTP_SERVER_ADDRESS }}
           SMTP_SERVER_PASSWORD: ${{ secrets.SMTP_SERVER_PASSWORD }}
           SMTP_SERVER_PORT: ${{ vars.SMTP_SERVER_PORT }}
