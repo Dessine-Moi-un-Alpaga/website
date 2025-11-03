@@ -76,14 +76,6 @@ resource "google_secret_manager_secret" "credentials_secret" {
   }
 }
 
-resource "google_secret_manager_secret" "send_grid_api_key_secret" {
-  secret_id = "send-grid-api-key"
-
-  replication {
-    auto {}
-  }
-}
-
 resource "google_secret_manager_secret" "smtp_server_password_secret" {
   secret_id = "smtp-server-password"
 
@@ -95,11 +87,6 @@ resource "google_secret_manager_secret" "smtp_server_password_secret" {
 resource "google_secret_manager_secret_version" "credentials_secret_version" {
   secret      = google_secret_manager_secret.credentials_secret.id
   secret_data = var.credentials
-}
-
-resource "google_secret_manager_secret_version" "send_grid_api_key_secret_version" {
-  secret      = google_secret_manager_secret.send_grid_api_key_secret.id
-  secret_data = var.send_grid_api_key
 }
 
 resource "google_secret_manager_secret_version" "smtp_server_password_secret_version" {

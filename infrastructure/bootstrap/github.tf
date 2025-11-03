@@ -23,7 +23,6 @@ resource "github_repository" "git_repository" {
 locals {
   secrets = {
     CREDENTIALS          = local.credentials
-    SEND_GRID_API_KEY    = var.send_grid_api_key
     SMTP_SERVER_PASSWORD = var.smtp_server_password
     SONARCLOUD_TOKEN     = var.sonarcloud_token
   }

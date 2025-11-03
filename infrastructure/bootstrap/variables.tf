@@ -107,13 +107,6 @@ variable "region" {
   type        = string
 }
 
-variable "send_grid_api_key" {
-  description = "SendGrid API Key"
-  nullable    = false
-  sensitive   = true
-  type        = string
-}
-
 variable "smtp_server_address" {
   description = "SMTP Server Address"
   nullable    = false

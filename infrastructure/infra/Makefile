@@ -9,7 +9,6 @@ plan: export TF_VAR_artifact_registry_location = $(ARTIFACT_REGISTRY_LOCATION)
 plan: export TF_VAR_artifact_repository = $(ARTIFACT_REPOSITORY)
 plan: export TF_VAR_credentials = $(value CREDENTIALS)
 plan: export TF_VAR_firestore_location = $(FIRESTORE_LOCATION)
-plan: export TF_VAR_send_grid_api_key = $(SEND_GRID_API_KEY)
 plan: export TF_VAR_smtp_server_password = $(SMTP_SERVER_PASSWORD)
 plan:
 	@terraform plan

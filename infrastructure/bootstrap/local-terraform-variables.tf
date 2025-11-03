@@ -17,7 +17,6 @@ resource "local_sensitive_file" "variables" {
   project_name                  = "${var.project_name}"
   project_number                = "${var.project_number}"
   region                        = "${var.region}"
-  send_grid_api_key             = "${var.send_grid_api_key}"
   smtp_server_address           = "${var.smtp_server_address}"
   smtp_server_password          = "${var.smtp_server_password}"
   smtp_server_port              = "${var.smtp_server_port}"
@@ -116,11 +115,6 @@ resource "local_file" "smtp_server_username_variable_file" {
 resource "local_sensitive_file" "credentials_secret_file" {
   content  = local.credentials
   filename = "${var.home_directory}/.dmua/secrets/CREDENTIALS"
-}
-
-resource "local_sensitive_file" "send_grid_api_key_secret_file" {
-  content  = var.send_grid_api_key
-  filename = "${var.home_directory}/.dmua/secrets/SEND_GRID_API_KEY"
 }
 
 resource "local_sensitive_file" "smt_server_password_secret_file" {
