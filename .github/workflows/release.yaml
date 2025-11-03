@@ -46,7 +46,7 @@ jobs:
         with:
           cache: gradle
           distribution: temurin
-          java-version: 22
+          java-version: 24
 
       - name: Cache SonarCloud packages
         uses: actions/cache@v4
