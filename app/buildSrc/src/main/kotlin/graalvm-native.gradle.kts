@@ -40,6 +40,8 @@ graalvmNative {
                 "--initialize-at-build-time=kotlinx.io.bytestring.ByteString",
                 "--initialize-at-build-time=kotlinx.io.bytestring.ByteString\$Companion",
                 "--initialize-at-build-time=org.slf4j.LoggerFactory",
+                "--initialize-at-build-time=org.slf4j.helpers.BasicMDCAdapter",
+                "--initialize-at-build-time=org.slf4j.helpers.NOPMDCAdapter",
                 "--initialize-at-build-time=org.slf4j.helpers.NOP_FallbackServiceProvider",
                 "--initialize-at-build-time=org.slf4j.helpers.NOPLoggerFactory",
                 "--initialize-at-build-time=org.slf4j.helpers.SubstituteLoggerFactory",
