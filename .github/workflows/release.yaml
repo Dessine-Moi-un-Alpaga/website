@@ -26,7 +26,7 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v6
         with:
-          node-version: 22
+          node-version: 25
 
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v3
@@ -119,7 +119,7 @@ jobs:
           SMTP_SERVER_PASSWORD: ${{ secrets.SMTP_SERVER_PASSWORD }}
           SMTP_SERVER_PORT: ${{ vars.SMTP_SERVER_PORT }}
           SMTP_SERVER_USERNAME: ${{ vars.SMTP_SERVER_USERNAME }}
-        run: npx semantic-release@23
+        run: npx semantic-release@25
 
 permissions:
   contents: write
