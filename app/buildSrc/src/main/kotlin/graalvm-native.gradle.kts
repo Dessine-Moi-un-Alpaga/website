@@ -51,8 +51,6 @@ graalvmNative {
 
                 "--install-exit-handlers",
                 "--report-unsupported-elements-at-runtime",
-
-                "--strict-image-heap",
             )
             buildArgs.addAll(nativeCompileExtraBuildArgs.split(","))
             configurationFileDirectories.from(file("src/main/native"))
