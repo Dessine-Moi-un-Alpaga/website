@@ -9,10 +9,6 @@ data "google_secret_manager_secret" "credentials_secret" {
   secret_id = "credentials"
 }
 
-data "google_secret_manager_secret" "send_grid_api_key_secret" {
-  secret_id = "send-grid-api-key"
-}
-
 data "google_secret_manager_secret" "smtp_server_password_secret" {
   secret_id = "smtp-server-password"
 }
