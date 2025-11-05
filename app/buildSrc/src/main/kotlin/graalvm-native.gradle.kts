@@ -50,7 +50,6 @@ graalvmNative {
                 "--initialize-at-run-time=io.ktor.serialization.kotlinx.json.JsonSupportKt",
 
                 "--install-exit-handlers",
-                "--report-unsupported-elements-at-runtime",
             )
             buildArgs.addAll(nativeCompileExtraBuildArgs.split(","))
             configurationFileDirectories.from(file("src/main/native"))
