@@ -23,7 +23,6 @@ object EscapeVelocity {
     const val gtr150 = "gtr-150"
     const val gtr50 = "gtr-50"
     const val header = "header"
-    const val highlights = "highlights"
     const val highlight = "highlight"
     const val icon = "icon"
     const val image = "image"
