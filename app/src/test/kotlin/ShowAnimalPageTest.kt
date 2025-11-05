@@ -4,21 +4,14 @@ import be.alpago.website.adapters.adapters
 import be.alpago.website.application.queries.queries
 import be.alpago.website.interfaces.interfaces
 import be.alpago.website.interfaces.ktor.AuthenticationProperties
-import be.alpago.website.libs.di.clear
 import io.ktor.server.plugins.di.dependencies
 import io.ktor.server.testing.ApplicationTestBuilder
 import io.ktor.server.testing.testApplication
-import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import java.util.UUID
 
 
 class ShowAnimalPageTest {
-
-    @BeforeEach
-    fun `clear beans`() {
-        clear()
-    }
 
     private fun animalPageTestApplication(block: suspend ApplicationTestBuilder.() -> Unit) {
         testApplication {
