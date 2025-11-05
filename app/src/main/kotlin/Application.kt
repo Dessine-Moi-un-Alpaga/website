@@ -23,7 +23,7 @@ fun main() {
     }
 }
 
-fun Application.modules() {
+suspend fun Application.modules() {
     adapters()
     queries()
     interfaces()

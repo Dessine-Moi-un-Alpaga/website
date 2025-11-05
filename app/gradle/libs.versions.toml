@@ -37,6 +37,7 @@ ktor-server-caching-headers     = { module = "io.ktor:ktor-server-caching-header
 ktor-server-content-negotiation = { module = "io.ktor:ktor-server-content-negotiation"                                                 }
 ktor-server-core                = { module = "io.ktor:ktor-server-core"                                                                }
 ktor-server-cio                 = { module = "io.ktor:ktor-server-cio"                                                                 }
+ktor-server-di                  = { module = "io.ktor:ktor-server-di"                                                                  }
 ktor-server-html-builder        = { module = "io.ktor:ktor-server-html-builder"                                                        }
 ktor-server-request-validation  = { module = "io.ktor:ktor-server-request-validation"                                                  }
 ktor-server-status-pages        = { module = "io.ktor:ktor-server-status-pages"                                                        }
@@ -60,6 +61,7 @@ ktor-server = [
     "ktor-server-cio",
     "ktor-server-content-negotiation",
     "ktor-server-core",
+    "ktor-server-di",
     "ktor-server-html-builder",
     "ktor-server-request-validation",
     "ktor-server-status-pages"

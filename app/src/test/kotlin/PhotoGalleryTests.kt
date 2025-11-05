@@ -2,7 +2,6 @@ package be.alpago.website
 
 import be.alpago.website.interfaces.kotlinx.html.TemplateProperties
 import be.alpago.website.interfaces.kotlinx.html.style.Photoswipe
-import be.alpago.website.libs.di.inject
 import io.kotest.assertions.ktor.client.shouldHaveStatus
 import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.shouldBe
@@ -22,6 +21,7 @@ suspend fun ApplicationTestBuilder.photoGalleryTest(
     galleryUrl: String,
     pageUrl: String,
     sectionId: String,
+    templateProperties: TemplateProperties,
 ) {
     val gallery = "[data-test-id=$sectionId]"
     val photo = "[data-test-id=$sectionId-photo]"
@@ -54,7 +54,6 @@ suspend fun ApplicationTestBuilder.photoGalleryTest(
     response = client.get(pageUrl)
     response shouldHaveStatus HttpStatusCode.OK
 
-    val templateProperties = inject<TemplateProperties>()
     val baseAssetUrl = templateProperties.baseAssetUrl
 
     val document = Jsoup.parse(response.bodyAsText())

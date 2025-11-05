@@ -5,7 +5,7 @@ import be.alpago.website.application.queries.queries
 import be.alpago.website.interfaces.interfaces
 import be.alpago.website.interfaces.ktor.AuthenticationProperties
 import be.alpago.website.libs.di.clear
-import be.alpago.website.libs.di.mock
+import io.ktor.server.plugins.di.dependencies
 import io.ktor.server.testing.ApplicationTestBuilder
 import io.ktor.server.testing.testApplication
 import org.junit.jupiter.api.BeforeEach
@@ -23,13 +23,13 @@ class ShowAnimalPageTest {
     private fun animalPageTestApplication(block: suspend ApplicationTestBuilder.() -> Unit) {
         testApplication {
             application {
+                dependencies.provide {
+                    AuthenticationProperties(credentials = CREDENTIALS)
+                }
+
                 adapters()
                 queries()
                 interfaces()
-
-                mock<AuthenticationProperties> {
-                    AuthenticationProperties(credentials = CREDENTIALS)
-                }
             }
 
             deleteAll()

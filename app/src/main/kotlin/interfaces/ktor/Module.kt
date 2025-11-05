@@ -2,23 +2,25 @@ package be.alpago.website.interfaces.ktor
 
 import be.alpago.website.interfaces.ktor.routes.routes
 import be.alpago.website.libs.di.getEnvironmentVariable
-import be.alpago.website.libs.di.register
 import io.ktor.server.application.Application
+import io.ktor.server.plugins.di.dependencies
 
-fun Application.ktor() {
+suspend fun Application.ktor() {
     assets()
-    authentication()
     authenticationProperties()
+    authentication()
     httpCaching()
     routes()
     serialization()
     validation()
 }
 
-private fun authenticationProperties() {
-    register {
-        AuthenticationProperties(
-            credentials = getEnvironmentVariable("DMUA_CREDENTIALS"),
-        )
+private fun Application.authenticationProperties() {
+    dependencies {
+        provide {
+            AuthenticationProperties(
+                credentials = getEnvironmentVariable("DMUA_CREDENTIALS"),
+            )
+        }
     }
 }

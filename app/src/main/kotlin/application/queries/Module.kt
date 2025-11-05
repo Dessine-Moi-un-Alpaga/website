@@ -1,7 +1,5 @@
 package be.alpago.website.application.queries
 
-import be.alpago.website.application.usecases.ManageAnimals
-import be.alpago.website.application.usecases.ManageFiberAnalyses
 import be.alpago.website.application.usecases.ShowAnimalPage
 import be.alpago.website.application.usecases.ShowFactsheetArticle
 import be.alpago.website.application.usecases.ShowFactsheetHighlights
@@ -18,11 +16,11 @@ import be.alpago.website.domain.Article
 import be.alpago.website.domain.FiberAnalysis
 import be.alpago.website.domain.Highlight
 import be.alpago.website.domain.ImageMetadata
-import be.alpago.website.libs.di.inject
-import be.alpago.website.libs.di.register
 import be.alpago.website.libs.domain.ports.Repository
+import io.ktor.server.application.Application
+import io.ktor.server.plugins.di.dependencies
 
-fun queries() {
+fun Application.queries() {
     showAnimalPage()
     showFactsheetPage()
     showIndexPage()
@@ -30,51 +28,61 @@ fun queries() {
     showPhotoGalleryPage()
 }
 
-private fun showAnimalPage() {
-    register<ShowAnimalPage> {
-        ShowAnimalPageQuery(
-            animalRepository = inject<Repository<Animal>>(ManageAnimals::class),
-            fiberAnalysisRepository = inject<Repository<FiberAnalysis>>(ManageFiberAnalyses::class),
-        )
+private fun Application.showAnimalPage() {
+    dependencies {
+        provide<ShowAnimalPage> {
+            ShowAnimalPageQuery(
+                animalRepository = resolve<Repository<Animal>>(),
+                fiberAnalysisRepository = resolve<Repository<FiberAnalysis>>(),
+            )
+        }
     }
 }
 
-private fun showFactsheetPage() {
-    register<ShowFactsheetPage> {
-        ShowFactsheetPageQuery(
-            animalRepository = inject<Repository<Animal>>(ManageAnimals::class),
-            articleRepository = inject<Repository<Article>>(ShowFactsheetArticle::class),
-            factsheetRepository = inject<Repository<Highlight>>(ShowFactsheetHighlights::class),
-        )
+private fun Application.showFactsheetPage() {
+    dependencies {
+        provide<ShowFactsheetPage> {
+            ShowFactsheetPageQuery(
+                animalRepository = resolve<Repository<Animal>>(),
+                articleRepository = resolve<Repository<Article>>(ShowFactsheetArticle::class.simpleName),
+                factsheetRepository = resolve<Repository<Highlight>>(ShowFactsheetHighlights::class.simpleName),
+            )
+        }
     }
 }
 
-private fun showIndexPage() {
-    register<ShowIndexPage> {
-        ShowIndexPageQuery(
-            animalRepository = inject<Repository<Animal>>(ManageAnimals::class),
-            articleRepository = inject<Repository<Article>>(ShowIndexArticle::class),
-            guildRepository = inject<Repository<Highlight>>(ShowIndexGuildHighlights::class),
-            newsRepository = inject<Repository<Highlight>>(ShowIndexNewsHighlights::class),
-            trainingRepository = inject<Repository<ImageMetadata>>(ShowIndexTrainingsPhotoGallery::class),
-        )
+private fun Application.showIndexPage() {
+    dependencies {
+        provide<ShowIndexPage> {
+            ShowIndexPageQuery(
+                animalRepository = resolve<Repository<Animal>>(),
+                articleRepository = resolve<Repository<Article>>(ShowIndexArticle::class.simpleName),
+                guildRepository = resolve<Repository<Highlight>>(ShowIndexGuildHighlights::class.simpleName),
+                newsRepository = resolve<Repository<Highlight>>(ShowIndexNewsHighlights::class.simpleName),
+                trainingRepository = resolve<Repository<ImageMetadata>>(ShowIndexTrainingsPhotoGallery::class.simpleName),
+            )
+        }
     }
 }
 
-private fun showNewsPage() {
-    register<ShowNewsPage> {
-        ShowNewsPageQuery(
-            animalRepository = inject<Repository<Animal>>(ManageAnimals::class),
-            articleRepository = inject<Repository<Article>>(ShowNewsPage::class),
-        )
+private fun Application.showNewsPage() {
+    dependencies {
+        provide<ShowNewsPage> {
+            ShowNewsPageQuery(
+                animalRepository = resolve<Repository<Animal>>(),
+                articleRepository = resolve<Repository<Article>>(ShowNewsPage::class.simpleName),
+            )
+        }
     }
 }
 
-private fun showPhotoGalleryPage() {
-    register<ShowPhotoGalleryPage> {
-        ShowPhotoGalleryPageQuery(
-            animalRepository = inject<Repository<Animal>>(ManageAnimals::class),
-            imageRepository = inject<Repository<ImageMetadata>>(ShowPhotoGalleryPage::class),
-        )
+private fun Application.showPhotoGalleryPage() {
+    dependencies {
+        provide<ShowPhotoGalleryPage> {
+            ShowPhotoGalleryPageQuery(
+                animalRepository = resolve<Repository<Animal>>(),
+                imageRepository = resolve<Repository<ImageMetadata>>(ShowPhotoGalleryPage::class.simpleName),
+            )
+        }
     }
 }
