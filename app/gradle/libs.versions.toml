@@ -12,6 +12,7 @@ kotlin                 = "2.2.21"
 ktor                   = "3.3.1"
 logback                = "1.5.20"
 photoswipe             = "5.4.3"
+simple-kotlin-mail     = "1.4.0"
 toastr                 = "2.1.4"
 
 [libraries]
@@ -25,7 +26,8 @@ junit-bom                       = { module = "org.junit:junit-bom",             
 junit-jupiter                   = { module = "org.junit.jupiter:junit-jupiter"                                                         }
 kotest-assertions-core          = { module = "io.kotest:kotest-assertions-core",                version.ref = "kotest"                 }
 kotest-assertions-json          = { module = "io.kotest:kotest-assertions-json",                version.ref = "kotest"                 }
-kotest-assertions-ktor          = { module = "io.kotest.extensions:kotest-assertions-ktor",     version.ref = "kotest-assertions-ktor" }
+kotest-assertions-ktor          = { module = "io.kotest:kotest-assertions-ktor",                version.ref = "kotest"                 }
+kotest-runner-junit5            = { module = "io.kotest:kotest-runner-junit5",                  version.ref = "kotest"                 }
 kotlin-gradle-plugin            = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin",       version.ref = "kotlin"                 }
 ktor-client-cio                 = { module = "io.ktor:ktor-client-cio"                                                                 }
 ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation"                                                 }
@@ -45,6 +47,7 @@ ktor-server-test-host           = { module = "io.ktor:ktor-server-test-host"    
 logback-classic                 = { module = "ch.qos.logback:logback-classic",                  version.ref = "logback"                }
 native-gradle-plugin            = { module = "org.graalvm.buildtools:native-gradle-plugin",     version.ref = "graalvm-plugin"         }
 photoswipe                      = { module = "org.webjars.npm:photoswipe",                      version.ref = "photoswipe"             }
+simple-kotlin-mail-client       = { module = "net.axay:simplekotlinmail-client",                version.ref = "simple-kotlin-mail"     }
 toastr                          = { module = "org.webjars:toastr",                              version.ref = "toastr"                 }
 
 [bundles]
