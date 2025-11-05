@@ -1,7 +1,5 @@
 package be.alpago.website.interfaces.ktor
 
-import io.ktor.server.application.Application
-import io.ktor.server.application.ApplicationStopped
 import io.ktor.server.engine.ApplicationEngine
 import io.ktor.server.engine.EmbeddedServer
 
@@ -14,10 +12,4 @@ fun <T : ApplicationEngine, U : ApplicationEngine.Configuration> EmbeddedServer<
             stop(GRACE_PERIOD_MILLIS, TIMEOUT_MILLIS)
         }
     )
-}
-
-fun Application.registerCloseable(closeable: AutoCloseable) {
-    monitor.subscribe(ApplicationStopped) {
-        closeable.close()
-    }
 }
