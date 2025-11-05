@@ -1,20 +1,20 @@
 package be.alpago.website.interfaces.ktor
 
 import at.favre.lib.crypto.bcrypt.BCrypt
-import be.alpago.website.libs.di.inject
 import io.ktor.server.application.Application
 import io.ktor.server.application.install
 import io.ktor.server.auth.Authentication
 import io.ktor.server.auth.UserIdPrincipal
 import io.ktor.server.auth.basic
+import io.ktor.server.plugins.di.dependencies
 
 data class AuthenticationProperties(
     val credentials: String
 )
 
 fun Application.authentication() {
-    val properties by lazy { inject<AuthenticationProperties>() }
-    val allowedCredentials by lazy { parseCredentials(properties) }
+    val properties: AuthenticationProperties by dependencies
+    val allowedCredentials = parseCredentials(properties)
     val verifyer by lazy { BCrypt.verifyer() }
 
     install(Authentication) {

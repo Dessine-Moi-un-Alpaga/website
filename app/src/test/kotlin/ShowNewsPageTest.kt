@@ -3,14 +3,15 @@ package be.alpago.website
 import be.alpago.website.adapters.adapters
 import be.alpago.website.application.queries.queries
 import be.alpago.website.interfaces.interfaces
+import be.alpago.website.interfaces.kotlinx.html.TemplateProperties
 import be.alpago.website.interfaces.ktor.AuthenticationProperties
 import be.alpago.website.libs.di.clear
-import be.alpago.website.libs.di.mock
 import io.kotest.assertions.ktor.client.shouldHaveStatus
 import io.kotest.matchers.collections.shouldBeEmpty
 import io.ktor.client.request.get
 import io.ktor.client.statement.bodyAsText
 import io.ktor.http.HttpStatusCode
+import io.ktor.server.plugins.di.dependencies
 import io.ktor.server.testing.ApplicationTestBuilder
 import io.ktor.server.testing.testApplication
 import org.jsoup.Jsoup
@@ -26,21 +27,25 @@ class ShowNewsPageTest {
         clear()
     }
 
-    private fun newsPageTestApplication(block: suspend ApplicationTestBuilder.() -> Unit) {
+    private fun newsPageTestApplication(block: suspend ApplicationTestBuilder.(TemplateProperties) -> Unit) {
+        var templateProperties: TemplateProperties? = null
+
         testApplication {
             application {
+                dependencies.provide {
+                    AuthenticationProperties(credentials = CREDENTIALS)
+                }
+
                 adapters()
                 queries()
                 interfaces()
 
-                mock<AuthenticationProperties> {
-                    AuthenticationProperties(credentials = CREDENTIALS)
-                }
+                templateProperties = dependencies.resolve<TemplateProperties>()
             }
 
             deleteAll()
 
-            block()
+            block(templateProperties!!)
         }
     }
 
@@ -58,11 +63,12 @@ class ShowNewsPageTest {
     }
 
     @Test
-    fun `news articles can be created`() = newsPageTestApplication {
+    fun `news articles can be created`() = newsPageTestApplication { templateProperties ->
         articleTest(
             articleUrl = "/api/news/articles",
             pageUrl = PAGE_URL,
-            sectionId = "news-0"
+            sectionId = "news-0",
+            templateProperties,
         )
     }
 }

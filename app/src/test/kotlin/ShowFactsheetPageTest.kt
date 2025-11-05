@@ -3,14 +3,15 @@ package be.alpago.website
 import be.alpago.website.adapters.adapters
 import be.alpago.website.application.queries.queries
 import be.alpago.website.interfaces.interfaces
+import be.alpago.website.interfaces.kotlinx.html.TemplateProperties
 import be.alpago.website.interfaces.ktor.AuthenticationProperties
 import be.alpago.website.libs.di.clear
-import be.alpago.website.libs.di.mock
 import io.kotest.assertions.ktor.client.shouldHaveStatus
 import io.kotest.matchers.collections.shouldBeEmpty
 import io.ktor.client.request.get
 import io.ktor.client.statement.bodyAsText
 import io.ktor.http.HttpStatusCode
+import io.ktor.server.plugins.di.dependencies
 import io.ktor.server.testing.ApplicationTestBuilder
 import io.ktor.server.testing.testApplication
 import org.jsoup.Jsoup
@@ -26,21 +27,26 @@ class ShowFactsheetPageTest {
         clear()
     }
 
-    private fun factsheetPageTestApplication(block: suspend ApplicationTestBuilder.() -> Unit) {
+    private fun factsheetPageTestApplication(block: suspend ApplicationTestBuilder.(TemplateProperties) -> Unit) {
+        var templateProperties: TemplateProperties? = null
+
         testApplication {
             application {
+                dependencies.provide {
+                    AuthenticationProperties(credentials = CREDENTIALS)
+                }
+
                 adapters()
                 queries()
                 interfaces()
 
-                mock<AuthenticationProperties> {
-                    AuthenticationProperties(credentials = CREDENTIALS)
-                }
+
+                templateProperties = dependencies.resolve<TemplateProperties>()
             }
 
             deleteAll()
 
-            block()
+            block(templateProperties!!)
         }
     }
 
@@ -60,20 +66,22 @@ class ShowFactsheetPageTest {
     }
 
     @Test
-    fun `the main article can be created`() = factsheetPageTestApplication {
+    fun `the main article can be created`() = factsheetPageTestApplication { templateProperties ->
         articleTest(
             articleUrl = "/api/factsheets/article",
             pageUrl = PAGE_URL,
             sectionId = "article",
+            templateProperties,
         )
     }
 
     @Test
-    fun `factsheets can be created`() = factsheetPageTestApplication {
+    fun `factsheets can be created`() = factsheetPageTestApplication { templateProperties ->
         highlightTest(
             highlightUrl = "/api/factsheets/factsheets",
             pageUrl = PAGE_URL,
             sectionId = "highlights",
+            templateProperties,
         )
     }
 }

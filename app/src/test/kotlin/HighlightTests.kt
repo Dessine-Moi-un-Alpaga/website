@@ -1,7 +1,6 @@
 package be.alpago.website
 
 import be.alpago.website.interfaces.kotlinx.html.TemplateProperties
-import be.alpago.website.libs.di.inject
 import io.kotest.assertions.ktor.client.shouldHaveStatus
 import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.shouldBe
@@ -21,6 +20,7 @@ suspend fun ApplicationTestBuilder.highlightTest(
     highlightUrl: String,
     pageUrl: String,
     sectionId: String,
+    templateProperties: TemplateProperties,
 ) {
     val section = "[data-test-id=$sectionId]"
     val highlight = "[data-test-id=$sectionId-highlight]"
@@ -58,7 +58,6 @@ suspend fun ApplicationTestBuilder.highlightTest(
     response = client.get(pageUrl)
     response shouldHaveStatus HttpStatusCode.OK
 
-    val templateProperties = inject<TemplateProperties>()
     val baseAssetUrl = templateProperties.baseAssetUrl
 
     val document = Jsoup.parse(response.bodyAsText())
