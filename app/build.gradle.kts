@@ -27,11 +27,10 @@ repositories {
 dependencies {
     implementation(libs.bcrypt)
     implementation(libs.i18n4k)
+    implementation(libs.simple.kotlin.mail.client)
 
     implementation(libs.bundles.ktor.client)
     implementation(libs.bundles.ktor.server)
-
-    implementation("net.axay:simplekotlinmail-client:1.4.0")
 
     runtimeOnly(libs.logback.classic)
 
@@ -41,11 +40,12 @@ dependencies {
 
     testImplementation(platform(libs.junit.bom))
 
+    testImplementation(libs.jsoup)
     testImplementation(libs.junit.jupiter)
     testImplementation(libs.kotest.assertions.core)
     testImplementation(libs.kotest.assertions.json)
-    testImplementation(libs.jsoup)
     testImplementation(libs.kotest.assertions.ktor)
+    testImplementation(libs.kotest.runner.junit5)
     testImplementation(libs.ktor.client.mock)
     testImplementation(libs.ktor.server.test.host)
 }
