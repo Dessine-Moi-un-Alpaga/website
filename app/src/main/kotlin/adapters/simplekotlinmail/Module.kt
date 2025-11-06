@@ -1,7 +1,7 @@
 package be.alpago.website.adapters.simplekotlinmail
 
 import be.alpago.website.application.usecases.SendEmail
-import be.alpago.website.libs.di.getEnvironmentVariable
+import be.alpago.website.libs.getEnvironmentVariable
 import io.ktor.server.application.Application
 import io.ktor.server.plugins.di.dependencies
 import net.axay.simplekotlinmail.delivery.mailerBuilder

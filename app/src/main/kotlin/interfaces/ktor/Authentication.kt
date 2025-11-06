@@ -8,9 +8,6 @@ import io.ktor.server.auth.UserIdPrincipal
 import io.ktor.server.auth.basic
 import io.ktor.server.plugins.di.dependencies
 
-data class AuthenticationProperties(
-    val credentials: String
-)
 
 fun Application.authentication() {
     val properties: AuthenticationProperties by dependencies

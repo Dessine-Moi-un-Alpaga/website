@@ -1,4 +1,4 @@
-package be.alpago.website.libs.di
+package be.alpago.website.libs
 
 fun getEnvironmentVariable(name: String, default: String? = null) =
     System.getenv(name) ?:

@@ -17,12 +17,6 @@ import kotlinx.serialization.Serializable
 private const val ID_FIELD = "id"
 private const val NEXT_PAGE_PARMAETER = "pageToken"
 
-data class FirestoreProperties(
-    val environmentName: String,
-    val project: String,
-    val url: String,
-)
-
 class FirestoreRepository<T : AggregateRoot>(
     private val client: HttpClient,
     private val collection: String,

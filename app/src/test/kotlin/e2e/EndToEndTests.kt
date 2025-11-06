@@ -3,7 +3,7 @@ package be.alpago.website.e2e
 import be.alpago.website.adapters.firestore.FirestoreProperties
 import be.alpago.website.interfaces.kotlinx.html.TemplateProperties
 import be.alpago.website.interfaces.ktor.AuthenticationProperties
-import be.alpago.website.libs.di.getEnvironmentVariable
+import be.alpago.website.libs.getEnvironmentVariable
 import be.alpago.website.modules
 import io.github.serpro69.kfaker.Faker
 import io.github.serpro69.kfaker.fakerConfig
