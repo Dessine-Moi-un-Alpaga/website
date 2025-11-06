@@ -14,7 +14,7 @@ import io.ktor.server.plugins.di.dependencies
 import io.ktor.server.routing.get
 import io.ktor.server.routing.routing
 
-suspend fun Application.factsheets() {
+suspend fun Application.factsheetRoutes() {
     val properties: TemplateProperties by dependencies
     val query: ShowFactsheetPage by dependencies
 

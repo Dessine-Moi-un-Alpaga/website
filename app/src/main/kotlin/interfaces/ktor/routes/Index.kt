@@ -17,7 +17,7 @@ import io.ktor.server.plugins.di.dependencies
 import io.ktor.server.routing.get
 import io.ktor.server.routing.routing
 
-suspend fun Application.index() {
+suspend fun Application.indexRoutes() {
     val properties: TemplateProperties by dependencies
     val query: ShowIndexPage by dependencies
 

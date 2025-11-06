@@ -12,7 +12,7 @@ import io.ktor.server.request.receive
 import io.ktor.server.routing.post
 import io.ktor.server.routing.routing
 
-fun Application.email() {
+fun Application.emailRoute() {
     val service: SendEmail by dependencies
 
     routing {
