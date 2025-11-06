@@ -44,7 +44,6 @@ jobs:
       - name: Setup Java
         uses: actions/setup-java@v5
         with:
-          cache: gradle
           distribution: temurin
           java-version: 24
 
