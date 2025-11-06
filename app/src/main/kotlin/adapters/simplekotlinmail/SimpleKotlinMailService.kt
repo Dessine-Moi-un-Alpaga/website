@@ -9,13 +9,6 @@ import net.axay.simplekotlinmail.delivery.send
 import net.axay.simplekotlinmail.email.emailBuilder
 import org.simplejavamail.api.mailer.Mailer
 
-data class SimpleKotlinMailProperties(
-    val address: String,
-    val smtpServerAddress: String,
-    val smtpServerPassword: String,
-    val smtpServerPort : Int,
-    val smtpServerUsername: String,
-)
 
 class SimpleKotlinMailService(
     private val mailer: Mailer,
