@@ -12,7 +12,7 @@ import io.ktor.server.plugins.di.dependencies
 import io.ktor.server.routing.get
 import io.ktor.server.routing.routing
 
-fun Application.animals() {
+fun Application.animalRoutes() {
     val properties: TemplateProperties by dependencies
     val animalRepository: Repository<Animal> by dependencies
     val query: ShowAnimalPage by dependencies

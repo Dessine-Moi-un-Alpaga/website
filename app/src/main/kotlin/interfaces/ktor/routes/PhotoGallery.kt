@@ -11,7 +11,7 @@ import io.ktor.server.plugins.di.dependencies
 import io.ktor.server.routing.get
 import io.ktor.server.routing.routing
 
-suspend fun Application.photoGallery() {
+suspend fun Application.photoGalleryRoutes() {
     val properties: TemplateProperties by dependencies
     val query: ShowPhotoGalleryPage by dependencies
 

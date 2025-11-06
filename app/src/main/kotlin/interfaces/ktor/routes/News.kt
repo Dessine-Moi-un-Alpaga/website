@@ -11,7 +11,7 @@ import io.ktor.server.plugins.di.dependencies
 import io.ktor.server.routing.get
 import io.ktor.server.routing.routing
 
-suspend fun Application.news() {
+suspend fun Application.newsRoutes() {
     val properties: TemplateProperties by dependencies
     val query: ShowNewsPage by dependencies
 

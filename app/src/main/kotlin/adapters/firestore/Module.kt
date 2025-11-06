@@ -38,19 +38,19 @@ fun Application.firestore() {
     httpClient()
     firestoreProperties()
 
-    animals()
-    articles()
-    fiberAnalyses()
-    highlights()
-    imageMetadata()
+    animalRepository()
+    articleTransformer()
+    fiberAnalysisRepository()
+    highlightTransformer()
+    imageMetadataTransformer()
 
-    indexPage()
-    newsPage()
-    factsheetPage()
-    photoGalleryPage()
+    indexPageRepositories()
+    newsPageRepositories()
+    factsheetPageRepositories()
+    photoGalleryPageRepositories()
 }
 
-private fun Application.httpClient() {
+fun Application.httpClient() {
     dependencies {
         provide<HttpClient> {
             createHttpClient()
@@ -70,7 +70,7 @@ private fun Application.firestoreProperties() {
     }
 }
 
-private fun Application.animals() {
+fun Application.animalRepository() {
     dependencies {
         provide<Repository<Animal>> {
             CachingRepository(
@@ -85,7 +85,7 @@ private fun Application.animals() {
     }
 }
 
-private fun Application.articles() {
+fun Application.articleTransformer() {
     dependencies {
         provide<FirestoreAggregateTransformer<Article>> {
             FirestoreArticleTransformer()
@@ -93,7 +93,7 @@ private fun Application.articles() {
     }
 }
 
-private fun Application.fiberAnalyses() {
+fun Application.fiberAnalysisRepository() {
     dependencies {
         provide<Repository<FiberAnalysis>> {
             CachingRepository(
@@ -109,7 +109,7 @@ private fun Application.fiberAnalyses() {
 
 }
 
-private fun Application.highlights() {
+fun Application.highlightTransformer() {
     dependencies {
         provide<FirestoreAggregateTransformer<Highlight>> {
             FirestoreHighlightTransformer()
@@ -117,7 +117,7 @@ private fun Application.highlights() {
     }
 }
 
-private fun Application.imageMetadata() {
+fun Application.imageMetadataTransformer() {
     dependencies {
         provide<FirestoreAggregateTransformer<ImageMetadata>> {
             FirestoreImageMetadataTransformer()
@@ -125,14 +125,14 @@ private fun Application.imageMetadata() {
     }
 }
 
-private fun Application.indexPage() {
-    indexArticle()
-    indexNewsHighlights()
-    indexTrainingImages()
-    indexGuildHighlights()
+fun Application.indexPageRepositories() {
+    indexArticleRepository()
+    indexNewsHighlightRepository()
+    indexTrainingImageRepository()
+    indexGuildHighlightRepository()
 }
 
-private fun Application.indexArticle() {
+private fun Application.indexArticleRepository() {
     dependencies {
         provide<Repository<Article>>(ShowIndexArticle::class.simpleName) {
             CachingRepository(
@@ -148,7 +148,7 @@ private fun Application.indexArticle() {
 
 }
 
-private fun Application.indexNewsHighlights() {
+private fun Application.indexNewsHighlightRepository() {
     dependencies {
         provide<Repository<Highlight>>(ShowIndexNewsHighlights::class.simpleName) {
             CachingRepository(
@@ -163,7 +163,7 @@ private fun Application.indexNewsHighlights() {
     }
 }
 
-private fun Application.indexTrainingImages() {
+private fun Application.indexTrainingImageRepository() {
     dependencies {
         provide<Repository<ImageMetadata>>(ShowIndexTrainingsPhotoGallery::class.simpleName) {
             CachingRepository(
@@ -178,7 +178,7 @@ private fun Application.indexTrainingImages() {
     }
 }
 
-private fun Application.indexGuildHighlights() {
+private fun Application.indexGuildHighlightRepository() {
     dependencies {
         provide<Repository<Highlight>>(ShowIndexGuildHighlights::class.simpleName) {
             CachingRepository(
@@ -193,7 +193,7 @@ private fun Application.indexGuildHighlights() {
     }
 }
 
-private fun Application.newsPage() {
+fun Application.newsPageRepositories() {
     dependencies {
         provide<Repository<Article>>(ShowNewsPage::class.simpleName) {
             CachingRepository(
@@ -208,12 +208,12 @@ private fun Application.newsPage() {
     }
 }
 
-private fun Application.factsheetPage() {
-    factsheetArticle()
-    factsheetHighlight()
+fun Application.factsheetPageRepositories() {
+    factsheetArticleRepository()
+    factsheetHighlightRepository()
 }
 
-private fun Application.factsheetArticle() {
+private fun Application.factsheetArticleRepository() {
     dependencies {
         provide<Repository<Article>>(ShowFactsheetArticle::class.simpleName) {
             CachingRepository(
@@ -228,7 +228,7 @@ private fun Application.factsheetArticle() {
     }
 }
 
-private fun Application.factsheetHighlight() {
+private fun Application.factsheetHighlightRepository() {
     dependencies {
         provide<Repository<Highlight>>(ShowFactsheetHighlights::class.simpleName) {
             CachingRepository(
@@ -243,7 +243,7 @@ private fun Application.factsheetHighlight() {
     }
 }
 
-private fun Application.photoGalleryPage() {
+fun Application.photoGalleryPageRepositories() {
     dependencies {
         provide<Repository<ImageMetadata>>(ShowPhotoGalleryPage::class.simpleName) {
             CachingRepository(
