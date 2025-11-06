@@ -60,6 +60,11 @@ jobs:
           key: firebase-tools-${{ env.FIREBASE_TOOLS_VERSION }}
           path: ~/.cache/firebase/emulators
 
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          cache-read-only: false
+
       - name: Test
         run: make app/test
 
