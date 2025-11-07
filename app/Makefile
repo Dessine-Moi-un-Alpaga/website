@@ -1,3 +1,7 @@
+ifdef CI
+GRADLE_BUILD_SCAN_SWITCH := --scan
+endif
+
 DMUA_SECRETS := $(HOME)/.dmua/secrets
 DMUA_VARIABLES := $(HOME)/.dmua/variables
 
@@ -18,7 +22,7 @@ run:
 .PHONY: test
 test: export ORG_GRADLE_PROJECT_firebaseLocation = $(shell which firebase)
 test:
-	@./gradlew test jacocoTestReport
+	@./gradlew $(GRADLE_BUILD_SCAN_SWITCH) test jacocoTestReport
 
 .PHONY: prepare-native-build
 prepare-native-build: export ORG_GRADLE_PROJECT_credentials = $(value CREDENTIALS)
