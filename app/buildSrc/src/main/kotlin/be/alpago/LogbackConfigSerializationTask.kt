@@ -7,11 +7,8 @@ import org.gradle.api.file.ProjectLayout
 import org.gradle.api.file.RegularFile
 import org.gradle.api.provider.Provider
 import org.gradle.api.tasks.InputFile
-import org.gradle.api.tasks.InputFiles
 import org.gradle.api.tasks.OutputFile
-import org.gradle.api.tasks.OutputFiles
 import org.gradle.api.tasks.TaskAction
-import java.io.File
 import java.io.FileOutputStream
 import java.io.ObjectOutputStream
 import javax.inject.Inject
