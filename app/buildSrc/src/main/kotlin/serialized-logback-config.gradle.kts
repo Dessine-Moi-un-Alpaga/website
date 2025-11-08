@@ -15,8 +15,8 @@ afterEvaluate {
         }
 }
 
-val outputDirectory = File(project.layout.buildDirectory.asFile.get(), OUTPUT_DIRECTORY)
+val outputDirectory = File(layout.buildDirectory.asFile.get(), OUTPUT_DIRECTORY)
 outputDirectory.mkdirs()
-val sourceSets = project.properties["sourceSets"] as SourceSetContainer
+val sourceSets = properties["sourceSets"] as SourceSetContainer
 val resources = sourceSets.getByName(SourceSet.MAIN_SOURCE_SET_NAME).resources
 resources.srcDirs(outputDirectory)
