@@ -113,7 +113,7 @@ resource "google_cloud_run_v2_service" "cloud_run_service" {
         cpu_idle = true
         limits   = {
           cpu    = "1"
-          memory = "132Mi"
+          memory = "140Mi"
         }
         startup_cpu_boost = true
       }
