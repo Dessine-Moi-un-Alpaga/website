@@ -9,6 +9,8 @@ on:
       - main
 env:
   FIREBASE_TOOLS_VERSION: 14.24.1
+  JAVA_VERSION: 24
+  TERRAFORM_VERSION: 1.13.5
 jobs:
   release:
     name: Release
@@ -45,7 +47,7 @@ jobs:
         uses: actions/setup-java@v5
         with:
           distribution: temurin
-          java-version: 24
+          java-version: ${{ env.JAVA_VERSION }}
 
       - name: Cache SonarCloud packages
         uses: actions/cache@v4
@@ -94,7 +96,7 @@ jobs:
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v3
         with:
-          terraform_version: 1.13.4
+          terraform_version: ${{ env.TERRAFORM_VERSION }}
           terraform_wrapper: false
 
       - name: Set up Docker Buildx

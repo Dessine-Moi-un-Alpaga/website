@@ -38,7 +38,9 @@ dependencies {
     webjars(libs.photoswipe)
     webjars(libs.toastr)
 
-    testImplementation(platform(libs.junit.bom))
+    testImplementation(
+        platform(libs.junit.bom)
+    )
 
     testImplementation(libs.jsoup)
     testImplementation(libs.junit.jupiter)
