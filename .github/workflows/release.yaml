@@ -7,17 +7,16 @@ on:
     branches:
       - beta
       - main
-env:
-  FIREBASE_TOOLS_VERSION: 14.24.1
-  JAVA_VERSION: 24
-  NODE_VERSION: 25
-  SEMANTIC_RELEASE_VERSION: 25
-  TERRAFORM_VERSION: 1.13.5
 jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
     env:
+      FIREBASE_TOOLS_VERSION: 14.24.1
+      JAVA_VERSION: 24
+      NODE_VERSION: 25
+      SEMANTIC_RELEASE_VERSION: 25
+      TERRAFORM_VERSION: 1.13.5
       TF_PLUGIN_CACHE_DIR: ${{ github.workspace }}/.terraform.d/plugin-cache
     environment: ${{ github.ref_name == 'main' && 'production' || 'development' }}
     steps:
@@ -86,7 +85,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONARCLOUD_TOKEN }}
 
       - name: Init Terraform cache
-        run: mkdir -p $TF_PLUGIN_CACHE_DIR
+        run: mkdir -p ${TF_PLUGIN_CACHE_DIR}
 
       - name: Setup Terraform cache
         uses: actions/cache@v4
