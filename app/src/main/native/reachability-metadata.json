@@ -517,6 +517,15 @@
       "type": "io.ktor.client.plugins.DefaultRequest"
     },
     {
+      "type": "io.ktor.client.plugins.HttpRetryDelayContext"
+    },
+    {
+      "type": "io.ktor.client.plugins.HttpRetryModifyRequestContext"
+    },
+    {
+      "type": "io.ktor.client.plugins.HttpRetryShouldRetryContext"
+    },
+    {
       "type": "io.ktor.client.plugins.HttpSend"
     },
     {
@@ -526,7 +535,16 @@
       "type": "io.ktor.client.plugins.api.ClientPluginInstance"
     },
     {
+      "type": "io.ktor.client.request.HttpRequest"
+    },
+    {
+      "type": "io.ktor.client.request.HttpRequestBuilder"
+    },
+    {
       "type": "io.ktor.client.request.ResponseAdapter"
+    },
+    {
+      "type": "io.ktor.client.statement.HttpResponse"
     },
     {
       "type": "io.ktor.http.ContentType"
@@ -538,7 +556,16 @@
       "type": "io.ktor.http.content.CachingOptions"
     },
     {
+      "type": "io.ktor.http.content.OutgoingContent"
+    },
+    {
+      "type": "io.ktor.http.content.OutgoingContent$ReadChannelContent"
+    },
+    {
       "type": "io.ktor.http.content.TextContent"
+    },
+    {
+      "type": "io.ktor.http.content.Version"
     },
     {
       "type": "io.ktor.network.selector.InterestSuspensionsMap",
@@ -618,6 +645,9 @@
     },
     {
       "type": "io.ktor.server.engine.BaseApplicationResponse"
+    },
+    {
+      "type": "io.ktor.server.http.content.CompressedFileType"
     },
     {
       "type": "io.ktor.server.plugins.MutableOriginConnectionPoint"
@@ -714,7 +744,19 @@
       "type": "java.lang.ClassValue"
     },
     {
+      "type": "java.lang.Integer"
+    },
+    {
+      "type": "java.lang.Long"
+    },
+    {
       "type": "java.lang.Object"
+    },
+    {
+      "type": "java.lang.String"
+    },
+    {
+      "type": "java.lang.Throwable"
     },
     {
       "type": "java.net.StandardSocketOptions"
@@ -760,6 +802,15 @@
     },
     {
       "type": "kotlin.ByteArray"
+    },
+    {
+      "type": "kotlin.Function2"
+    },
+    {
+      "type": "kotlin.Function3"
+    },
+    {
+      "type": "kotlin.Int"
     },
     {
       "type": "kotlin.Long"
@@ -811,6 +862,9 @@
     },
     {
       "type": "kotlin.String"
+    },
+    {
+      "type": "kotlin.Throwable"
     },
     {
       "type": "kotlin.Unit"
@@ -2324,6 +2378,72 @@
     },
     {
       "glob": "simplejavamail.properties"
+    },
+    {
+      "glob": "static/assets/css/main.css"
+    },
+    {
+      "glob": "static/assets/icons/manifest.webmanifest"
+    },
+    {
+      "glob": "static/assets/js/email.js"
+    },
+    {
+      "glob": "static/webjars/escape-velocity/css/images/banner.jpg"
+    },
+    {
+      "glob": "static/webjars/escape-velocity/css/images/overlay.png"
+    },
+    {
+      "glob": "static/webjars/escape-velocity/css/images/shadow.png"
+    },
+    {
+      "glob": "static/webjars/escape-velocity/css/main.css"
+    },
+    {
+      "glob": "static/webjars/escape-velocity/js/main.js"
+    },
+    {
+      "glob": "static/webjars/escape-velocity/js/util.js"
+    },
+    {
+      "glob": "static/webjars/font-awesome/css/brands.min.css"
+    },
+    {
+      "glob": "static/webjars/font-awesome/css/fontawesome.min.css"
+    },
+    {
+      "glob": "static/webjars/font-awesome/css/solid.min.css"
+    },
+    {
+      "glob": "static/webjars/font-awesome/webfonts/fa-solid-900.woff2"
+    },
+    {
+      "glob": "static/webjars/jquery.dropotron/jquery.dropotron.min.js"
+    },
+    {
+      "glob": "static/webjars/jquery/jquery.min.js"
+    },
+    {
+      "glob": "static/webjars/photoswipe/dist/photoswipe-lightbox.esm.min.js"
+    },
+    {
+      "glob": "static/webjars/photoswipe/dist/photoswipe.css"
+    },
+    {
+      "glob": "static/webjars/photoswipe/dist/photoswipe.esm.min.js"
+    },
+    {
+      "glob": "static/webjars/responsive-tools/dist/breakpoints.min.js"
+    },
+    {
+      "glob": "static/webjars/responsive-tools/dist/browser.min.js"
+    },
+    {
+      "glob": "static/webjars/toastr/build/toastr.min.css"
+    },
+    {
+      "glob": "static/webjars/toastr/build/toastr.min.js"
     },
     {
       "module": "java.base",
