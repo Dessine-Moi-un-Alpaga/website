@@ -12,7 +12,7 @@ import org.simplejavamail.api.mailer.Mailer
 
 class SimpleKotlinMailService(
     private val mailer: Mailer,
-    private val properties: SimpleKotlinMailProperties
+    private val properties: SimpleKotlinMailProperties,
 ) : AutoCloseable, SendEmail {
 
     override suspend fun send(email: Email) {

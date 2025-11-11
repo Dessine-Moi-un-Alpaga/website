@@ -172,7 +172,10 @@
       ]
     },
     {
-      "type": "be.alpago.website.adapters.simplekotlinmail.SimpleKotlinMailProperties"
+      "type": "be.alpago.website.adapters.javamail.JavaMailProperties"
+    },
+    {
+      "type": "be.alpago.website.adapters.javamail.JavaMailService"
     },
     {
       "type": "be.alpago.website.application.usecases.SendEmail"
@@ -1188,801 +1191,6 @@
       ]
     },
     {
-      "type": "org.bouncycastle.jcajce.provider.asymmetric.COMPOSITE$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.asymmetric.DH$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.asymmetric.DSA$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.asymmetric.DSTU4145$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.asymmetric.EC$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.asymmetric.ECGOST$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.asymmetric.EdEC$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.asymmetric.ElGamal$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.asymmetric.GM$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.asymmetric.GOST$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.asymmetric.IES$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.asymmetric.RSA$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.asymmetric.X509$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.digest.Blake2b$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.digest.Blake2s$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.digest.DSTU7564$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.digest.GOST3411$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.digest.Haraka$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.digest.Keccak$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.digest.MD2$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.digest.MD4$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.digest.MD5$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.digest.RIPEMD128$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.digest.RIPEMD160$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.digest.RIPEMD256$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.digest.RIPEMD320$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.digest.SHA1$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.digest.SHA224$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.digest.SHA256$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.digest.SHA3$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.digest.SHA384$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.digest.SHA512$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.digest.SM3$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.digest.Skein$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.digest.Tiger$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.digest.Whirlpool$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.drbg.DRBG$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.keystore.BC$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.keystore.BCFKS$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.keystore.PKCS12$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.symmetric.AES$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.symmetric.ARC4$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.symmetric.ARIA$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.symmetric.Blowfish$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.symmetric.CAST5$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.symmetric.CAST6$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.symmetric.Camellia$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.symmetric.ChaCha$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.symmetric.DES$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.symmetric.DESede$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.symmetric.DSTU7624$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.symmetric.GOST28147$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.symmetric.GOST3412_2015$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.symmetric.Grain128$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.symmetric.Grainv1$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.symmetric.HC128$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.symmetric.HC256$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.symmetric.IDEA$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.symmetric.Noekeon$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.symmetric.OpenSSLPBKDF$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.symmetric.PBEPBKDF1$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.symmetric.PBEPBKDF2$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.symmetric.PBEPKCS12$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.symmetric.Poly1305$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.symmetric.RC2$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.symmetric.RC5$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.symmetric.RC6$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.symmetric.Rijndael$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.symmetric.SCRYPT$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.symmetric.SEED$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.symmetric.SM4$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.symmetric.Salsa20$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.symmetric.Serpent$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.symmetric.Shacal2$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.symmetric.SipHash$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.symmetric.SipHash128$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.symmetric.Skipjack$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.symmetric.TEA$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.symmetric.TLSKDF$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.symmetric.Threefish$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.symmetric.Twofish$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.symmetric.VMPC$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.symmetric.VMPCKSA3$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.symmetric.XSalsa20$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.symmetric.XTEA$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.bouncycastle.jcajce.provider.symmetric.Zuc$Mappings",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.simplejavamail.api.mailer.Mailer"
-    },
-    {
-      "type": "org.simplejavamail.internal.batchsupport.BatchSupport",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "org.simplejavamail.internal.smimesupport.SMIMESupport",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
       "type": "sun.security.pkcs12.PKCS12KeyStore",
       "methods": [
         {
@@ -2111,6 +1319,15 @@
       ]
     },
     {
+      "type": "sun.security.provider.certpath.PKIXCertPathValidator",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
       "type": "sun.security.rsa.PSSParameters",
       "methods": [
         {
@@ -2156,7 +1373,25 @@
       ]
     },
     {
-      "type": "sun.security.ssl.SSLContextImpl$TLSContext",
+      "type": "sun.security.rsa.RSASignature$SHA384withRSA",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.ssl.KeyManagerFactoryImpl$SunX509",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.ssl.SSLContextImpl$DefaultSSLContext",
       "methods": [
         {
           "name": "<init>",
@@ -2170,17 +1405,6 @@
         {
           "name": "<init>",
           "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "sun.security.util.HostnameChecker",
-      "methods": [
-        {
-          "name": "getInstance",
-          "parameterTypes": [
-            "byte"
-          ]
         }
       ]
     },
@@ -2394,10 +1618,22 @@
       "glob": "logback.scmo"
     },
     {
-      "glob": "simplejavamail.properties"
+      "glob": "static/assets/css/main.css"
     },
     {
-      "glob": "static/assets/css/main.css"
+      "glob": "static/assets/icons/apple-touch-icon.png"
+    },
+    {
+      "glob": "static/assets/icons/favicon.ico"
+    },
+    {
+      "glob": "static/assets/icons/icon.svg"
+    },
+    {
+      "glob": "static/assets/icons/icon-192.png"
+    },
+    {
+      "glob": "static/assets/icons/icon-512.png"
     },
     {
       "glob": "static/assets/icons/manifest.webmanifest"
@@ -2433,6 +1669,33 @@
       "glob": "static/webjars/font-awesome/css/solid.min.css"
     },
     {
+      "glob": "static/webjars/font-awesome/webfonts/fa-brands-400.eot"
+    },
+    {
+      "glob": "static/webjars/font-awesome/webfonts/fa-brands-400.svg"
+    },
+    {
+      "glob": "static/webjars/font-awesome/webfonts/fa-brands-400.ttf"
+    },
+    {
+      "glob": "static/webjars/font-awesome/webfonts/fa-brands-400.woff"
+    },
+    {
+      "glob": "static/webjars/font-awesome/webfonts/fa-brands-400.woff2"
+    },
+    {
+      "glob": "static/webjars/font-awesome/webfonts/fa-solid-900.eot"
+    },
+    {
+      "glob": "static/webjars/font-awesome/webfonts/fa-solid-900.svg"
+    },
+    {
+      "glob": "static/webjars/font-awesome/webfonts/fa-solid-900.ttf"
+    },
+    {
+      "glob": "static/webjars/font-awesome/webfonts/fa-solid-900.woff"
+    },
+    {
       "glob": "static/webjars/font-awesome/webfonts/fa-solid-900.woff2"
     },
     {
@@ -2455,6 +1718,9 @@
     },
     {
       "glob": "static/webjars/responsive-tools/dist/browser.min.js"
+    },
+    {
+      "glob": "static/webjars/toastr/build/toastr.js.map"
     },
     {
       "glob": "static/webjars/toastr/build/toastr.min.css"
