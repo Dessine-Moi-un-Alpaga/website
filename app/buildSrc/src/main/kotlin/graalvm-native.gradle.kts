@@ -20,7 +20,6 @@ graalvmNative {
     binaries {
         named("main") {
             buildArgs.addAll(
-                "-Djava.awt.headless=true",
                 "-Duser.country=BE",
                 "-Duser.language=fr",
 
