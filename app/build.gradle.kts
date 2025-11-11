@@ -27,11 +27,12 @@ repositories {
 dependencies {
     implementation(libs.bcrypt)
     implementation(libs.i18n4k)
-    implementation(libs.simple.kotlin.mail.client)
+    implementation(libs.jakarta.mail.api)
 
     implementation(libs.bundles.ktor.client)
     implementation(libs.bundles.ktor.server)
 
+    runtimeOnly(libs.angus.smtp)
     runtimeOnly(libs.logback.classic)
 
     webjars(libs.escape.velocity)

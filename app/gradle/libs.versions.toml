@@ -1,9 +1,11 @@
 [versions]
+angus-mail             = "2.0.5"
 bcrypt                 = "0.10.2"
 exec-fork-plugin       = "0.2.2"
 escape-velocity        = "1.0.0-1"
 graalvm-plugin         = "0.11.2"
 i18n4k                 = "0.11.1"
+jakarta-mail-api       = "2.1.5"
 jsoup                  = "1.21.2"
 junit                  = "6.0.1"
 kotest                 = "6.0.4"
@@ -13,15 +15,16 @@ kotlin-faker           = "1.16.0"
 ktor                   = "3.3.2"
 logback                = "1.5.20"
 photoswipe             = "5.4.3"
-simple-kotlin-mail     = "1.4.0"
 toastr                 = "2.1.4"
 
 [libraries]
+angus-smtp                      = { module = "org.eclipse.angus:smtp",                          version.ref = "angus-mail"             }
 bcrypt                          = { module = "at.favre.lib:bcrypt",                             version.ref = "bcrypt"                 }
 escape-velocity                 = { module = "org.webjars:escape-velocity",                     version.ref = "escape-velocity"        }
 exec-fork-plugin                = { module = "com.github.psxpaul:gradle-execfork-plugin",       version.ref = "exec-fork-plugin"       }
 i18n4k                          = { module = "de.comahe.i18n4k:i18n4k-core",                    version.ref = "i18n4k"                 }
 i18n4k-gradle-plugin            = { module = "de.comahe.i18n4k:de.comahe.i18n4k.gradle.plugin", version.ref = "i18n4k"                 }
+jakarta-mail-api                = { module = "jakarta.mail:jakarta.mail-api",                   version.ref = "jakarta-mail-api"       }
 jsoup                           = { module = "org.jsoup:jsoup",                                 version.ref = "jsoup"                  }
 junit-bom                       = { module = "org.junit:junit-bom",                             version.ref = "junit"                  }
 junit-jupiter                   = { module = "org.junit.jupiter:junit-jupiter"                                                         }
@@ -49,7 +52,6 @@ ktor-server-test-host           = { module = "io.ktor:ktor-server-test-host"    
 logback-classic                 = { module = "ch.qos.logback:logback-classic",                  version.ref = "logback"                }
 native-gradle-plugin            = { module = "org.graalvm.buildtools:native-gradle-plugin",     version.ref = "graalvm-plugin"         }
 photoswipe                      = { module = "org.webjars.npm:photoswipe",                      version.ref = "photoswipe"             }
-simple-kotlin-mail-client       = { module = "net.axay:simplekotlinmail-client",                version.ref = "simple-kotlin-mail"     }
 toastr                          = { module = "org.webjars:toastr",                              version.ref = "toastr"                 }
 
 [bundles]

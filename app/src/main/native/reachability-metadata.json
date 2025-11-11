@@ -172,10 +172,10 @@
       ]
     },
     {
-      "type": "be.alpago.website.adapters.javamail.JavaMailProperties"
+      "type": "be.alpago.website.adapters.jakarta.mail.JakartaMailProperties"
     },
     {
-      "type": "be.alpago.website.adapters.javamail.JavaMailService"
+      "type": "be.alpago.website.adapters.jakarta.mail.JakartaMailService"
     },
     {
       "type": "be.alpago.website.application.usecases.SendEmail"
@@ -451,45 +451,6 @@
       ]
     },
     {
-      "type": "com.sun.mail.handlers.text_plain",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.sun.mail.imap.IMAPProvider"
-    },
-    {
-      "type": "com.sun.mail.imap.IMAPSSLProvider"
-    },
-    {
-      "type": "com.sun.mail.pop3.POP3Provider"
-    },
-    {
-      "type": "com.sun.mail.pop3.POP3SSLProvider"
-    },
-    {
-      "type": "com.sun.mail.smtp.SMTPProvider"
-    },
-    {
-      "type": "com.sun.mail.smtp.SMTPSSLProvider"
-    },
-    {
-      "type": "com.sun.mail.smtp.SMTPTransport",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": [
-            "jakarta.mail.Session",
-            "jakarta.mail.URLName"
-          ]
-        }
-      ]
-    },
-    {
       "type": "io.ktor.client.HttpClient",
       "fields": [
         {
@@ -743,6 +704,9 @@
       ]
     },
     {
+      "type": "jakarta.mail.Provider"
+    },
+    {
       "type": "java.io.Closeable"
     },
     {
@@ -791,22 +755,10 @@
       "type": "java.security.MessageDigestSpi"
     },
     {
-      "type": "java.security.cert.PKIXRevocationChecker"
-    },
-    {
-      "type": "java.security.interfaces.DSAPrivateKey"
-    },
-    {
-      "type": "java.security.interfaces.DSAPublicKey"
-    },
-    {
       "type": "java.security.interfaces.RSAPrivateKey"
     },
     {
       "type": "java.security.interfaces.RSAPublicKey"
-    },
-    {
-      "type": "java.security.spec.DSAParameterSpec"
     },
     {
       "type": "java.util.List"
@@ -1191,6 +1143,42 @@
       ]
     },
     {
+      "type": "org.eclipse.angus.activation.MailcapRegistryProviderImpl"
+    },
+    {
+      "type": "org.eclipse.angus.mail.handlers.text_plain",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.eclipse.angus.mail.smtp.SMTPProvider"
+    },
+    {
+      "type": "org.eclipse.angus.mail.smtp.SMTPSSLProvider"
+    },
+    {
+      "type": "org.eclipse.angus.mail.smtp.SMTPTransport",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "jakarta.mail.Session",
+            "jakarta.mail.URLName"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.eclipse.angus.mail.util.MailStreamProvider"
+    },
+    {
+      "type": "org.glassfish.hk2.osgiresourcelocator.ServiceLoader"
+    },
+    {
       "type": "sun.security.pkcs12.PKCS12KeyStore",
       "methods": [
         {
@@ -1201,15 +1189,6 @@
     },
     {
       "type": "sun.security.pkcs12.PKCS12KeyStore$DualFormatPKCS12",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "sun.security.provider.DSA$SHA1withDSA",
       "methods": [
         {
           "name": "<init>",
@@ -1236,7 +1215,7 @@
       ]
     },
     {
-      "type": "sun.security.provider.DSAKeyFactory",
+      "type": "sun.security.provider.JavaKeyStore$DualFormatJKS",
       "methods": [
         {
           "name": "<init>",
@@ -1245,7 +1224,7 @@
       ]
     },
     {
-      "type": "sun.security.provider.DSAParameters",
+      "type": "sun.security.provider.JavaKeyStore$JKS",
       "methods": [
         {
           "name": "<init>",
@@ -1555,25 +1534,28 @@
   ],
   "resources": [
     {
-      "glob": "META-INF/javamail.address.map"
+      "glob": "META-INF/jakarta.address.map"
     },
     {
-      "glob": "META-INF/javamail.charset.map"
+      "glob": "META-INF/jakarta.charset.map"
     },
     {
-      "glob": "META-INF/javamail.default.address.map"
+      "glob": "META-INF/jakarta.default.address.map"
+    },
+    {
+      "glob": "META-INF/jakarta.default.providers"
+    },
+    {
+      "glob": "META-INF/jakarta.mailcap"
+    },
+    {
+      "glob": "META-INF/jakarta.mailcap.default"
+    },
+    {
+      "glob": "META-INF/jakarta.providers"
     },
     {
       "glob": "META-INF/javamail.default.providers"
-    },
-    {
-      "glob": "META-INF/javamail.providers"
-    },
-    {
-      "glob": "META-INF/mailcap"
-    },
-    {
-      "glob": "META-INF/mailcap.default"
     },
     {
       "glob": "META-INF/services/ch.qos.logback.classic.spi.Configurator"
@@ -1585,7 +1567,13 @@
       "glob": "META-INF/services/io.ktor.server.plugins.di.DependencyMapExtension"
     },
     {
+      "glob": "META-INF/services/jakarta.activation.spi.MailcapRegistryProvider"
+    },
+    {
       "glob": "META-INF/services/jakarta.mail.Provider"
+    },
+    {
+      "glob": "META-INF/services/jakarta.mail.util.StreamProvider"
     },
     {
       "glob": "META-INF/services/java.lang.System$LoggerFinder"
