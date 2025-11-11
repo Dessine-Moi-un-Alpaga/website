@@ -53,7 +53,7 @@
       "type": "be.alpago.website.adapters.firestore.FirestoreProperties"
     },
     {
-      "name":"be.alpago.website.adapters.firestore.GoogleToken",
+      "type":"be.alpago.website.adapters.firestore.GoogleToken",
       "fields": [
         {
           "name": "Companion"
@@ -61,7 +61,7 @@
       ]
     },
     {
-      "name": "be.alpago.website.adapters.firestore.GoogleToken$Companion",
+      "type": "be.alpago.website.adapters.firestore.GoogleToken$Companion",
       "methods": [
         {
           "name": "serializer",
