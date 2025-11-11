@@ -1,6 +1,5 @@
 package be.alpago.website.adapters.jakarta.mail
 
-import be.alpago.website.adapters.simplekotlinmail.Messages
 import be.alpago.website.application.usecases.SendEmail
 import be.alpago.website.domain.Email
 import jakarta.mail.Message
