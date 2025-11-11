@@ -14,6 +14,7 @@ kotlin                 = "2.2.21"
 kotlin-faker           = "1.16.0"
 ktor                   = "3.3.2"
 logback                = "1.5.20"
+mockk                  = "1.14.6"
 photoswipe             = "5.4.3"
 toastr                 = "2.1.4"
 
@@ -50,6 +51,7 @@ ktor-server-request-validation  = { module = "io.ktor:ktor-server-request-valida
 ktor-server-status-pages        = { module = "io.ktor:ktor-server-status-pages"                                                        }
 ktor-server-test-host           = { module = "io.ktor:ktor-server-test-host"                                                           }
 logback-classic                 = { module = "ch.qos.logback:logback-classic",                  version.ref = "logback"                }
+mockk                           = { module = "io.mockk:mockk",                                  version.ref = "mockk"                  }
 native-gradle-plugin            = { module = "org.graalvm.buildtools:native-gradle-plugin",     version.ref = "graalvm-plugin"         }
 photoswipe                      = { module = "org.webjars.npm:photoswipe",                      version.ref = "photoswipe"             }
 toastr                          = { module = "org.webjars:toastr",                              version.ref = "toastr"                 }
