@@ -52,4 +52,5 @@ dependencies {
     testImplementation(libs.kotlin.faker)
     testImplementation(libs.ktor.client.mock)
     testImplementation(libs.ktor.server.test.host)
+    testImplementation(libs.mockk)
 }
