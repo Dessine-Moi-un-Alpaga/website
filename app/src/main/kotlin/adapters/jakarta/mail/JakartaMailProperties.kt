@@ -1,6 +1,6 @@
-package be.alpago.website.adapters.javamail
+package be.alpago.website.adapters.jakarta.mail
 
-data class JavaMailProperties(
+data class JakartaMailProperties(
     val address: String,
     val smtpServerAddress: String,
     val smtpServerPassword: String,

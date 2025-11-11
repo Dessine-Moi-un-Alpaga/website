@@ -1,13 +1,13 @@
-package be.alpago.website.adapters.javamail
+package be.alpago.website.adapters.jakarta.mail
 
 import be.alpago.website.libs.getEnvironmentVariable
 import io.ktor.server.application.Application
 import io.ktor.server.plugins.di.dependencies
 
-fun Application.javaMail() {
+fun Application.jakartaMail() {
     dependencies {
         provide {
-            JavaMailProperties(
+            JakartaMailProperties(
                 address = getEnvironmentVariable("DMUA_EMAIL_ADDRESS"),
                 smtpServerAddress = getEnvironmentVariable("DMUA_SMTP_SERVER_ADDRESS"),
                 smtpServerPassword = getEnvironmentVariable("DMUA_SMTP_SERVER_PASSWORD"),
@@ -17,8 +17,8 @@ fun Application.javaMail() {
         }
 
         provide {
-            JavaMailService(
-                resolve<JavaMailProperties>()
+            JakartaMailService(
+                resolve<JakartaMailProperties>()
             )
         }
     }

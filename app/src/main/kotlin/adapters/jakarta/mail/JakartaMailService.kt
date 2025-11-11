@@ -1,7 +1,6 @@
-package be.alpago.website.adapters.javamail
+package be.alpago.website.adapters.jakarta.mail
 
 import be.alpago.website.adapters.simplekotlinmail.Messages
-import be.alpago.website.adapters.simplekotlinmail.SimpleKotlinMailProperties
 import be.alpago.website.application.usecases.SendEmail
 import be.alpago.website.domain.Email
 import jakarta.mail.Authenticator
@@ -13,8 +12,8 @@ import jakarta.mail.internet.InternetAddress
 import jakarta.mail.internet.MimeMessage
 import java.util.Properties
 
-class JavaMailService(
-    private val properties: JavaMailProperties,
+class JakartaMailService(
+    private val properties: JakartaMailProperties,
 ) : SendEmail {
 
     override suspend fun send(email: Email) {
