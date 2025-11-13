@@ -28,6 +28,7 @@ dependencies {
     implementation(libs.bcrypt)
     implementation(libs.i18n4k)
     implementation(libs.jakarta.mail.api)
+    implementation(libs.jul.to.slf4j)
 
     implementation(libs.bundles.ktor.client)
     implementation(libs.bundles.ktor.server)
