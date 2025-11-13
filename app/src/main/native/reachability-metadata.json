@@ -307,6 +307,15 @@
       "type": "be.alpago.website.libs.domain.ports.Repository"
     },
     {
+      "type": "com.sun.crypto.provider.AESCipher$General",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
       "type": "com.sun.crypto.provider.ARCFOURCipher",
       "methods": [
         {
@@ -1107,6 +1116,9 @@
       "type": "org.glassfish.hk2.osgiresourcelocator.ServiceLoader"
     },
     {
+      "type": "org.slf4j.simple.SimpleServiceProvider"
+    },
+    {
       "type": "sun.security.pkcs12.PKCS12KeyStore",
       "methods": [
         {
@@ -1525,6 +1537,9 @@
       "glob": "META-INF/services/org.slf4j.spi.SLF4JServiceProvider"
     },
     {
+      "glob": "simplelogger.properties"
+    },
+    {
       "glob": "static/assets/css/main.css"
     },
     {
@@ -1625,9 +1640,6 @@
     },
     {
       "glob": "static/webjars/responsive-tools/dist/browser.min.js"
-    },
-    {
-      "glob": "static/webjars/toastr/build/toastr.js.map"
     },
     {
       "glob": "static/webjars/toastr/build/toastr.min.css"
