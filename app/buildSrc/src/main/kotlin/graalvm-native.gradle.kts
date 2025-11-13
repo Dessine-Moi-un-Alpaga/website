@@ -52,6 +52,7 @@ graalvmNative {
                 "--initialize-at-build-time=org.slf4j.simple.OutputChoice\$OutputChoiceType",
                 "--initialize-at-build-time=org.slf4j.simple.SimpleLogger",
                 "--initialize-at-build-time=org.slf4j.simple.SimpleLoggerConfiguration",
+                "--initialize-at-build-time=org.slf4j.simple.SimpleLoggerFactory",
                 "--initialize-at-build-time=org.slf4j.simple.SimpleServiceProvider",
 
                 "--initialize-at-run-time=io.ktor.serialization.kotlinx.json.JsonSupportKt",
