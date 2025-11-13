@@ -14,6 +14,4 @@ dependencies {
     implementation(libs.exec.fork.plugin)
     implementation(libs.i18n4k.gradle.plugin)
     implementation(libs.native.gradle.plugin)
-
-    implementation(libs.logback.classic)
 }

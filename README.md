@@ -142,6 +142,6 @@ which it depends (Firestore and SendGrid) and the Koin Dependency Injection libr
 
 Replacing those with a few lines of custom code cut the resulting binary's size in half (from ~120MB to ~60MB).
 
-It also initially used the full `logback-class` Slf4j implementation, which is definitely overkill for a twelve-factor
-app that simply needs to output messages to the console. Swapping this out in favor of `slf4j-simple` netted in a gain
-of an additional ...MB.
+It also initially used the full `logback-classic` Slf4j implementation, which is definitely overkill for a twelve-factor
+app that simply needs to output messages to the console. Swapping it out in favor of `slf4j-simple` allowed me to gain
+a few extra megabytes.

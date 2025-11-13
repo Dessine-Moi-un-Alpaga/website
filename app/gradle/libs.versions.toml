@@ -13,7 +13,6 @@ kotest-assertions-ktor = "2.0.0"
 kotlin                 = "2.2.21"
 kotlin-faker           = "1.16.0"
 ktor                   = "3.3.2"
-logback                = "1.5.21"
 mockk                  = "1.14.6"
 photoswipe             = "5.4.3"
 slf4j                  = "2.0.17"
@@ -52,7 +51,6 @@ ktor-server-html-builder        = { module = "io.ktor:ktor-server-html-builder" 
 ktor-server-request-validation  = { module = "io.ktor:ktor-server-request-validation"                                                  }
 ktor-server-status-pages        = { module = "io.ktor:ktor-server-status-pages"                                                        }
 ktor-server-test-host           = { module = "io.ktor:ktor-server-test-host"                                                           }
-logback-classic                 = { module = "ch.qos.logback:logback-classic",                  version.ref = "logback"                }
 mockk                           = { module = "io.mockk:mockk",                                  version.ref = "mockk"                  }
 native-gradle-plugin            = { module = "org.graalvm.buildtools:native-gradle-plugin",     version.ref = "graalvm-plugin"         }
 photoswipe                      = { module = "org.webjars.npm:photoswipe",                      version.ref = "photoswipe"             }
