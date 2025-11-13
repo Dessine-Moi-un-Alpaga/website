@@ -20,6 +20,10 @@ graalvmNative {
     binaries {
         named("main") {
             buildArgs.addAll(
+                "-Dorg.slf4j.simpleLogger.logFile=System.out",
+                "-Dorg.slf4j.simpleLogger.cacheOutputStream=true",
+                "-Dorg.slf4j.simpleLogger.showDateTime=true",
+                "-Dorg.slf4j.simpleLogger.dateTimeFormat=HH:mm:ss.SSS",
                 "-Duser.country=BE",
                 "-Duser.language=fr",
 
