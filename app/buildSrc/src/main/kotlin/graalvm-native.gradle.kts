@@ -48,6 +48,7 @@ graalvmNative {
                 "--initialize-at-build-time=org.slf4j.helpers.NOPLoggerFactory",
                 "--initialize-at-build-time=org.slf4j.helpers.SubstituteLoggerFactory",
                 "--initialize-at-build-time=org.slf4j.helpers.SubstituteServiceProvider",
+                "--initialize-at-build-time=org.slf4j.simple.OutputChoice",
                 "--initialize-at-build-time=org.slf4j.simple.SimpleLogger",
                 "--initialize-at-build-time=org.slf4j.simple.SimpleLoggerConfiguration",
 
