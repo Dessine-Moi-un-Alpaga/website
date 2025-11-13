@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     id("org.jetbrains.kotlin.jvm")
 
@@ -6,7 +8,6 @@ plugins {
     id("i18n")
     id("jacoco")
     id("run")
-//    id("serialized-logback-config")
     id("test")
     id("webjars")
 
@@ -34,7 +35,6 @@ dependencies {
     implementation(libs.bundles.ktor.server)
 
     runtimeOnly(libs.angus.smtp)
-//    runtimeOnly(libs.logback.classic)
     runtimeOnly(libs.slf4j.simple)
 
     webjars(libs.escape.velocity)
@@ -55,4 +55,10 @@ dependencies {
     testImplementation(libs.ktor.client.mock)
     testImplementation(libs.ktor.server.test.host)
     testImplementation(libs.mockk)
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget.set(JvmTarget.JVM_24)
+    }
 }
