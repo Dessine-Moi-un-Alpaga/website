@@ -49,6 +49,7 @@ graalvmNative {
                 "--initialize-at-build-time=org.slf4j.helpers.SubstituteLoggerFactory",
                 "--initialize-at-build-time=org.slf4j.helpers.SubstituteServiceProvider",
                 "--initialize-at-build-time=org.slf4j.simple.SimpleLogger",
+                "--initialize-at-build-time=org.slf4j.simple.SimpleLoggerConfiguration",
 
                 "--initialize-at-run-time=io.ktor.serialization.kotlinx.json.JsonSupportKt",
 
