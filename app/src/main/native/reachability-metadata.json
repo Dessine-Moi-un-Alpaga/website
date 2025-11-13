@@ -307,78 +307,6 @@
       "type": "be.alpago.website.libs.domain.ports.Repository"
     },
     {
-      "type": "ch.qos.logback.classic.encoder.PatternLayoutEncoder",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "ch.qos.logback.classic.joran.SerializedModelConfigurator"
-    },
-    {
-      "type": "ch.qos.logback.classic.spi.LogbackServiceProvider"
-    },
-    {
-      "type": "ch.qos.logback.core.ConsoleAppender",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "ch.qos.logback.core.OutputStreamAppender",
-      "methods": [
-        {
-          "name": "setEncoder",
-          "parameterTypes": [
-            "ch.qos.logback.core.encoder.Encoder"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "ch.qos.logback.core.encoder.Encoder"
-    },
-    {
-      "type": "ch.qos.logback.core.encoder.LayoutWrappingEncoder",
-      "methods": [
-        {
-          "name": "setParent",
-          "parameterTypes": [
-            "ch.qos.logback.core.spi.ContextAware"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "ch.qos.logback.core.pattern.PatternLayoutEncoderBase",
-      "methods": [
-        {
-          "name": "setPattern",
-          "parameterTypes": [
-            "java.lang.String"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "ch.qos.logback.core.spi.ContextAware"
-    },
-    {
-      "type": "com.sun.crypto.provider.AESCipher$General",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
       "type": "com.sun.crypto.provider.ARCFOURCipher",
       "methods": [
         {
@@ -1558,9 +1486,6 @@
       "glob": "META-INF/javamail.default.providers"
     },
     {
-      "glob": "META-INF/services/ch.qos.logback.classic.spi.Configurator"
-    },
-    {
       "glob": "META-INF/services/io.ktor.serialization.kotlinx.KotlinxSerializationExtensionProvider"
     },
     {
@@ -1598,12 +1523,6 @@
     },
     {
       "glob": "META-INF/services/org.slf4j.spi.SLF4JServiceProvider"
-    },
-    {
-      "glob": "logback-test.scmo"
-    },
-    {
-      "glob": "logback.scmo"
     },
     {
       "glob": "static/assets/css/main.css"
@@ -1735,30 +1654,6 @@
   ],
   "bundles": [],
   "serialization": [
-    {
-      "type": "ch.qos.logback.classic.model.ConfigurationModel"
-    },
-    {
-      "type": "ch.qos.logback.classic.model.RootLoggerModel"
-    },
-    {
-      "type": "ch.qos.logback.core.model.AppenderModel"
-    },
-    {
-      "type": "ch.qos.logback.core.model.AppenderRefModel"
-    },
-    {
-      "type": "ch.qos.logback.core.model.ComponentModel"
-    },
-    {
-      "type": "ch.qos.logback.core.model.ImplicitModel"
-    },
-    {
-      "type": "ch.qos.logback.core.model.Model"
-    },
-    {
-      "type": "ch.qos.logback.core.model.NamedComponentModel"
-    },
     {
       "type": "java.util.ArrayList"
     }
