@@ -16,6 +16,7 @@ ktor                   = "3.3.2"
 logback                = "1.5.21"
 mockk                  = "1.14.6"
 photoswipe             = "5.4.3"
+slf4j                  = "2.0.17"
 toastr                 = "2.1.4"
 
 [libraries]
@@ -54,6 +55,7 @@ logback-classic                 = { module = "ch.qos.logback:logback-classic",  
 mockk                           = { module = "io.mockk:mockk",                                  version.ref = "mockk"                  }
 native-gradle-plugin            = { module = "org.graalvm.buildtools:native-gradle-plugin",     version.ref = "graalvm-plugin"         }
 photoswipe                      = { module = "org.webjars.npm:photoswipe",                      version.ref = "photoswipe"             }
+slf4j-simple                    = { module = "org.slf4j:slf4j-simple",                          version.ref = "slf4j"                  }
 toastr                          = { module = "org.webjars:toastr",                              version.ref = "toastr"                 }
 
 [bundles]

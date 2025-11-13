@@ -142,6 +142,6 @@ which it depends (Firestore and SendGrid) and the Koin Dependency Injection libr
 
 Replacing those with a few lines of custom code cut the resulting binary's size in half (from ~120MB to ~60MB).
 
-A nice optimization was also introduced by replacing the XML Logback configuration at runtime by a
-serialized configuration created at build time. This prevents the whole XML parsing code to be included in the
-executable.
+It also initially used the full `logback-class` Slf4j implementation, which is definitely overkill for a twelve-factor
+app that simply needs to output messages to the console. Swapping this out in favor of `slf4j-simple` netted in a gain
+of an additional ...MB.

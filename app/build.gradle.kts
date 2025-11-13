@@ -6,7 +6,7 @@ plugins {
     id("i18n")
     id("jacoco")
     id("run")
-    id("serialized-logback-config")
+//    id("serialized-logback-config")
     id("test")
     id("webjars")
 
@@ -33,7 +33,8 @@ dependencies {
     implementation(libs.bundles.ktor.server)
 
     runtimeOnly(libs.angus.smtp)
-    runtimeOnly(libs.logback.classic)
+//    runtimeOnly(libs.logback.classic)
+    runtimeOnly(libs.slf4j.simple)
 
     webjars(libs.escape.velocity)
     webjars(libs.photoswipe)
