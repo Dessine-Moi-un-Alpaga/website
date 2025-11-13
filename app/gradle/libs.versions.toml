@@ -28,6 +28,7 @@ i18n4k                          = { module = "de.comahe.i18n4k:i18n4k-core",    
 i18n4k-gradle-plugin            = { module = "de.comahe.i18n4k:de.comahe.i18n4k.gradle.plugin", version.ref = "i18n4k"                 }
 jakarta-mail-api                = { module = "jakarta.mail:jakarta.mail-api",                   version.ref = "jakarta-mail-api"       }
 jsoup                           = { module = "org.jsoup:jsoup",                                 version.ref = "jsoup"                  }
+jul-to-slf4j                    = { module = "org.slf4j:jul-to-slf4j",                          version.ref = "slf4j"                  }
 junit-bom                       = { module = "org.junit:junit-bom",                             version.ref = "junit"                  }
 junit-jupiter                   = { module = "org.junit.jupiter:junit-jupiter"                                                         }
 kotest-assertions-core          = { module = "io.kotest:kotest-assertions-core",                version.ref = "kotest"                 }
