@@ -8,6 +8,7 @@ suspend fun Application.routes() {
     factsheetRoutes()
     fiberAnalysisRoutes()
     indexRoutes()
+    legacyRoutes()
     newsRoutes()
     photoGalleryRoutes()
 }
