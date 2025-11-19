@@ -20,6 +20,7 @@ fun Application.legacyRoutes() {
         "/factsheets/{${PATH_VARIABLE}}" to "${properties.baseAssetUrl}/factsheets/%s",
         "/images/animals/{${PATH_VARIABLE}}" to "${properties.baseAssetUrl}/images/animals/%s",
         "/images/gallery/{${PATH_VARIABLE}}" to "${properties.baseAssetUrl}/images/gallery/%s",
+        "/images/gallery/thumbnails/{${PATH_VARIABLE}}" to "${properties.baseAssetUrl}/images/gallery/thumbnails/%s",
     )
 
     routing {
