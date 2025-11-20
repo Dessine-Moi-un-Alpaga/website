@@ -9,6 +9,7 @@ suspend fun Application.ktor() {
     assets()
     authenticationProperties()
     authentication()
+    autoHeadResponses()
     httpCaching()
     routes()
     serialization()
