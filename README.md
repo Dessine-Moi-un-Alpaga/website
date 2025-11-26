@@ -21,7 +21,7 @@
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg?logo=gnu)](https://www.gnu.org/licenses/gpl-3.0)
 [![Terraform](https://img.shields.io/badge/terraform-1.14.0-darkred.svg?logo=terraform)](http://terraform.io)
-[![Gradle](https://img.shields.io/badge/gradle-9.2.0-darkgreen.svg?logo=gradle)](http://gradle.org)
+[![Gradle](https://img.shields.io/badge/gradle-9.2.1-darkgreen.svg?logo=gradle)](http://gradle.org)
 [![GrralVM](https://img.shields.io/badge/graalvm-24.0.2-blue.svg?logo=openjdk)](http://graalvm.org)
 [![Kotlin](https://img.shields.io/badge/kotlin-2.2.21-darkblue.svg?logo=kotlin)](http://kotlinlang.org)
 [![Ktor](https://img.shields.io/badge/ktor-3.3.2-red.svg)](http://ktor.io)
