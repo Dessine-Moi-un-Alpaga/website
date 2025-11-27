@@ -15,6 +15,7 @@ import be.alpago.website.domain.Highlight
 import be.alpago.website.domain.ImageMetadata
 import be.alpago.website.libs.domain.ports.CachingRepository
 import be.alpago.website.libs.domain.ports.Repository
+import be.alpago.website.libs.domain.ports.RetryingRepository
 import be.alpago.website.libs.getEnvironmentVariable
 import io.ktor.client.HttpClient
 import io.ktor.server.application.Application
@@ -74,11 +75,13 @@ fun Application.animalRepository() {
     dependencies {
         provide<Repository<Animal>> {
             CachingRepository(
-                FirestoreRepository(
-                    client = resolve<HttpClient>(),
-                    collection = ANIMAL_COLLECTION,
-                    properties = resolve<FirestoreProperties>(),
-                    transformer = FirestoreAnimalTransformer(),
+                RetryingRepository(
+                    FirestoreRepository(
+                        client = resolve<HttpClient>(),
+                        collection = ANIMAL_COLLECTION,
+                        properties = resolve<FirestoreProperties>(),
+                        transformer = FirestoreAnimalTransformer(),
+                    )
                 )
             )
         }
@@ -97,16 +100,17 @@ fun Application.fiberAnalysisRepository() {
     dependencies {
         provide<Repository<FiberAnalysis>> {
             CachingRepository(
-                FirestoreRepository(
-                    client = resolve<HttpClient>(),
-                    collection = FIBER_ANALYSIS_COLLECTION,
-                    properties = resolve<FirestoreProperties>(),
-                    transformer = FirestoreFiberAnalysisTransformer(),
+                RetryingRepository(
+                    FirestoreRepository(
+                        client = resolve<HttpClient>(),
+                        collection = FIBER_ANALYSIS_COLLECTION,
+                        properties = resolve<FirestoreProperties>(),
+                        transformer = FirestoreFiberAnalysisTransformer(),
+                    )
                 )
             )
         }
     }
-
 }
 
 fun Application.highlightTransformer() {
@@ -136,11 +140,13 @@ private fun Application.indexArticleRepository() {
     dependencies {
         provide<Repository<Article>>(ShowIndexArticle::class.simpleName) {
             CachingRepository(
+                RetryingRepository(
                 FirestoreRepository(
-                    client = resolve<HttpClient>(),
-                    collection = INDEX_ARTICLE_COLLECTION,
-                    properties = resolve<FirestoreProperties>(),
-                    transformer = resolve<FirestoreAggregateTransformer<Article>>(),
+                        client = resolve<HttpClient>(),
+                        collection = INDEX_ARTICLE_COLLECTION,
+                        properties = resolve<FirestoreProperties>(),
+                        transformer = resolve<FirestoreAggregateTransformer<Article>>(),
+                    )
                 )
             )
         }
@@ -152,11 +158,13 @@ private fun Application.indexNewsHighlightRepository() {
     dependencies {
         provide<Repository<Highlight>>(ShowIndexNewsHighlights::class.simpleName) {
             CachingRepository(
-                FirestoreRepository(
-                    client = resolve<HttpClient>(),
-                    collection = INDEX_NEWS_COLLECTION,
-                    properties = resolve<FirestoreProperties>(),
-                    transformer = resolve<FirestoreAggregateTransformer<Highlight>>(),
+                RetryingRepository(
+                    FirestoreRepository(
+                        client = resolve<HttpClient>(),
+                        collection = INDEX_NEWS_COLLECTION,
+                        properties = resolve<FirestoreProperties>(),
+                        transformer = resolve<FirestoreAggregateTransformer<Highlight>>(),
+                    )
                 )
             )
         }
@@ -167,11 +175,13 @@ private fun Application.indexTrainingImageRepository() {
     dependencies {
         provide<Repository<ImageMetadata>>(ShowIndexTrainingsPhotoGallery::class.simpleName) {
             CachingRepository(
-                FirestoreRepository(
-                    client = resolve<HttpClient>(),
-                    collection = INDEX_TRAININGS_COLLECTION,
-                    properties = resolve<FirestoreProperties>(),
-                    transformer = resolve<FirestoreAggregateTransformer<ImageMetadata>>(),
+                RetryingRepository(
+                    FirestoreRepository(
+                        client = resolve<HttpClient>(),
+                        collection = INDEX_TRAININGS_COLLECTION,
+                        properties = resolve<FirestoreProperties>(),
+                        transformer = resolve<FirestoreAggregateTransformer<ImageMetadata>>(),
+                    )
                 )
             )
         }
@@ -182,11 +192,13 @@ private fun Application.indexGuildHighlightRepository() {
     dependencies {
         provide<Repository<Highlight>>(ShowIndexGuildHighlights::class.simpleName) {
             CachingRepository(
-                FirestoreRepository(
-                    client = resolve<HttpClient>(),
-                    collection = INDEX_GUILD_COLLECTION,
-                    properties = resolve<FirestoreProperties>(),
-                    transformer = resolve<FirestoreAggregateTransformer<Highlight>>(),
+                RetryingRepository(
+                    FirestoreRepository(
+                        client = resolve<HttpClient>(),
+                        collection = INDEX_GUILD_COLLECTION,
+                        properties = resolve<FirestoreProperties>(),
+                        transformer = resolve<FirestoreAggregateTransformer<Highlight>>(),
+                    )
                 )
             )
         }
@@ -197,11 +209,13 @@ fun Application.newsPageRepositories() {
     dependencies {
         provide<Repository<Article>>(ShowNewsPage::class.simpleName) {
             CachingRepository(
-                FirestoreRepository(
-                    client = resolve<HttpClient>(),
-                    collection = NEWS_ARTICLE_COLLECTION,
-                    properties = resolve<FirestoreProperties>(),
-                    transformer = resolve<FirestoreAggregateTransformer<Article>>(),
+                RetryingRepository(
+                    FirestoreRepository(
+                        client = resolve<HttpClient>(),
+                        collection = NEWS_ARTICLE_COLLECTION,
+                        properties = resolve<FirestoreProperties>(),
+                        transformer = resolve<FirestoreAggregateTransformer<Article>>(),
+                    )
                 )
             )
         }
@@ -217,11 +231,13 @@ private fun Application.factsheetArticleRepository() {
     dependencies {
         provide<Repository<Article>>(ShowFactsheetArticle::class.simpleName) {
             CachingRepository(
-                FirestoreRepository(
-                    client = resolve<HttpClient>(),
-                    collection = FACTSHEET_ARTICLE_COLLECTION,
-                    properties = resolve<FirestoreProperties>(),
-                    transformer = resolve<FirestoreAggregateTransformer<Article>>(),
+                RetryingRepository(
+                    FirestoreRepository(
+                        client = resolve<HttpClient>(),
+                        collection = FACTSHEET_ARTICLE_COLLECTION,
+                        properties = resolve<FirestoreProperties>(),
+                        transformer = resolve<FirestoreAggregateTransformer<Article>>(),
+                    )
                 )
             )
         }
@@ -232,11 +248,13 @@ private fun Application.factsheetHighlightRepository() {
     dependencies {
         provide<Repository<Highlight>>(ShowFactsheetHighlights::class.simpleName) {
             CachingRepository(
-                FirestoreRepository(
-                    client = resolve<HttpClient>(),
-                    collection = FACTSHEET_HIGHLIGHT_COLLECTION,
-                    properties = resolve<FirestoreProperties>(),
-                    transformer = resolve<FirestoreAggregateTransformer<Highlight>>(),
+                RetryingRepository(
+                    FirestoreRepository(
+                        client = resolve<HttpClient>(),
+                        collection = FACTSHEET_HIGHLIGHT_COLLECTION,
+                        properties = resolve<FirestoreProperties>(),
+                        transformer = resolve<FirestoreAggregateTransformer<Highlight>>(),
+                    )
                 )
             )
         }
@@ -247,11 +265,13 @@ fun Application.photoGalleryPageRepositories() {
     dependencies {
         provide<Repository<ImageMetadata>>(ShowPhotoGalleryPage::class.simpleName) {
             CachingRepository(
-                FirestoreRepository(
-                    client = resolve<HttpClient>(),
-                    collection = PHOTO_GALLERY_IMAGE_COLLECTION,
-                    properties = resolve<FirestoreProperties>(),
-                    transformer = resolve<FirestoreAggregateTransformer<ImageMetadata>>(),
+                RetryingRepository(
+                    FirestoreRepository(
+                        client = resolve<HttpClient>(),
+                        collection = PHOTO_GALLERY_IMAGE_COLLECTION,
+                        properties = resolve<FirestoreProperties>(),
+                        transformer = resolve<FirestoreAggregateTransformer<ImageMetadata>>(),
+                    )
                 )
             )
         }
