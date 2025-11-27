@@ -55,7 +55,6 @@ ktor-server-test-host           = { module = "io.ktor:ktor-server-test-host"    
 mockk                           = { module = "io.mockk:mockk",                                  version.ref = "mockk"                  }
 native-gradle-plugin            = { module = "org.graalvm.buildtools:native-gradle-plugin",     version.ref = "graalvm-plugin"         }
 photoswipe                      = { module = "org.webjars.npm:photoswipe",                      version.ref = "photoswipe"             }
-slf4j-api                       = { module = "org.slf4j:slf4j-api",                             version.ref = "slf4j"                  }
 slf4j-simple                    = { module = "org.slf4j:slf4j-simple",                          version.ref = "slf4j"                  }
 toastr                          = { module = "org.webjars:toastr",                              version.ref = "toastr"                 }
 
