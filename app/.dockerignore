@@ -4,7 +4,7 @@
 !buildSrc/build.gradle.kts
 !buildSrc/settings.gradle.kts
 !gradle/**
-!src/**
+!src/main/**
 !build.gradle.kts
 !gradle.properties
 !gradlew
