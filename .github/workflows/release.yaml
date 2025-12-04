@@ -12,7 +12,7 @@ jobs:
     name: Release
     runs-on: ubuntu-latest
     env:
-      FIREBASE_TOOLS_VERSION: 14.26.0
+      FIREBASE_TOOLS_VERSION: 14.27.0
       JAVA_VERSION: 24
       NODE_VERSION: 25
       SEMANTIC_RELEASE_VERSION: 25
