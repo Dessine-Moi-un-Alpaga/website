@@ -56,7 +56,7 @@ fun createHttpClient(): HttpClient {
             request.bearerAuth(token)
             result = execute(request)
 
-            if (result.response.status == HttpStatusCode.Forbidden) {
+            if (result.response.status.isAuthenticationRelated()) {
                 result = null
             }
         }
@@ -111,3 +111,5 @@ fun createHttpClient(): HttpClient {
 private data class GoogleToken(
     @SerialName("access_token") val value: String
 )
+
+private fun HttpStatusCode.isAuthenticationRelated() = this == HttpStatusCode.Unauthorized || this == HttpStatusCode.Forbidden
