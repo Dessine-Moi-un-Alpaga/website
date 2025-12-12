@@ -16,7 +16,7 @@ jobs:
       JAVA_VERSION: 24
       NODE_VERSION: 25
       SEMANTIC_RELEASE_VERSION: 25
-      TERRAFORM_VERSION: 1.14.1
+      TERRAFORM_VERSION: 1.14.2
       TF_PLUGIN_CACHE_DIR: ${{ github.workspace }}/.terraform.d/plugin-cache
     environment: ${{ github.ref_name == 'main' && 'production' || 'development' }}
     steps:
