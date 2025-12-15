@@ -72,7 +72,7 @@ jobs:
 
       - name: Save test results and logs
         if: always()
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: test-results
           path: |
