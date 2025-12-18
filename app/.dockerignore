@@ -1,8 +1,8 @@
 **/*
 
-!buildSrc/src/**
-!buildSrc/build.gradle.kts
-!buildSrc/settings.gradle.kts
+!build-logic/src/**
+!build-logic/build.gradle.kts
+!build-logic/settings.gradle.kts
 !gradle/**
 !src/main/**
 !build.gradle.kts
