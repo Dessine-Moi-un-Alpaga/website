@@ -37,7 +37,7 @@ The following is required:
 * the [Github CLI](https://cli.github.com)
 * a Google Cloud organization
 * a Google user account that is `Organization Administrator`
-* the [GraalVM 24 SDK](https://www.graalvm.org/downloads/)
+* the [GraalVM 25 SDK](https://www.graalvm.org/downloads/)
 * the [Google Firestore Emulator](https://firebase.google.com/docs/emulator-suite/install_and_configure)
 * a recent [Docker installation](https://www.docker.com/products/docker-desktop/) that includes `buildx`
 * a recent [Terraform installation](https://developer.hashicorp.com/terraform/install?product_intent=terraform)
