@@ -3,6 +3,7 @@ plugins {
 }
 
 rootProject.name = "website"
+includeBuild("build-logic")
 
 develocity {
     buildScan {
