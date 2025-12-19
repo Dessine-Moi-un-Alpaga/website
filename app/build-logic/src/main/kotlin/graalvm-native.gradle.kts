@@ -10,7 +10,7 @@ graalvmNative {
 
         modes {
             direct {
-                options.add("config-output-dir=src/main/native")
+                options.add("config-output-dir=src/main/resources/META-INF/native-image/be.alpago/website")
             }
         }
     }
@@ -59,7 +59,7 @@ graalvmNative {
                 "--future-defaults=all",
             )
             buildArgs.addAll(nativeCompileExtraBuildArgs.split(","))
-            configurationFileDirectories.from(file("src/main/native"))
+//            configurationFileDirectories.from(file("src/main/native"))
             fallback = false
             imageName = "graalvm-server"
         }
