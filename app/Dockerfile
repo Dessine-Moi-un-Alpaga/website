@@ -16,9 +16,9 @@ RUN native-image \
     --initialize-at-build-time=kotlinx.coroutines \
     --initialize-at-build-time=kotlinx.io.Buffer \
     --initialize-at-build-time=kotlinx.io.Segment \
-    --initialize-at-build-time=kotlinx.io.Segment$$Companion \
+    --initialize-at-build-time=kotlinx.io.Segment$Companion \
     --initialize-at-build-time=kotlinx.io.bytestring.ByteString \
-    --initialize-at-build-time=kotlinx.io.bytestring.ByteString$$Companion \
+    --initialize-at-build-time=kotlinx.io.bytestring.ByteString$Companion \
     --initialize-at-build-time=org.slf4j.LoggerFactory \
     --initialize-at-build-time=org.slf4j.helpers.BasicMDCAdapter \
     --initialize-at-build-time=org.slf4j.helpers.NOPMDCAdapter \
@@ -27,7 +27,7 @@ RUN native-image \
     --initialize-at-build-time=org.slf4j.helpers.SubstituteLoggerFactory \
     --initialize-at-build-time=org.slf4j.helpers.SubstituteServiceProvider \
     --initialize-at-build-time=org.slf4j.simple.OutputChoice \
-    --initialize-at-build-time=org.slf4j.simple.OutputChoice$$OutputChoiceType \
+    --initialize-at-build-time=org.slf4j.simple.OutputChoice$OutputChoiceType \
     --initialize-at-build-time=org.slf4j.simple.SimpleLogger \
     --initialize-at-build-time=org.slf4j.simple.SimpleLoggerConfiguration \
     --initialize-at-build-time=org.slf4j.simple.SimpleLoggerFactory \
