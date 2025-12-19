@@ -61,7 +61,7 @@ jobs:
         with:
           cache-read-only: false
 
-      - name: Test
+      - name: Build
         run: make app/build
 
       - name: Save Firebase emulator logs

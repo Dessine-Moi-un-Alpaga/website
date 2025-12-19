@@ -27,7 +27,7 @@ run:
 .PHONY: test
 test: export ORG_GRADLE_PROJECT_firebaseLocation = $(shell which firebase)
 test:
-	@./gradlew $(GRADLE_BUILD_SCAN_SWITCH) test jacocoTestReport
+	@./gradlew $(GRADLE_BUILD_SCAN_SWITCH) test
 
 .PHONY: prepare-native-build
 prepare-native-build: export ORG_GRADLE_PROJECT_credentials = $(value CREDENTIALS)
