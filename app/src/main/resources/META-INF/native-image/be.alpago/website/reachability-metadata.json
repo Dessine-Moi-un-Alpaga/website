@@ -1537,6 +1537,9 @@
       "glob": "META-INF/services/org.slf4j.spi.SLF4JServiceProvider"
     },
     {
+      "glob": "kotlin/kotlin.kotlin_builtins"
+    },
+    {
       "glob": "simplelogger.properties"
     },
     {
