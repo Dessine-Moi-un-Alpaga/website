@@ -45,4 +45,5 @@ push-%:
 			--tag $(DOCKER_IMAGE):$* \
 			--cache-from type=gha,scope=main \
 			--cache-to type=gha,mode=max,scope=main \
+			--volume build/reports:/app/build/reports \
 			.
