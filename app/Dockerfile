@@ -1,7 +1,7 @@
 FROM ghcr.io/graalvm/native-image-community:25.0.1-muslib-ol10-20251021 AS build
 
 WORKDIR /app
-COPY /app/build/libs/website-all.jar .
+COPY ./app/build/libs/website-all.jar .
 RUN native-image \
     -Dorg.slf4j.simpleLogger.logFile=System.out \
     -Dorg.slf4j.simpleLogger.cacheOutputStream=true \
