@@ -40,7 +40,7 @@ RUN native-image \
     --libc=musl \
     -march=x86-64-v3 \
     --static \
-    -jar /app/build/libs/website-latest.jar \
+    -jar /app/build/libs/website-all.jar \
     /app/build/native/nativeCompile/graalvm-server
 
 FROM scratch

@@ -10,7 +10,7 @@ FIREBASE_LOCATION = $(shell which firebase)
 .PHONY: build
 build: export ORG_GRADLE_PROJECT_firebaseLocation = $(shell which firebase)
 build:
-	@./gradlew $(GRADLE_BUILD_SCAN_SWITCH) test jacocoTestReport jar
+	@./gradlew $(GRADLE_BUILD_SCAN_SWITCH) test jacocoTestReport shadowJar
 
 .PHONY: run
 run: export ORG_GRADLE_PROJECT_credentials = $(value CREDENTIALS)
