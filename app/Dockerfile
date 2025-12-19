@@ -1,7 +1,7 @@
 FROM ghcr.io/graalvm/native-image-community:25.0.1-muslib-ol10-20251021 AS build
 
 WORKDIR /app
-COPY . .
+COPY /app/build/libs/website-all.jar .
 RUN native-image \
     -Dorg.slf4j.simpleLogger.logFile=System.out \
     -Dorg.slf4j.simpleLogger.cacheOutputStream=true \
@@ -37,10 +37,10 @@ RUN native-image \
     --libc=musl \
     -march=x86-64-v3 \
     --static \
-    -jar /app/build/libs/website-all.jar \
-    /app/build/native/nativeCompile/graalvm-server
+    -jar website-all.jar \
+    graalvm-server
 
 FROM scratch
 WORKDIR /app
-COPY --from=build /app/build/native/nativeCompile/graalvm-server ./
+COPY --from=build /app/graalvm-server ./
 ENTRYPOINT [ "/app/graalvm-server", "-Xmx100m" ]
