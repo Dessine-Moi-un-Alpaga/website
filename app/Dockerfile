@@ -12,7 +12,6 @@ RUN native-image \
     -H:+ReportExceptionStackTraces \
     -R:MaxHeapSize=100m \
     --color=always \
-    --exact-reachability-metadata \
     --initialize-at-build-time=io.ktor,kotlin \
     --initialize-at-build-time=kotlinx.coroutines \
     --initialize-at-build-time=kotlinx.io.Buffer \
@@ -44,4 +43,4 @@ RUN native-image \
 FROM scratch
 WORKDIR /app
 COPY --from=build /app/graalvm-server ./
-ENTRYPOINT [ "/app/graalvm-server", "-Xmx100m" ]
+ENTRYPOINT [ "/app/graalvm-server", "-Xmx100m", "-XX:MissingRegistrationReportingMode=Warn" ]
