@@ -1,14 +1,3 @@
 **/*
 
-!build-logic/src/**
-!build-logic/build.gradle.kts
-!build-logic/settings.gradle.kts
-!gradle/**
-!src/main/**
-!build.gradle.kts
-!gradle.properties
-!gradlew
-!gradlew.bat
-!settings.gradle.kts
-
-!build/libs/website-latest.jar
+!build/libs/website-all.jar

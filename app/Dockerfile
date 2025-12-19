@@ -1,10 +1,7 @@
 FROM ghcr.io/graalvm/native-image-community:25.0.1-muslib-ol10-20251021 AS build
 
-RUN microdnf -y install findutils
-
 WORKDIR /app
 COPY . .
-#RUN ./gradlew nativeCompile -PnativeCompileExtraBuildArgs="--libc=musl,-march=x86-64-v3,--static"
 RUN native-image \
     -Dorg.slf4j.simpleLogger.logFile=System.out \
     -Dorg.slf4j.simpleLogger.cacheOutputStream=true \
