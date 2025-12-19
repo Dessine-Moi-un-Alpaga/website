@@ -37,6 +37,7 @@ RUN native-image \
     --libc=musl \
     -march=x86-64-v3 \
     --static \
+    --class-path website-all.jar \
     -jar website-all.jar \
     graalvm-server
 
