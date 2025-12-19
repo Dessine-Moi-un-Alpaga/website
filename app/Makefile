@@ -7,6 +7,11 @@ DMUA_VARIABLES := $(HOME)/.dmua/variables
 
 FIREBASE_LOCATION = $(shell which firebase)
 
+.PHONY: build
+build: export ORG_GRADLE_PROJECT_firebaseLocation = $(shell which firebase)
+build:
+	@./gradlew $(GRADLE_BUILD_SCAN_SWITCH) test jacocoTestReport jar
+
 .PHONY: run
 run: export ORG_GRADLE_PROJECT_credentials = $(value CREDENTIALS)
 run: export ORG_GRADLE_PROJECT_devBucket = $(shell cat "$(DMUA_VARIABLES)/development/BUCKET_NAME")

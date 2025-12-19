@@ -59,7 +59,6 @@ graalvmNative {
                 "--future-defaults=all",
             )
             buildArgs.addAll(nativeCompileExtraBuildArgs.split(","))
-//            configurationFileDirectories.from(file("src/main/native"))
             fallback = false
             imageName = "graalvm-server"
         }

@@ -10,3 +10,5 @@
 !gradlew
 !gradlew.bat
 !settings.gradle.kts
+
+!build/libs/website-latest.jar

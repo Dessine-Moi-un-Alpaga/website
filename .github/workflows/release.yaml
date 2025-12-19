@@ -68,7 +68,7 @@ jobs:
           cache-read-only: false
 
       - name: Test
-        run: make app/test
+        run: make app/build
 
       - name: Save test results and logs
         if: always()
