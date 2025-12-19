@@ -12,6 +12,7 @@ RUN native-image \
     -H:+ReportExceptionStackTraces \
     -R:MaxHeapSize=100m \
     --color=always \
+    --exact-reachability-metadata \
     --initialize-at-build-time=io.ktor,kotlin \
     --initialize-at-build-time=kotlinx.coroutines \
     --initialize-at-build-time=kotlinx.io.Buffer \
@@ -37,7 +38,6 @@ RUN native-image \
     --libc=musl \
     -march=x86-64-v3 \
     --static \
-    --class-path website-all.jar \
     -jar website-all.jar \
     graalvm-server
 
