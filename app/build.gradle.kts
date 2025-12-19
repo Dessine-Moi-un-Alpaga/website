@@ -6,7 +6,6 @@ plugins {
     id("firestore-emulator")
     id("graalvm-native")
     id("i18n")
-    id("jacoco")
     id("run")
     id("test")
     id("webjars")
