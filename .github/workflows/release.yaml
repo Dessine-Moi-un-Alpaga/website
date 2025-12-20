@@ -10,7 +10,7 @@ on:
 jobs:
   release:
     name: Release
-    runs-on: ubuntu-slim
+    runs-on: ubuntu-latest
     env:
       FIREBASE_TOOLS_VERSION: 15.1.0
       JAVA_VERSION: 25
