@@ -99,9 +99,6 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-#      - name: Expose GitHub Runtime
-#        uses: crazy-max/ghaction-github-runtime@v3
-
       - name: Install semantic-release exec plugin
         run: npm install --save-dev @semantic-release/exec
 
