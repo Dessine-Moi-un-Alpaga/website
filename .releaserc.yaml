@@ -19,7 +19,7 @@ plugins: [
   [
     "@semantic-release/exec",
     {
-      "publishCmd": "env && make VERSION=${nextRelease.version} release/${nextRelease.channel}"
+      "publishCmd": "make VERSION=${nextRelease.version} release/${nextRelease.channel}"
     }
   ],
   "@semantic-release/release-notes-generator",
