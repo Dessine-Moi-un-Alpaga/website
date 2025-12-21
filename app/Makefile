@@ -43,7 +43,6 @@ prepare-native-build:
 
 .PHONY: push-%
 push-%:
-	@env
 	@gcloud auth configure-docker $(ARTIFACT_REGISTRY) --quiet \
 		&& docker buildx build \
 			--push \
