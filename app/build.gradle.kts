@@ -46,14 +46,12 @@ dependencies {
 
     testImplementation(libs.jsoup)
     testImplementation(libs.junit.jupiter)
-    testImplementation(libs.kotest.assertions.core)
-    testImplementation(libs.kotest.assertions.json)
-    testImplementation(libs.kotest.assertions.ktor)
-    testImplementation(libs.kotest.runner.junit5)
     testImplementation(libs.kotlin.faker)
     testImplementation(libs.ktor.client.mock)
     testImplementation(libs.ktor.server.test.host)
     testImplementation(libs.mockk)
+
+    testImplementation(libs.bundles.kotest)
 }
 
 kotlin {

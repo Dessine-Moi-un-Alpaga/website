@@ -59,6 +59,12 @@ slf4j-simple                    = { module = "org.slf4j:slf4j-simple",          
 toastr                          = { module = "org.webjars:toastr",                              version.ref = "toastr"                 }
 
 [bundles]
+kotest = [
+    "kotest-assertions-core",
+    "kotest-assertions-json",
+    "kotest-assertions-ktor",
+    "kotest-runner-junit5"
+]
 ktor-client = [
     "ktor-client-cio",
     "ktor-client-content-negotiation",
