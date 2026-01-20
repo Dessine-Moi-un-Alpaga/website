@@ -1,4 +1,4 @@
-FROM ghcr.io/graalvm/native-image-community:25.0.1-muslib-ol10-20251021 AS build
+FROM ghcr.io/graalvm/native-image-community:25.0.2-muslib-ol10-20260120 AS build
 
 WORKDIR /app
 COPY ./build/libs/website-all.jar .
