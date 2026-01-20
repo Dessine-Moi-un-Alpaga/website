@@ -1,8 +1,8 @@
 ifdef CI
 export TF_IN_AUTOMATION = true
 else
-export DMUA_SECRETS := $(HOME)/.dmua/secrets
-export DMUA_VARIABLES := $(HOME)/.dmua/variables
+DMUA_SECRETS := $(HOME)/.dmua/secrets
+DMUA_VARIABLES := $(HOME)/.dmua/variables
 export ARTIFACT_REGISTRY_LOCATION = $(shell cat "$(DMUA_VARIABLES)/ARTIFACT_REGISTRY_LOCATION")
 export ARTIFACT_REPOSITORY = $(shell cat "$(DMUA_VARIABLES)/ARTIFACT_REPOSITORY")
 export GOOGLE_PROJECT = $(shell cat "$(DMUA_VARIABLES)/GOOGLE_PROJECT")
