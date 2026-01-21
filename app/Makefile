@@ -1,43 +1,30 @@
 ifdef CI
 GRADLE_BUILD_SCAN_SWITCH := --scan
+else
+export ORG_GRADLE_PROJECT_credentials = $(value CREDENTIALS)
+export ORG_GRADLE_PROJECT_devBucket = $(shell cat "$(DMUA_VARIABLES)/development/BUCKET_NAME")
+export ORG_GRADLE_PROJECT_googleProject = $(GOOGLE_PROJECT)
+export ORG_GRADLE_PROJECT_smtpServerAddress = $(SMTP_SERVER_ADDRESS)
+export ORG_GRADLE_PROJECT_smtpServerPassword = $(SMTP_SERVER_PASSWORD)
+export ORG_GRADLE_PROJECT_smtpServerPort = $(SMTP_SERVER_PORT)
+export ORG_GRADLE_PROJECT_smtpServerUsername = $(SMTP_SERVER_USERNAME)
 endif
 
-DMUA_SECRETS := $(HOME)/.dmua/secrets
-DMUA_VARIABLES := $(HOME)/.dmua/variables
-
-FIREBASE_LOCATION = $(shell which firebase)
+export ORG_GRADLE_PROJECT_firebaseLocation = $(shell which firebase)
 
 .PHONY: build
-build: export ORG_GRADLE_PROJECT_firebaseLocation = $(shell which firebase)
 build:
 	@./gradlew $(GRADLE_BUILD_SCAN_SWITCH) test jacocoTestReport shadowJar
 
 .PHONY: run
-run: export ORG_GRADLE_PROJECT_credentials = $(value CREDENTIALS)
-run: export ORG_GRADLE_PROJECT_devBucket = $(shell cat "$(DMUA_VARIABLES)/development/BUCKET_NAME")
-run: export ORG_GRADLE_PROJECT_firebaseLocation = $(FIREBASE_LOCATION)
-run: export ORG_GRADLE_PROJECT_googleProject = $(GOOGLE_PROJECT)
-run: export ORG_GRADLE_PROJECT_smtpServerAddress = $(SMTP_SERVER_ADDRESS)
-run: export ORG_GRADLE_PROJECT_smtpServerPassword = $(SMTP_SERVER_PASSWORD)
-run: export ORG_GRADLE_PROJECT_smtpServerPort = $(SMTP_SERVER_PORT)
-run: export ORG_GRADLE_PROJECT_smtpServerUsername = $(SMTP_SERVER_USERNAME)
 run:
 	@./gradlew run
 
 .PHONY: test
-test: export ORG_GRADLE_PROJECT_firebaseLocation = $(shell which firebase)
 test:
 	@./gradlew $(GRADLE_BUILD_SCAN_SWITCH) test
 
 .PHONY: prepare-native-build
-prepare-native-build: export ORG_GRADLE_PROJECT_credentials = $(value CREDENTIALS)
-prepare-native-build: export ORG_GRADLE_PROJECT_devBucket = $(shell cat "$(DMUA_VARIABLES)/development/BUCKET_NAME")
-prepare-native-build: export ORG_GRADLE_PROJECT_firebaseLocation = $(FIREBASE_LOCATION)
-prepare-native-build: export ORG_GRADLE_PROJECT_googleProject = $(GOOGLE_PROJECT)
-prepare-native-build: export ORG_GRADLE_PROJECT_smtpServerAddress = $(SMTP_SERVER_ADDRESS)
-prepare-native-build: export ORG_GRADLE_PROJECT_smtpServerPassword = $(SMTP_SERVER_PASSWORD)
-prepare-native-build: export ORG_GRADLE_PROJECT_smtpServerPort = $(SMTP_SERVER_PORT)
-prepare-native-build: export ORG_GRADLE_PROJECT_smtpServerUsername = $(SMTP_SERVER_USERNAME)
 prepare-native-build:
 	@./gradlew -Pagent run
 
