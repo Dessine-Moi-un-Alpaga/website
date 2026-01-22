@@ -10,6 +10,8 @@ RUN native-image \
     -Duser.language=fr \
     -H:IncludeLocales=fr,en \
     -H:+ReportExceptionStackTraces \
+    -H:+UnlockExperimentalVMOptions \
+    -H:+CompactingOldGen \
     -R:MaxHeapSize=100m \
     --color=always \
     --initialize-at-build-time=io.ktor,kotlin \
