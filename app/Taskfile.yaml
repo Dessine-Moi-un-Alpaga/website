@@ -1,15 +1,8 @@
 version: "3"
 
 env:
-  ORG_GRADLE_PROJECT_credentials: "{{.CREDENTIALS}}"
-  ORG_GRADLE_PROJECT_devBucket: "{{.BUCKET_NAME}}"
   ORG_GRADLE_PROJECT_firebaseLocation:
     sh: which firebase
-  ORG_GRADLE_PROJECT_googleProject: "{{.GOOGLE_PROJECT}}"
-  ORG_GRADLE_PROJECT_smtpServerAddress: "{{.SMTP_SERVER_ADDRESS}}"
-  ORG_GRADLE_PROJECT_smtpServerPassword: "{{.SMTP_SERVER_PASSWORD}}"
-  ORG_GRADLE_PROJECT_smtpServerPort: "{{.SMTP_SERVER_PORT}}"
-  ORG_GRADLE_PROJECT_smtpServerUsername: "{{.SMTP_SERVER_USERNAME}}"
 
 tasks:
 
@@ -29,6 +22,14 @@ tasks:
             .
 
   run:
+    env:
+      ORG_GRADLE_PROJECT_credentials: "{{.CREDENTIALS}}"
+      ORG_GRADLE_PROJECT_devBucket: "{{.BUCKET_NAME}}"
+      ORG_GRADLE_PROJECT_googleProject: "{{.GOOGLE_PROJECT}}"
+      ORG_GRADLE_PROJECT_smtpServerAddress: "{{.SMTP_SERVER_ADDRESS}}"
+      ORG_GRADLE_PROJECT_smtpServerPassword: "{{.SMTP_SERVER_PASSWORD}}"
+      ORG_GRADLE_PROJECT_smtpServerPort: "{{.SMTP_SERVER_PORT}}"
+      ORG_GRADLE_PROJECT_smtpServerUsername: "{{.SMTP_SERVER_USERNAME}}"
     cmds:
       - ./gradlew {{.CLI_ARGS}} run
 
