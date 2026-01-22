@@ -1,0 +1,43 @@
+version: "3"
+
+includes:
+  app:
+    dir: ./app
+    taskfile: ./app/Taskfile.yaml
+  infrastructure:
+    dir: ./infrastructure
+    taskfile: ./infrastructure/Taskfile.yaml
+
+env:
+  ENVIRONMENT: development
+  VERSION:
+    sh: git describe --tags --always --first-parent
+
+dotenv:
+  - "{{.HOME}}/.dmua/variables/{{.ENVIRONMENT}}/.env"
+  - "{{.HOME}}/.dmua/secrets/.env"
+  - "{{.HOME}}/.dmua/variables/.env"
+
+vars:
+  ARTIFACT_REGISTRY: "{{.ARTIFACT_REGISTRY_LOCATION}}-docker.pkg.dev"
+  DOCKER_IMAGE: "{{.ARTIFACT_REGISTRY}}/{{.GOOGLE_PROJECT}}/{{.ARTIFACT_REPOSITORY}}/website"
+
+tasks:
+
+  download-assets:
+    cmds:
+      - gsutil -m rsync -r -d gs://{{.BUCKET_NAME}} assets/
+
+  release:
+    cmds:
+      - task: infrastructure:infra:init
+      - task: infrastructure:infra:plan
+      - task: infrastructure:infra:apply
+      - task: app:push
+      - task: infrastructure:app:init
+      - task: infrastructure:app:plan
+      - task: infrastructure:app:apply
+
+  upload-assets:*:
+    cmds:
+      - gsutil -m rsync -x ".DS_Store" -r -d assets/ gs://{{.BUCKET_NAME}}

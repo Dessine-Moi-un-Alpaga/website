@@ -28,6 +28,49 @@ resource "local_sensitive_file" "variables" {
   filename = "${var.home_directory}/.dmua/bootstrap/terraform.tfvars"
 }
 
+resource "local_file" "dotenv_variables" {
+  content = <<-EOT
+  ARTIFACT_REGISTRY_LOCATION=${var.artifact_registry_location}
+  ARTIFACT_REPOSITORY=${var.artifact_repository}
+  DOMAIN_NAME=${var.domain_name}
+  FIRESTORE_LOCATION=${var.firestore_location}
+  GOOGLE_PROJECT=${var.project_id}
+  GOOGLE_REGION=${var.region}
+  GOOGLE_ZONE=${var.zone}
+  SMTP_SERVER_ADDRESS=${var.smtp_server_address}
+  SMTP_SERVER_PORT=${var.smtp_server_port}
+  SMTP_SERVER_USERNAME=${var.smtp_server_username}
+  EOT
+  filename = "${var.home_directory}/.dmua/variables/.env"
+}
+
+resource "local_file" "dotenv_development_variables" {
+  content = <<-EOT
+  BUCKET_NAME=${var.dev_bucket_name}
+  CORS_ORIGINS="[\"*\"]"
+  CREATE_DOMAIN_MAPPING=false
+  EOT
+  filename = "${var.home_directory}/.dmua/variables/development/.env"
+}
+
+resource "local_file" "dotenv_production_variables" {
+  content = <<-EOT
+  BUCKET_NAME=${var.prod_bucket_name}
+  CORS_ORIGINS="[\"https://${var.domain_name}\"]"
+  CREATE_DOMAIN_MAPPING=true
+  EOT
+  filename = "${var.home_directory}/.dmua/variables/production/.env"
+}
+
+resource "local_sensitive_file" "dotenv_secrets" {
+  content = <<-EOT
+  CREDENTIALS='${local.credentials}'
+  SMTP_SERVER_PASSWORD=${var.smtp_server_password}
+  SONARCLOUD_TOKEN=${var.sonarcloud_token}
+  EOT
+  filename = "${var.home_directory}/.dmua/secrets/.env"
+}
+
 locals {
   credentials = "${var.username}:${bcrypt(var.password, var.bcrypt_cost)}"
 }

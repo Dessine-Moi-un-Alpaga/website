@@ -41,6 +41,7 @@ The following is required:
 * the [Google Firestore Emulator](https://firebase.google.com/docs/emulator-suite/install_and_configure)
 * a recent [Docker installation](https://www.docker.com/products/docker-desktop/) that includes `buildx`
 * a recent [Terraform installation](https://developer.hashicorp.com/terraform/install?product_intent=terraform)
+* a recent [Task](https://taskfile.dev/docs/installation) installation
 
 # Logging in
 
@@ -55,13 +56,13 @@ This project includes a Terraform configuration that will prompt you for several
 everything is set up for deploying the application to Google Cloud Run from your local box and from GitHub.
 
 ```shell
-$ make infrastructure/bootstrap/plan
+$ task infrastructure:bootstrap:plan
 ```
 
 Once the plan looks right, apply the changes to bootstrap the infrastructure:
 
 ```shell
-$ make infrastructure/bootstrap/apply
+$ task infrastructure:bootstrap:apply
 ```
 
 Configuration files will be saved in the `~/.dmua` directory.
@@ -69,13 +70,13 @@ Configuration files will be saved in the `~/.dmua` directory.
 You are now all set to build using GitHub Actions, or locally:
 
 ```shell
-$ make app/run
+$ task app:run
 ```
 
 Running tests:
 
 ```shell
-$ make app/test
+$ task app:test
 ```
 
 # Preparing the Native Build
@@ -83,7 +84,7 @@ $ make app/test
 Compiling a native executable with GraalVM requires some configuration, which can be automatically generated:
 
 ```shell
-$ make app/prepare-native-build
+$ task app:run -- -Pagent
 ```
 
 You must then make sure that all relevant code paths are covered by your interactions with the app and all the

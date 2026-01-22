@@ -1,0 +1,12 @@
+version: "3"
+
+includes:
+  app:
+    dir: ./app
+    taskfile: ./app/Taskfile.yaml
+  bootstrap:
+    dir: ./bootstrap
+    taskfile: ./bootstrap/Taskfile.yaml
+  infra:
+    dir: ./infra
+    taskfile: ./infra/Taskfile.yaml

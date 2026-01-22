@@ -58,8 +58,11 @@ jobs:
         with:
           cache-read-only: false
 
+      - name: Install Task
+        uses: go-task/setup-task@v1
+
       - name: Build
-        run: make app/build
+        run: task ENVIRONMENT=${{ vars.ENVIRONMENT }} app:build -- --scan
 
       - name: Save Firebase emulator logs
         if: always()
@@ -121,11 +124,12 @@ jobs:
           FIRESTORE_LOCATION: ${{ vars.FIRESTORE_LOCATION }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GOOGLE_PROJECT: ${{ vars.GOOGLE_PROJECT }}
-          LOCATION: ${{ vars.GOOGLE_REGION }}
+          GOOGLE_REGION: ${{ vars.GOOGLE_REGION }}
           SMTP_SERVER_ADDRESS: ${{ vars.SMTP_SERVER_ADDRESS }}
           SMTP_SERVER_PASSWORD: ${{ secrets.SMTP_SERVER_PASSWORD }}
           SMTP_SERVER_PORT: ${{ vars.SMTP_SERVER_PORT }}
           SMTP_SERVER_USERNAME: ${{ vars.SMTP_SERVER_USERNAME }}
+          TF_IN_AUTOMATION: true
         run: npx semantic-release@${SEMANTIC_RELEASE_VERSION}
 
 permissions:

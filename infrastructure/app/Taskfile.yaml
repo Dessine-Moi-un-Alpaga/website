@@ -1,0 +1,32 @@
+version: "3"
+
+tasks:
+  init:
+    env:
+      TF_CLI_ARGS_init: "-input=false -reconfigure -upgrade -backend-config=bucket=terraform-state-{{.GOOGLE_PROJECT}} -backend-config=prefix={{.ENVIRONMENT}}/app"
+    cmds:
+      - terraform init
+
+  plan:
+    env:
+      TF_CLI_ARGS_plan: "-input=false -out=tfplan"
+      TF_VAR_artifact_registry_location: "{{.ARTIFACT_REGISTRY_LOCATION}}"
+      TF_VAR_artifact_repository: "{{.ARTIFACT_REPOSITORY}}"
+      TF_VAR_bucket_name: "{{.BUCKET_NAME}}"
+      TF_VAR_cors_origins: "{{.CORS_ORIGINS}}"
+      TF_VAR_create_domain_mapping: "{{.CREATE_DOMAIN_MAPPING}}"
+      TF_VAR_domain_name: "{{.DOMAIN_NAME}}"
+      TF_VAR_environment: "{{.ENVIRONMENT}}"
+      TF_VAR_image: "{{.DOCKER_IMAGE}}:{{.VERSION}}"
+      TF_VAR_location: "{{.GOOGLE_REGION}}"
+      TF_VAR_smtp_server_address: "{{.SMTP_SERVER_ADDRESS}}"
+      TF_VAR_smtp_server_port: "{{.SMTP_SERVER_PORT}}"
+      TF_VAR_smtp_server_username: "{{.SMTP_SERVER_USERNAME}}"
+    cmds:
+      - terraform plan
+
+  apply:
+    env:
+      TF_CLI_ARGS_apply: "-auto-approve tfplan"
+    cmds:
+      - terraform apply

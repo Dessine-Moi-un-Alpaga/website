@@ -1,0 +1,37 @@
+version: "3"
+
+env:
+  ORG_GRADLE_PROJECT_credentials: "{{.CREDENTIALS}}"
+  ORG_GRADLE_PROJECT_devBucket: "{{.BUCKET_NAME}}"
+  ORG_GRADLE_PROJECT_firebaseLocation:
+    sh: which firebase
+  ORG_GRADLE_PROJECT_googleProject: "{{.GOOGLE_PROJECT}}"
+  ORG_GRADLE_PROJECT_smtpServerAddress: "{{.SMTP_SERVER_ADDRESS}}"
+  ORG_GRADLE_PROJECT_smtpServerPassword: "{{.SMTP_SERVER_PASSWORD}}"
+  ORG_GRADLE_PROJECT_smtpServerPort: "{{.SMTP_SERVER_PORT}}"
+  ORG_GRADLE_PROJECT_smtpServerUsername: "{{.SMTP_SERVER_USERNAME}}"
+
+tasks:
+
+  build:
+    cmds:
+      - ./gradlew {{.CLI_ARGS}} test jacocoTestReport shadowJar
+
+  push:
+    cmds:
+      - gcloud auth configure-docker {{.ARTIFACT_REGISTRY}} --quiet
+          && docker buildx build
+            --push
+            --tag {{.DOCKER_IMAGE}}:{{.VERSION}}
+            --tag {{.DOCKER_IMAGE}}:{{.ENVIRONMENT}}
+            --cache-from type=gha,scope=main
+            --cache-to type=gha,mode=max,scope=main
+            .
+
+  run:
+    cmds:
+      - ./gradlew {{.CLI_ARGS}} run
+
+  test:
+    cmds:
+      - ./gradlew test

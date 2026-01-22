@@ -2,7 +2,6 @@ resource "github_repository" "git_repository" {
   allow_merge_commit   = false
   allow_update_branch  = true
   description          = var.github_repository_description
-  has_downloads        = true
   has_issues           = true
   has_projects         = true
   has_wiki             = true
@@ -126,4 +125,18 @@ resource "github_actions_environment_variable" "production_create_domain_mapping
   repository    = github_repository.git_repository.name
   value         = true
   variable_name = "CREATE_DOMAIN_MAPPING"
+}
+
+resource "github_actions_environment_variable" "development_environment_variable" {
+  environment   = github_repository_environment.development_environment.environment
+  repository    = github_repository.git_repository.name
+  value         = "development"
+  variable_name = "ENVIRONMENT"
+}
+
+resource "github_actions_environment_variable" "production_environment_variable" {
+  environment   = github_repository_environment.production_environment.environment
+  repository    = github_repository.git_repository.name
+  value         = "production"
+  variable_name = "ENVIRONMENT"
 }
