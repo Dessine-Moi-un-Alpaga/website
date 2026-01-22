@@ -1,3 +1,7 @@
+ifdef CI
+export TF_IN_AUTOMATION = true
+endif
+
 .PHONY: app/%
 app/%:
 	@$(MAKE) --directory=app $*
