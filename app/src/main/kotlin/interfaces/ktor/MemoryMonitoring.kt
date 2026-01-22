@@ -14,10 +14,8 @@ fun <T : ApplicationEngine, U : ApplicationEngine.Configuration> EmbeddedServer<
     CoroutineScope(application.coroutineContext).launch {
         while (isActive) {
             logger.info(
-                "[Memory] Max: {} - Total: {} - Free: {}",
-                Runtime.getRuntime().maxMemory(),
-                Runtime.getRuntime().totalMemory(),
-                Runtime.getRuntime().freeMemory(),
+                "Available Memory: {} MB",
+                Runtime.getRuntime().freeMemory() / 1_048_576,
             )
             delay(60000)
         }
