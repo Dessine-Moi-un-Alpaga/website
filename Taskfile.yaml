@@ -25,10 +25,12 @@ vars:
 tasks:
 
   download-assets:
+    desc: Downloads assets from Google Cloud Storage to the local assets/ directory
     cmds:
       - gsutil -m rsync -r -d gs://{{.BUCKET_NAME}} assets/
 
   release:
+    desc: Performs a release, pusblishes it and deploys it to Google Cloud Run
     cmds:
       - task: infrastructure:infra:init
       - task: infrastructure:infra:plan
@@ -38,6 +40,7 @@ tasks:
       - task: infrastructure:app:plan
       - task: infrastructure:app:apply
 
-  upload-assets:*:
+  upload-assets:
+    desc: Uploads assets in the local assets/ directory to Google Cloud Storage
     cmds:
       - gsutil -m rsync -x ".DS_Store" -r -d assets/ gs://{{.BUCKET_NAME}}

@@ -59,3 +59,9 @@ kotlin {
         jvmTarget.set(JvmTarget.JVM_25)
     }
 }
+
+tasks.register("ci") {
+    group = "build"
+    description = "Executes continuous integration build tasks."
+    dependsOn(tasks.test, tasks.jacocoTestReport, tasks.shadowJar)
+}
