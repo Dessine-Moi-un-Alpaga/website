@@ -7,8 +7,9 @@ env:
 tasks:
 
   build:
+    desc: Performs the continuous integration build
     cmds:
-      - ./gradlew {{.CLI_ARGS}} test jacocoTestReport shadowJar
+      - ./gradlew {{.CLI_ARGS}} ci
 
   push:
     cmds:
@@ -22,6 +23,7 @@ tasks:
             .
 
   run:
+    desc: Runs the application locally using the Firestore emulator
     env:
       ORG_GRADLE_PROJECT_credentials: "{{.CREDENTIALS}}"
       ORG_GRADLE_PROJECT_devBucket: "{{.BUCKET_NAME}}"
@@ -34,5 +36,6 @@ tasks:
       - ./gradlew {{.CLI_ARGS}} run
 
   test:
+    desc: Tests the application using the Firestore emulator
     cmds:
       - ./gradlew test
