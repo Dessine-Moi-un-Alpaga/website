@@ -1,0 +1,13 @@
+version: "3"
+
+tasks:
+
+  start:
+    cmds:
+      - npm ci
+      - npm run start
+
+  stop:
+    cmds:
+      - cmd: lsof -t -i tcp:8181 | xargs kill -9
+        ignore_error: true

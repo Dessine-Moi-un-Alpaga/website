@@ -38,11 +38,10 @@ The following is required:
 * a Google Cloud organization
 * a Google user account that is `Organization Administrator`
 * the [GraalVM 25 SDK](https://www.graalvm.org/downloads/)
-* the [Google Firestore Emulator](https://firebase.google.com/docs/emulator-suite/install_and_configure)
 * a recent [Docker installation](https://www.docker.com/products/docker-desktop/) that includes `buildx`
 * a recent [Terraform installation](https://developer.hashicorp.com/terraform/install?product_intent=terraform)
 * a recent [Task](https://taskfile.dev/docs/installation) installation
-* a recent [Wait4X](https://github.com/wait4x/wait4x?tab=readme-ov-file#installation) installation
+* a recent [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) installation
 
 # Logging in
 
