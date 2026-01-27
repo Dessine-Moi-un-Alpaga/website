@@ -26,7 +26,7 @@ tasks:
     desc: Runs the application locally using the Firestore emulator
     env:
       ORG_GRADLE_PROJECT_credentials: "{{.CREDENTIALS}}"
-      ORG_GRADLE_PROJECT_devBucket: "{{.BUCKET_NAME}}"
+      ORG_GRADLE_PROJECT_bucket: "{{.BUCKET_NAME}}"
       ORG_GRADLE_PROJECT_googleProject: "{{.GOOGLE_PROJECT}}"
       ORG_GRADLE_PROJECT_smtpServerAddress: "{{.SMTP_SERVER_ADDRESS}}"
       ORG_GRADLE_PROJECT_smtpServerPassword: "{{.SMTP_SERVER_PASSWORD}}"
