@@ -11,7 +11,7 @@ tasks:
 
   start:
     cmds:
-      - "{{.FIREBASE}} --project {{.GOOGLE_PROJECT}} emulators:start &"
+      - "{{.FIREBASE}} --non-interactive emulators:start &"
       - "{{.WAIT4X}} tcp localhost:8181 --timeout 30s --quiet"
 
   stop:
