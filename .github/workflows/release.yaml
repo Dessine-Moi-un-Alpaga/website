@@ -62,7 +62,9 @@ jobs:
         uses: go-task/setup-task@v1
 
       - name: Install Wait4X
-        run: brew install wait4x
+        run: |
+          eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+          brew install wait4x
 
       - name: Build
         run: task ENVIRONMENT=${{ vars.ENVIRONMENT }} app:build -- --scan
