@@ -3,7 +3,6 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 plugins {
     alias(libs.plugins.kotlin)
 
-    id("firestore-emulator")
     id("graalvm-native")
     id("i18n")
     id("run")

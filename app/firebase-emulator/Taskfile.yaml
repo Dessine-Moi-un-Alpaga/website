@@ -1,0 +1,20 @@
+version: "3"
+
+vars:
+  FIREBASE:
+    sh: which firebase
+  FIRESTORE_PORT: 8181
+  WAIT4X:
+    sh: which wait4x
+
+tasks:
+
+  start:
+    cmds:
+      - "{{.FIREBASE}} --project {{.GOOGLE_PROJECT}} emulators:start &"
+      - "{{.WAIT4X}} tcp localhost:8181 --timeout 10s"
+
+  stop:
+    cmds:
+      - cmd: lsof -t -i tcp:{{.FIRESTORE_PORT}} | xargs kill -9
+        ignore_error: true

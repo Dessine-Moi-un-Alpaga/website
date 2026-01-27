@@ -1,15 +1,18 @@
 version: "3"
 
-env:
-  ORG_GRADLE_PROJECT_firebaseLocation:
-    sh: which firebase
+includes:
+  firebase-emulator:
+    dir: ./firebase-emulator
+    taskfile: ./firebase-emulator/Taskfile.yaml
 
 tasks:
 
   build:
     desc: Performs the continuous integration build
     cmds:
+      - task: firebase-emulator:start
       - ./gradlew {{.CLI_ARGS}} ci
+      - defer: { task: firebase-emulator:stop }
 
   push:
     cmds:
@@ -33,9 +36,13 @@ tasks:
       ORG_GRADLE_PROJECT_smtpServerPort: "{{.SMTP_SERVER_PORT}}"
       ORG_GRADLE_PROJECT_smtpServerUsername: "{{.SMTP_SERVER_USERNAME}}"
     cmds:
+      - task: firebase-emulator:start
       - ./gradlew {{.CLI_ARGS}} run
+      - defer: { task: firebase-emulator:stop }
 
   test:
     desc: Tests the application using the Firestore emulator
     cmds:
+      - task: firebase-emulator:start
       - ./gradlew test
+      - defer: { task: firebase-emulator:stop }

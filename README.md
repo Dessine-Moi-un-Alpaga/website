@@ -42,6 +42,7 @@ The following is required:
 * a recent [Docker installation](https://www.docker.com/products/docker-desktop/) that includes `buildx`
 * a recent [Terraform installation](https://developer.hashicorp.com/terraform/install?product_intent=terraform)
 * a recent [Task](https://taskfile.dev/docs/installation) installation
+* a recent [Wait4X](https://github.com/wait4x/wait4x?tab=readme-ov-file#installation) installation
 
 # Logging in
 

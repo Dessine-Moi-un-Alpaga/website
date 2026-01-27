@@ -6,7 +6,6 @@ plugins {
 
 afterEvaluate {
     tasks.withType(Test::class.java).configureEach {
-        dependsOn(":firestoreEmulator")
         useJUnitPlatform()
         environmentVariables(project)
     }
