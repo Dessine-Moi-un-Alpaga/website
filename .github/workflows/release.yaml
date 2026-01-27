@@ -53,6 +53,13 @@ jobs:
           key: firebase-tools-${{ env.FIREBASE_TOOLS_VERSION }}
           path: ~/.cache/firebase/emulators
 
+      - name: Start & Stop Firebase emulators
+        run: |
+          export FIREBASE_PATH=$(which firebase)
+          cd app/firebase-emulator
+          ${FIREBASE_PATH}/firebase --project ${{ vars.GOOGLE_PROJECT }} emulators:start
+          ${FIREBASE_PATH}/firebase --project ${{ vars.GOOGLE_PROJECT }} emulators:stop
+
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v5
         with:
