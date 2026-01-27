@@ -1,7 +1,6 @@
 [versions]
 angus-mail             = "2.0.5"
 bcrypt                 = "0.10.2"
-exec-fork-plugin       = "0.2.2"
 escape-velocity        = "1.0.0-1"
 graalvm-plugin         = "0.11.4"
 i18n4k                 = "0.11.1"
@@ -22,7 +21,6 @@ toastr                 = "2.1.4"
 angus-smtp                      = { module = "org.eclipse.angus:smtp",                          version.ref = "angus-mail"             }
 bcrypt                          = { module = "at.favre.lib:bcrypt",                             version.ref = "bcrypt"                 }
 escape-velocity                 = { module = "org.webjars:escape-velocity",                     version.ref = "escape-velocity"        }
-exec-fork-plugin                = { module = "com.github.psxpaul:gradle-execfork-plugin",       version.ref = "exec-fork-plugin"       }
 i18n4k                          = { module = "de.comahe.i18n4k:i18n4k-core",                    version.ref = "i18n4k"                 }
 i18n4k-gradle-plugin            = { module = "de.comahe.i18n4k:de.comahe.i18n4k.gradle.plugin", version.ref = "i18n4k"                 }
 jakarta-mail-api                = { module = "jakarta.mail:jakarta.mail-api",                   version.ref = "jakarta-mail-api"       }
@@ -86,7 +84,6 @@ ktor-server = [
 ]
 
 [plugins]
-exec-fork            = { id = "com.github.psxpaul.execfork",               version.ref = "exec-fork-plugin" }
 i18n4k               = { id = "de.comahe.i18n4k",                          version.ref = "i18n4k"           }
 kotlin               = { id = "org.jetbrains.kotlin.jvm",                  version.ref = "kotlin"           }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin"           }
