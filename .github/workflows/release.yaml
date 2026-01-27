@@ -62,7 +62,10 @@ jobs:
         uses: go-task/setup-task@v1
 
       - name: Install Wait4X
-        run: go install wait4x.dev/v3/cmd/wait4x@latest
+        run: |
+          curl -LO https://github.com/wait4x/wait4x/releases/latest/download/wait4x-linux-amd64.tar.gz
+          tar -xf wait4x-linux-amd64.tar.gz -C /tmp
+          mv /tmp/wait4x-linux-amd64/wait4x /usr/local/bin/
 
       - name: Build
         run: task ENVIRONMENT=${{ vars.ENVIRONMENT }} app:build -- --scan
