@@ -24,3 +24,6 @@ tfplan
 
 # Kotlin
 .kotlin/
+
+# npm
+node_modules/

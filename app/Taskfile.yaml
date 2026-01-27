@@ -2,8 +2,8 @@ version: "3"
 
 includes:
   firebase-emulator:
-    dir: ./firebase-emulator
-    taskfile: ./firebase-emulator/Taskfile.yaml
+    dir: ../firebase-emulator
+    taskfile: ../firebase-emulator/Taskfile.yaml
 
 tasks:
 

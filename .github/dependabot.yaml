@@ -9,11 +9,13 @@ updates:
     schedule:
       interval: "daily"
     target-branch: "beta"
+
   - package-ecosystem: "docker"
     directory: "/app"
     schedule:
       interval: "daily"
     target-branch: "beta"
+
   - package-ecosystem: "gradle"
     directory: "/app"
     groups:
@@ -23,6 +25,18 @@ updates:
     schedule:
       interval: "daily"
     target-branch: "beta"
+
+  - package-ecosystem: "npm"
+    directories:
+      - "/firebase-emulator"
+    groups:
+      npm-packages:
+        patterns:
+          - "*"
+    schedule:
+      interval: "daily"
+    target-branch: "beta"
+
   - package-ecosystem: "terraform"
     directories:
       - "/infrastructure/app"
