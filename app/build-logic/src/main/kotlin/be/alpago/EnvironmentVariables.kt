@@ -5,7 +5,7 @@ import org.gradle.process.ProcessForkOptions
 
 fun ProcessForkOptions.environmentVariables(project: Project) {
     val credentials = project.property("credentials")
-    val devBucket = project.property("devBucket")
+    val bucket = project.property("bucket")
     val firestorePort = project.property("firestorePort")
     val googleProject = project.property("googleProject")
     val smtpServerAddress = project.property("smtpServerAddress")
@@ -13,7 +13,7 @@ fun ProcessForkOptions.environmentVariables(project: Project) {
     val smtpServerPort = project.property("smtpServerPort")
     val smtpServerUsername = project.property("smtpServerUsername")
 
-    environment("DMUA_BASE_ASSET_URL", "https://storage.googleapis.com/${devBucket}")
+    environment("DMUA_BASE_ASSET_URL", "https://storage.googleapis.com/${bucket}")
     environment("DMUA_CREDENTIALS", credentials)
     environment("DMUA_EMAIL_ADDRESS", "contact@dessinemoiunalpaga.com")
     environment("DMUA_ENVIRONMENT", "local")
