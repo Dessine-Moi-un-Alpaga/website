@@ -63,8 +63,9 @@ jobs:
 
       - name: Install Wait4X
         run: |
-          eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-          brew install wait4x
+          curl -LO https://github.com/wait4x/wait4x/releases/latest/download/wait4x-linux-amd64.tar.gz
+          tar -xf wait4x-linux-amd64.tar.gz -C /tmp
+          sudo mv /tmp/wait4x-linux-amd64/wait4x /usr/local/bin/
 
       - name: Build
         run: task ENVIRONMENT=${{ vars.ENVIRONMENT }} app:build -- --scan
