@@ -2,6 +2,8 @@ val taskName = "explodeWebjars"
 val webjars by configurations.creating
 
 tasks.register<Copy>(taskName) {
+    notCompatibleWithConfigurationCache("Uses the DefaultResolvedArtifact class, which is not Serializable")
+
     description = "Explodes WebJars to the build resources."
     group = "build"
 
