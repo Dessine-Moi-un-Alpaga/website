@@ -62,12 +62,15 @@ jobs:
       - name: Build
         run: task ENVIRONMENT=${{ vars.ENVIRONMENT }} app:build -- --scan
 
-      - name: Save Firebase emulator logs
+      - name: Save build reports and logs
         if: always()
         uses: actions/upload-artifact@v6
         with:
-          name: firebase-emulator-logs
-          path: firebase-emulator/*.log
+          name: reports-and-logs
+          path: |
+            app/build/reports/**/configuration-cache-report.html
+            app/build/reports/problems/problems-report.html
+            firebase-emulator/*.log
 
       - name: Set up SonarCloud package cache
         uses: actions/cache@v5
