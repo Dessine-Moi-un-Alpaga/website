@@ -11,8 +11,8 @@ tasks:
     desc: Performs the continuous integration build
     cmds:
       - task: firebase-emulator:start
-      - ./gradlew {{.CLI_ARGS}} ci
       - defer: { task: firebase-emulator:stop }
+      - ./gradlew {{.CLI_ARGS}} ci
 
   push:
     cmds:
@@ -37,12 +37,12 @@ tasks:
       ORG_GRADLE_PROJECT_smtpServerUsername: "{{.SMTP_SERVER_USERNAME}}"
     cmds:
       - task: firebase-emulator:start
-      - ./gradlew {{.CLI_ARGS}} run
       - defer: { task: firebase-emulator:stop }
+      - ./gradlew {{.CLI_ARGS}} run
 
   test:
     desc: Tests the application using the Firestore emulator
     cmds:
       - task: firebase-emulator:start
-      - ./gradlew test
       - defer: { task: firebase-emulator:stop }
+      - ./gradlew test

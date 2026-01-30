@@ -7,7 +7,6 @@ plugins {
     id("i18n")
     id("run")
     id("test")
-    id("webjars")
 
     alias(libs.plugins.ktor)
     alias(libs.plugins.kotlin.serialization)
@@ -28,6 +27,7 @@ dependencies {
     implementation(libs.i18n4k)
     implementation(libs.jakarta.mail.api)
     implementation(libs.jul.to.slf4j)
+    implementation(libs.webjars.locator.lite)
 
     implementation(libs.bundles.ktor.client)
     implementation(libs.bundles.ktor.server)
@@ -35,9 +35,9 @@ dependencies {
     runtimeOnly(libs.angus.smtp)
     runtimeOnly(libs.slf4j.simple)
 
-    webjars(libs.escape.velocity)
-    webjars(libs.photoswipe)
-    webjars(libs.toastr)
+    runtimeOnly(libs.escape.velocity)
+    runtimeOnly(libs.photoswipe)
+    runtimeOnly(libs.toastr)
 
     testImplementation(
         platform(libs.junit.bom)
