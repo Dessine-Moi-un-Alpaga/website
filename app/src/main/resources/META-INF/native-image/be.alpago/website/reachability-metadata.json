@@ -1253,27 +1253,6 @@
       "glob": "META-INF/javamail.default.providers"
     },
     {
-      "glob": "META-INF/maven/org.webjars.npm/escape-velocity/pom.properties"
-    },
-    {
-      "glob": "META-INF/maven/org.webjars.npm/font-awesome/pom.properties"
-    },
-    {
-      "glob": "META-INF/maven/org.webjars.npm/jquery.dropotron/pom.properties"
-    },
-    {
-      "glob": "META-INF/maven/org.webjars.npm/jquery/pom.properties"
-    },
-    {
-      "glob": "META-INF/maven/org.webjars.npm/photoswipe/pom.properties"
-    },
-    {
-      "glob": "META-INF/maven/org.webjars.npm/responsive-tools/pom.properties"
-    },
-    {
-      "glob": "META-INF/maven/org.webjars.npm/toastr/pom.properties"
-    },
-    {
       "glob": "META-INF/maven/org.webjars/escape-velocity/pom.properties"
     },
     {
