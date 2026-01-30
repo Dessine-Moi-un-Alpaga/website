@@ -1265,6 +1265,9 @@
       "glob": "META-INF/maven/org.webjars/jquery/pom.properties"
     },
     {
+      "glob": "META-INF/maven/org.webjars.npm/photoswipe/pom.properties"
+    },
+    {
       "glob": "META-INF/maven/org.webjars/responsive-tools/pom.properties"
     },
     {
