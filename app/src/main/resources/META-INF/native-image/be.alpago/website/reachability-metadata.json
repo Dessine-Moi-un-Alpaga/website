@@ -50,6 +50,23 @@
       "type": "be.alpago.website.adapters.firestore.FirestoreProperties"
     },
     {
+      "type":"be.alpago.website.adapters.firestore.GoogleToken",
+      "fields": [
+        {
+          "name": "Companion"
+        }
+      ]
+    },
+    {
+      "type": "be.alpago.website.adapters.firestore.GoogleToken$Companion",
+      "methods": [
+        {
+          "name": "serializer",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
       "type": "be.alpago.website.adapters.firestore.IntValue",
       "fields": [
         {
@@ -1278,9 +1295,6 @@
       "glob": "META-INF/resources/webjars-locator.properties"
     },
     {
-      "glob": "META-INF/resources/webjars/escape-velocity/*"
-    },
-    {
       "glob": "META-INF/resources/webjars/escape-velocity/*/css/images/banner.jpg"
     },
     {
@@ -1297,9 +1311,6 @@
     },
     {
       "glob": "META-INF/resources/webjars/escape-velocity/*/js/util.js"
-    },
-    {
-      "glob": "META-INF/resources/webjars/font-awesome/*"
     },
     {
       "glob": "META-INF/resources/webjars/font-awesome/*/css/brands.min.css"
@@ -1341,19 +1352,10 @@
       "glob": "META-INF/resources/webjars/font-awesome/*/webfonts/fa-solid-900.woff2"
     },
     {
-      "glob": "META-INF/resources/webjars/jquery.dropotron/*"
-    },
-    {
       "glob": "META-INF/resources/webjars/jquery.dropotron/*/jquery.dropotron.min.js"
     },
     {
-      "glob": "META-INF/resources/webjars/jquery/*"
-    },
-    {
       "glob": "META-INF/resources/webjars/jquery/*/jquery.min.js"
-    },
-    {
-      "glob": "META-INF/resources/webjars/photoswipe/*"
     },
     {
       "glob": "META-INF/resources/webjars/photoswipe/*/dist/photoswipe-lightbox.esm.min.js"
@@ -1362,16 +1364,10 @@
       "glob": "META-INF/resources/webjars/photoswipe/*/dist/photoswipe.css"
     },
     {
-      "glob": "META-INF/resources/webjars/responsive-tools/*"
-    },
-    {
       "glob": "META-INF/resources/webjars/responsive-tools/*/dist/breakpoints.min.js"
     },
     {
       "glob": "META-INF/resources/webjars/responsive-tools/*/dist/browser.min.js"
-    },
-    {
-      "glob": "META-INF/resources/webjars/toastr/*"
     },
     {
       "glob": "META-INF/resources/webjars/toastr/*/build/toastr.min.css"
