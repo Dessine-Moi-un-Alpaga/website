@@ -14,7 +14,7 @@ RUN native-image \
     -H:+CompactingOldGen \
     -R:MaxHeapSize=32m \
     --color=always \
-    --exclude-config webjars-locator-lite-.*.jar META-INF\/native-image\/org.webjars\/webjars-locator-lite\/resource-config.json \
+    --exclude-config website-all.jar META-INF\/native-image\/org.webjars\/webjars-locator-lite\/resource-config.json \
     --initialize-at-build-time=io.ktor,kotlin \
     --initialize-at-build-time=kotlinx.coroutines \
     --initialize-at-build-time=kotlinx.io.Buffer \
