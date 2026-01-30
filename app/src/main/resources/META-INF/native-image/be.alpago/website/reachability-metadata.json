@@ -1,9 +1,6 @@
 {
   "reflection": [
     {
-      "type": "[Lio.ktor.network.selector.SelectInterest;"
-    },
-    {
       "type": "apple.security.AppleProvider",
       "methods": [
         {
@@ -51,23 +48,6 @@
     },
     {
       "type": "be.alpago.website.adapters.firestore.FirestoreProperties"
-    },
-    {
-      "type":"be.alpago.website.adapters.firestore.GoogleToken",
-      "fields": [
-        {
-          "name": "Companion"
-        }
-      ]
-    },
-    {
-      "type": "be.alpago.website.adapters.firestore.GoogleToken$Companion",
-      "methods": [
-        {
-          "name": "serializer",
-          "parameterTypes": []
-        }
-      ]
     },
     {
       "type": "be.alpago.website.adapters.firestore.IntValue",
@@ -304,7 +284,13 @@
       "type": "be.alpago.website.interfaces.ktor.AuthenticationProperties"
     },
     {
+      "type": "be.alpago.website.libs.domain.AggregateRoot"
+    },
+    {
       "type": "be.alpago.website.libs.domain.ports.Repository"
+    },
+    {
+      "type": "be.alpago.website.libs.ktor.plugins.webjars.InputStreamContent"
     },
     {
       "type": "com.sun.crypto.provider.AESCipher$General",
@@ -370,6 +356,17 @@
       ]
     },
     {
+      "type": "com.sun.crypto.provider.HKDFKeyDerivation$HKDFSHA384",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "javax.crypto.KDFParameters"
+          ]
+        }
+      ]
+    },
+    {
       "type": "com.sun.crypto.provider.HmacCore$HmacSHA384",
       "methods": [
         {
@@ -388,34 +385,19 @@
       ]
     },
     {
-      "type": "io.ktor.client.HttpClient",
-      "fields": [
-        {
-          "name": "closed"
-        }
-      ]
+      "type": "io.ktor.client.HttpClient"
     },
     {
       "type": "io.ktor.client.HttpClientConfig"
     },
     {
-      "type": "io.ktor.client.call.HttpClientCall",
-      "fields": [
-        {
-          "name": "received"
-        }
-      ]
+      "type": "io.ktor.client.call.HttpClientCall"
     },
     {
       "type": "io.ktor.client.content.ProgressListener"
     },
     {
-      "type": "io.ktor.client.engine.HttpClientEngineBase",
-      "fields": [
-        {
-          "name": "closed"
-        }
-      ]
+      "type": "io.ktor.client.engine.HttpClientEngineBase"
     },
     {
       "type": "io.ktor.client.engine.HttpClientEngineCapability"
@@ -424,12 +406,7 @@
       "type": "io.ktor.client.engine.HttpClientEngineConfig"
     },
     {
-      "type": "io.ktor.client.engine.cio.Endpoint",
-      "fields": [
-        {
-          "name": "connections"
-        }
-      ]
+      "type": "io.ktor.client.engine.cio.Endpoint"
     },
     {
       "type": "io.ktor.client.plugins.DefaultRequest"
@@ -486,65 +463,22 @@
       "type": "io.ktor.http.content.Version"
     },
     {
-      "type": "io.ktor.network.selector.InterestSuspensionsMap",
-      "fields": [
-        {
-          "name": "acceptHandlerReference"
-        },
-        {
-          "name": "connectHandlerReference"
-        },
-        {
-          "name": "readHandlerReference"
-        },
-        {
-          "name": "writeHandlerReference"
-        }
-      ]
+      "type": "io.ktor.network.selector.InterestSuspensionsMap"
     },
     {
-      "type": "io.ktor.network.selector.LockFreeMPSCQueue",
-      "fields": [
-        {
-          "name": "curRef"
-        }
-      ]
+      "type": "io.ktor.network.selector.LockFreeMPSCQueue"
     },
     {
-      "type": "io.ktor.network.selector.LockFreeMPSCQueueCore",
-      "fields": [
-        {
-          "name": "nextRef"
-        },
-        {
-          "name": "stateRef"
-        }
-      ]
+      "type": "io.ktor.network.selector.LockFreeMPSCQueueCore"
     },
     {
-      "type": "io.ktor.network.selector.SelectableBase",
-      "fields": [
-        {
-          "name": "_interestedOps"
-        }
-      ]
+      "type": "io.ktor.network.selector.SelectInterest[]"
     },
     {
-      "type": "io.ktor.network.sockets.SocketBase",
-      "fields": [
-        {
-          "name": "actualCloseFlag"
-        },
-        {
-          "name": "closeFlag"
-        },
-        {
-          "name": "readerJob"
-        },
-        {
-          "name": "writerJob"
-        }
-      ]
+      "type": "io.ktor.network.selector.SelectableBase"
+    },
+    {
+      "type": "io.ktor.network.sockets.SocketBase"
     },
     {
       "type": "io.ktor.serialization.kotlinx.json.KotlinxSerializationJsonExtensionProvider"
@@ -571,12 +505,7 @@
       "type": "io.ktor.server.plugins.MutableOriginConnectionPoint"
     },
     {
-      "type": "io.ktor.server.plugins.di.DependencyInitializer$Explicit",
-      "fields": [
-        {
-          "name": "deferred"
-        }
-      ]
+      "type": "io.ktor.server.plugins.di.DependencyInitializer$Explicit"
     },
     {
       "type": "io.ktor.server.plugins.di.DependencyRegistry"
@@ -594,51 +523,19 @@
       "type": "io.ktor.util.Attributes"
     },
     {
-      "type": "io.ktor.util.collections.CopyOnWriteHashMap",
-      "fields": [
-        {
-          "name": "current"
-        }
-      ]
+      "type": "io.ktor.util.collections.CopyOnWriteHashMap"
     },
     {
-      "type": "io.ktor.util.internal.LockFreeLinkedListNode",
-      "fields": [
-        {
-          "name": "_next"
-        },
-        {
-          "name": "_prev"
-        },
-        {
-          "name": "removedRef"
-        }
-      ]
+      "type": "io.ktor.util.internal.LockFreeLinkedListNode"
     },
     {
       "type": "io.ktor.util.reflect.TypeInfo"
     },
     {
-      "type": "io.ktor.utils.io.ByteChannel",
-      "fields": [
-        {
-          "name": "_closedCause"
-        },
-        {
-          "name": "suspensionSlot"
-        }
-      ]
+      "type": "io.ktor.utils.io.ByteChannel"
     },
     {
-      "type": "io.ktor.utils.io.core.Closeable"
-    },
-    {
-      "type": "io.ktor.utils.io.pool.DefaultPool",
-      "fields": [
-        {
-          "name": "top"
-        }
-      ]
+      "type": "io.ktor.utils.io.pool.DefaultPool"
     },
     {
       "type": "jakarta.mail.Provider"
@@ -650,7 +547,19 @@
       "type": "java.io.File"
     },
     {
-      "type": "java.lang.Boolean"
+      "type": "java.io.Serializable"
+    },
+    {
+      "type": "java.lang.Boolean",
+      "jniAccessible": true,
+      "methods": [
+        {
+          "name": "getBoolean",
+          "parameterTypes": [
+            "java.lang.String"
+          ]
+        }
+      ]
     },
     {
       "type": "java.lang.Class",
@@ -665,19 +574,7 @@
       "type": "java.lang.ClassValue"
     },
     {
-      "type": "java.lang.Integer"
-    },
-    {
-      "type": "java.lang.Long"
-    },
-    {
       "type": "java.lang.Object"
-    },
-    {
-      "type": "java.lang.String"
-    },
-    {
-      "type": "java.lang.Throwable"
     },
     {
       "type": "java.net.StandardSocketOptions"
@@ -698,12 +595,6 @@
       "type": "java.security.interfaces.RSAPublicKey"
     },
     {
-      "type": "java.util.List"
-    },
-    {
-      "type": "java.util.Map"
-    },
-    {
       "type": "kotlin.Any"
     },
     {
@@ -711,6 +602,12 @@
     },
     {
       "type": "kotlin.ByteArray"
+    },
+    {
+      "type": "kotlin.Cloneable"
+    },
+    {
+      "type": "kotlin.Function0"
     },
     {
       "type": "kotlin.Function2"
@@ -762,12 +659,7 @@
       ]
     },
     {
-      "type": "kotlin.SafePublicationLazyImpl",
-      "fields": [
-        {
-          "name": "_value"
-        }
-      ]
+      "type": "kotlin.SafePublicationLazyImpl"
     },
     {
       "type": "kotlin.String"
@@ -785,9 +677,6 @@
       "type": "kotlin.collections.Map"
     },
     {
-      "type": "kotlin.collections.MutableMap"
-    },
-    {
       "type": "kotlin.jvm.internal.DefaultConstructorMarker"
     },
     {
@@ -800,6 +689,9 @@
       ]
     },
     {
+      "type": "kotlin.reflect.jvm.internal.impl.km.jvm.internal.JvmMetadataExtensions"
+    },
+    {
       "type": "kotlin.reflect.jvm.internal.impl.load.java.ErasedOverridabilityCondition"
     },
     {
@@ -809,275 +701,76 @@
       "type": "kotlin.reflect.jvm.internal.impl.load.java.JavaIncompatibilityRulesOverridabilityCondition"
     },
     {
-      "type": "kotlinx.atomicfu.AtomicBoolean",
-      "fields": [
-        {
-          "name": "_value"
-        }
-      ]
+      "type": "kotlinx.atomicfu.AtomicBoolean"
     },
     {
-      "type": "kotlinx.atomicfu.AtomicRef",
-      "fields": [
-        {
-          "name": "value"
-        }
-      ]
+      "type": "kotlinx.atomicfu.AtomicRef"
     },
     {
-      "type": "kotlinx.coroutines.CancellableContinuationImpl",
-      "fields": [
-        {
-          "name": "_decisionAndIndex$volatile"
-        },
-        {
-          "name": "_parentHandle$volatile"
-        },
-        {
-          "name": "_state$volatile"
-        }
-      ]
+      "type": "kotlinx.coroutines.CancellableContinuationImpl"
     },
     {
-      "type": "kotlinx.coroutines.CancelledContinuation",
-      "fields": [
-        {
-          "name": "_resumed$volatile"
-        }
-      ]
+      "type": "kotlinx.coroutines.CancelledContinuation"
     },
     {
-      "type": "kotlinx.coroutines.CompletedExceptionally",
-      "fields": [
-        {
-          "name": "_handled$volatile"
-        }
-      ]
+      "type": "kotlinx.coroutines.CompletedExceptionally"
     },
     {
       "type": "kotlinx.coroutines.CoroutineScope"
     },
     {
-      "type": "kotlinx.coroutines.DispatchedCoroutine",
-      "fields": [
-        {
-          "name": "_decision$volatile"
-        }
-      ]
+      "type": "kotlinx.coroutines.DispatchedCoroutine"
     },
     {
-      "type": "kotlinx.coroutines.EventLoopImplBase",
-      "fields": [
-        {
-          "name": "_delayed$volatile"
-        },
-        {
-          "name": "_isCompleted$volatile"
-        },
-        {
-          "name": "_queue$volatile"
-        }
-      ]
+      "type": "kotlinx.coroutines.EventLoopImplBase"
     },
     {
-      "type": "kotlinx.coroutines.InvokeOnCancelling",
-      "fields": [
-        {
-          "name": "_invoked$volatile"
-        }
-      ]
+      "type": "kotlinx.coroutines.InvokeOnCancelling"
     },
     {
-      "type": "kotlinx.coroutines.JobSupport",
-      "fields": [
-        {
-          "name": "_parentHandle$volatile"
-        },
-        {
-          "name": "_state$volatile"
-        }
-      ]
+      "type": "kotlinx.coroutines.JobSupport"
     },
     {
-      "type": "kotlinx.coroutines.JobSupport$Finishing",
-      "fields": [
-        {
-          "name": "_exceptionsHolder$volatile"
-        },
-        {
-          "name": "_isCompleting$volatile"
-        },
-        {
-          "name": "_rootCause$volatile"
-        }
-      ]
+      "type": "kotlinx.coroutines.JobSupport$Finishing"
     },
     {
-      "type": "kotlinx.coroutines.channels.BufferedChannel",
-      "fields": [
-        {
-          "name": "_closeCause$volatile"
-        },
-        {
-          "name": "bufferEnd$volatile"
-        },
-        {
-          "name": "bufferEndSegment$volatile"
-        },
-        {
-          "name": "closeHandler$volatile"
-        },
-        {
-          "name": "completedExpandBuffersAndPauseFlag$volatile"
-        },
-        {
-          "name": "receiveSegment$volatile"
-        },
-        {
-          "name": "receivers$volatile"
-        },
-        {
-          "name": "sendSegment$volatile"
-        },
-        {
-          "name": "sendersAndCloseStatus$volatile"
-        }
-      ]
+      "type": "kotlinx.coroutines.channels.BufferedChannel"
     },
     {
-      "type": "kotlinx.coroutines.internal.ConcurrentLinkedListNode",
-      "fields": [
-        {
-          "name": "_next$volatile"
-        },
-        {
-          "name": "_prev$volatile"
-        }
-      ]
+      "type": "kotlinx.coroutines.internal.ConcurrentLinkedListNode"
     },
     {
-      "type": "kotlinx.coroutines.internal.DispatchedContinuation",
-      "fields": [
-        {
-          "name": "_reusableCancellableContinuation$volatile"
-        }
-      ]
+      "type": "kotlinx.coroutines.internal.DispatchedContinuation"
     },
     {
-      "type": "kotlinx.coroutines.internal.LimitedDispatcher",
-      "fields": [
-        {
-          "name": "runningWorkers$volatile"
-        }
-      ]
+      "type": "kotlinx.coroutines.internal.LimitedDispatcher"
     },
     {
-      "type": "kotlinx.coroutines.internal.LockFreeLinkedListNode",
-      "fields": [
-        {
-          "name": "_next$volatile"
-        },
-        {
-          "name": "_prev$volatile"
-        },
-        {
-          "name": "_removedRef$volatile"
-        }
-      ]
+      "type": "kotlinx.coroutines.internal.LockFreeLinkedListNode"
     },
     {
-      "type": "kotlinx.coroutines.internal.LockFreeTaskQueue",
-      "fields": [
-        {
-          "name": "_cur$volatile"
-        }
-      ]
+      "type": "kotlinx.coroutines.internal.LockFreeTaskQueue"
     },
     {
-      "type": "kotlinx.coroutines.internal.LockFreeTaskQueueCore",
-      "fields": [
-        {
-          "name": "_next$volatile"
-        },
-        {
-          "name": "_state$volatile"
-        }
-      ]
+      "type": "kotlinx.coroutines.internal.LockFreeTaskQueueCore"
     },
     {
-      "type": "kotlinx.coroutines.internal.Segment",
-      "fields": [
-        {
-          "name": "cleanedAndPointers$volatile"
-        }
-      ]
+      "type": "kotlinx.coroutines.internal.Segment"
     },
     {
-      "type": "kotlinx.coroutines.internal.ThreadSafeHeap",
-      "fields": [
-        {
-          "name": "_size$volatile"
-        }
-      ]
+      "type": "kotlinx.coroutines.internal.ThreadSafeHeap"
     },
     {
-      "type": "kotlinx.coroutines.scheduling.CoroutineScheduler",
-      "fields": [
-        {
-          "name": "_isTerminated$volatile"
-        },
-        {
-          "name": "controlState$volatile"
-        },
-        {
-          "name": "parkedWorkersStack$volatile"
-        }
-      ]
+      "type": "kotlinx.coroutines.scheduling.CoroutineScheduler"
     },
     {
-      "type": "kotlinx.coroutines.scheduling.CoroutineScheduler$Worker",
-      "fields": [
-        {
-          "name": "workerCtl$volatile"
-        }
-      ]
+      "type": "kotlinx.coroutines.scheduling.CoroutineScheduler$Worker"
     },
     {
-      "type": "kotlinx.coroutines.scheduling.WorkQueue",
-      "fields": [
-        {
-          "name": "blockingTasksInBuffer$volatile"
-        },
-        {
-          "name": "consumerIndex$volatile"
-        },
-        {
-          "name": "lastScheduledTask$volatile"
-        },
-        {
-          "name": "producerIndex$volatile"
-        }
-      ]
+      "type": "kotlinx.coroutines.scheduling.WorkQueue"
     },
     {
-      "type": "kotlinx.coroutines.sync.SemaphoreAndMutexImpl",
-      "fields": [
-        {
-          "name": "_availablePermits$volatile"
-        },
-        {
-          "name": "deqIdx$volatile"
-        },
-        {
-          "name": "enqIdx$volatile"
-        },
-        {
-          "name": "head$volatile"
-        },
-        {
-          "name": "tail$volatile"
-        }
-      ]
+      "type": "kotlinx.coroutines.sync.SemaphoreAndMutexImpl"
     },
     {
       "type": "org.eclipse.angus.activation.MailcapRegistryProviderImpl"
@@ -1117,6 +810,36 @@
     },
     {
       "type": "org.slf4j.simple.SimpleServiceProvider"
+    },
+    {
+      "type": "sun.management.VMManagementImpl",
+      "jniAccessible": true,
+      "fields": [
+        {
+          "name": "compTimeMonitoringSupport"
+        },
+        {
+          "name": "currentThreadCpuTimeSupport"
+        },
+        {
+          "name": "objectMonitorUsageSupport"
+        },
+        {
+          "name": "otherThreadCpuTimeSupport"
+        },
+        {
+          "name": "remoteDiagnosticCommandsSupport"
+        },
+        {
+          "name": "synchronizerUsageSupport"
+        },
+        {
+          "name": "threadAllocatedMemorySupport"
+        },
+        {
+          "name": "threadContentionMonitoringSupport"
+        }
+      ]
     },
     {
       "type": "sun.security.pkcs12.PKCS12KeyStore",
@@ -1400,18 +1123,6 @@
       ]
     },
     {
-      "type": "sun.security.x509.IssuerAlternativeNameExtension",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": [
-            "java.lang.Boolean",
-            "java.lang.Object"
-          ]
-        }
-      ]
-    },
-    {
       "type": "sun.security.x509.KeyUsageExtension",
       "methods": [
         {
@@ -1470,6 +1181,33 @@
           ]
         }
       ]
+    },
+    {
+      "type": "sun.text.resources.FormatData"
+    },
+    {
+      "type": "sun.text.resources.JavaTimeSupplementary"
+    },
+    {
+      "type": "sun.text.resources.cldr.FormatData"
+    },
+    {
+      "type": "sun.text.resources.cldr.FormatData_en"
+    },
+    {
+      "type": "sun.text.resources.cldr.FormatData_en_US"
+    },
+    {
+      "type": "sun.util.resources.cldr.CalendarData"
+    },
+    {
+      "type": "sun.util.resources.cldr.TimeZoneNames"
+    },
+    {
+      "type": "sun.util.resources.cldr.TimeZoneNames_en"
+    },
+    {
+      "type": "sun.util.resources.cldr.TimeZoneNames_en_US"
     }
   ],
   "resources": [
@@ -1498,6 +1236,150 @@
       "glob": "META-INF/javamail.default.providers"
     },
     {
+      "glob": "META-INF/maven/org.webjars.npm/escape-velocity/pom.properties"
+    },
+    {
+      "glob": "META-INF/maven/org.webjars.npm/font-awesome/pom.properties"
+    },
+    {
+      "glob": "META-INF/maven/org.webjars.npm/jquery.dropotron/pom.properties"
+    },
+    {
+      "glob": "META-INF/maven/org.webjars.npm/jquery/pom.properties"
+    },
+    {
+      "glob": "META-INF/maven/org.webjars.npm/photoswipe/pom.properties"
+    },
+    {
+      "glob": "META-INF/maven/org.webjars.npm/responsive-tools/pom.properties"
+    },
+    {
+      "glob": "META-INF/maven/org.webjars.npm/toastr/pom.properties"
+    },
+    {
+      "glob": "META-INF/maven/org.webjars/escape-velocity/pom.properties"
+    },
+    {
+      "glob": "META-INF/maven/org.webjars/font-awesome/pom.properties"
+    },
+    {
+      "glob": "META-INF/maven/org.webjars/jquery.dropotron/pom.properties"
+    },
+    {
+      "glob": "META-INF/maven/org.webjars/jquery/pom.properties"
+    },
+    {
+      "glob": "META-INF/maven/org.webjars/responsive-tools/pom.properties"
+    },
+    {
+      "glob": "META-INF/maven/org.webjars/toastr/pom.properties"
+    },
+    {
+      "glob": "META-INF/resources/webjars-locator.properties"
+    },
+    {
+      "glob": "META-INF/resources/webjars/escape-velocity/*"
+    },
+    {
+      "glob": "META-INF/resources/webjars/escape-velocity/*/css/images/banner.jpg"
+    },
+    {
+      "glob": "META-INF/resources/webjars/escape-velocity/*/css/images/overlay.png"
+    },
+    {
+      "glob": "META-INF/resources/webjars/escape-velocity/*/css/images/shadow.png"
+    },
+    {
+      "glob": "META-INF/resources/webjars/escape-velocity/*/css/main.css"
+    },
+    {
+      "glob": "META-INF/resources/webjars/escape-velocity/*/js/main.js"
+    },
+    {
+      "glob": "META-INF/resources/webjars/escape-velocity/*/js/util.js"
+    },
+    {
+      "glob": "META-INF/resources/webjars/font-awesome/*"
+    },
+    {
+      "glob": "META-INF/resources/webjars/font-awesome/*/css/brands.min.css"
+    },
+    {
+      "glob": "META-INF/resources/webjars/font-awesome/*/css/fontawesome.min.css"
+    },
+    {
+      "glob": "META-INF/resources/webjars/font-awesome/*/css/solid.min.css"
+    },
+    {
+      "glob": "META-INF/resources/webjars/font-awesome/*/webfonts/fa-brands-400.eot"
+    },
+    {
+      "glob": "META-INF/resources/webjars/font-awesome/*/webfonts/fa-brands-400.svg"
+    },
+    {
+      "glob": "META-INF/resources/webjars/font-awesome/*/webfonts/fa-brands-400.ttf"
+    },
+    {
+      "glob": "META-INF/resources/webjars/font-awesome/*/webfonts/fa-brands-400.woff"
+    },
+    {
+      "glob": "META-INF/resources/webjars/font-awesome/*/webfonts/fa-brands-400.woff2"
+    },
+    {
+      "glob": "META-INF/resources/webjars/font-awesome/*/webfonts/fa-solid-900.eot"
+    },
+    {
+      "glob": "META-INF/resources/webjars/font-awesome/*/webfonts/fa-solid-900.svg"
+    },
+    {
+      "glob": "META-INF/resources/webjars/font-awesome/*/webfonts/fa-solid-900.ttf"
+    },
+    {
+      "glob": "META-INF/resources/webjars/font-awesome/*/webfonts/fa-solid-900.woff"
+    },
+    {
+      "glob": "META-INF/resources/webjars/font-awesome/*/webfonts/fa-solid-900.woff2"
+    },
+    {
+      "glob": "META-INF/resources/webjars/jquery.dropotron/*"
+    },
+    {
+      "glob": "META-INF/resources/webjars/jquery.dropotron/*/jquery.dropotron.min.js"
+    },
+    {
+      "glob": "META-INF/resources/webjars/jquery/*"
+    },
+    {
+      "glob": "META-INF/resources/webjars/jquery/*/jquery.min.js"
+    },
+    {
+      "glob": "META-INF/resources/webjars/photoswipe/*"
+    },
+    {
+      "glob": "META-INF/resources/webjars/photoswipe/*/dist/photoswipe-lightbox.esm.min.js"
+    },
+    {
+      "glob": "META-INF/resources/webjars/photoswipe/*/dist/photoswipe.css"
+    },
+    {
+      "glob": "META-INF/resources/webjars/responsive-tools/*"
+    },
+    {
+      "glob": "META-INF/resources/webjars/responsive-tools/*/dist/breakpoints.min.js"
+    },
+    {
+      "glob": "META-INF/resources/webjars/responsive-tools/*/dist/browser.min.js"
+    },
+    {
+      "glob": "META-INF/resources/webjars/toastr/*"
+    },
+    {
+      "glob": "META-INF/resources/webjars/toastr/*/build/toastr.min.css"
+    },
+    {
+      "glob": "META-INF/resources/webjars/toastr/*/build/toastr.min.js"
+    },
+    {
       "glob": "META-INF/services/io.ktor.serialization.kotlinx.KotlinxSerializationExtensionProvider"
     },
     {
@@ -1513,9 +1395,6 @@
       "glob": "META-INF/services/jakarta.mail.util.StreamProvider"
     },
     {
-      "glob": "META-INF/services/java.lang.System$LoggerFinder"
-    },
-    {
       "glob": "META-INF/services/java.net.spi.InetAddressResolverProvider"
     },
     {
@@ -1528,6 +1407,9 @@
       "glob": "META-INF/services/java.time.zone.ZoneRulesProvider"
     },
     {
+      "glob": "META-INF/services/kotlin.reflect.jvm.internal.impl.km.internal.extensions.MetadataExtensions"
+    },
+    {
       "glob": "META-INF/services/kotlin.reflect.jvm.internal.impl.resolve.ExternalOverridabilityCondition"
     },
     {
@@ -1535,6 +1417,9 @@
     },
     {
       "glob": "META-INF/services/org.slf4j.spi.SLF4JServiceProvider"
+    },
+    {
+      "glob": "kotlin/collections/collections.kotlin_builtins"
     },
     {
       "glob": "kotlin/kotlin.kotlin_builtins"
@@ -1567,90 +1452,6 @@
       "glob": "static/assets/js/email.js"
     },
     {
-      "glob": "static/webjars/escape-velocity/css/images/banner.jpg"
-    },
-    {
-      "glob": "static/webjars/escape-velocity/css/images/overlay.png"
-    },
-    {
-      "glob": "static/webjars/escape-velocity/css/images/shadow.png"
-    },
-    {
-      "glob": "static/webjars/escape-velocity/css/main.css"
-    },
-    {
-      "glob": "static/webjars/escape-velocity/js/main.js"
-    },
-    {
-      "glob": "static/webjars/escape-velocity/js/util.js"
-    },
-    {
-      "glob": "static/webjars/font-awesome/css/brands.min.css"
-    },
-    {
-      "glob": "static/webjars/font-awesome/css/fontawesome.min.css"
-    },
-    {
-      "glob": "static/webjars/font-awesome/css/solid.min.css"
-    },
-    {
-      "glob": "static/webjars/font-awesome/webfonts/fa-brands-400.eot"
-    },
-    {
-      "glob": "static/webjars/font-awesome/webfonts/fa-brands-400.svg"
-    },
-    {
-      "glob": "static/webjars/font-awesome/webfonts/fa-brands-400.ttf"
-    },
-    {
-      "glob": "static/webjars/font-awesome/webfonts/fa-brands-400.woff"
-    },
-    {
-      "glob": "static/webjars/font-awesome/webfonts/fa-brands-400.woff2"
-    },
-    {
-      "glob": "static/webjars/font-awesome/webfonts/fa-solid-900.eot"
-    },
-    {
-      "glob": "static/webjars/font-awesome/webfonts/fa-solid-900.svg"
-    },
-    {
-      "glob": "static/webjars/font-awesome/webfonts/fa-solid-900.ttf"
-    },
-    {
-      "glob": "static/webjars/font-awesome/webfonts/fa-solid-900.woff"
-    },
-    {
-      "glob": "static/webjars/font-awesome/webfonts/fa-solid-900.woff2"
-    },
-    {
-      "glob": "static/webjars/jquery.dropotron/jquery.dropotron.min.js"
-    },
-    {
-      "glob": "static/webjars/jquery/jquery.min.js"
-    },
-    {
-      "glob": "static/webjars/photoswipe/dist/photoswipe-lightbox.esm.min.js"
-    },
-    {
-      "glob": "static/webjars/photoswipe/dist/photoswipe.css"
-    },
-    {
-      "glob": "static/webjars/photoswipe/dist/photoswipe.esm.min.js"
-    },
-    {
-      "glob": "static/webjars/responsive-tools/dist/breakpoints.min.js"
-    },
-    {
-      "glob": "static/webjars/responsive-tools/dist/browser.min.js"
-    },
-    {
-      "glob": "static/webjars/toastr/build/toastr.min.css"
-    },
-    {
-      "glob": "static/webjars/toastr/build/toastr.min.js"
-    },
-    {
       "module": "java.base",
       "glob": "jdk/internal/icu/impl/data/icudt76b/nfc.nrm"
     },
@@ -1665,54 +1466,6 @@
     {
       "module": "java.base",
       "glob": "sun/net/idn/uidna.spp"
-    }
-  ],
-  "bundles": [],
-  "serialization": [
-    {
-      "type": "java.util.ArrayList"
-    }
-  ],
-  "jni": [
-    {
-      "type": "java.lang.Boolean",
-      "methods": [
-        {
-          "name": "getBoolean",
-          "parameterTypes": [
-            "java.lang.String"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "sun.management.VMManagementImpl",
-      "fields": [
-        {
-          "name": "compTimeMonitoringSupport"
-        },
-        {
-          "name": "currentThreadCpuTimeSupport"
-        },
-        {
-          "name": "objectMonitorUsageSupport"
-        },
-        {
-          "name": "otherThreadCpuTimeSupport"
-        },
-        {
-          "name": "remoteDiagnosticCommandsSupport"
-        },
-        {
-          "name": "synchronizerUsageSupport"
-        },
-        {
-          "name": "threadAllocatedMemorySupport"
-        },
-        {
-          "name": "threadContentionMonitoringSupport"
-        }
-      ]
     }
   ]
 }

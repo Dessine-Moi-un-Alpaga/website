@@ -14,6 +14,7 @@ suspend fun Application.ktor() {
     routes()
     serialization()
     validation()
+    webjars()
 }
 
 private fun Application.authenticationProperties() {

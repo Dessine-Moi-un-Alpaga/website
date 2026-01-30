@@ -7,6 +7,5 @@ import io.ktor.server.routing.routing
 fun Application.assets() {
     routing {
         staticResources("/assets", "static.assets")
-        staticResources("/webjars", "static.webjars")
     }
 }
