@@ -99,6 +99,15 @@ Once the development environment is in a satisfactory state, create a pull reque
 will trigger a semantic release, tag the commit accordingly, publish a GitHub release and deploy it to the production
 environment.
 
+# Known Issues
+
+When working on the `beta` branch, the Github Actions workflow skips the (lengthy) Sonar analysis step when no source
+file changed. It does this by comparing the commit that triggered the build with the previous commit on that branch. In
+order to avoid cloning the whole branch history, only the last two commits are fetched. This in turn means that pushing
+more than one commit at a time might will result in the analysis **not** being run, even though it should have, if one
+of those commits included source changes. This is in my opinion an acceptable trade-off between workflow speed and
+analysis exhaustiveness.
+
 # Isn't this overkill? Are you crazy?
 
 No. My mother had me tested.
