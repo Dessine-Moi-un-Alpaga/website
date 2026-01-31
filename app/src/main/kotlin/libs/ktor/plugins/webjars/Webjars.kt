@@ -28,9 +28,6 @@ private val MAX_AGE = 90.days.inWholeSeconds.toInt()
 
 val Webjars: ApplicationPlugin<WebjarsConfig> = createApplicationPlugin("Webjars", ::WebjarsConfig) {
     val webjarsPrefix = pluginConfig.path
-    require(webjarsPrefix.startsWith("/"))
-    require(webjarsPrefix.endsWith("/"))
-
     val locator = WebJarVersionLocator()
     val lastModifiedVersion = GMTDate()
 
@@ -54,7 +51,6 @@ val Webjars: ApplicationPlugin<WebjarsConfig> = createApplicationPlugin("Webjars
             val nextDelimiter = resourcePath.indexOf("/", 1)
             val webjar = if (nextDelimiter > -1) resourcePath.substring(firstDelimiter, nextDelimiter) else ""
             val partialPath = resourcePath.substring(nextDelimiter + 1)
-
             val version = locator.version(webjar) ?: throw IllegalArgumentException("jar $webjar not found")
             val fullPath = locator.fullPath(webjar, partialPath) ?: throw IllegalArgumentException("jar $webjar not found")
             val stream = WebjarsConfig::class.java.classLoader.getResourceAsStream(fullPath) ?: return@onCall
