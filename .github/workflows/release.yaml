@@ -72,13 +72,24 @@ jobs:
             app/build/reports/problems/problems-report.html
             firebase-emulator/*.log
 
+      - name: Check if analysis is required
+        id: analysis-check
+        run: |
+          if git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -E '^(app/build-logic/src/|app/src/main/kotlin/|app/src/main/resources/static/assets/css/|app/src/main/resources/static/assets/js/|infrastructure/app/.*\.tf)' ; then
+            echo "analysis-required=true" >> $GITHUB_OUTPUT
+          else
+            echo "analysis-required=false" >> $GITHUB_OUTPUT
+          fi
+
       - name: Set up SonarCloud package cache
+        if: steps.analysis-check.outputs.analysis-required == 'true'
         uses: actions/cache@v5
         with:
           key: ${{ runner.os }}-sonar
           path: ~/.sonar/cache
 
       - name: Analyze
+        if: steps.analysis-check.outputs.analysis-required == 'true'
         uses: SonarSource/sonarqube-scan-action@v7
         env:
           SONAR_TOKEN: ${{ secrets.SONARCLOUD_TOKEN }}
