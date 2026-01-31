@@ -3,13 +3,12 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 plugins {
     alias(libs.plugins.kotlin)
 
-    id("graalvm-native")
-    id("i18n")
-    id("run")
-    id("test")
-
+    alias(libs.plugins.i18n4k)
+    alias(libs.plugins.graalvm.plugin)
     alias(libs.plugins.ktor)
     alias(libs.plugins.kotlin.serialization)
+
+    jacoco
 }
 
 group = "be.alpago"
@@ -62,5 +61,65 @@ kotlin {
 tasks.register("ci") {
     group = "build"
     description = "Executes continuous integration build tasks."
-    dependsOn(tasks.test, tasks.jacocoTestReport, tasks.shadowJar)
+    dependsOn(tasks.jacocoTestReport, tasks.shadowJar)
+}
+
+fun ProcessForkOptions.environmentVariables(project: Project) {
+    val credentials = project.property("credentials")
+    val bucket = project.property("bucket")
+    val firestorePort = project.property("firestorePort")
+    val googleProject = project.property("googleProject")
+    val smtpServerAddress = project.property("smtpServerAddress")
+    val smtpServerPassword = project.property("smtpServerPassword")
+    val smtpServerPort = project.property("smtpServerPort")
+    val smtpServerUsername = project.property("smtpServerUsername")
+
+    environment("DMUA_BASE_ASSET_URL", "https://storage.googleapis.com/${bucket}")
+    environment("DMUA_CREDENTIALS", credentials)
+    environment("DMUA_EMAIL_ADDRESS", "contact@dessinemoiunalpaga.com")
+    environment("DMUA_ENVIRONMENT", "local")
+    environment("DMUA_FIRESTORE_URL", "http://localhost:${firestorePort}")
+    environment("DMUA_PROJECT", googleProject)
+    environment("DMUA_SMTP_SERVER_ADDRESS", smtpServerAddress)
+    environment("DMUA_SMTP_SERVER_PASSWORD", smtpServerPassword)
+    environment("DMUA_SMTP_SERVER_PORT", smtpServerPort)
+    environment("DMUA_SMTP_SERVER_USERNAME", smtpServerUsername)
+    environment("DMUA_TEST", true)
+}
+
+graalvmNative {
+    agent {
+        defaultMode = "direct"
+
+        modes {
+            direct {
+                options.add("config-output-dir=src/main/resources/META-INF/native-image/be.alpago/website")
+            }
+        }
+    }
+    metadataRepository {
+        enabled = true
+    }
+}
+
+tasks.test {
+    useJUnitPlatform()
+    environmentVariables(project)
+}
+
+tasks.jacocoTestReport {
+    dependsOn(tasks.test)
+
+    reports {
+        html.required = false
+        xml.required = true
+    }
+}
+
+tasks.run {
+    if (!project.hasProperty("agent")) {
+        systemProperty("io.ktor.development", "true")
+    }
+
+    environmentVariables(project)
 }

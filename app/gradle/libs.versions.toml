@@ -23,7 +23,6 @@ angus-smtp                      = { module = "org.eclipse.angus:smtp",          
 bcrypt                          = { module = "at.favre.lib:bcrypt",                             version.ref = "bcrypt"                 }
 escape-velocity                 = { module = "org.webjars:escape-velocity",                     version.ref = "escape-velocity"        }
 i18n4k                          = { module = "de.comahe.i18n4k:i18n4k-core",                    version.ref = "i18n4k"                 }
-i18n4k-gradle-plugin            = { module = "de.comahe.i18n4k:de.comahe.i18n4k.gradle.plugin", version.ref = "i18n4k"                 }
 jakarta-mail-api                = { module = "jakarta.mail:jakarta.mail-api",                   version.ref = "jakarta-mail-api"       }
 jsoup                           = { module = "org.jsoup:jsoup",                                 version.ref = "jsoup"                  }
 jul-to-slf4j                    = { module = "org.slf4j:jul-to-slf4j",                          version.ref = "slf4j"                  }
@@ -52,7 +51,6 @@ ktor-server-request-validation  = { module = "io.ktor:ktor-server-request-valida
 ktor-server-status-pages        = { module = "io.ktor:ktor-server-status-pages"                                                        }
 ktor-server-test-host           = { module = "io.ktor:ktor-server-test-host"                                                           }
 mockk                           = { module = "io.mockk:mockk",                                  version.ref = "mockk"                  }
-native-gradle-plugin            = { module = "org.graalvm.buildtools:native-gradle-plugin",     version.ref = "graalvm-plugin"         }
 photoswipe                      = { module = "org.webjars.npm:photoswipe",                      version.ref = "photoswipe"             }
 slf4j-simple                    = { module = "org.slf4j:slf4j-simple",                          version.ref = "slf4j"                  }
 toastr                          = { module = "org.webjars:toastr",                              version.ref = "toastr"                 }
@@ -86,6 +84,7 @@ ktor-server = [
 ]
 
 [plugins]
+graalvm-plugin       = { id = "org.graalvm.buildtools.native",             version.ref = "graalvm-plugin"   }
 i18n4k               = { id = "de.comahe.i18n4k",                          version.ref = "i18n4k"           }
 kotlin               = { id = "org.jetbrains.kotlin.jvm",                  version.ref = "kotlin"           }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin"           }
