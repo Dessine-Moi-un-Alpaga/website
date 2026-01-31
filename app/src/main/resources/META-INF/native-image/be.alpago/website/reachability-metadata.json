@@ -1358,6 +1358,9 @@
       "glob": "META-INF/resources/webjars/photoswipe/*/dist/photoswipe-lightbox.esm.min.js"
     },
     {
+      "glob": "META-INF/resources/webjars/photoswipe/*/dist/photoswipe.esm.min.js"
+    },
+    {
       "glob": "META-INF/resources/webjars/photoswipe/*/dist/photoswipe.css"
     },
     {
