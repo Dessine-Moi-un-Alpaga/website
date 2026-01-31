@@ -76,8 +76,8 @@ jobs:
       - name: Check if analysis is required
         id: analysis-check
         run: |
-          git log
-          if git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -E '^(app/build-logic/src/|app/src/main/kotlin/|app/src/main/resources/static/assets/css/|app/src/main/resources/static/assets/js/|infrastructure/app/.*\.tf)' ; then
+          if git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -E '^(app/build-logic/src/|app/src/main/kotlin/|app/src/main/resources/static/assets/css/|app/src/main/resources/static/assets/js/|infrastructure/app/.*\.tf)'
+          then
             echo "analysis-required=true" >> $GITHUB_OUTPUT
           else
             echo "analysis-required=false" >> $GITHUB_OUTPUT
