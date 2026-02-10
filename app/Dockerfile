@@ -1,5 +1,5 @@
 ARG EXECUTABLE_FILENAME=graalvm-server
-ARG MAX_HEAP_SIZE=32m
+ARG MAX_HEAP_SIZE=16m
 ARG WORKDIR=/app
 
 FROM ghcr.io/graalvm/native-image-community:25.0.2-muslib-ol10-20260120 AS build
