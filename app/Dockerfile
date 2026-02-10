@@ -1,7 +1,16 @@
+ARG EXECUTABLE_FILENAME=graalvm-server
+ARG MAX_HEAP_SIZE=32m
+ARG WORKDIR=/app
+
 FROM ghcr.io/graalvm/native-image-community:25.0.2-muslib-ol10-20260120 AS build
 
-WORKDIR /app
-COPY ./build/libs/website-all.jar .
+ARG EXECUTABLE_FILENAME
+ARG JAR_FILENAME=website-all.jar
+ARG MAX_HEAP_SIZE
+ARG WORKDIR
+
+WORKDIR ${WORKDIR}
+COPY ./build/libs/${JAR_FILENAME} .
 RUN native-image \
     -Dorg.slf4j.simpleLogger.logFile=System.out \
     -Dorg.slf4j.simpleLogger.cacheOutputStream=true \
@@ -12,9 +21,9 @@ RUN native-image \
     -H:+ReportExceptionStackTraces \
     -H:+UnlockExperimentalVMOptions \
     -H:+CompactingOldGen \
-    -R:MaxHeapSize=32m \
+    -R:MaxHeapSize=${MAX_HEAP_SIZE} \
     --color=always \
-    --exclude-config website-all.jar META-INF\/native-image\/org.webjars\/webjars-locator-lite\/resource-config.json \
+    --exclude-config ${JAR_FILENAME} META-INF\/native-image\/org.webjars\/webjars-locator-lite\/resource-config.json \
     --initialize-at-build-time=io.ktor,kotlin \
     --initialize-at-build-time=kotlinx.coroutines \
     --initialize-at-build-time=kotlinx.io.Buffer \
@@ -40,10 +49,15 @@ RUN native-image \
     --libc=musl \
     -march=x86-64-v3 \
     --static \
-    -jar website-all.jar \
-    graalvm-server
+    -jar ${JAR_FILENAME} \
+    ${EXECUTABLE_FILENAME}
 
 FROM scratch
-WORKDIR /app
-COPY --from=build /app/graalvm-server ./
-ENTRYPOINT [ "/app/graalvm-server", "-Xmx32m", "-XX:MissingRegistrationReportingMode=Warn" ]
+
+ARG EXECUTABLE_FILENAME
+ARG MAX_HEAP_SIZE
+ARG WORKDIR
+
+WORKDIR ${WORKDIR}
+COPY --from=build ${WORKDIR}/${EXECUTABLE_FILENAME} ./
+ENTRYPOINT [ "${WORKDIR}/${EXECUTABLE_FILENAME}", "-Xmx${MAX_HEAP_SIZE}", "-XX:MissingRegistrationReportingMode=Warn" ]
