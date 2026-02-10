@@ -1,15 +1,6 @@
-ARG EXECUTABLE_FILENAME=graalvm-server
-ARG MAX_HEAP_SIZE=16m
-ARG WORKDIR=/app
-
 FROM ghcr.io/graalvm/native-image-community:25.0.2-muslib-ol10-20260120 AS build
-
-ARG EXECUTABLE_FILENAME
 ARG JAR_FILENAME=website-all.jar
-ARG MAX_HEAP_SIZE
-ARG WORKDIR
-
-WORKDIR ${WORKDIR}
+WORKDIR /app
 COPY ./build/libs/${JAR_FILENAME} .
 RUN native-image \
     -Dorg.slf4j.simpleLogger.logFile=System.out \
@@ -21,7 +12,7 @@ RUN native-image \
     -H:+ReportExceptionStackTraces \
     -H:+UnlockExperimentalVMOptions \
     -H:+CompactingOldGen \
-    -R:MaxHeapSize=${MAX_HEAP_SIZE} \
+    -R:MaxHeapSize=16m \
     --color=always \
     --exclude-config ${JAR_FILENAME} META-INF\/native-image\/org.webjars\/webjars-locator-lite\/resource-config.json \
     --initialize-at-build-time=io.ktor,kotlin \
@@ -50,18 +41,10 @@ RUN native-image \
     -march=x86-64-v3 \
     --static \
     -jar ${JAR_FILENAME} \
-    ${EXECUTABLE_FILENAME}
+    graalvm-server
 
 FROM scratch
-
-ARG EXECUTABLE_FILENAME
-ARG MAX_HEAP_SIZE
-ARG WORKDIR
-
-ENV EXECUTABLE_FILENAME=${EXECUTABLE_FILENAME}
-ENV MAX_HEAP_SIZE=${MAX_HEAP_SIZE}
-ENV WORKDIR=${WORKDIR}
-
+ARG WORKDIR=/app
 WORKDIR ${WORKDIR}
-COPY --from=build ${WORKDIR}/${EXECUTABLE_FILENAME} ./
-ENTRYPOINT [ "${WORKDIR}/${EXECUTABLE_FILENAME}", "-Xmx${MAX_HEAP_SIZE}", "-XX:MissingRegistrationReportingMode=Warn" ]
+COPY --from=build ${WORKDIR}/graalvm-server ./
+ENTRYPOINT [ "/app/graalvm-server", "-Xmx16m", "-XX:MissingRegistrationReportingMode=Warn" ]
