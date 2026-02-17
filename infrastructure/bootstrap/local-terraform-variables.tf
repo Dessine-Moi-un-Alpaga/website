@@ -1,5 +1,10 @@
+resource "bcrypt_hash" "password_hash" {
+  cleartext = var.password
+  cost      = var.bcrypt_cost
+}
+
 locals {
-  credentials = "${var.username}:${bcrypt(var.password, var.bcrypt_cost)}"
+  credentials = "${var.username}:${bcrypt_hash.password_hash.id}"
 }
 
 resource "local_sensitive_file" "variables" {
