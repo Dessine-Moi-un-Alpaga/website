@@ -1,3 +1,4 @@
 **/*
 
 !build/libs/website-all.jar
+!native-build.sh
