@@ -1,3 +1,5 @@
+provider "bcrypt" {}
+
 provider "github" {
   owner = var.github_account
 }
