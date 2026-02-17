@@ -11,11 +11,6 @@ resource "github_repository" "git_repository" {
 
   pages {
     build_type = "workflow"
-
-    source {
-      branch = "main"
-      path   = "/"
-    }
   }
 }
 
