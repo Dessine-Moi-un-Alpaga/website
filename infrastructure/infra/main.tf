@@ -1,6 +1,4 @@
 resource "google_artifact_registry_repository" "artifact_registry" {
-  provider = google-beta
-
   format        = "docker"
   location      = var.artifact_registry_location
   repository_id = var.artifact_repository
