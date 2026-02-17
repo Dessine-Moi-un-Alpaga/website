@@ -5,3 +5,5 @@ provider "github" {
 provider "google" {}
 
 provider "local" {}
+
+provider "random" {}

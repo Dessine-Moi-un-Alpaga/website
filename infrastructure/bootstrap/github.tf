@@ -19,11 +19,16 @@ resource "github_repository" "git_repository" {
   }
 }
 
+resource "random_bytes" "gradle_configuration_cache_encryption_key" {
+  length = 16
+}
+
 locals {
   secrets = {
-    CREDENTIALS          = local.credentials
-    SMTP_SERVER_PASSWORD = var.smtp_server_password
-    SONARCLOUD_TOKEN     = var.sonarcloud_token
+    CREDENTIALS           = local.credentials
+    GRADLE_ENCRYPTION_KEY = random_bytes.gradle_configuration_cache_encryption_key.base64
+    SMTP_SERVER_PASSWORD  = var.smtp_server_password
+    SONARCLOUD_TOKEN      = var.sonarcloud_token
   }
   variables = {
     ARTIFACT_REGISTRY_LOCATION = var.artifact_registry_location
