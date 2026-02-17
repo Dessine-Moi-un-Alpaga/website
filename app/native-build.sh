@@ -42,4 +42,4 @@ native-image \
     -march=x86-64-v3 \
     --static \
     -jar ${JAR_FILENAME} \
-    graalvm-server
+    website
