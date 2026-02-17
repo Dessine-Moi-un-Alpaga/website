@@ -1,6 +1,6 @@
 repos:
   - repo: https://github.com/antonbabenko/pre-commit-terraform
-    rev: 'v1.104.0' # Get the latest from: https://github.com/antonbabenko/pre-commit-terraform/releases
+    rev: 'v1.105.0' # Get the latest from: https://github.com/antonbabenko/pre-commit-terraform/releases
     hooks:
       - id: terraform_providers_lock
         files: "^infrastructure/(.)+/terraform.tf$"
