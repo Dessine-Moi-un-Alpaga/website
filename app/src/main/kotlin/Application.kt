@@ -3,7 +3,6 @@ package be.alpago.website
 import be.alpago.website.adapters.adapters
 import be.alpago.website.application.queries.queries
 import be.alpago.website.interfaces.interfaces
-import be.alpago.website.interfaces.ktor.monitorMemoryUsage
 import be.alpago.website.interfaces.ktor.registerShutdownHook
 import be.alpago.website.interfaces.slf4j.bridgeJavaUtilLoggingToSlf4j
 import io.ktor.server.application.Application
@@ -20,7 +19,6 @@ fun main() {
             module = Application::modules
         )
     ) {
-        monitorMemoryUsage()
         registerShutdownHook()
         start(
             wait = true
