@@ -35,13 +35,6 @@ jobs:
           cache-dependency-path: firebase-emulator
           node-version: ${{ env.NODE_VERSION }}
 
-      - name: Authenticate to Google Cloud
-        uses: google-github-actions/auth@v3
-        with:
-          export_environment_variables: true
-          service_account: terraform@${{ vars.GOOGLE_PROJECT }}.iam.gserviceaccount.com
-          workload_identity_provider: projects/${{ vars.GOOGLE_PROJECT_NUMBER }}/locations/global/workloadIdentityPools/github-actions-workflows/providers/github-actions
-
       - name: Install Java
         uses: actions/setup-java@v5
         with:
@@ -132,6 +125,13 @@ jobs:
           script: |
             core.exportVariable('ACTIONS_RUNTIME_TOKEN', process.env['ACTIONS_RUNTIME_TOKEN'])
             core.exportVariable('ACTIONS_RESULTS_URL', process.env['ACTIONS_RESULTS_URL'])
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v3
+        with:
+          export_environment_variables: true
+          service_account: terraform@${{ vars.GOOGLE_PROJECT }}.iam.gserviceaccount.com
+          workload_identity_provider: projects/${{ vars.GOOGLE_PROJECT_NUMBER }}/locations/global/workloadIdentityPools/github-actions-workflows/providers/github-actions
 
       - name: Release
         env:
