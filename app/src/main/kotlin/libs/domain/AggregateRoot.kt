@@ -1,7 +1,7 @@
 package be.alpago.website.libs.domain
 
 /**
- * @see https://martinfowler.com/bliki/DDD_Aggregate.html
+ * A standard [Domain-Driven Aggregate Root](https://martinfowler.com/bliki/DDD_Aggregate.html)
  */
 interface AggregateRoot {
 

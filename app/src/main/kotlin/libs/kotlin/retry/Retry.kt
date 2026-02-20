@@ -2,6 +2,9 @@ package be.alpago.website.libs.kotlin.retry
 
 import kotlinx.coroutines.delay
 
+/**
+ * Generic retry functionality for a given block of code, with an exponential backoff delay.
+ */
 suspend fun <T> retry(
     times: Int = 3,
     initialDelayMillis: Long = 500,
