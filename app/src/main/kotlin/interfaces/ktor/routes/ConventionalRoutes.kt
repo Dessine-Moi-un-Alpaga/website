@@ -8,6 +8,13 @@ import io.ktor.server.routing.routing
 private const val APPLE_TOUCH_ICON = "apple-touch-icon.png"
 private const val FAVICON = "favicon.ico"
 
+/**
+ * Registers the HTTP endpoints for e couple of conventional website icon routes.
+ *
+ * The endpoints are the following:
+ * * `GET /apple-touch-icon.png`
+ * * `GET /favicon.ico`
+ */
 fun Application.conventionalRoutes() {
     routing {
         get("/$APPLE_TOUCH_ICON") {

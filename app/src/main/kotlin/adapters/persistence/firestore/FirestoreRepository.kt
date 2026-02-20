@@ -39,10 +39,6 @@ class FirestoreRepository<T : AggregateRoot>(
 
     private val rootUrl = "${baseUrl}/${collection}"
 
-    /**
-     * Deletes an Aggregate base on its root id.
-     *
-     */
     override suspend fun delete(id: String) {
         val response = client.delete("${rootUrl}/${id}")
 
@@ -52,8 +48,6 @@ class FirestoreRepository<T : AggregateRoot>(
     }
 
     /**
-     * Deletes all the existing Aggregates.
-     *
      * This operation should not be used very often and its implementation is naive: rather than using
      * [batch writes](https://firebase.google.com/docs/firestore/reference/rest/v1/projects.databases.documents/batchWrite),
      * it simply lists every existing Aggregate id and deletes them one by one.
@@ -87,9 +81,6 @@ class FirestoreRepository<T : AggregateRoot>(
         } while (nextPageToken != null)
     }
 
-    /**
-     * Lists all Aggregates.
-     */
     override suspend fun findAll(): List<T> {
         val result = mutableListOf<T>()
         var nextPageToken: String? = null
@@ -117,12 +108,6 @@ class FirestoreRepository<T : AggregateRoot>(
         return result.toList()
     }
 
-    /**
-     * Returns every existing Aggregate that matches the given constraint.
-     *
-     * @param field the document field used to filter Aggregates
-     * @param value the field value used to filter Aggregates
-     */
     override suspend fun findBy(field: String, value: String): List<T> {
         val request = Query(
             structuredQuery = StructuredQuery(
@@ -148,11 +133,6 @@ class FirestoreRepository<T : AggregateRoot>(
             .map { transformer.fromFirestore(it.document!!.fields) }
     }
 
-    /**
-     * Returns the Aggregate matching the given id.
-     *
-     * @throws AggregateRootNotFound if no Aggregate exists that matches the given id
-     */
     override suspend fun get(id: String): T {
         val response = client.get("${rootUrl}/${id}")
 
@@ -169,9 +149,6 @@ class FirestoreRepository<T : AggregateRoot>(
         return transformer.fromFirestore(document.fields)
     }
 
-    /**
-     * Creates or updates the given Aggregate.
-     */
     override suspend fun save(aggregateRoot: T) {
         val fields = transformer.toFirestore(aggregateRoot)
         val document = Document(fields)

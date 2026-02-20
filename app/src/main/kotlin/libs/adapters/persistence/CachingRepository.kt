@@ -10,7 +10,7 @@ private data class FindByCacheKey(
 )
 
 /**
- * A Repository implementation that maintains a cache of Aggregates.
+ * A Repository decorator implementation that maintains a cache of Aggregates.
  *
  * This is a simple and naive implementation intended to make sure that the number of repository operations are bounded
  * by the number of aggregates over the lifetime of an instance of the application.

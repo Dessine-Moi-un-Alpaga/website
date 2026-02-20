@@ -1,6 +1,4 @@
 /*
- * Temporary workaround for https://youtrack.jetbrains.com/issue/KTOR-6858
- *
  * Copyright 2014-2024 JetBrains s.r.o and contributors. Use of this source code is governed by the Apache 2.0 license.
  */
 package be.alpago.website.libs.ktor.plugins.webjars
@@ -26,6 +24,9 @@ import kotlin.time.Duration.Companion.days
 
 private val MAX_AGE = 90.days.inWholeSeconds.toInt()
 
+/**
+ * Temporary workaround for https://youtrack.jetbrains.com/issue/KTOR-6858
+ */
 val Webjars: ApplicationPlugin<WebjarsConfig> = createApplicationPlugin("Webjars", ::WebjarsConfig) {
     val webjarsPrefix = pluginConfig.path
     val locator = WebJarVersionLocator()

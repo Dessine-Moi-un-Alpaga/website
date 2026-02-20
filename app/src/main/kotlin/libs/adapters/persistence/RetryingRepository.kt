@@ -4,6 +4,11 @@ import be.alpago.website.libs.domain.AggregateRoot
 import be.alpago.website.libs.domain.ports.persistence.Repository
 import be.alpago.website.libs.kotlin.retry.retry
 
+/**
+ * A Repository decorator implementation that retries operations in case of failure.
+ *
+ * @see retry
+ */
 class RetryingRepository<T : AggregateRoot>(private val delegate: Repository<T>): Repository<T> {
 
     override suspend fun delete(id: String) = retry { delegate.delete(id) }
