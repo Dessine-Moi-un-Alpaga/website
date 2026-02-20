@@ -8,7 +8,7 @@ internal fun Application.templates() {
     templateProperties()
 }
 
-fun Application.templateProperties() {
+private fun Application.templateProperties() {
     dependencies {
         provide {
             TemplateProperties(

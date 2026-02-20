@@ -7,7 +7,6 @@ import io.ktor.server.plugins.di.dependencies
 
 internal suspend fun Application.ktor() {
     assets()
-    authenticationProperties()
     authentication()
     autoHeadResponses()
     httpCaching()
@@ -15,14 +14,4 @@ internal suspend fun Application.ktor() {
     serialization()
     validation()
     webjars()
-}
-
-fun Application.authenticationProperties() {
-    dependencies {
-        provide {
-            AuthenticationProperties(
-                credentials = getEnvironmentVariable("DMUA_CREDENTIALS"),
-            )
-        }
-    }
 }

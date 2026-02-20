@@ -4,7 +4,7 @@ import be.alpago.website.libs.getEnvironmentVariable
 import io.ktor.server.application.Application
 import io.ktor.server.plugins.di.dependencies
 
-fun Application.jakartaMail() {
+internal fun Application.jakartaMail() {
     dependencies {
         provide {
             JakartaMailProperties(
