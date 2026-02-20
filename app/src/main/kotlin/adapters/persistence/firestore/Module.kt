@@ -35,7 +35,7 @@ private const val INDEX_TRAININGS_COLLECTION = "pages/index/trainings"
 private const val NEWS_ARTICLE_COLLECTION = "pages/news/articles"
 private const val PHOTO_GALLERY_IMAGE_COLLECTION = "pages/gallery/images"
 
-fun Application.firestore() {
+internal fun Application.firestore() {
     httpClient()
     firestoreProperties()
 
@@ -51,7 +51,7 @@ fun Application.firestore() {
     photoGalleryPageRepositories()
 }
 
-fun Application.httpClient() {
+private fun Application.httpClient() {
     dependencies {
         provide<HttpClient> {
             firestoreHttpClient()
@@ -71,7 +71,7 @@ private fun Application.firestoreProperties() {
     }
 }
 
-fun Application.animalRepository() {
+private fun Application.animalRepository() {
     dependencies {
         provide<Repository<Animal>> {
             CachingRepository(
@@ -88,7 +88,7 @@ fun Application.animalRepository() {
     }
 }
 
-fun Application.articleTransformer() {
+private fun Application.articleTransformer() {
     dependencies {
         provide<FirestoreAggregateTransformer<Article>> {
             FirestoreArticleTransformer()
@@ -96,7 +96,7 @@ fun Application.articleTransformer() {
     }
 }
 
-fun Application.fiberAnalysisRepository() {
+private fun Application.fiberAnalysisRepository() {
     dependencies {
         provide<Repository<FiberAnalysis>> {
             CachingRepository(
@@ -113,7 +113,7 @@ fun Application.fiberAnalysisRepository() {
     }
 }
 
-fun Application.highlightTransformer() {
+private fun Application.highlightTransformer() {
     dependencies {
         provide<FirestoreAggregateTransformer<Highlight>> {
             FirestoreHighlightTransformer()
@@ -121,7 +121,7 @@ fun Application.highlightTransformer() {
     }
 }
 
-fun Application.imageMetadataTransformer() {
+private fun Application.imageMetadataTransformer() {
     dependencies {
         provide<FirestoreAggregateTransformer<ImageMetadata>> {
             FirestoreImageMetadataTransformer()
@@ -129,7 +129,7 @@ fun Application.imageMetadataTransformer() {
     }
 }
 
-fun Application.indexPageRepositories() {
+private fun Application.indexPageRepositories() {
     indexArticleRepository()
     indexNewsHighlightRepository()
     indexTrainingImageRepository()
@@ -205,7 +205,7 @@ private fun Application.indexGuildHighlightRepository() {
     }
 }
 
-fun Application.newsPageRepositories() {
+private fun Application.newsPageRepositories() {
     dependencies {
         provide<Repository<Article>>(ShowNewsPage::class.simpleName) {
             CachingRepository(
@@ -222,7 +222,7 @@ fun Application.newsPageRepositories() {
     }
 }
 
-fun Application.factsheetPageRepositories() {
+private fun Application.factsheetPageRepositories() {
     factsheetArticleRepository()
     factsheetHighlightRepository()
 }
@@ -261,7 +261,7 @@ private fun Application.factsheetHighlightRepository() {
     }
 }
 
-fun Application.photoGalleryPageRepositories() {
+private fun Application.photoGalleryPageRepositories() {
     dependencies {
         provide<Repository<ImageMetadata>>(ShowPhotoGalleryPage::class.simpleName) {
             CachingRepository(

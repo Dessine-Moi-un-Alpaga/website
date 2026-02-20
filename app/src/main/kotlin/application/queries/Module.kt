@@ -28,7 +28,7 @@ internal fun Application.queries() {
     showPhotoGalleryPage()
 }
 
-internal fun Application.showAnimalPage() {
+private fun Application.showAnimalPage() {
     dependencies {
         provide<ShowAnimalPage> {
             ShowAnimalPageQuery(
@@ -39,7 +39,7 @@ internal fun Application.showAnimalPage() {
     }
 }
 
-internal fun Application.showFactsheetPage() {
+private fun Application.showFactsheetPage() {
     dependencies {
         provide<ShowFactsheetPage> {
             ShowFactsheetPageQuery(
@@ -51,7 +51,7 @@ internal fun Application.showFactsheetPage() {
     }
 }
 
-internal fun Application.showIndexPage() {
+private fun Application.showIndexPage() {
     dependencies {
         provide<ShowIndexPage> {
             ShowIndexPageQuery(
@@ -65,7 +65,7 @@ internal fun Application.showIndexPage() {
     }
 }
 
-internal fun Application.showNewsPage() {
+private fun Application.showNewsPage() {
     dependencies {
         provide<ShowNewsPage> {
             ShowNewsPageQuery(
@@ -76,7 +76,7 @@ internal fun Application.showNewsPage() {
     }
 }
 
-internal fun Application.showPhotoGalleryPage() {
+private fun Application.showPhotoGalleryPage() {
     dependencies {
         provide<ShowPhotoGalleryPage> {
             ShowPhotoGalleryPageQuery(
