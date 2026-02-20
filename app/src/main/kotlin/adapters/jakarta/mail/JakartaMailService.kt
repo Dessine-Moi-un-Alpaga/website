@@ -2,6 +2,7 @@ package be.alpago.website.adapters.jakarta.mail
 
 import be.alpago.website.application.usecases.SendEmail
 import be.alpago.website.domain.Email
+import be.alpago.website.i18n.Messages
 import jakarta.mail.Message
 import jakarta.mail.Session
 import jakarta.mail.Transport

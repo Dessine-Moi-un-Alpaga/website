@@ -1,11 +1,11 @@
 package be.alpago.website.application.queries
 
 import be.alpago.website.application.AnimalSectionModel
-import be.alpago.website.application.Messages
 import be.alpago.website.application.PageModel
 import be.alpago.website.application.usecases.ShowAnimalPage
 import be.alpago.website.domain.Animal
 import be.alpago.website.domain.FiberAnalysis
+import be.alpago.website.i18n.Messages
 import be.alpago.website.libs.domain.ports.AggregateRootNotFound
 import be.alpago.website.libs.domain.ports.Repository
 import kotlinx.coroutines.async
