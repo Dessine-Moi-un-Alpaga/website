@@ -25,7 +25,7 @@ data class TestAggregateRoot(
     val stringField: String = "${UUID.randomUUID()}",
 ) : AggregateRoot
 
-class TestTransformer : FirestoreAggregateTransformer<TestAggregateRoot> {
+class TestTransformer : FirestoreAggregateTransformer<TestAggregateRoot>() {
 
     override fun fromDomain(aggregateRoot: TestAggregateRoot) = mapOf(
         TestFields.id to aggregateRoot.id,
@@ -45,7 +45,7 @@ class FirestoreRepositoryTest {
     private val repository: FirestoreRepository<TestAggregateRoot>
 
     init {
-        val client = createHttpClient()
+        val client = firestoreHttpClient()
         repository = FirestoreRepository(
             collection = "test",
             client = client,
@@ -70,7 +70,7 @@ class FirestoreRepositoryTest {
         val aggregateRoot = TestAggregateRoot(intField = null)
 
         runBlocking {
-            repository.create(aggregateRoot)
+            repository.save(aggregateRoot)
             repository.get(aggregateRoot.id) shouldBe aggregateRoot
         }
     }
@@ -80,9 +80,9 @@ class FirestoreRepositoryTest {
         val aggregateRoot = TestAggregateRoot()
 
         runBlocking {
-            repository.create(aggregateRoot)
+            repository.save(aggregateRoot)
             val updated = TestAggregateRoot(aggregateRoot.id)
-            repository.create(updated)
+            repository.save(updated)
             repository.get(aggregateRoot.id) shouldBe updated
         }
     }
@@ -92,7 +92,7 @@ class FirestoreRepositoryTest {
         val aggregateRoot = TestAggregateRoot()
 
         runBlocking {
-            repository.create(aggregateRoot)
+            repository.save(aggregateRoot)
             repository.delete(aggregateRoot.id)
 
             shouldThrow<AggregateRootNotFound> {
@@ -107,8 +107,8 @@ class FirestoreRepositoryTest {
         val aggregateRoot2 = TestAggregateRoot()
 
         runBlocking {
-            repository.create(aggregateRoot1)
-            repository.create(aggregateRoot2)
+            repository.save(aggregateRoot1)
+            repository.save(aggregateRoot2)
             val aggregateRoots = repository.findAll()
             aggregateRoots shouldContainAll listOf(
                 aggregateRoot1,
@@ -124,9 +124,9 @@ class FirestoreRepositoryTest {
         val aggregateRoot3 = TestAggregateRoot(stringField = aggregateRoot2.stringField)
 
         runBlocking {
-            repository.create(aggregateRoot1)
-            repository.create(aggregateRoot2)
-            repository.create(aggregateRoot3)
+            repository.save(aggregateRoot1)
+            repository.save(aggregateRoot2)
+            repository.save(aggregateRoot3)
             val aggregateRoots = repository.findBy("stringField", aggregateRoot2.stringField)
             aggregateRoots shouldContainAll listOf(
                 aggregateRoot2,

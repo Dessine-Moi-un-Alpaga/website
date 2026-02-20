@@ -54,7 +54,7 @@ fun Application.firestore() {
 fun Application.httpClient() {
     dependencies {
         provide<HttpClient> {
-            createHttpClient()
+            firestoreHttpClient()
         }
     }
 }

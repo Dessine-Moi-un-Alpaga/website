@@ -9,7 +9,10 @@ private const val COMFORT_FACTOR = "comfortFactor"
 private const val STANDARD_DEVIATION = "standardDeviation"
 private const val YEAR = "year"
 
-class FirestoreFiberAnalysisTransformer : FirestoreAggregateTransformer<FiberAnalysis> {
+/**
+ * @suppress
+ */
+class FirestoreFiberAnalysisTransformer : FirestoreAggregateTransformer<FiberAnalysis>() {
 
     override fun fromDomain(aggregateRoot: FiberAnalysis) = mapOf(
         ANIMAL_ID to aggregateRoot.animalId,

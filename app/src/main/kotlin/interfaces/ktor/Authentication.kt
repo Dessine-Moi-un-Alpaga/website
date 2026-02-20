@@ -9,7 +9,7 @@ import io.ktor.server.auth.basic
 import io.ktor.server.plugins.di.dependencies
 
 
-fun Application.authentication() {
+internal fun Application.authentication() {
     val properties: AuthenticationProperties by dependencies
     val allowedCredentials = parseCredentials(properties)
     val verifyer by lazy { BCrypt.verifyer() }

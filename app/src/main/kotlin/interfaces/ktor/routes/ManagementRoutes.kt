@@ -14,8 +14,14 @@ import io.ktor.server.routing.get
 import io.ktor.server.routing.put
 import io.ktor.server.routing.routing
 
+/**
+ * @suppress
+ */
 const val ID = "id"
 
+/**
+ * Registers a route using the given context path that lists all the [AggregateRoot]s using the given [Repository].
+ */
 inline fun <reified T : AggregateRoot> Route.findAllRoute(
     path: String,
     repository: Repository<T>,
@@ -53,7 +59,7 @@ inline fun <reified T : AggregateRoot> Route.putRoute(
 ) {
     put(path) {
         val aggregateRoot = call.receive<T>()
-        repository.create(aggregateRoot)
+        repository.save(aggregateRoot)
         call.response.status(HttpStatusCode.OK)
     }
 }

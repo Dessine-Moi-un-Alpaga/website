@@ -9,6 +9,14 @@ private data class FindByCacheKey(
     val argumentValue: Any?,
 )
 
+/**
+ * A Repository implementation that maintains a cache of Aggregates.
+ *
+ * This is a simple and naive implementation intended to make sure that the number of repository operations are bounded
+ * by the number of aggregates over the lifetime of an instance of the application.
+ *
+ * Caches are invalidated whenever modifications are made to one or several aggregates.
+ */
 class CachingRepository<T : AggregateRoot>(private val delegate: Repository<T>) : Repository<T> {
 
     private val findAllCache: MutableMap<Nothing?, List<T>> = synchronizedMap(mutableMapOf())
@@ -16,13 +24,6 @@ class CachingRepository<T : AggregateRoot>(private val delegate: Repository<T>) 
     private val findByCache: MutableMap<FindByCacheKey, List<T>> = synchronizedMap(mutableMapOf())
 
     private val getCache: MutableMap<String, T> = synchronizedMap(mutableMapOf())
-
-    override suspend fun create(aggregateRoot: T) {
-        delegate.create(aggregateRoot)
-        findAllCache.clear()
-        findByCache.clear()
-        getCache.remove(aggregateRoot.id)
-    }
 
     override suspend fun delete(id: String) {
         delegate.delete(id)
@@ -70,5 +71,12 @@ class CachingRepository<T : AggregateRoot>(private val delegate: Repository<T>) 
         }
 
         return result
+    }
+
+    override suspend fun save(aggregateRoot: T) {
+        delegate.save(aggregateRoot)
+        findAllCache.clear()
+        findByCache.clear()
+        getCache.remove(aggregateRoot.id)
     }
 }

@@ -7,7 +7,7 @@ import io.ktor.server.plugins.requestvalidation.RequestValidationException
 import io.ktor.server.plugins.statuspages.StatusPages
 import io.ktor.server.response.respond
 
-fun Application.validation() {
+internal fun Application.validation() {
     install(StatusPages) {
         exception<RequestValidationException> { call, _ ->
             call.respond(HttpStatusCode.BadRequest)

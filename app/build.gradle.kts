@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 plugins {
     alias(libs.plugins.kotlin)
 
+    alias(libs.plugins.dokka)
     alias(libs.plugins.i18n4k)
     alias(libs.plugins.graalvm.plugin)
     alias(libs.plugins.ktor)
@@ -61,7 +62,7 @@ kotlin {
 tasks.register("ci") {
     group = "build"
     description = "Executes continuous integration build tasks."
-    dependsOn(tasks.jacocoTestReport, tasks.shadowJar)
+    dependsOn(tasks.jacocoTestReport, tasks.shadowJar, tasks.dokkaGenerate)
 }
 
 fun ProcessForkOptions.environmentVariables(project: Project) {
@@ -122,4 +123,35 @@ tasks.run {
     }
 
     environmentVariables(project)
+}
+
+dokka {
+    dokkaSourceSets.main {
+        includes.from("src/main/kotlin/package-info.md")
+        jdkVersion.set(24)
+        perPackageOption {
+            matchingRegex.set("be.alpago.website")
+            suppress.set(true)
+        }
+        perPackageOption {
+            matchingRegex.set("be.alpago.website.i18n")
+            suppress.set(true)
+        }
+        perPackageOption {
+            matchingRegex.set("be.alpago.website.interfaces.kotlinx.html.(body|footer(.*)*|head(.*)*|header(.*)*|style)")
+            suppress.set(true)
+        }
+        sourceLink {
+            localDirectory.set(file("src/main/kotlin"))
+            remoteUrl("https://github.com/Dessine-Moi-un-Alpaga/website/tree/main/app/src/main/kotlin")
+        }
+        externalDocumentationLinks.register("kotlinx-serialization") {
+            url("https://kotlinlang.org/api/kotlinx.serialization")
+            packageListUrl("https://kotlinlang.org/api/kotlinx.serialization/package-list")
+        }
+    }
+
+    pluginsConfiguration.html {
+        footerMessage.set("© 2025 Alpago")
+    }
 }

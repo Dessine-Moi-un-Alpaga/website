@@ -6,8 +6,6 @@ import be.alpago.website.libs.kotlin.retry.retry
 
 class RetryingRepository<T : AggregateRoot>(private val delegate: Repository<T>): Repository<T> {
 
-    override suspend fun create(aggregateRoot: T) = retry { delegate.create(aggregateRoot) }
-
     override suspend fun delete(id: String) = retry { delegate.delete(id) }
 
     override suspend fun deleteAll() = retry { delegate.deleteAll() }
@@ -17,4 +15,6 @@ class RetryingRepository<T : AggregateRoot>(private val delegate: Repository<T>)
     override suspend fun findBy(field: String, value: String) = retry { delegate.findBy(field, value) }
 
     override suspend fun get(id: String) = retry { delegate.get(id) }
+
+    override suspend fun save(aggregateRoot: T) = retry { delegate.save(aggregateRoot) }
 }

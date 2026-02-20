@@ -3,6 +3,9 @@ package be.alpago.website.application
 import be.alpago.website.domain.Animal
 import java.util.SortedMap
 
+/**
+ * @suppress
+ */
 typealias Categories = SortedMap<NavigationModel.Category, MutableSet<Animal>>
 
 class NavigationModel(

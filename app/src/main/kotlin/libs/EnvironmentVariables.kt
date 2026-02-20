@@ -1,5 +1,8 @@
 package be.alpago.website.libs
 
+/**
+ * @throws NoSuchEnvironmentVariableException
+ */
 fun getEnvironmentVariable(name: String, default: String? = null) =
     System.getenv(name) ?:
         default ?:

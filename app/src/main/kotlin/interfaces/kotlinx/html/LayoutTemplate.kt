@@ -7,6 +7,9 @@ import io.ktor.server.html.Template
 import io.ktor.server.html.insert
 import kotlinx.html.*
 
+/**
+ * The root html template for all web pages. Renders the page based on the specified [PageModel].
+ */
 class LayoutTemplate(
     private val properties: TemplateProperties,
     private val pageModel: PageModel
