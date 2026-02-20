@@ -10,10 +10,7 @@ private const val SUBTITLE = "subtitle"
 private const val TEXT = "text"
 private const val TITLE = "title"
 
-/**
- * @suppress
- */
-class FirestoreArticleTransformer : FirestoreAggregateTransformer<Article>() {
+internal class FirestoreArticleTransformer : FirestoreAggregateTransformer<Article>() {
 
     override fun fromDomain(aggregateRoot: Article) = mapOf(
         ID to aggregateRoot.id,

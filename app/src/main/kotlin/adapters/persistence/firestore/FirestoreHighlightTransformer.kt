@@ -9,10 +9,7 @@ private const val THUMBNAIL = "thumbnail"
 private const val THUMBNAIL_DESCRIPTION = "thumbnailDescription"
 private const val TITLE = "title"
 
-/**
- * @suppress
- */
-class FirestoreHighlightTransformer : FirestoreAggregateTransformer<Highlight>() {
+internal class FirestoreHighlightTransformer : FirestoreAggregateTransformer<Highlight>() {
 
     override fun fromDomain(aggregateRoot: Highlight) = mapOf(
         ID to aggregateRoot.id,
