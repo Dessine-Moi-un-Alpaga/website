@@ -4,6 +4,6 @@ import be.alpago.website.libs.ktor.plugins.webjars.Webjars
 import io.ktor.server.application.Application
 import io.ktor.server.application.install
 
-fun Application.webjars() {
+internal fun Application.webjars() {
     install(Webjars)
 }
