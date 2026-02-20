@@ -5,7 +5,7 @@ import be.alpago.website.libs.getEnvironmentVariable
 import io.ktor.server.application.Application
 import io.ktor.server.plugins.di.dependencies
 
-suspend fun Application.ktor() {
+internal suspend fun Application.ktor() {
     assets()
     authenticationProperties()
     authentication()
@@ -17,7 +17,7 @@ suspend fun Application.ktor() {
     webjars()
 }
 
-private fun Application.authenticationProperties() {
+fun Application.authenticationProperties() {
     dependencies {
         provide {
             AuthenticationProperties(

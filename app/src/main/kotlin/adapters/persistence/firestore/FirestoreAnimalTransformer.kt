@@ -24,7 +24,10 @@ private const val THUMBNAIL_DESCRIPTION = "thumbnailDescription"
 private const val TYPE = "type"
 private const val TITLE = "title"
 
-class FirestoreAnimalTransformer : FirestoreAggregateTransformer<Animal> {
+/**
+ * @suppress
+ */
+class FirestoreAnimalTransformer : FirestoreAggregateTransformer<Animal>() {
 
     override fun fromDomain(aggregateRoot: Animal) = mapOf(
         BANNER_DESCRIPTION to aggregateRoot.bannerDescription,

@@ -28,6 +28,9 @@ fun main() {
     }
 }
 
+/**
+ * @suppress
+ */
 suspend fun Application.modules() {
     adapters()
     queries()

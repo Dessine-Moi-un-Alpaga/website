@@ -12,6 +12,17 @@ import io.ktor.server.plugins.di.dependencies
 import io.ktor.server.routing.get
 import io.ktor.server.routing.routing
 
+/**
+ * Registers the HTTP endpoints for managing [Animal]s and displaying an [Animal]'s page.
+ *
+ * The endpoints are the following:
+ * * `DELETE /api/animals`
+ * * `DELETE /api/animals/{id}`
+ * * `GET /api/animals`
+ * * `GET /api/animals/{id}`
+ * * `PUT /api/animals`
+ * * `GET /animals/{id}.html`
+ */
 fun Application.animalRoutes() {
     val properties: TemplateProperties by dependencies
     val animalRepository: Repository<Animal> by dependencies

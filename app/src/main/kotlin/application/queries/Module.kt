@@ -20,7 +20,7 @@ import be.alpago.website.libs.domain.ports.persistence.Repository
 import io.ktor.server.application.Application
 import io.ktor.server.plugins.di.dependencies
 
-fun Application.queries() {
+internal fun Application.queries() {
     showAnimalPage()
     showFactsheetPage()
     showIndexPage()
@@ -28,7 +28,7 @@ fun Application.queries() {
     showPhotoGalleryPage()
 }
 
-fun Application.showAnimalPage() {
+internal fun Application.showAnimalPage() {
     dependencies {
         provide<ShowAnimalPage> {
             ShowAnimalPageQuery(
@@ -39,7 +39,7 @@ fun Application.showAnimalPage() {
     }
 }
 
-fun Application.showFactsheetPage() {
+internal fun Application.showFactsheetPage() {
     dependencies {
         provide<ShowFactsheetPage> {
             ShowFactsheetPageQuery(
@@ -51,7 +51,7 @@ fun Application.showFactsheetPage() {
     }
 }
 
-fun Application.showIndexPage() {
+internal fun Application.showIndexPage() {
     dependencies {
         provide<ShowIndexPage> {
             ShowIndexPageQuery(
@@ -65,7 +65,7 @@ fun Application.showIndexPage() {
     }
 }
 
-fun Application.showNewsPage() {
+internal fun Application.showNewsPage() {
     dependencies {
         provide<ShowNewsPage> {
             ShowNewsPageQuery(
@@ -76,7 +76,7 @@ fun Application.showNewsPage() {
     }
 }
 
-fun Application.showPhotoGalleryPage() {
+internal fun Application.showPhotoGalleryPage() {
     dependencies {
         provide<ShowPhotoGalleryPage> {
             ShowPhotoGalleryPageQuery(

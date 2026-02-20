@@ -9,7 +9,10 @@ private const val path = "path"
 private const val thumbnailPath = "thumbnailPath"
 private const val width = "width"
 
-class FirestoreImageMetadataTransformer : FirestoreAggregateTransformer<ImageMetadata> {
+/**
+ * @suppress
+ */
+class FirestoreImageMetadataTransformer : FirestoreAggregateTransformer<ImageMetadata>() {
 
     override fun fromDomain(aggregateRoot: ImageMetadata) = mapOf(
         ID to aggregateRoot.id,

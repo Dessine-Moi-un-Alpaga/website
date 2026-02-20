@@ -2,15 +2,18 @@ package be.alpago.website.adapters.persistence.firestore
 
 import be.alpago.website.libs.domain.AggregateRoot
 
-interface FirestoreAggregateTransformer<T : AggregateRoot> {
+/**
+ * Provides the base contract for transforming [Map]s returned by Firestore to [AggregateRoot]s and vice versa.
+ */
+abstract class FirestoreAggregateTransformer<T : AggregateRoot> {
 
-    fun fromDomain(aggregateRoot: T): Map<String, Any?>
+    protected abstract fun fromDomain(aggregateRoot: T): Map<String, Any?>
 
     fun fromFirestore(firestoreFields: Map<String, Value>) = toDomain(
         unwrap(firestoreFields)
     )
 
-    fun toDomain(fields: Map<String, Any?>): T
+    protected abstract fun toDomain(fields: Map<String, Any?>): T
 
     fun toFirestore(aggregateRoot: T) = wrap(
         fromDomain(aggregateRoot)

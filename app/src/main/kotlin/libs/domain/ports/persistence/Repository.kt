@@ -4,8 +4,6 @@ import be.alpago.website.libs.domain.AggregateRoot
 
 interface Repository<T : AggregateRoot> {
 
-    suspend fun create(aggregateRoot: T)
-
     suspend fun delete(id: String)
 
     suspend fun deleteAll()
@@ -14,5 +12,10 @@ interface Repository<T : AggregateRoot> {
 
     suspend fun findBy(field: String, value: String): List<T>
 
+    /**
+     * @throws AggregateRootNotFound
+     */
     suspend fun get(id: String): T
+
+    suspend fun save(aggregateRoot: T)
 }

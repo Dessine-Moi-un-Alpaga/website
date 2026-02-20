@@ -14,6 +14,9 @@ sealed class SectionModel(
     val isPhotoGallery: Boolean = false,
 )
 
+/**
+ * @suppress
+ */
 class AnimalSectionModel(
     val animal: Animal,
     val fiberAnalyses: List<FiberAnalysis>,
@@ -25,6 +28,9 @@ class AnimalSectionModel(
     type = "animal",
 )
 
+/**
+ * @suppress
+ */
 class ArticleSectionModel(
     val article: Article,
     color: SectionColor,
@@ -36,6 +42,9 @@ class ArticleSectionModel(
     type = "article",
 )
 
+/**
+ * @suppress
+ */
 class PhotoGallerySectionModel(
     color: SectionColor,
     id: String,
@@ -51,6 +60,9 @@ class PhotoGallerySectionModel(
     isPhotoGallery = true,
 )
 
+/**
+ * @suppress
+ */
 class HighlightsSectionModel(
     color: SectionColor,
     val highlights: List<Highlight>,

@@ -4,11 +4,11 @@ import be.alpago.website.libs.getEnvironmentVariable
 import io.ktor.server.application.Application
 import io.ktor.server.plugins.di.dependencies
 
-fun Application.templates() {
+internal fun Application.templates() {
     templateProperties()
 }
 
-private fun Application.templateProperties() {
+fun Application.templateProperties() {
     dependencies {
         provide {
             TemplateProperties(
