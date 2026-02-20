@@ -1,6 +1,6 @@
 package be.alpago.website.interfaces.kotlinx.html.footer.contact.form
 
-import be.alpago.website.interfaces.kotlinx.html.Messages
+import be.alpago.website.i18n.Messages
 import be.alpago.website.interfaces.kotlinx.html.style.EscapeVelocity
 import be.alpago.website.libs.kotlin.i18n.capitalize
 import kotlinx.html.*

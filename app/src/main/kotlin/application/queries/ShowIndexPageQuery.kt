@@ -2,7 +2,6 @@ package be.alpago.website.application.queries
 
 import be.alpago.website.application.ArticleSectionModel
 import be.alpago.website.application.HighlightsSectionModel
-import be.alpago.website.application.Messages
 import be.alpago.website.application.PageModel
 import be.alpago.website.application.PhotoGallerySectionModel
 import be.alpago.website.application.SectionColor
@@ -12,6 +11,7 @@ import be.alpago.website.domain.Animal
 import be.alpago.website.domain.Article
 import be.alpago.website.domain.Highlight
 import be.alpago.website.domain.ImageMetadata
+import be.alpago.website.i18n.Messages
 import be.alpago.website.libs.domain.ports.Repository
 import be.alpago.website.libs.kotlin.i18n.capitalize
 import kotlinx.coroutines.async

@@ -3,7 +3,7 @@ package be.alpago.website.interfaces.kotlinx.html.body
 import be.alpago.website.application.AnimalSectionModel
 import be.alpago.website.domain.Animal
 import be.alpago.website.domain.FiberAnalysis
-import be.alpago.website.interfaces.kotlinx.html.Messages
+import be.alpago.website.i18n.Messages
 import be.alpago.website.interfaces.kotlinx.html.TemplateProperties
 import be.alpago.website.interfaces.kotlinx.html.style.EscapeVelocity
 import be.alpago.website.libs.kotlin.i18n.capitalize

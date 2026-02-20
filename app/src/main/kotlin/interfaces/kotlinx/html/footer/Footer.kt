@@ -1,6 +1,6 @@
 package be.alpago.website.interfaces.kotlinx.html.footer
 
-import be.alpago.website.interfaces.kotlinx.html.Messages
+import be.alpago.website.i18n.Messages
 import be.alpago.website.interfaces.kotlinx.html.TemplateProperties
 import be.alpago.website.interfaces.kotlinx.html.footer.contact.contact
 import be.alpago.website.interfaces.kotlinx.html.footer.legal.legalNotice

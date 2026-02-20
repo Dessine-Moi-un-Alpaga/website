@@ -1,6 +1,6 @@
 package be.alpago.website.interfaces.kotlinx.html.header
 
-import be.alpago.website.interfaces.kotlinx.html.Messages
+import be.alpago.website.i18n.Messages
 import be.alpago.website.interfaces.kotlinx.html.TemplateProperties
 import kotlinx.html.*
 
