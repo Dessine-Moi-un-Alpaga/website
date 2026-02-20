@@ -1,4 +1,4 @@
-package be.alpago.website.interfaces.ktor
+package be.alpago.website.libs.ktor
 
 import io.ktor.server.engine.ApplicationEngine
 import io.ktor.server.engine.EmbeddedServer
