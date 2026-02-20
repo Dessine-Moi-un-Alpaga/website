@@ -28,10 +28,7 @@ fun main() {
     }
 }
 
-/**
- * @suppress
- */
-suspend fun Application.modules() {
+internal suspend fun Application.modules() {
     adapters()
     queries()
     interfaces()
