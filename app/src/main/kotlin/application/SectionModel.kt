@@ -14,7 +14,7 @@ sealed class SectionModel(
     val isPhotoGallery: Boolean = false,
 )
 
-internal class AnimalSectionModel(
+class AnimalSectionModel(
     val animal: Animal,
     val fiberAnalyses: List<FiberAnalysis>,
     id: String,
@@ -25,7 +25,7 @@ internal class AnimalSectionModel(
     type = "animal",
 )
 
-internal class ArticleSectionModel(
+class ArticleSectionModel(
     val article: Article,
     color: SectionColor,
     id: String,
@@ -36,7 +36,7 @@ internal class ArticleSectionModel(
     type = "article",
 )
 
-internal class PhotoGallerySectionModel(
+class PhotoGallerySectionModel(
     color: SectionColor,
     id: String,
     val images: List<ImageMetadata>,
@@ -51,7 +51,7 @@ internal class PhotoGallerySectionModel(
     isPhotoGallery = true,
 )
 
-internal class HighlightsSectionModel(
+class HighlightsSectionModel(
     color: SectionColor,
     val highlights: List<Highlight>,
     id: String,
