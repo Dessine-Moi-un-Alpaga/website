@@ -8,6 +8,7 @@ import be.alpago.website.domain.Highlight
 import be.alpago.website.interfaces.kotlinx.html.LayoutTemplate
 import be.alpago.website.interfaces.kotlinx.html.TemplateProperties
 import be.alpago.website.libs.domain.ports.persistence.Repository
+import be.alpago.website.libs.ktor.routes.managementRoutes
 import io.ktor.server.application.Application
 import io.ktor.server.html.respondHtmlTemplate
 import io.ktor.server.plugins.di.dependencies
