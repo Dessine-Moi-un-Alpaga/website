@@ -4,13 +4,15 @@ import be.alpago.website.adapters.adapters
 import be.alpago.website.application.queries.queries
 import be.alpago.website.interfaces.interfaces
 import be.alpago.website.interfaces.ktor.registerShutdownHook
-import be.alpago.website.interfaces.slf4j.bridgeJavaUtilLoggingToSlf4j
+import be.alpago.website.libs.i18n4k.setLocale
+import be.alpago.website.libs.slf4j.bridgeJavaUtilLoggingToSlf4j
 import io.ktor.server.application.Application
 import io.ktor.server.cio.CIO
 import io.ktor.server.engine.embeddedServer
 
 fun main() {
     bridgeJavaUtilLoggingToSlf4j()
+    setLocale()
 
     with(
         embeddedServer(

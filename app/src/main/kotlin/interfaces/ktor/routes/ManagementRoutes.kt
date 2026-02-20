@@ -1,8 +1,8 @@
 package be.alpago.website.interfaces.ktor.routes
 
 import be.alpago.website.libs.domain.AggregateRoot
-import be.alpago.website.libs.domain.ports.AggregateRootNotFound
-import be.alpago.website.libs.domain.ports.Repository
+import be.alpago.website.libs.domain.ports.persistence.AggregateRootNotFound
+import be.alpago.website.libs.domain.ports.persistence.Repository
 import io.ktor.http.HttpStatusCode
 import io.ktor.server.application.Application
 import io.ktor.server.auth.authenticate

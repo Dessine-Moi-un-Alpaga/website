@@ -1,6 +1,6 @@
 package be.alpago.website.e2e
 
-import be.alpago.website.adapters.firestore.FirestoreProperties
+import be.alpago.website.adapters.persistence.firestore.FirestoreProperties
 import be.alpago.website.interfaces.kotlinx.html.TemplateProperties
 import be.alpago.website.interfaces.ktor.AuthenticationProperties
 import be.alpago.website.libs.getEnvironmentVariable

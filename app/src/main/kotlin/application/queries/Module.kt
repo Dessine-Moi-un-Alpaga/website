@@ -16,7 +16,7 @@ import be.alpago.website.domain.Article
 import be.alpago.website.domain.FiberAnalysis
 import be.alpago.website.domain.Highlight
 import be.alpago.website.domain.ImageMetadata
-import be.alpago.website.libs.domain.ports.Repository
+import be.alpago.website.libs.domain.ports.persistence.Repository
 import io.ktor.server.application.Application
 import io.ktor.server.plugins.di.dependencies
 

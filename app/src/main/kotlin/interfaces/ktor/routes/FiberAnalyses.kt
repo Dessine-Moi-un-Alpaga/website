@@ -1,7 +1,7 @@
 package be.alpago.website.interfaces.ktor.routes
 
 import be.alpago.website.domain.FiberAnalysis
-import be.alpago.website.libs.domain.ports.Repository
+import be.alpago.website.libs.domain.ports.persistence.Repository
 import io.ktor.server.application.Application
 import io.ktor.server.plugins.di.dependencies
 

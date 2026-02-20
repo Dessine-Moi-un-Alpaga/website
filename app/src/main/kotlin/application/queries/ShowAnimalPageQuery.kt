@@ -6,8 +6,8 @@ import be.alpago.website.application.usecases.ShowAnimalPage
 import be.alpago.website.domain.Animal
 import be.alpago.website.domain.FiberAnalysis
 import be.alpago.website.i18n.Messages
-import be.alpago.website.libs.domain.ports.AggregateRootNotFound
-import be.alpago.website.libs.domain.ports.Repository
+import be.alpago.website.libs.domain.ports.persistence.AggregateRootNotFound
+import be.alpago.website.libs.domain.ports.persistence.Repository
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 
