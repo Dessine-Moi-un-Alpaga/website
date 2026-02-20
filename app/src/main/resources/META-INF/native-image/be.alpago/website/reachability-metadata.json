@@ -10,7 +10,7 @@
       ]
     },
     {
-      "type": "be.alpago.website.adapters.firestore.BooleanValue",
+      "type": "be.alpago.website.adapters.persistence.firestore.BooleanValue",
       "fields": [
         {
           "name": "Companion"
@@ -18,7 +18,7 @@
       ]
     },
     {
-      "type": "be.alpago.website.adapters.firestore.BooleanValue$Companion",
+      "type": "be.alpago.website.adapters.persistence.firestore.BooleanValue$Companion",
       "methods": [
         {
           "name": "serializer",
@@ -27,7 +27,7 @@
       ]
     },
     {
-      "type": "be.alpago.website.adapters.firestore.Document",
+      "type": "be.alpago.website.adapters.persistence.firestore.Document",
       "fields": [
         {
           "name": "Companion"
@@ -35,7 +35,7 @@
       ]
     },
     {
-      "type": "be.alpago.website.adapters.firestore.Document$Companion",
+      "type": "be.alpago.website.adapters.persistence.firestore.Document$Companion",
       "methods": [
         {
           "name": "serializer",
@@ -44,13 +44,13 @@
       ]
     },
     {
-      "type": "be.alpago.website.adapters.firestore.FirestoreAggregateTransformer"
+      "type": "be.alpago.website.adapters.persistence.firestore.FirestoreAggregateTransformer"
     },
     {
-      "type": "be.alpago.website.adapters.firestore.FirestoreProperties"
+      "type": "be.alpago.website.adapters.persistence.firestore.FirestoreProperties"
     },
     {
-      "type":"be.alpago.website.adapters.firestore.GoogleToken",
+      "type":"be.alpago.website.adapters.persistence.firestore.GoogleToken",
       "fields": [
         {
           "name": "Companion"
@@ -58,7 +58,7 @@
       ]
     },
     {
-      "type": "be.alpago.website.adapters.firestore.GoogleToken$Companion",
+      "type": "be.alpago.website.adapters.persistence.firestore.GoogleToken$Companion",
       "methods": [
         {
           "name": "serializer",
@@ -67,7 +67,7 @@
       ]
     },
     {
-      "type": "be.alpago.website.adapters.firestore.IntValue",
+      "type": "be.alpago.website.adapters.persistence.firestore.IntValue",
       "fields": [
         {
           "name": "Companion"
@@ -75,7 +75,7 @@
       ]
     },
     {
-      "type": "be.alpago.website.adapters.firestore.IntValue$Companion",
+      "type": "be.alpago.website.adapters.persistence.firestore.IntValue$Companion",
       "methods": [
         {
           "name": "serializer",
@@ -84,7 +84,7 @@
       ]
     },
     {
-      "type": "be.alpago.website.adapters.firestore.ListDocumentsResponse",
+      "type": "be.alpago.website.adapters.persistence.firestore.ListDocumentsResponse",
       "fields": [
         {
           "name": "Companion"
@@ -92,7 +92,7 @@
       ]
     },
     {
-      "type": "be.alpago.website.adapters.firestore.ListDocumentsResponse$Companion",
+      "type": "be.alpago.website.adapters.persistence.firestore.ListDocumentsResponse$Companion",
       "methods": [
         {
           "name": "serializer",
@@ -101,7 +101,7 @@
       ]
     },
     {
-      "type": "be.alpago.website.adapters.firestore.NullValue",
+      "type": "be.alpago.website.adapters.persistence.firestore.NullValue",
       "fields": [
         {
           "name": "Companion"
@@ -109,7 +109,7 @@
       ]
     },
     {
-      "type": "be.alpago.website.adapters.firestore.NullValue$Companion",
+      "type": "be.alpago.website.adapters.persistence.firestore.NullValue$Companion",
       "methods": [
         {
           "name": "serializer",
@@ -118,7 +118,7 @@
       ]
     },
     {
-      "type": "be.alpago.website.adapters.firestore.Query",
+      "type": "be.alpago.website.adapters.persistence.firestore.Query",
       "fields": [
         {
           "name": "Companion"
@@ -126,7 +126,7 @@
       ]
     },
     {
-      "type": "be.alpago.website.adapters.firestore.Query$Companion",
+      "type": "be.alpago.website.adapters.persistence.firestore.Query$Companion",
       "methods": [
         {
           "name": "serializer",
@@ -135,7 +135,7 @@
       ]
     },
     {
-      "type": "be.alpago.website.adapters.firestore.QueryResponse",
+      "type": "be.alpago.website.adapters.persistence.firestore.QueryResponse",
       "fields": [
         {
           "name": "Companion"
@@ -143,7 +143,7 @@
       ]
     },
     {
-      "type": "be.alpago.website.adapters.firestore.QueryResponse$Companion",
+      "type": "be.alpago.website.adapters.persistence.firestore.QueryResponse$Companion",
       "methods": [
         {
           "name": "serializer",
@@ -152,7 +152,7 @@
       ]
     },
     {
-      "type": "be.alpago.website.adapters.firestore.StringValue",
+      "type": "be.alpago.website.adapters.persistence.firestore.StringValue",
       "fields": [
         {
           "name": "Companion"
@@ -160,7 +160,7 @@
       ]
     },
     {
-      "type": "be.alpago.website.adapters.firestore.StringValue$Companion",
+      "type": "be.alpago.website.adapters.persistence.firestore.StringValue$Companion",
       "methods": [
         {
           "name": "serializer",
@@ -169,10 +169,10 @@
       ]
     },
     {
-      "type": "be.alpago.website.adapters.jakarta.mail.JakartaMailProperties"
+      "type": "be.alpago.website.adapters.email.jakarta.mail.JakartaMailProperties"
     },
     {
-      "type": "be.alpago.website.adapters.jakarta.mail.JakartaMailService"
+      "type": "be.alpago.website.adapters.email.jakarta.mail.JakartaMailService"
     },
     {
       "type": "be.alpago.website.application.usecases.SendEmail"
@@ -304,7 +304,7 @@
       "type": "be.alpago.website.libs.domain.AggregateRoot"
     },
     {
-      "type": "be.alpago.website.libs.domain.ports.Repository"
+      "type": "be.alpago.website.libs.domain.ports.persistence.Repository"
     },
     {
       "type": "be.alpago.website.libs.ktor.plugins.webjars.InputStreamContent"

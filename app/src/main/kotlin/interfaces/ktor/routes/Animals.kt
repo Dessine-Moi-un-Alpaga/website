@@ -4,7 +4,7 @@ import be.alpago.website.application.usecases.ShowAnimalPage
 import be.alpago.website.domain.Animal
 import be.alpago.website.interfaces.kotlinx.html.LayoutTemplate
 import be.alpago.website.interfaces.kotlinx.html.TemplateProperties
-import be.alpago.website.libs.domain.ports.Repository
+import be.alpago.website.libs.domain.ports.persistence.Repository
 import io.ktor.http.HttpStatusCode
 import io.ktor.server.application.Application
 import io.ktor.server.html.respondHtmlTemplate
