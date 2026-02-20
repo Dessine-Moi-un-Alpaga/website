@@ -155,3 +155,7 @@ dokka {
         footerMessage.set("© 2025 Alpago")
     }
 }
+
+tasks.dokkaGeneratePublicationHtml.configure {
+    dependsOn(tasks.generateI18n4kFiles)
+}
