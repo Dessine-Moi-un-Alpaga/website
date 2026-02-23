@@ -70,7 +70,7 @@ jobs:
             firebase-emulator/*.log
 
       - name: Upload API documentation artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: app/build/dokka/html
 
