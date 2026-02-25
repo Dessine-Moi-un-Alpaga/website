@@ -1,6 +1,7 @@
 [versions]
 angus-mail             = "2.0.5"
 bcrypt                 = "0.10.2"
+dokka                  = "2.1.0"
 escape-velocity        = "1.0.0-1"
 graalvm-plugin         = "0.11.4"
 i18n4k                 = "0.11.1"
@@ -84,6 +85,7 @@ ktor-server = [
 ]
 
 [plugins]
+dokka                = { id = "org.jetbrains.dokka",                       version.ref = "dokka"            }
 graalvm-plugin       = { id = "org.graalvm.buildtools.native",             version.ref = "graalvm-plugin"   }
 i18n4k               = { id = "de.comahe.i18n4k",                          version.ref = "i18n4k"           }
 kotlin               = { id = "org.jetbrains.kotlin.jvm",                  version.ref = "kotlin"           }

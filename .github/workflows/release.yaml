@@ -69,6 +69,14 @@ jobs:
             app/build/reports/problems/problems-report.html
             firebase-emulator/*.log
 
+      - name: Upload API documentation artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: app/build/dokka/html
+
+      - name: Deploy API documentation
+        uses: actions/deploy-pages@v4
+
       - name: Check if analysis is required
         id: analysis-check
         run: |
@@ -157,4 +165,5 @@ permissions:
   contents: write
   id-token: write
   issues: write
+  pages: write
   pull-requests: write

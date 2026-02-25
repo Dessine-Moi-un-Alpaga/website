@@ -5,9 +5,8 @@ import be.alpago.website.libs.getEnvironmentVariable
 import io.ktor.server.application.Application
 import io.ktor.server.plugins.di.dependencies
 
-suspend fun Application.ktor() {
+internal suspend fun Application.ktor() {
     assets()
-    authenticationProperties()
     authentication()
     autoHeadResponses()
     httpCaching()
@@ -15,14 +14,4 @@ suspend fun Application.ktor() {
     serialization()
     validation()
     webjars()
-}
-
-private fun Application.authenticationProperties() {
-    dependencies {
-        provide {
-            AuthenticationProperties(
-                credentials = getEnvironmentVariable("DMUA_CREDENTIALS"),
-            )
-        }
-    }
 }

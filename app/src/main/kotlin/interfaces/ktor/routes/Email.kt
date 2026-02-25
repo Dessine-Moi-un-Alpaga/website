@@ -12,6 +12,11 @@ import io.ktor.server.request.receive
 import io.ktor.server.routing.post
 import io.ktor.server.routing.routing
 
+/**
+ * Registers the HTTP endpoint for sending emails to the website administrator.
+ *
+ * The endpoint is : `POST /api/email`
+ */
 fun Application.emailRoute() {
     val service: SendEmail by dependencies
 

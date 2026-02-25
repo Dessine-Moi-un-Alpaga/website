@@ -30,7 +30,11 @@ private const val GOOGLE_METADATA_ENDPOINT = "http://metadata.google.internal/co
 private const val GOOGLE_METADATA_HEADER_NAME = "Metadata-Flavor"
 private const val GOOGLE_METADATA_HEADER_VALUE = "Google"
 
-fun createHttpClient(): HttpClient {
+/**
+ * Ktor [HttpClient] that implements
+ * [Google Cloud Firestore authentication](https://docs.cloud.google.com/compute/docs/access/authenticate-workloads#applications).
+ */
+fun firestoreHttpClient(): HttpClient {
 
     val client = HttpClient(CIO) {
         install(ContentNegotiation) {
