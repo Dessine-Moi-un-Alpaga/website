@@ -12,7 +12,7 @@ tasks:
     cmds:
       - task: firebase-emulator:start
       - defer: { task: firebase-emulator:stop }
-      - ./gradlew {{.CLI_ARGS}} ci
+      - ./gradlew ci
 
   push:
     cmds:

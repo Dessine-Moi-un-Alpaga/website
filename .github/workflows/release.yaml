@@ -41,11 +41,15 @@ jobs:
           distribution: temurin
           java-version: ${{ env.JAVA_VERSION }}
 
-      - name: Set up Gradle cache
+      - name: Set up Gradle integration
         uses: gradle/actions/setup-gradle@v5
         with:
+          build-scan-publish: true
+          build-scan-terms-of-use-url: https://gradle.com/terms-of-service
+          build-scan-terms-of-use-agree: yes
           cache-encryption-key: ${{ secrets.GRADLE_ENCRYPTION_KEY }}
           cache-read-only: false
+          dependency-graph: generate-and-submit
 
       - name: Install Task
         uses: go-task/setup-task@v1
@@ -57,7 +61,7 @@ jobs:
           path: ~/.cache/firebase/emulators
 
       - name: Build
-        run: task ENVIRONMENT=${{ vars.ENVIRONMENT }} app:build -- --scan
+        run: task ENVIRONMENT=${{ vars.ENVIRONMENT }} app:build
 
       - name: Save build reports and logs
         if: always()
