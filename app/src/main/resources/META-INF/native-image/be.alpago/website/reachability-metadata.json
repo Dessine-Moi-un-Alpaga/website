@@ -10,6 +10,12 @@
       ]
     },
     {
+      "type": "be.alpago.website.adapters.email.jakarta.mail.JakartaMailProperties"
+    },
+    {
+      "type": "be.alpago.website.adapters.email.jakarta.mail.JakartaMailService"
+    },
+    {
       "type": "be.alpago.website.adapters.persistence.firestore.BooleanValue",
       "fields": [
         {
@@ -167,12 +173,6 @@
           "parameterTypes": []
         }
       ]
-    },
-    {
-      "type": "be.alpago.website.adapters.email.jakarta.mail.JakartaMailProperties"
-    },
-    {
-      "type": "be.alpago.website.adapters.email.jakarta.mail.JakartaMailService"
     },
     {
       "type": "be.alpago.website.application.usecases.SendEmail"
