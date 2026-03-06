@@ -1454,6 +1454,9 @@
       "glob": "static/assets/js/email.js"
     },
     {
+      "glob": "static/assets/robots.txt"
+    },
+    {
       "module": "java.base",
       "glob": "jdk/internal/icu/impl/data/icudt76b/nfc.nrm"
     },
