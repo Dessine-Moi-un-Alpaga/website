@@ -1,6 +1,6 @@
 {
   "devDependencies": {
-    "firebase-tools": "^15.9.0",
+    "firebase-tools": "^15.9.1",
     "wait-on": "^9.0.4"
   },
   "scripts": {
