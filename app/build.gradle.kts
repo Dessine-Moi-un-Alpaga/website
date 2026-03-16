@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import java.time.LocalDate
 
 plugins {
     alias(libs.plugins.kotlin)
@@ -152,7 +153,7 @@ dokka {
     }
 
     pluginsConfiguration.html {
-        footerMessage.set("© 2025 Alpago")
+        footerMessage.set("© ${LocalDate.now().year} Alpago")
     }
 }
 
