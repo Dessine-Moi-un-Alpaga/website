@@ -52,7 +52,7 @@ jobs:
           dependency-graph: generate-and-submit
 
       - name: Install Task
-        uses: go-task/setup-task@v1
+        uses: go-task/setup-task@v2
 
       - name: Set up Firebase emulator cache
         uses: actions/cache@v5
