@@ -23,6 +23,12 @@ repositories {
     mavenCentral()
 }
 
+configurations {
+    "runtimeClasspath" {
+        resolutionStrategy.force(libs.jquery)
+    }
+}
+
 dependencies {
     implementation(libs.bcrypt)
     implementation(libs.i18n4k)

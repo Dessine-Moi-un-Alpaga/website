@@ -6,6 +6,7 @@ escape-velocity        = "1.0.0-1"
 graalvm-plugin         = "0.11.5"
 i18n4k                 = "0.11.1"
 jakarta-mail-api       = "2.1.5"
+jquery                 = "3.7.1"
 jsoup                  = "1.22.1"
 junit                  = "6.0.3"
 kotest                 = "6.1.8"
@@ -24,6 +25,7 @@ bcrypt                          = { module = "at.favre.lib:bcrypt",             
 escape-velocity                 = { module = "org.webjars:escape-velocity",                     version.ref = "escape-velocity"        }
 i18n4k                          = { module = "de.comahe.i18n4k:i18n4k-core",                    version.ref = "i18n4k"                 }
 jakarta-mail-api                = { module = "jakarta.mail:jakarta.mail-api",                   version.ref = "jakarta-mail-api"       }
+jquery                          = { module = "org.webjars:jquery",                              version.ref = "jquery"                 }
 jsoup                           = { module = "org.jsoup:jsoup",                                 version.ref = "jsoup"                  }
 jul-to-slf4j                    = { module = "org.slf4j:jul-to-slf4j",                          version.ref = "slf4j"                  }
 junit-bom                       = { module = "org.junit:junit-bom",                             version.ref = "junit"                  }
