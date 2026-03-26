@@ -22,6 +22,9 @@ updates:
       gradle-libraries:
         patterns:
           - "*"
+    ignore:
+      - dependency-name: "org.webjars:jquery"
+        versions: [ ">=4.0.0" ]
     schedule:
       interval: "daily"
     target-branch: "beta"
