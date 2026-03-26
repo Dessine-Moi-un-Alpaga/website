@@ -79,7 +79,7 @@ jobs:
           path: app/build/dokka/html
 
       - name: Deploy API documentation
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
 
       - name: Check if analysis is required
         id: analysis-check
