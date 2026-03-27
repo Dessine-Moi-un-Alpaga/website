@@ -1,9 +1,9 @@
 [versions]
 angus-mail             = "2.0.5"
 bcrypt                 = "0.10.2"
-dokka                  = "2.1.0"
+dokka                  = "2.2.0"
 escape-velocity        = "1.0.0-1"
-graalvm-plugin         = "0.11.5"
+graalvm-plugin         = "1.0.0"
 i18n4k                 = "0.11.1"
 jakarta-mail-api       = "2.1.5"
 jquery                 = "3.7.1"
