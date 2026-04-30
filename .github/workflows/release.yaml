@@ -105,7 +105,7 @@ jobs:
 
       - name: Analyze
         if: steps.analysis-check.outputs.analysis-required == 'true'
-        uses: SonarSource/sonarqube-scan-action@v7
+        uses: SonarSource/sonarqube-scan-action@v8
         env:
           SONAR_TOKEN: ${{ secrets.SONARCLOUD_TOKEN }}
 
