@@ -1,7 +1,7 @@
 {
   "devDependencies": {
     "firebase-tools": "^15.17.0",
-    "wait-on": "^9.0.5"
+    "wait-on": "^9.0.10"
   },
   "scripts": {
     "start": "firebase --non-interactive emulators:start & wait-on --timeout 30s tcp:8181"
