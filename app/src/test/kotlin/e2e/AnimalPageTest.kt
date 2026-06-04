@@ -11,14 +11,14 @@ import io.ktor.http.HttpStatusCode
 import io.ktor.http.contentType
 import kotlinx.serialization.json.Json
 import org.junit.jupiter.api.Test
-import java.util.UUID
+import kotlin.uuid.Uuid
 
 
 class AnimalPageTest {
 
     @Test
     fun `the animal page should initially not exist`() = endToEndTest {
-        val id = "${UUID.randomUUID()}"
+        val id = "${Uuid.random()}"
         val response = client.get("/animals/$id")
         response shouldHaveStatus HttpStatusCode.NotFound
     }

@@ -9,7 +9,7 @@ import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.Serializable
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import java.util.UUID
+import kotlin.uuid.Uuid
 
 private object TestFields {
 
@@ -20,9 +20,9 @@ private object TestFields {
 
 @Serializable
 data class TestAggregateRoot(
-    override val id: String = "${UUID.randomUUID()}",
+    override val id: String = "${Uuid.random()}",
     val intField: Int? = 0,
-    val stringField: String = "${UUID.randomUUID()}",
+    val stringField: String = "${Uuid.random()}",
 ) : AggregateRoot
 
 class TestTransformer : FirestoreAggregateTransformer<TestAggregateRoot>() {
