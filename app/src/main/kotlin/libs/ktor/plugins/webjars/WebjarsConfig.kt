@@ -4,7 +4,7 @@
 package be.alpago.website.libs.ktor.plugins.webjars
 
 /**
- * Temporary workaround for https://youtrack.jetbrains.com/issue/KTOR-6858
+ * Temporary workaround for [KTOR-6858](https://youtrack.jetbrains.com/issue/KTOR-6858)
  */
 class WebjarsConfig {
     var path: String = "/webjars/"

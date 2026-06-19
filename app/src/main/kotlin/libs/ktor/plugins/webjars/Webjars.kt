@@ -25,7 +25,7 @@ import kotlin.time.Duration.Companion.days
 private val MAX_AGE = 90.days.inWholeSeconds.toInt()
 
 /**
- * Temporary workaround for (https://youtrack.jetbrains.com/issue/KTOR-6858)
+ * Temporary workaround for [KTOR-6858](https://youtrack.jetbrains.com/issue/KTOR-6858)
  */
 val Webjars: ApplicationPlugin<WebjarsConfig> = createApplicationPlugin("Webjars", ::WebjarsConfig) {
     val webjarsPrefix = pluginConfig.path

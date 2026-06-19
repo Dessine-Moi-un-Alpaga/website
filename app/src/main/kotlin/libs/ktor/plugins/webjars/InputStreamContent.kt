@@ -11,7 +11,7 @@ import io.ktor.utils.io.jvm.javaio.toByteReadChannel
 import java.io.InputStream
 
 /**
- * Temporary workaround for (https://youtrack.jetbrains.com/issue/KTOR-6858)
+ * Temporary workaround for [KTOR-6858](https://youtrack.jetbrains.com/issue/KTOR-6858)
  */
 internal class InputStreamContent(
     private val input: InputStream,
