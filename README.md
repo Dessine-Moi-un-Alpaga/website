@@ -101,6 +101,38 @@ environment.
 
 Every build deploys [the project's API documentation](https://dessine-moi-un-alpaga.github.io/website) to GitHub Pages.
 
+## Version Update Chore Recipes
+
+Version numbers get configured in a single location, whenever possible; this section lists the ones that must be changed
+in various locations at once.
+
+### Bumping the Gradle or Terraform Versions
+
+Update the following files:
+
+* `.github/workflows/release.yaml`
+* `README.md`
+
+### Bumping the Kolin or Ktor Versions
+
+Update the following files:
+
+* `app/gradle/libs.versions.toml`
+* `README.md`
+
+### Bumping the JDK Major Version
+
+Update the following files:
+
+* `.github/workflows/release.yaml`
+* `app/gradle.properties`
+* `Taskfile.yaml`
+
+JDK major version updates also impact the base image for the Docker build:
+
+* `app/Dockerfile`
+* `README.md`
+
 # Known Issues
 
 When working on the `beta` branch, the Github Actions workflow skips the (lengthy) Sonar analysis step when no source
@@ -142,7 +174,7 @@ Coming from a JVM background, I opted for [Kotlin](https://kotlinlang.org), comp
 ### Hexagonal architecture
 
 The goal is to decouple the domain and application use cases from the underlying technologies, which end up being
-isolated under the adapters and interfaces packages.
+isolated under the `adapters` and `interfaces` root packages.
 
 Pretending to be domain-driven would be abusive, as there is no real business logic. We recognize that the
 domain layer is anemic and live happily with it.
@@ -150,9 +182,9 @@ domain layer is anemic and live happily with it.
 ### Avoid obese and invasive frameworks and libraries
 
 This project initially used the standard libraries made for interacting with the external services on
-which it depends (Firestore and SendGrid) and the Koin Dependency Injection library.
+which it depends (Firestore) or used to depend (SendGrid), as well as the Koin Dependency Injection library.
 
-Replacing those with a few lines of custom code cut the resulting binary's size in half (from ~120MB to ~60MB).
+Replacing those with a few lines of custom code cut the resulting binary's size in half.
 
 It also initially used the full `logback-classic` Slf4j implementation, which is definitely overkill for a twelve-factor
 app that simply needs to output messages to the console. Swapping it out in favor of `slf4j-simple` allowed me to gain
