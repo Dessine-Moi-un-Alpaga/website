@@ -20,42 +20,42 @@ toastr                 = "2.1.4"
 webjars-locator-lite   = "1.1.3"
 
 [libraries]
-angus-smtp                      = { module = "org.eclipse.angus:smtp",                          version.ref = "angus-mail"             }
-bcrypt                          = { module = "at.favre.lib:bcrypt",                             version.ref = "bcrypt"                 }
-escape-velocity                 = { module = "org.webjars:escape-velocity",                     version.ref = "escape-velocity"        }
-i18n4k                          = { module = "de.comahe.i18n4k:i18n4k-core",                    version.ref = "i18n4k"                 }
-jakarta-mail-api                = { module = "jakarta.mail:jakarta.mail-api",                   version.ref = "jakarta-mail-api"       }
-jquery                          = { module = "org.webjars:jquery",                              version.ref = "jquery"                 }
-jsoup                           = { module = "org.jsoup:jsoup",                                 version.ref = "jsoup"                  }
-jul-to-slf4j                    = { module = "org.slf4j:jul-to-slf4j",                          version.ref = "slf4j"                  }
-junit-bom                       = { module = "org.junit:junit-bom",                             version.ref = "junit"                  }
-junit-jupiter                   = { module = "org.junit.jupiter:junit-jupiter"                                                         }
-kotest-assertions-core          = { module = "io.kotest:kotest-assertions-core",                version.ref = "kotest"                 }
-kotest-assertions-json          = { module = "io.kotest:kotest-assertions-json",                version.ref = "kotest"                 }
-kotest-assertions-ktor          = { module = "io.kotest:kotest-assertions-ktor",                version.ref = "kotest"                 }
-kotest-runner-junit5            = { module = "io.kotest:kotest-runner-junit5",                  version.ref = "kotest"                 }
-kotlin-faker                    = { module = "io.github.serpro69:kotlin-faker",                 version.ref = "kotlin-faker"           }
-ktor-client-cio                 = { module = "io.ktor:ktor-client-cio"                                                                 }
-ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation"                                                 }
-ktor-client-core                = { module = "io.ktor:ktor-client-core"                                                                }
-ktor-client-mock                = { module = "io.ktor:ktor-client-mock"                                                                }
-ktor-serialization-json         = { module = "io.ktor:ktor-serialization-kotlinx-json"                                                 }
-ktor-server-auth                = { module = "io.ktor:ktor-server-auth"                                                                }
-ktor-server-auto-head-response  = { module = "io.ktor:ktor-server-auto-head-response"                                                  }
-ktor-server-caching-headers     = { module = "io.ktor:ktor-server-caching-headers"                                                     }
-ktor-server-content-negotiation = { module = "io.ktor:ktor-server-content-negotiation"                                                 }
-ktor-server-core                = { module = "io.ktor:ktor-server-core"                                                                }
-ktor-server-cio                 = { module = "io.ktor:ktor-server-cio"                                                                 }
-ktor-server-di                  = { module = "io.ktor:ktor-server-di"                                                                  }
-ktor-server-html-builder        = { module = "io.ktor:ktor-server-html-builder"                                                        }
-ktor-server-request-validation  = { module = "io.ktor:ktor-server-request-validation"                                                  }
-ktor-server-status-pages        = { module = "io.ktor:ktor-server-status-pages"                                                        }
-ktor-server-test-host           = { module = "io.ktor:ktor-server-test-host"                                                           }
-mockk                           = { module = "io.mockk:mockk",                                  version.ref = "mockk"                  }
-photoswipe                      = { module = "org.webjars.npm:photoswipe",                      version.ref = "photoswipe"             }
-slf4j-simple                    = { module = "org.slf4j:slf4j-simple",                          version.ref = "slf4j"                  }
-toastr                          = { module = "org.webjars:toastr",                              version.ref = "toastr"                 }
-webjars-locator-lite            = { module = "org.webjars:webjars-locator-lite",                version.ref = "webjars-locator-lite"   }
+angus-smtp                      = { module = "org.eclipse.angus:smtp",                          version.ref = "angus-mail"           }
+bcrypt                          = { module = "at.favre.lib:bcrypt",                             version.ref = "bcrypt"               }
+escape-velocity                 = { module = "org.webjars:escape-velocity",                     version.ref = "escape-velocity"      }
+i18n4k                          = { module = "de.comahe.i18n4k:i18n4k-core",                    version.ref = "i18n4k"               }
+jakarta-mail-api                = { module = "jakarta.mail:jakarta.mail-api",                   version.ref = "jakarta-mail-api"     }
+jquery                          = { module = "org.webjars:jquery",                              version.ref = "jquery"               }
+jsoup                           = { module = "org.jsoup:jsoup",                                 version.ref = "jsoup"                }
+jul-to-slf4j                    = { module = "org.slf4j:jul-to-slf4j",                          version.ref = "slf4j"                }
+junit-bom                       = { module = "org.junit:junit-bom",                             version.ref = "junit"                }
+junit-jupiter                   = { module = "org.junit.jupiter:junit-jupiter"                                                       }
+kotest-assertions-core          = { module = "io.kotest:kotest-assertions-core",                version.ref = "kotest"               }
+kotest-assertions-json          = { module = "io.kotest:kotest-assertions-json",                version.ref = "kotest"               }
+kotest-assertions-ktor          = { module = "io.kotest:kotest-assertions-ktor",                version.ref = "kotest"               }
+kotest-runner-junit5            = { module = "io.kotest:kotest-runner-junit5",                  version.ref = "kotest"               }
+kotlin-faker                    = { module = "io.github.serpro69:kotlin-faker",                 version.ref = "kotlin-faker"         }
+ktor-client-cio                 = { module = "io.ktor:ktor-client-cio"                                                               }
+ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation"                                               }
+ktor-client-core                = { module = "io.ktor:ktor-client-core"                                                              }
+ktor-client-mock                = { module = "io.ktor:ktor-client-mock"                                                              }
+ktor-serialization-json         = { module = "io.ktor:ktor-serialization-kotlinx-json"                                               }
+ktor-server-auth                = { module = "io.ktor:ktor-server-auth"                                                              }
+ktor-server-auto-head-response  = { module = "io.ktor:ktor-server-auto-head-response"                                                }
+ktor-server-caching-headers     = { module = "io.ktor:ktor-server-caching-headers"                                                   }
+ktor-server-content-negotiation = { module = "io.ktor:ktor-server-content-negotiation"                                               }
+ktor-server-core                = { module = "io.ktor:ktor-server-core"                                                              }
+ktor-server-cio                 = { module = "io.ktor:ktor-server-cio"                                                               }
+ktor-server-di                  = { module = "io.ktor:ktor-server-di"                                                                }
+ktor-server-html-builder        = { module = "io.ktor:ktor-server-html-builder"                                                      }
+ktor-server-request-validation  = { module = "io.ktor:ktor-server-request-validation"                                                }
+ktor-server-status-pages        = { module = "io.ktor:ktor-server-status-pages"                                                      }
+ktor-server-test-host           = { module = "io.ktor:ktor-server-test-host"                                                         }
+mockk                           = { module = "io.mockk:mockk",                                  version.ref = "mockk"                }
+photoswipe                      = { module = "org.webjars.npm:photoswipe",                      version.ref = "photoswipe"           }
+slf4j-simple                    = { module = "org.slf4j:slf4j-simple",                          version.ref = "slf4j"                }
+toastr                          = { module = "org.webjars:toastr",                              version.ref = "toastr"               }
+webjars-locator-lite            = { module = "org.webjars:webjars-locator-lite",                version.ref = "webjars-locator-lite" }
 
 [bundles]
 kotest = [
@@ -85,9 +85,9 @@ ktor-server = [
 ]
 
 [plugins]
-dokka                = { id = "org.jetbrains.dokka",                       version.ref = "dokka"            }
-graalvm-plugin       = { id = "org.graalvm.buildtools.native",             version.ref = "graalvm-plugin"   }
-i18n4k               = { id = "de.comahe.i18n4k",                          version.ref = "i18n4k"           }
-kotlin               = { id = "org.jetbrains.kotlin.jvm",                  version.ref = "kotlin"           }
-kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin"           }
-ktor                 = { id = "io.ktor.plugin",                            version.ref = "ktor"             }
+dokka                = { id = "org.jetbrains.dokka",                       version.ref = "dokka"          }
+graalvm-plugin       = { id = "org.graalvm.buildtools.native",             version.ref = "graalvm-plugin" }
+i18n4k               = { id = "de.comahe.i18n4k",                          version.ref = "i18n4k"         }
+kotlin               = { id = "org.jetbrains.kotlin.jvm",                  version.ref = "kotlin"         }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin"         }
+ktor                 = { id = "io.ktor.plugin",                            version.ref = "ktor"           }
