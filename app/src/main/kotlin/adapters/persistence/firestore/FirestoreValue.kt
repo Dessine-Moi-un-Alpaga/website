@@ -5,29 +5,47 @@ import kotlinx.serialization.json.JsonContentPolymorphicSerializer
 import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.jsonObject
 
+/**
+ * @suppress
+ */
 @Serializable(with = FirestoreValueSerializer::class)
 sealed interface Value
 
+/**
+ * @suppress
+ */
 @Serializable
 data class BooleanValue(
     val booleanValue: Boolean
 ) : Value
 
+/**
+ * @suppress
+ */
 @Serializable
 data class StringValue(
     val stringValue: String
 ) : Value
 
+/**
+ * @suppress
+ */
 @Serializable
 data class IntValue(
     val integerValue: Int
 ) : Value
 
+/**
+ * @suppress
+ */
 @Serializable
 data class NullValue(
     val nullValue: Nothing?
 ) : Value
 
+/**
+ * @suppress
+ */
 object FirestoreValueSerializer : JsonContentPolymorphicSerializer<Value>(Value::class) {
 
     override fun selectDeserializer(element: JsonElement) = when {
