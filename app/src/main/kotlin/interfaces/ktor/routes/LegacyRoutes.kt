@@ -10,6 +10,9 @@ import io.ktor.server.routing.routing
 private const val NEW_ANIMAL_ROUTE_PATTERN = "/animals/%s"
 private const val PATH_VARIABLE = "path"
 
+/**
+ * Redirects legacy routes to the newer endpoints.
+ */
 fun Application.legacyRoutes() {
     val properties: TemplateProperties by dependencies
 
