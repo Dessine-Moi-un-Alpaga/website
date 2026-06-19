@@ -101,10 +101,16 @@ environment.
 
 Every build deploys [the project's API documentation](https://dessine-moi-un-alpaga.github.io/website) to GitHub Pages.
 
-## Version Update Chore Recipes
+## Version Update Chores
 
-Version numbers get configured in a single location, whenever possible; this section lists the ones that must be changed
-in various locations at once.
+Version numbers used by the CI build only get configured in the GitHub Actions workflow
+(`.github/workflows/release.yaml`), whenever possible:
+
+* Firestore
+* Node.js
+* Semantic Release
+
+Version updates that need to be applied to several files at once are listed below.
 
 ### Bumping the Gradle or Terraform Versions
 
