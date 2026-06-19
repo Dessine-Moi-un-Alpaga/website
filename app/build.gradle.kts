@@ -156,6 +156,10 @@ dokka {
             url("https://kotlinlang.org/api/kotlinx.serialization")
             packageListUrl("https://kotlinlang.org/api/kotlinx.serialization/package-list")
         }
+        externalDocumentationLinks.register("ktor") {
+            url("https://api.ktor.io")
+            packageListUrl("https://api.ktor.io/package-list")
+        }
     }
 
     pluginsConfiguration.html {
