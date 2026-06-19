@@ -62,7 +62,7 @@ dependencies {
 
 kotlin {
     compilerOptions {
-        jvmTarget.set(JvmTarget.JVM_25)
+        jvmTarget.set(JvmTarget.fromTarget(project.property("javaVersion").toString()))
     }
 }
 
@@ -135,7 +135,7 @@ tasks.run {
 dokka {
     dokkaSourceSets.main {
         includes.from("src/main/kotlin/package-info.md")
-        jdkVersion.set(24)
+        jdkVersion.set(project.property("javaVersion").toString().toInt())
         perPackageOption {
             matchingRegex.set("be.alpago.website")
             suppress.set(true)
