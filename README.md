@@ -99,6 +99,8 @@ Once the development environment is in a satisfactory state, create a pull reque
 will trigger a semantic release, tag the commit accordingly, publish a GitHub release and deploy it to the production
 environment.
 
+Every build deploys [the project's API documentation](https://dessine-moi-un-alpaga.github.io/website) to GitHub Pages.
+
 # Known Issues
 
 When working on the `beta` branch, the Github Actions workflow skips the (lengthy) Sonar analysis step when no source
