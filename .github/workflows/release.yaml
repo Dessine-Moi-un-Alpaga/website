@@ -61,7 +61,7 @@ jobs:
           path: ~/.cache/firebase/emulators
 
       - name: Build
-        run: task ENVIRONMENT=${{ vars.ENVIRONMENT }} app:build
+        run: task ENVIRONMENT=${{ vars.ENVIRONMENT }} JAVA_VERSION=${{ env.JAVA_VERSION }} app:build
 
       - name: Save build reports and logs
         if: always()
