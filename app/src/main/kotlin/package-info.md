@@ -55,6 +55,10 @@ Utility code used by persistence-related adapters.
 
 Base domain abstractions.
 
+# Package be.alpago.website.libs.domain.ports.persistence
+
+Persistence-related ports.
+
 # Package be.alpago.website.libs.i18n4k
 
 Utility code for configuring the [i18n4k](https://comahe-de.github.io/i18n4k/) library.
@@ -63,13 +67,21 @@ Utility code for configuring the [i18n4k](https://comahe-de.github.io/i18n4k/) l
 
 Extensions of the kotlin standard library related to internationalization.
 
+# Package be.alpago.website.libs.kotlin.retry
+
+Simple implementation of a retry functionality for a given block of code.
+
 # Package be.alpago.website.libs.kotlin.serialization
 
 Extensions of the kotlin serialization libraries.
 
-# Package be.alpago.website.libs.domain.ports.persistence
+# Package be.alpago.website.libs.ktor.plugins.webjars
 
-Persistence-related ports.
+Native-friendly replacement for the ktor Webjars plugin.
+
+# Package be.alpago.website.libs.ktor.routes
+
+Ktor routes for managing persistent AggregateRoots.
 
 # Package be.alpago.website.libs.slf4j
 
