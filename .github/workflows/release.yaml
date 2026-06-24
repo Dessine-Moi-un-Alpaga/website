@@ -55,7 +55,7 @@ jobs:
         uses: go-task/setup-task@v2
 
       - name: Set up Firebase emulator cache
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         with:
           key: firebase-tools-${{ hashFiles('firebase-emulator/package-lock.json') }}
           path: ~/.cache/firebase/emulators
@@ -98,7 +98,7 @@ jobs:
 
       - name: Set up SonarCloud package cache
         if: steps.analysis-check.outputs.analysis-required == 'true'
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         with:
           key: ${{ runner.os }}-sonar
           path: ~/.sonar/cache
@@ -113,7 +113,7 @@ jobs:
         run: mkdir -p ${TF_PLUGIN_CACHE_DIR}
 
       - name: Set up Terraform cache
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         with:
           path: ${{ env.TF_PLUGIN_CACHE_DIR }}
           key: ${{ runner.os }}-terraform-${{ hashFiles('**/.terraform.lock.hcl') }}
