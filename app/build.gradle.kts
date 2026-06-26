@@ -136,29 +136,39 @@ dokka {
     dokkaSourceSets.main {
         includes.from("src/main/kotlin/package-info.md")
         jdkVersion.set(project.property("javaVersion").toString().toInt())
-        perPackageOption {
-            matchingRegex.set("be.alpago.website")
-            suppress.set(true)
+
+        val suppressedPackages = listOf(
+            "be.alpago.website",
+            "be.alpago.website.i18n",
+            "be.alpago.website.interfaces.kotlinx.html.body(.*)",
+            "be.alpago.website.interfaces.kotlinx.html.footer(.*)",
+            "be.alpago.website.interfaces.kotlinx.html.head(.*)",
+            "be.alpago.website.interfaces.kotlinx.html.header(.*)",
+            "be.alpago.website.interfaces.kotlinx.html.style(.*)",
+        )
+
+        for (suppressedPackage in suppressedPackages) {
+            perPackageOption {
+                matchingRegex.set(suppressedPackage)
+                suppress.set(true)
+            }
         }
-        perPackageOption {
-            matchingRegex.set("be.alpago.website.i18n")
-            suppress.set(true)
-        }
-        perPackageOption {
-            matchingRegex.set("be.alpago.website.interfaces.kotlinx.html.(body|footer(.*)*|head(.*)*|header(.*)*|style)")
-            suppress.set(true)
-        }
+
         sourceLink {
             localDirectory.set(file("src/main/kotlin"))
             remoteUrl("https://github.com/Dessine-Moi-un-Alpaga/website/tree/main/app/src/main/kotlin")
         }
-        externalDocumentationLinks.register("kotlinx-serialization") {
-            url("https://kotlinlang.org/api/kotlinx.serialization")
-            packageListUrl("https://kotlinlang.org/api/kotlinx.serialization/package-list")
-        }
-        externalDocumentationLinks.register("ktor") {
-            url("https://api.ktor.io")
-            packageListUrl("https://api.ktor.io/package-list")
+
+        val externalApiDocs = mapOf(
+            "kotlinx-serialization" to Pair("https://kotlinlang.org/api/kotlinx.serialization", "https://kotlinlang.org/api/kotlinx.serialization/package-list"),
+            "ktor" to Pair("https://api.ktor.io", "https://api.ktor.io/package-list"),
+        )
+
+        for (externalApiDoc in externalApiDocs) {
+            externalDocumentationLinks.register(externalApiDoc.key) {
+                url(externalApiDoc.value.first)
+                packageListUrl(externalApiDoc.value.second)
+            }
         }
     }
 
