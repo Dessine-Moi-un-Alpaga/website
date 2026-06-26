@@ -14,8 +14,8 @@ import be.alpago.website.domain.FiberAnalysis
 import be.alpago.website.domain.Highlight
 import be.alpago.website.domain.ImageMetadata
 import be.alpago.website.libs.adapters.persistence.CachingRepository
-import be.alpago.website.libs.domain.ports.persistence.Repository
 import be.alpago.website.libs.adapters.persistence.RetryingRepository
+import be.alpago.website.libs.domain.ports.persistence.Repository
 import be.alpago.website.libs.getEnvironmentVariable
 import io.ktor.client.HttpClient
 import io.ktor.server.application.Application
