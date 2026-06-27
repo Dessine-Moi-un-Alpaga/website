@@ -153,8 +153,8 @@ When working on the `beta` branch, the Github Actions workflow skips the (length
 file changed. It does this by comparing the commit that triggered the build with the previous commit on that branch. In
 order to avoid cloning the whole branch history, only the last two commits are fetched. This in turn means that pushing
 more than one commit at a time might will result in the analysis **not** being run, even though it should have, if one
-of those commits included source changes. This is in my opinion an acceptable trade-off between workflow speed and
-analysis exhaustiveness.
+of those commits included source changes. This is arguably an acceptable trade-off between workflow speed and analysis
+exhaustiveness.
 
 # Isn't this overkill? Are you crazy?
 
