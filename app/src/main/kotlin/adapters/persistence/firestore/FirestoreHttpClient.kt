@@ -101,7 +101,7 @@ fun firestoreHttpClient(): HttpClient {
     client.plugin(HttpSend).intercept { request ->
         var result: HttpClientCall? = null
 
-        if (request.url.host == FIRESTORE_HOSTNAME) {
+        if (request.targetsProductionFirestoreEnvironment()) {
             result = interceptFirestoreRequest(request)
         }
 
@@ -117,3 +117,5 @@ private data class GoogleToken(
 )
 
 private fun HttpStatusCode.isAuthenticationRelated() = this == HttpStatusCode.Unauthorized || this == HttpStatusCode.Forbidden
+
+private fun HttpRequestBuilder.targetsProductionFirestoreEnvironment() = this.url.host == FIRESTORE_HOSTNAME
