@@ -1,8 +1,9 @@
 package be.alpago.website.interfaces.ktor.routes
 
-import be.alpago.website.application.usecases.InvalidEmailException
 import be.alpago.website.application.usecases.SendEmail
+import be.alpago.website.application.usecases.UnexpectedEmailException
 import be.alpago.website.domain.Email
+import io.github.oshai.kotlinlogging.KotlinLogging
 import io.ktor.http.HttpStatusCode
 import io.ktor.server.application.Application
 import io.ktor.server.plugins.di.dependencies
@@ -11,6 +12,8 @@ import io.ktor.server.plugins.requestvalidation.ValidationResult
 import io.ktor.server.request.receive
 import io.ktor.server.routing.post
 import io.ktor.server.routing.routing
+
+private val logger = KotlinLogging.logger {}
 
 /**
  * Registers the HTTP endpoint for sending emails to the website administrator.
@@ -37,8 +40,9 @@ fun Application.emailRoute() {
             try {
                 service.send(email)
                 call.response.status(HttpStatusCode.OK)
-            } catch (e: InvalidEmailException) {
-                call.response.status(HttpStatusCode.BadRequest)
+            } catch (e: UnexpectedEmailException) {
+                logger.error(e) {}
+                call.response.status(HttpStatusCode.InternalServerError)
             }
         }
     }

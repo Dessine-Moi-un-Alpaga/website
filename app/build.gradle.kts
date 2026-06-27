@@ -34,6 +34,7 @@ dependencies {
     implementation(libs.i18n4k)
     implementation(libs.jakarta.mail.api)
     implementation(libs.jul.to.slf4j)
+    implementation(libs.kotlin.logging)
     implementation(libs.webjars.locator.lite)
 
     implementation(libs.bundles.ktor.client)
