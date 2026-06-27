@@ -112,7 +112,15 @@ Version numbers used by the CI build only get configured in the GitHub Actions w
 
 Version updates that need to be applied to several files at once are listed below.
 
-### Bumping the Gradle or Terraform Versions
+### Bumping the Gradle Version
+
+Run the following command from the `app/` subdirectory and update the `README.md` accordingly:
+
+```
+./gradlew :wrapper --gradle-version=<GRADLE_VERSION> && ./gradlew :wrapper
+```
+
+### Bumping the Terraform Version
 
 Update the following files:
 
