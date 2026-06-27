@@ -1,9 +1,11 @@
 package be.alpago.website.adapters.email.jakarta.mail
 
 import be.alpago.website.application.usecases.SendEmail
+import be.alpago.website.application.usecases.UnexpectedEmailException
 import be.alpago.website.domain.Email
 import be.alpago.website.i18n.Messages
 import jakarta.mail.Message
+import jakarta.mail.MessagingException
 import jakarta.mail.Session
 import jakarta.mail.Transport
 import jakarta.mail.internet.InternetAddress
@@ -17,11 +19,16 @@ class JakartaMailService(
     override suspend fun send(email: Email) {
         val session = Session.getInstance(configuration())
         val message = message(session, email)
-        Transport.send(
-            message,
-            properties.smtpServerUsername,
-            properties.smtpServerPassword
-        )
+
+        try {
+            Transport.send(
+                message,
+                properties.smtpServerUsername,
+                properties.smtpServerPassword
+            )
+        } catch (e: MessagingException) {
+            throw UnexpectedEmailException(e)
+        }
     }
 
     private fun configuration() = Properties().apply {

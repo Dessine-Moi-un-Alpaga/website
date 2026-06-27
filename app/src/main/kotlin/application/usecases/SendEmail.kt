@@ -7,6 +7,4 @@ fun interface SendEmail {
     suspend fun send(email: Email)
 }
 
-class InvalidEmailException : Exception()
-
-class UnexpectedEmailException(message: String) : Exception(message)
+class UnexpectedEmailException(cause: Throwable?) : Exception(cause)

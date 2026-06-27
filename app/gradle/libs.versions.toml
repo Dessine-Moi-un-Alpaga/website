@@ -12,6 +12,7 @@ junit                  = "6.1.0"
 kotest                 = "6.2.1"
 kotlin                 = "2.4.0"
 kotlin-faker           = "1.16.1"
+kotlin-logging         = "8.0.4"
 ktor                   = "3.5.1"
 mockk                  = "1.14.11"
 photoswipe             = "5.4.3"
@@ -35,6 +36,7 @@ kotest-assertions-json          = { module = "io.kotest:kotest-assertions-json",
 kotest-assertions-ktor          = { module = "io.kotest:kotest-assertions-ktor",                version.ref = "kotest"               }
 kotest-runner-junit5            = { module = "io.kotest:kotest-runner-junit5",                  version.ref = "kotest"               }
 kotlin-faker                    = { module = "io.github.serpro69:kotlin-faker",                 version.ref = "kotlin-faker"         }
+kotlin-logging                  = { module = "io.github.oshai:kotlin-logging-jvm",              version.ref = "kotlin-logging"       }
 ktor-client-cio                 = { module = "io.ktor:ktor-client-cio"                                                               }
 ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation"                                               }
 ktor-client-core                = { module = "io.ktor:ktor-client-core"                                                              }
