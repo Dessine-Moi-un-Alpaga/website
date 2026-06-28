@@ -3,28 +3,32 @@ package be.alpago.website.libs.kotlin.retry
 import kotlinx.coroutines.delay
 
 /**
- * Generic retry functionality for a given block of code, with an exponential backoff delay.
+ * Generic retry functionality for a given block of code.
  */
 suspend fun <T> retry(
-    times: Int = 3,
-    initialDelayMillis: Long = 500,
-    exponentialBackoffFactor: Int = 2,
+    options: RetryOptions,
     block: suspend () -> T
 ): T {
     var currentAttempt = 1
-    var delayMillis = initialDelayMillis
+    var delayMillis = options.initialDelayMillis
 
     while (true) {
         try {
             return block()
         } catch (e: Exception) {
-            if (currentAttempt > times) {
+            if (currentAttempt > options.times) {
                 throw e
             }
 
             delay(delayMillis)
             currentAttempt++
-            delayMillis *= exponentialBackoffFactor
+            delayMillis *= options.exponentialBackoffFactor
         }
     }
 }
+
+data class RetryOptions(
+    val times: Int = 3,
+    val initialDelayMillis: Long = 500,
+    val exponentialBackoffFactor: Int = 2,
+)
