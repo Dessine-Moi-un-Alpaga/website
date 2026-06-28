@@ -5,6 +5,9 @@ import java.util.SortedMap
 
 private typealias Categories = SortedMap<NavigationModel.Category, MutableSet<Animal>>
 
+/**
+ * The model for the website navigation, which organizes [Animal]s among [Categories][Category].
+ */
 class NavigationModel(
     animals: List<Animal>,
 ) {

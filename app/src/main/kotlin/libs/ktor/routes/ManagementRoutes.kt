@@ -20,6 +20,44 @@ import io.ktor.server.routing.routing
 const val ID = "id"
 
 /**
+ * Registers a route (`GET /{path}`) that deletes all the [AggregateRoot]s managed under the given path, using the given
+ * [Repository].
+ */
+inline fun <reified T : AggregateRoot> Route.deleteAllRoute(
+    path: String,
+    repository: Repository<T>,
+) {
+    delete(path) {
+        repository.deleteAll()
+        call.response.status(HttpStatusCode.OK)
+    }
+}
+
+/**
+ * Registers a route (`DELETE /{path}/{id}`) that deletes the [AggregateRoot] managed under the given path, using the
+ * given [Repository].
+ */
+inline fun <reified T : AggregateRoot> Route.deleteRoute(
+    path: String,
+    repository: Repository<T>,
+) {
+    delete("${path}/{$ID}") {
+        val id = call.parameters[ID]
+
+        if (id == null) {
+            call.response.status(HttpStatusCode.BadRequest)
+        } else {
+            try {
+                repository.delete(id)
+                call.response.status(HttpStatusCode.OK)
+            } catch (e: AggregateRootNotFound) {
+                call.response.status(HttpStatusCode.NotFound)
+            }
+        }
+    }
+}
+
+/**
  * Registers a route (`GET /{path}`) that lists all the [AggregateRoot]s managed under the given path, using the given
  * [Repository].
  */
@@ -74,51 +112,13 @@ inline fun <reified T : AggregateRoot> Route.putRoute(
 }
 
 /**
- * Registers a route (`GET /{path}`) that deletes all the [AggregateRoot]s managed under the given path, using the given
- * [Repository].
- */
-inline fun <reified T : AggregateRoot> Route.deleteAllRoute(
-    path: String,
-    repository: Repository<T>,
-) {
-    delete(path) {
-        repository.deleteAll()
-        call.response.status(HttpStatusCode.OK)
-    }
-}
-
-/**
- * Registers a route (`DELETE /{path}/{id}`) that deletes the [AggregateRoot] managed under the given path, using the
- * given [Repository].
- */
-inline fun <reified T : AggregateRoot> Route.deleteRoute(
-    path: String,
-    repository: Repository<T>,
-) {
-    delete("${path}/{$ID}") {
-        val id = call.parameters[ID]
-
-        if (id == null) {
-            call.response.status(HttpStatusCode.BadRequest)
-        } else {
-            try {
-                repository.delete(id)
-                call.response.status(HttpStatusCode.OK)
-            } catch (e: AggregateRootNotFound) {
-                call.response.status(HttpStatusCode.NotFound)
-            }
-        }
-    }
-}
-
-/**
  * Registers routes for managing [AggregateRoot]s.
  *
+ * @see deleteAllRoute
+ * @see deleteRoute
  * @see findAllRoute
  * @see getRoute
  * @see putRoute
- * @see deleteAllRoute
- * @see deleteRoute
  */
 inline fun <reified T : AggregateRoot> Application.managementRoutes(
     path: String,
@@ -126,11 +126,11 @@ inline fun <reified T : AggregateRoot> Application.managementRoutes(
 ) {
     routing {
         authenticate {
+            deleteAllRoute(path, repository)
+            deleteRoute(path, repository)
             findAllRoute(path, repository)
             getRoute(path, repository)
             putRoute(path, repository)
-            deleteAllRoute(path, repository)
-            deleteRoute(path, repository)
         }
     }
 }
