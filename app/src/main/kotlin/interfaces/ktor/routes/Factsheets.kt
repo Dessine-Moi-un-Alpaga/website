@@ -15,6 +15,23 @@ import io.ktor.server.plugins.di.dependencies
 import io.ktor.server.routing.get
 import io.ktor.server.routing.routing
 
+/**
+ * Registers the HTTP endpoints related to factsheets:
+ *
+ * - `GET /factsheets.html`: returns the factsheet page itself
+ * - [Management Routes][managementRoutes] for the factsheet page's [Article]:
+ *     - `DELETE /api/factsheets/article`
+ *     - `DELETE /api/factsheets/article/{id}`
+ *     - `GET /api/factsheets/article`
+ *     - `GET /api/factsheets/article/{id}`
+ *     - `PUT /api/factsheets/article`
+ * - [Management Routes][managementRoutes] for the factsheet [Highlight]s:
+ *     - `DELETE /api/factsheets/factsheets`
+ *     - `DELETE /api/factsheets/factsheets/{id}`
+ *     - `GET /api/factsheets/factsheets`
+ *     - `GET /api/factsheets/factsheets/{id}`
+ *     - `PUT /api/factsheets/factsheets`
+ */
 suspend fun Application.factsheetRoutes() {
     val properties: TemplateProperties by dependencies
     val query: ShowFactsheetPage by dependencies

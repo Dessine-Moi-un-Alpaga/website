@@ -174,6 +174,7 @@ dokka {
     }
 
     pluginsConfiguration.html {
+        customStyleSheets.from("dokka.css")
         footerMessage.set("© ${LocalDate.now().year} Alpago")
     }
 }

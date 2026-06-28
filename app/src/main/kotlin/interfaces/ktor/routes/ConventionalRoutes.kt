@@ -10,12 +10,10 @@ internal const val FAVICON = "favicon.ico"
 internal const val ROBOTS_TXT = "robots.txt"
 
 /**
- * Registers the HTTP endpoints for some conventional website routes.
- *
- * The endpoints are the following:
- * * `GET /apple-touch-icon.png`
- * * `GET /favicon.ico`
- * * `GET /robots.txt`
+ * Registers the HTTP endpoints for some conventional website routes:
+ * - `GET /apple-touch-icon.png`
+ * - `GET /favicon.ico`
+ * - `GET /robots.txt`
  */
 fun Application.conventionalRoutes() {
     routing {

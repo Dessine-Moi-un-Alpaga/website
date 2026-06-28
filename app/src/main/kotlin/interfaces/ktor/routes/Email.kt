@@ -16,9 +16,9 @@ import io.ktor.server.routing.routing
 private val logger = KotlinLogging.logger {}
 
 /**
- * Registers the HTTP endpoint for sending emails to the website administrator.
+ * Registers the HTTP endpoint for sending emails to the website administrator:
  *
- * The endpoint is : `POST /api/email`
+ * - `POST /api/email`
  */
 fun Application.emailRoute() {
     val service: SendEmail by dependencies

@@ -12,6 +12,17 @@ import io.ktor.server.plugins.di.dependencies
 import io.ktor.server.routing.get
 import io.ktor.server.routing.routing
 
+/**
+ * Registers the HTTP endpoints related to the news page:
+ *
+ * - `GET /news.html`: returns the news page itself
+ * - [Management Routes][managementRoutes] for the news page's [Article]s:
+ *     - `DELETE /api/news/articles`
+ *     - `DELETE /api/news/articles/{id}`
+ *     - `GET /api/news/articles`
+ *     - `GET /api/news/articles/{id}`
+ *     - `PUT /api/news/articles`
+ */
 suspend fun Application.newsRoutes() {
     val properties: TemplateProperties by dependencies
     val query: ShowNewsPage by dependencies

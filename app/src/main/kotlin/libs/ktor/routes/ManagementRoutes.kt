@@ -20,7 +20,8 @@ import io.ktor.server.routing.routing
 const val ID = "id"
 
 /**
- * Registers a route using the given context path that lists all the [AggregateRoot]s using the given [Repository].
+ * Registers a route (`GET /{path}`) that lists all the [AggregateRoot]s managed under the given path, using the given
+ * [Repository].
  */
 inline fun <reified T : AggregateRoot> Route.findAllRoute(
     path: String,
@@ -33,6 +34,10 @@ inline fun <reified T : AggregateRoot> Route.findAllRoute(
     }
 }
 
+/**
+ * Registers a route (`GET /{path}/{id}`) that returns the [AggregateRoot] managed under the given path, using the given
+ * [Repository].
+ */
 inline fun <reified T : AggregateRoot> Route.getRoute(
     path: String,
     repository: Repository<T>,
@@ -53,6 +58,10 @@ inline fun <reified T : AggregateRoot> Route.getRoute(
     }
 }
 
+/**
+ * Registers a route (`PUT /{path}`) that saves or updates the [AggregateRoot] contained in the request body, using the
+ * given [Repository].
+ */
 inline fun <reified T : AggregateRoot> Route.putRoute(
     path: String,
     repository: Repository<T>,
@@ -64,6 +73,10 @@ inline fun <reified T : AggregateRoot> Route.putRoute(
     }
 }
 
+/**
+ * Registers a route (`GET /{path}`) that deletes all the [AggregateRoot]s managed under the given path, using the given
+ * [Repository].
+ */
 inline fun <reified T : AggregateRoot> Route.deleteAllRoute(
     path: String,
     repository: Repository<T>,
@@ -74,6 +87,10 @@ inline fun <reified T : AggregateRoot> Route.deleteAllRoute(
     }
 }
 
+/**
+ * Registers a route (`DELETE /{path}/{id}`) that deletes the [AggregateRoot] managed under the given path, using the
+ * given [Repository].
+ */
 inline fun <reified T : AggregateRoot> Route.deleteRoute(
     path: String,
     repository: Repository<T>,
@@ -94,6 +111,15 @@ inline fun <reified T : AggregateRoot> Route.deleteRoute(
     }
 }
 
+/**
+ * Registers routes for managing [AggregateRoot]s.
+ *
+ * @see findAllRoute
+ * @see getRoute
+ * @see putRoute
+ * @see deleteAllRoute
+ * @see deleteRoute
+ */
 inline fun <reified T : AggregateRoot> Application.managementRoutes(
     path: String,
     repository: Repository<T>
