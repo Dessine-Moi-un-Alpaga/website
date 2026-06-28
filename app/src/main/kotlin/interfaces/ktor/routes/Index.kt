@@ -21,8 +21,8 @@ import io.ktor.server.routing.routing
 /**
  * Registers the HTTP endpoints related to the index page:
  *
- * - `GET /`: returns the factsheet page itself
- * - `GET /index.html`: returns the factsheet page itself
+ * - `GET /`: returns the index page itself
+ * - `GET /index.html`: returns the index page itself
  * - [Management Routes][managementRoutes] for the index page's [Article]:
  *     - `DELETE /api/index/article`
  *     - `DELETE /api/index/article/{id}`
