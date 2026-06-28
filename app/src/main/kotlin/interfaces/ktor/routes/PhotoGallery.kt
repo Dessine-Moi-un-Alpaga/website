@@ -12,6 +12,17 @@ import io.ktor.server.plugins.di.dependencies
 import io.ktor.server.routing.get
 import io.ktor.server.routing.routing
 
+/**
+ * Registers the HTTP endpoints related to the photo gallery page:
+ *
+ * - `GET /photos.html`: returns the photo gallery page itself
+ * - [Management Routes][managementRoutes] for the photo gallery page's [ImageMetadata]:
+ *     - `DELETE /api/gallery/photos`
+ *     - `DELETE /api/gallery/photos/{id}`
+ *     - `GET /api/gallery/photos`
+ *     - `GET /api/gallery/photos/{id}`
+ *     - `PUT /api/gallery/photos`
+ */
 suspend fun Application.photoGalleryRoutes() {
     val properties: TemplateProperties by dependencies
     val query: ShowPhotoGalleryPage by dependencies
