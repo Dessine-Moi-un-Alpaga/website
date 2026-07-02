@@ -162,9 +162,7 @@ jobs:
           SMTP_SERVER_PORT: ${{ vars.SMTP_SERVER_PORT }}
           SMTP_SERVER_USERNAME: ${{ vars.SMTP_SERVER_USERNAME }}
           TF_IN_AUTOMATION: true
-        run: |
-          echo $TF_PLUGIN_CACHE_DIR
-          npx semantic-release@${SEMANTIC_RELEASE_VERSION}
+        run: npx semantic-release@${SEMANTIC_RELEASE_VERSION}
 
 permissions:
   contents: write
