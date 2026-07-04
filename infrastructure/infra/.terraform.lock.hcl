@@ -26,24 +26,22 @@ provider "registry.terraform.io/hashicorp/google" {
 }
 
 provider "registry.terraform.io/hashicorp/google-beta" {
-  version = "7.19.0"
+  version     = "7.39.0"
+  constraints = "~> 7.9"
   hashes = [
-    "h1:+fvggruPHTXwFuyi9Nqj/gMyRF06xHI2RUSd1iuG80k=",
-    "h1:8T0ztbAvElkXumETm5OOxyPHu/4DO5rXUj+JChH+X1k=",
-    "h1:Y4U8LRA46ki8NxlpG/l8enJfVXFoE7Yq0Go0JDhTl6Q=",
-    "h1:ejdonWOCPzlhtC0X/ReI0PNigu+xPAn1PbSa5gVKLjs=",
-    "h1:oJ/+RdbgklEkOTeCzROyxymJGKKCUrQCCT61DfM6gkE=",
-    "zh:0db6713b4eef8273e4412c4b55479b38800817eae9155e340532832d52b3d42b",
-    "zh:10d8f3ed19ab10fbb258e7e59a2f6f40ddfeac32ebd0fcd21d12e7cd11d1cec8",
-    "zh:2017c4b4826d6e713f12184e62041643abf3b5ffff749c230b5b8bf5b136e237",
-    "zh:2bc9f0a68ad6888723dbdd919acf7b47998eb23e714cf4f528bc14c473d2b727",
-    "zh:53e3d3385848195b16b9e7f599b08fbae8b19e0733ee795d447566dc5dfb5d13",
-    "zh:55f396031e09b5b61d5bf7c85a69a324b2757f577e123b37aaf4f1e6772a3935",
-    "zh:65ad61bd6726197259b8ee13dff821b127010d2f9ef08788c60fae37a01d6ff6",
-    "zh:6b0ae77431c2192c99481245f28d3098e0bb7ea758fe4d86008a09d1e76556dd",
-    "zh:7ae88fce782767947becb859be3b4639273fffc5e8928a68fefef192a6f9cb1c",
-    "zh:be7d64f4c7ad40fa1176ef2fb891fe4c404b307cedca995f4d81cd6229da9dc9",
-    "zh:c141da1be759fb27d96910e979114b45984cc17c15e4c6ca0658b71919cd04fd",
+    "h1:bC3gdJSvat6E6BH7IR4/28QPVtLsT96A5BoJ0gTt/YE=",
+    "h1:vaemmgSG3TMTUI21RmUOq3fZLW7BeMz8rDOfNH4xKyc=",
+    "zh:1d65b4c55435e7fbd7adc7cdf70109b1bdd39cb815cc3c538cec2b2578b8324c",
+    "zh:29fad3d245a4cd59d88ad421e63cec39384d5fe7c1f1df4f7998b2d3936fff47",
+    "zh:41530f0c48ce7dc4dc0f232830dee46ac6961efa74138cfc4ef3a914e7dec14b",
+    "zh:4a9602e9e2ca0b3eafea1bd304a6efef57c8f3747852e04b96e6934a251f8d20",
+    "zh:69251b3c36be38cded6e71048841ccded9a7a5f3c844124b6e6906dddfef8f12",
+    "zh:7073544c22ccd8a898ffd905302e998916d23066d1aa810af295b77f422ba579",
+    "zh:7d76abc98592a7ee193106bffabaa39f5b43e3f6f30d7387736ecc97d4bbc209",
+    "zh:9ac9edc95cf435d178b4e6e820b45786b6f811aaad92b13fa319f0f2c7d77a7c",
+    "zh:c4fd566102d98dc07a19577305446bbac200734fab1da6c7ce845cc153257cac",
+    "zh:f23e6750ae6d1e641a1d220fbfc4045b54a5ce6aafaa8d5218b798215f02230e",
+    "zh:f3761f17e38fe654156d7d0e268f8ef7c7484964ed90a80200d6ec6d9ac55d25",
     "zh:f569b65999264a9416862bca5cd2a6177d94ccb0424f3a4ef424428912b9cb3c",
   ]
 }
