@@ -859,6 +859,15 @@
       ]
     },
     {
+      "type": "sun.net.www.protocol.http.Handler",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
       "type": "sun.security.pkcs12.PKCS12KeyStore",
       "methods": [
         {
