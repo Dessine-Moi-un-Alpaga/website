@@ -1,9 +1,10 @@
 version: "3"
 
 tasks:
+
   init:
     env:
-      TF_CLI_ARGS_init: "-input=false -reconfigure -upgrade -backend-config=bucket=terraform-state-{{.GOOGLE_PROJECT}} -backend-config=prefix=common/infra"
+      TF_CLI_ARGS_init: "-input=false -backend-config=bucket=terraform-state-{{.GOOGLE_PROJECT}} -backend-config=prefix=common/infra"
     cmds:
       - terraform init
 
