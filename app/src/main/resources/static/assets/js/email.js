@@ -4,9 +4,11 @@ toastr.options = {
 
 function buildRequest() {
     const body = {
-        from: document.getElementById('contact-email').value,
         message: document.getElementById('contact-message').value,
-        name: document.getElementById('contact-name').value,
+        sender: {
+            address: document.getElementById('contact-email').value,
+            name: document.getElementById('contact-name').value
+        }
     };
 
     return {

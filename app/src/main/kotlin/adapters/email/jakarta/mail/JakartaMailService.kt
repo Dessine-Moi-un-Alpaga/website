@@ -41,7 +41,7 @@ class JakartaMailService(
     private fun message(session: Session, email: Email) = MimeMessage(session).apply {
         this.setFrom(properties.smtpServerUsername)
         this.setRecipients(Message.RecipientType.TO, InternetAddress.parse(properties.address))
-        this.subject = Messages.emailSubject("${email.name} (${email.from})")
+        this.subject = Messages.emailSubject("${email.sender.name} (${email.sender.address})")
         this.setText(email.message)
     }
 }

@@ -1,9 +1,6 @@
 package be.alpago.website.adapters.email.jakarta.mail
 
 import be.alpago.website.domain.Email
-import de.comahe.i18n4k.Locale
-import de.comahe.i18n4k.config.I18n4kConfigImmutable
-import de.comahe.i18n4k.i18n4k
 import io.github.serpro69.kfaker.Faker
 import io.kotest.matchers.booleans.shouldBeTrue
 import io.kotest.matchers.collections.shouldContainAll
@@ -23,7 +20,6 @@ class JakartaMailServiceTest {
 
     @Test
     fun testEmail() = runTest {
-        i18n4k = I18n4kConfigImmutable().withLocale(Locale.FRENCH)
         val faker = Faker()
         val email: Email = faker.randomProvider.randomClassInstance()
         val properties = faker.randomProvider.randomClassInstance<JakartaMailProperties> {
@@ -53,7 +49,7 @@ class JakartaMailServiceTest {
         messageSlot.captured.from.shouldContainAll(*InternetAddress.parse(properties.smtpServerUsername))
         messageSlot.captured.getRecipients(Message.RecipientType.TO)
             .shouldContainAll(*InternetAddress.parse(properties.address))
-        messageSlot.captured.subject.shouldBe("[website] Message reçu de ${email.name} (${email.from})")
+        messageSlot.captured.subject.shouldBe("[website] Message reçu de ${email.sender.name} (${email.sender.address})")
         messageSlot.captured.content.shouldBe(email.message)
     }
 }
