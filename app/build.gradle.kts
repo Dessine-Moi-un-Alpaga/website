@@ -96,6 +96,11 @@ fun ProcessForkOptions.environmentVariables(project: Project) {
     environment("DMUA_TEST", true)
 }
 
+fun JavaForkOptions.systemProperties() {
+    systemProperty("user.country", "BE")
+    systemProperty("user.language", "fr")
+}
+
 graalvmNative {
     agent {
         defaultMode = "direct"
@@ -114,6 +119,7 @@ graalvmNative {
 tasks.test {
     useJUnitPlatform()
     environmentVariables(project)
+    systemProperties()
 }
 
 tasks.jacocoTestReport {
@@ -131,6 +137,7 @@ tasks.run {
     }
 
     environmentVariables(project)
+    systemProperties()
 }
 
 dokka {

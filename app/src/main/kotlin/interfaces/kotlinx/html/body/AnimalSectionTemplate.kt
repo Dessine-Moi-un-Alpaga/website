@@ -14,7 +14,6 @@ import java.time.LocalDate.now
 import java.time.Period
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
-import java.util.Locale
 
 private fun Animal.Sex.text() = when (this) {
     Animal.Sex.FEMALE -> "${Messages.female}"
@@ -26,15 +25,14 @@ private fun Animal.age(): String {
     val ageInYears = age.years
 
     return if (ageInYears < 2) {
-        Messages.ageInMonths(age.months, Locale.FRENCH)
+        Messages.ageInMonths(age.months)
     } else {
-        Messages.ageInYears(age.years, Locale.FRENCH)
+        Messages.ageInYears(age.years)
     }
 }
 
 private fun Animal.formattedDateOfBirth() = dateOfBirth.format(
     DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)
-        .withLocale(Locale.FRENCH)
 )
 
 private fun Animal.Color.text() = when (this) {
