@@ -103,10 +103,11 @@ Every build deploys [the project's API documentation](https://dessine-moi-un-alp
 
 ## Version Update Chores
 
-Version numbers used by the CI build only get configured in the GitHub Actions workflow
+Most version updates are managed by Dependabot through GitHub Actions.
+
+The versions of other libraries that are used by the CI build only get configured in the GitHub Actions workflow
 (`.github/workflows/release.yaml`), whenever possible:
 
-* Firestore
 * Node.js
 * Semantic Release
 
