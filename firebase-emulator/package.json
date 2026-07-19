@@ -1,10 +1,13 @@
 {
+  "config": {
+    "port": "8181"
+  },
   "devDependencies": {
     "firebase-tools": "^15.24.0",
     "wait-on": "^9.0.10"
   },
   "scripts": {
-    "start": "firebase --non-interactive emulators:start & wait-on --timeout 30s tcp:8181",
-    "stop": "lsof -t -i tcp:8181 | xargs kill -9"
+    "start": "firebase --non-interactive emulators:start & wait-on --timeout 30s tcp:${npm_package_config_port}",
+    "stop": "lsof -t -i tcp:${npm_package_config_port} | xargs kill -9"
   }
 }
