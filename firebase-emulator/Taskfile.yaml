@@ -9,5 +9,5 @@ tasks:
 
   stop:
     cmds:
-      - cmd: lsof -t -i tcp:8181 | xargs kill -9
+      - cmd: npm run stop
         ignore_error: true
