@@ -4,6 +4,7 @@
     "wait-on": "^9.0.10"
   },
   "scripts": {
-    "start": "firebase --non-interactive emulators:start & wait-on --timeout 30s tcp:8181"
+    "start": "firebase --non-interactive emulators:start & wait-on --timeout 30s tcp:8181",
+    "stop": "lsof -t -i tcp:8181 | xargs kill -9"
   }
 }
