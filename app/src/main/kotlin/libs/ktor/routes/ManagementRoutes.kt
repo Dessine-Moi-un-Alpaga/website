@@ -20,8 +20,8 @@ import io.ktor.server.routing.routing
 const val ID = "id"
 
 /**
- * Registers a route (`DELETE /{path}`) that deletes all the [AggregateRoot]s managed under the given path, using the given
- * [Repository].
+ * Registers a route (`DELETE /{path}`) that deletes all the [AggregateRoot]s managed under the given path, using the
+ * given [Repository].
  */
 inline fun <reified T : AggregateRoot> Route.deleteAllRoute(
     path: String,
@@ -50,7 +50,7 @@ inline fun <reified T : AggregateRoot> Route.deleteRoute(
             try {
                 repository.delete(id)
                 call.response.status(HttpStatusCode.OK)
-            } catch (e: AggregateRootNotFound) {
+            } catch (_: AggregateRootNotFound) {
                 call.response.status(HttpStatusCode.NotFound)
             }
         }
@@ -89,7 +89,7 @@ inline fun <reified T : AggregateRoot> Route.getRoute(
             try {
                 val aggregateRoot = repository.get(id)
                 call.respond(aggregateRoot)
-            } catch (e: AggregateRootNotFound) {
+            } catch (_: AggregateRootNotFound) {
                 call.response.status(HttpStatusCode.NotFound)
             }
         }
