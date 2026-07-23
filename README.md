@@ -50,6 +50,20 @@ $ gcloud auth login
 $ gh auth login
 ```
 
+# Running Tasks
+
+This project uses [Task]([Task](https://taskfile.dev/docs/installation)) as an umbrella for the various project tools
+and commands.
+
+Simply running the `task` command in the project directory lists the most relevant available tasks.
+
+By default, tasks target the development environment; to run tasks agains the production environment, simply prefix th
+command as follows:
+
+```
+$ ENVIRONMENT=production task <TASK_NAME>
+```
+
 # Bootstrapping the Project
 
 This project includes a Terraform configuration that will prompt you for several configuration items and make sure
@@ -89,6 +103,18 @@ $ task app:run -- -Pagent
 
 You must then make sure that all relevant code paths are covered by your interactions with the app and all the
 configuration files in `app/src/main/resouces/META-INF/native-image/be.alpago/website` will be updated accordingly.
+
+# Managing the Dynamic Assets
+
+Dynamic assets, that is, assets which are not referenced in the code directly, but rather by data that is managed at
+runtime, are stored in Google Cloud Storage.
+
+The following tasks assume that local assets are located under the `assets/` folder in the project directory.
+
+```
+$ task download-assets
+$ task upload-assets
+```
 
 # Contributing
 
