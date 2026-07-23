@@ -19,7 +19,7 @@ plugins: [
   [
     "@semantic-release/exec",
     {
-      "publishCmd": "task ENVIRONMENT=${nextRelease.channel} VERSION=${nextRelease.version} release"
+      "publishCmd": "ENVIRONMENT=${nextRelease.channel} VERSION=${nextRelease.version} task release"
     }
   ],
   "@semantic-release/release-notes-generator",
