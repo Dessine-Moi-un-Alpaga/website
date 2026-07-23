@@ -57,8 +57,8 @@ and commands.
 
 Simply running the `task` command in the project directory lists the most relevant available tasks.
 
-By default, tasks target the development environment; to run tasks agains the production environment, simply prefix th
-command as follows:
+By default, tasks target the development environment; to run tasks agains the production environment, prefix the command
+as follows:
 
 ```
 $ ENVIRONMENT=production task <TASK_NAME>
