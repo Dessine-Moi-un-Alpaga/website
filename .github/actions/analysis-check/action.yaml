@@ -12,7 +12,7 @@ inputs:
     required: true
 outputs:
   analysis-required:
-    description: 'true' if an analysis is required, 'false' otherwise
+    description: Whether source code analysis is required
     value: ${{ steps.analysis-check.outputs.analysis-required }}
 runs:
   using: composite
