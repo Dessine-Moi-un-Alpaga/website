@@ -26,7 +26,7 @@ tasks:
   download-assets:
     desc: Downloads assets from Google Cloud Storage to the local assets/ directory
     cmds:
-      - gcloud storage rsync --delete-unmatched-destination-objects --dry-run --recursive gs://{{.BUCKET_NAME}} assets/
+      - gcloud storage rsync --delete-unmatched-destination-objects --recursive gs://{{.BUCKET_NAME}} assets/
 
   release:
     desc: Performs a release, pusblishes it and deploys it to Google Cloud Run
