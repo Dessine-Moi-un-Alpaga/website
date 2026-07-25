@@ -1,6 +1,7 @@
 package be.alpago.website.libs.kotlin.retry
 
 import kotlinx.coroutines.delay
+import kotlin.time.Duration.Companion.milliseconds
 
 /**
  * Generic retry functionality for a given block of code.
@@ -20,7 +21,7 @@ suspend fun <T> retry(
                 throw e
             }
 
-            delay(delayMillis)
+            delay(delayMillis.milliseconds)
             currentAttempt++
             delayMillis *= options.exponentialBackoffFactor
         }
