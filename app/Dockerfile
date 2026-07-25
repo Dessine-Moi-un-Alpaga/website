@@ -15,4 +15,4 @@ FROM scratch
 ARG WORKDIR
 WORKDIR ${WORKDIR}
 COPY --from=build ${WORKDIR}/website .
-ENTRYPOINT [ "/app/website", "-Xmx16m", "-XX:MissingRegistrationReportingMode=Warn" ]
+ENTRYPOINT [ "/app/website", "-Xmx16m", "-XX:MissingRegistrationReportingMode=Warn", "-Duser.country=BE", "-Duser.language=fr" ]
