@@ -3,6 +3,7 @@ package be.alpago.website.libs.adapters.persistence
 import be.alpago.website.libs.domain.AggregateRoot
 import be.alpago.website.libs.domain.ports.persistence.Repository
 import java.util.Collections.synchronizedMap
+import java.util.concurrent.atomic.AtomicReference
 
 private data class FindByCacheKey(
     val argumentName: String,
@@ -19,7 +20,7 @@ private data class FindByCacheKey(
  */
 class CachingRepository<T : AggregateRoot>(private val delegate: Repository<T>) : Repository<T> {
 
-    private val findAllCache: MutableMap<Nothing?, List<T>> = synchronizedMap(mutableMapOf())
+    private val findAllCache = AtomicReference<List<T>?>()
 
     private val findByCache: MutableMap<FindByCacheKey, List<T>> = synchronizedMap(mutableMapOf())
 
@@ -40,11 +41,11 @@ class CachingRepository<T : AggregateRoot>(private val delegate: Repository<T>) 
     }
 
     override suspend fun findAll(): List<T> {
-        var result = findAllCache[null]
+        var result = findAllCache.get()
 
         if (result == null) {
             result = delegate.findAll()
-            findAllCache[null] = result
+            findAllCache.set(result)
         }
 
         return result
@@ -80,3 +81,5 @@ class CachingRepository<T : AggregateRoot>(private val delegate: Repository<T>) 
         getCache.remove(aggregateRoot.id)
     }
 }
+
+private fun <T> AtomicReference<T>.clear() = set(null)
