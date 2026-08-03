@@ -5,6 +5,10 @@ data "google_artifact_registry_repository" "repository" {
   repository_id = var.artifact_repository
 }
 
+data "google_secret_manager_secret" "api_key_hash_secret" {
+  secret_id = "api-key-hash"
+}
+
 data "google_secret_manager_secret" "credentials_secret" {
   secret_id = "credentials"
 }

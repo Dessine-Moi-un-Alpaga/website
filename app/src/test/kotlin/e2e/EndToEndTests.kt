@@ -1,5 +1,6 @@
 package be.alpago.website.e2e
 
+import at.favre.lib.crypto.bcrypt.BCrypt
 import be.alpago.website.adapters.persistence.firestore.FirestoreProperties
 import be.alpago.website.interfaces.kotlinx.html.TemplateProperties
 import be.alpago.website.interfaces.ktor.AuthenticationProperties
@@ -9,18 +10,18 @@ import io.github.serpro69.kfaker.Faker
 import io.github.serpro69.kfaker.fakerConfig
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.request.HttpRequestBuilder
-import io.ktor.client.request.basicAuth
+import io.ktor.client.request.header
 import io.ktor.serialization.kotlinx.json.json
 import io.ktor.server.application.Application
+import io.ktor.server.auth.apikey.ApiKeyAuth
 import io.ktor.server.plugins.di.dependencies
 import io.ktor.server.testing.ApplicationTestBuilder
 import io.ktor.server.testing.testApplication
 import java.time.LocalDate
 import kotlin.random.Random
 
-private const val USERNAME = "test"
-private const val PASSWORD = "**SECRET**"
-private const val CREDENTIALS = "$USERNAME:\$2y\$12\$MEq8DuMADQU85PFGw844zuAVbEXOtyC1oTorFISvrsPIoQ9Rn92qy"
+private const val API_KEY = "**SECRET**"
+private val API_KEY_HASH = BCrypt.withDefaults().hashToString(12, API_KEY.toCharArray())
 
 private val FAKER_CONFIGURATION = fakerConfig {
     randomClassInstance {
@@ -44,7 +45,9 @@ fun ApplicationTestBuilder.createJsonClient() = createClient {
 
 fun Application.mockAuthentication() {
     dependencies.provide {
-        AuthenticationProperties(credentials = CREDENTIALS)
+        AuthenticationProperties(
+            apiKeyHash = API_KEY_HASH,
+        )
     }
 }
 
@@ -65,7 +68,7 @@ fun mockTemplates() = TemplateProperties(
 )
 
 fun HttpRequestBuilder.authenticate() {
-    basicAuth(USERNAME, PASSWORD)
+    header(ApiKeyAuth.DEFAULT_HEADER_NAME, API_KEY)
 }
 
 fun endToEndTest(block: suspend ApplicationTestBuilder.(TemplateProperties) -> Unit) {

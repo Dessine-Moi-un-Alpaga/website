@@ -1,3 +1,8 @@
+resource "bcrypt_hash" "api_key_hash" {
+  cleartext = var.api_key
+  cost      = var.bcrypt_cost
+}
+
 resource "bcrypt_hash" "password_hash" {
   cleartext = var.password
   cost      = var.bcrypt_cost
@@ -73,6 +78,7 @@ resource "local_file" "dotenv_production_variables" {
 
 resource "local_sensitive_file" "dotenv_secrets" {
   content = <<-EOT
+  API_KEY_HASH=${bcrypt_hash.api_key_hash.id}
   CREDENTIALS='${local.credentials}'
   SMTP_SERVER_PASSWORD=${var.smtp_server_password}
   SONARCLOUD_TOKEN=${var.sonarcloud_token}

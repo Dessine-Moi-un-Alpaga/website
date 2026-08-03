@@ -141,6 +141,7 @@ jobs:
 
       - name: Release
         env:
+          API_KEY_HASH: ${{ secrets.API_KEY_HASH }}
           ARTIFACT_REGISTRY_LOCATION: ${{ vars.ARTIFACT_REGISTRY_LOCATION }}
           ARTIFACT_REPOSITORY: ${{ vars.ARTIFACT_REPOSITORY }}
           BUCKET_NAME: ${{ vars.BUCKET_NAME }}

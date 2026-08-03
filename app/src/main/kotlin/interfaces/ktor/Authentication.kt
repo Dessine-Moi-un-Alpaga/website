@@ -6,30 +6,26 @@ import io.ktor.server.application.Application
 import io.ktor.server.application.install
 import io.ktor.server.auth.Authentication
 import io.ktor.server.auth.UserIdPrincipal
+import io.ktor.server.auth.apikey.apiKey
 import io.ktor.server.auth.basic
 import io.ktor.server.plugins.di.dependencies
+import kotlin.math.exp
 
 internal fun Application.authentication() {
     authenticationProperties()
 
     val properties: AuthenticationProperties by dependencies
-    val allowedCredentials = parseCredentials(properties)
     val verifyer by lazy { BCrypt.verifyer() }
 
     install(Authentication) {
-        basic {
-            validate { credentials ->
+        apiKey {
+            validate { keyFromHeader ->
                 var principal: Any? = null
-                val username = credentials.name
-                val expectedHash = allowedCredentials[username]
+                val expectedApiKeyHash = properties.apiKeyHash
+                val result = verifyer.verify(keyFromHeader.toCharArray(), expectedApiKeyHash)
 
-                if (expectedHash != null) {
-                    val password = credentials.password
-                    val result = verifyer.verify(password.toCharArray(), expectedHash)
-
-                    if (result.verified) {
-                        principal = UserIdPrincipal(username)
-                    }
+                if (result.verified) {
+                    principal = UserIdPrincipal("admin")
                 }
 
                 principal
@@ -42,15 +38,8 @@ private fun Application.authenticationProperties() {
     dependencies {
         provide {
             AuthenticationProperties(
-                credentials = getEnvironmentVariable("DMUA_CREDENTIALS"),
+                apiKeyHash = getEnvironmentVariable("DMUA_API_KEY_HASH"),
             )
         }
     }
-}
-
-private fun parseCredentials(properties: AuthenticationProperties): Map<String, String> {
-    return properties.credentials.split("\n")
-        .filter { it.isNotBlank() }
-        .map { it.split(":") }
-        .associate { it[0] to it[1] }
 }
