@@ -20,6 +20,7 @@ resource "random_bytes" "gradle_configuration_cache_encryption_key" {
 
 locals {
   secrets = {
+    API_KEY_HASH          = bcrypt_hash.api_key_hash.id
     CREDENTIALS           = local.credentials
     GRADLE_ENCRYPTION_KEY = random_bytes.gradle_configuration_cache_encryption_key.base64
     SMTP_SERVER_PASSWORD  = var.smtp_server_password

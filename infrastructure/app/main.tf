@@ -53,6 +53,17 @@ resource "google_cloud_run_v2_service" "cloud_run_service" {
       image = var.image
 
       env {
+        name = "DMUA_API_KEY_HASH"
+
+        value_source {
+          secret_key_ref {
+            secret  = data.google_secret_manager_secret.api_key_hash_secret.secret_id
+            version = "latest"
+          }
+        }
+      }
+
+      env {
         name  = "DMUA_BASE_ASSET_URL"
         value = "https://storage.googleapis.com/${google_storage_bucket.static_resource_bucket.name}"
       }
