@@ -66,6 +66,14 @@ resource "google_firebase_project" "default" {
   provider = google-beta
 }
 
+resource "google_secret_manager_secret" "api_key_hash_secret" {
+  secret_id = "api-key-hash"
+
+  replication {
+    auto {}
+  }
+}
+
 resource "google_secret_manager_secret" "credentials_secret" {
   secret_id = "credentials"
 
@@ -80,6 +88,11 @@ resource "google_secret_manager_secret" "smtp_server_password_secret" {
   replication {
     auto {}
   }
+}
+
+resource "google_secret_manager_secret_version" "api_key_hash_secret_version" {
+  secret      = google_secret_manager_secret.api_key_hash_secret.id
+  secret_data = var.api_key_hash
 }
 
 resource "google_secret_manager_secret_version" "credentials_secret_version" {

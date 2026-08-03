@@ -1,3 +1,9 @@
+variable "api_key" {
+  description = "Website API Key"
+  nullable    = false
+  type        = string
+}
+
 variable "artifact_registry_location" {
   description = "Artifact Registry Location"
   nullable    = false
