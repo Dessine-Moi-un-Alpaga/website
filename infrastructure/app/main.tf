@@ -159,6 +159,12 @@ resource "google_cloud_run_domain_mapping" "application_domain_mapping" {
   }
 }
 
+resource "google_secret_manager_secret_iam_member" "api_key_hash_secret_accessor" {
+  member    = "serviceAccount:${google_service_account.service_account.email}"
+  role      = "roles/secretmanager.secretAccessor"
+  secret_id = data.google_secret_manager_secret.api_key_hash_secret.secret_id
+}
+
 resource "google_secret_manager_secret_iam_member" "credentials_secret_accessor" {
   member    = "serviceAccount:${google_service_account.service_account.email}"
   role      = "roles/secretmanager.secretAccessor"
