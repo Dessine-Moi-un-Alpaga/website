@@ -9,10 +9,6 @@ data "google_secret_manager_secret" "api_key_hash_secret" {
   secret_id = "api-key-hash"
 }
 
-data "google_secret_manager_secret" "credentials_secret" {
-  secret_id = "credentials"
-}
-
 data "google_secret_manager_secret" "smtp_server_password_secret" {
   secret_id = "smtp-server-password"
 }

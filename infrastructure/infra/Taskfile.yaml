@@ -13,7 +13,6 @@ tasks:
       TF_VAR_api_key_hash: "{{.API_KEY_HASH}}"
       TF_VAR_artifact_registry_location: "{{.ARTIFACT_REGISTRY_LOCATION}}"
       TF_VAR_artifact_repository: "{{.ARTIFACT_REPOSITORY}}"
-      TF_VAR_credentials: "{{.CREDENTIALS}}"
       TF_VAR_firestore_location: "{{.FIRESTORE_LOCATION}}"
       TF_VAR_smtp_server_password: "{{.SMTP_SERVER_PASSWORD}}"
     cmds:

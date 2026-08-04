@@ -13,12 +13,6 @@ variable "artifact_repository" {
   type     = string
 }
 
-variable "credentials" {
-  nullable  = false
-  sensitive = true
-  type      = string
-}
-
 variable "firestore_location" {
   nullable = false
   type     = string
