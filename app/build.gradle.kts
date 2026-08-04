@@ -75,7 +75,6 @@ tasks.register("ci") {
 
 fun ProcessForkOptions.environmentVariables(project: Project) {
     val apiKeyHash = project.property("apiKeyHash")
-    val credentials = project.property("credentials")
     val bucket = project.property("bucket")
     val firestorePort = project.property("firestorePort")
     val googleProject = project.property("googleProject")
@@ -86,7 +85,6 @@ fun ProcessForkOptions.environmentVariables(project: Project) {
 
     environment("DMUA_API_KEY_HASH", apiKeyHash)
     environment("DMUA_BASE_ASSET_URL", "https://storage.googleapis.com/${bucket}")
-    environment("DMUA_CREDENTIALS", credentials)
     environment("DMUA_EMAIL_ADDRESS", "contact@dessinemoiunalpaga.com")
     environment("DMUA_ENVIRONMENT", "local")
     environment("DMUA_FIRESTORE_URL", "http://localhost:${firestorePort}")
