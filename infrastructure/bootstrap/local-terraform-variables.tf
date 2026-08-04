@@ -78,7 +78,7 @@ resource "local_file" "dotenv_production_variables" {
 
 resource "local_sensitive_file" "dotenv_secrets" {
   content = <<-EOT
-  API_KEY_HASH=${bcrypt_hash.api_key_hash.id}
+  API_KEY_HASH='${bcrypt_hash.api_key_hash.id}'
   CREDENTIALS='${local.credentials}'
   SMTP_SERVER_PASSWORD=${var.smtp_server_password}
   SONARCLOUD_TOKEN=${var.sonarcloud_token}

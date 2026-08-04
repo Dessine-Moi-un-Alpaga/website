@@ -69,17 +69,6 @@ resource "google_cloud_run_v2_service" "cloud_run_service" {
       }
 
       env {
-        name = "DMUA_CREDENTIALS"
-
-        value_source {
-          secret_key_ref {
-            secret  = data.google_secret_manager_secret.credentials_secret.secret_id
-            version = "latest"
-          }
-        }
-      }
-
-      env {
         name = "DMUA_EMAIL_ADDRESS"
         value = "contact@dessinemoiunalpaga.com"
       }
@@ -163,12 +152,6 @@ resource "google_secret_manager_secret_iam_member" "api_key_hash_secret_accessor
   member    = "serviceAccount:${google_service_account.service_account.email}"
   role      = "roles/secretmanager.secretAccessor"
   secret_id = data.google_secret_manager_secret.api_key_hash_secret.secret_id
-}
-
-resource "google_secret_manager_secret_iam_member" "credentials_secret_accessor" {
-  member    = "serviceAccount:${google_service_account.service_account.email}"
-  role      = "roles/secretmanager.secretAccessor"
-  secret_id = data.google_secret_manager_secret.credentials_secret.secret_id
 }
 
 resource "google_secret_manager_secret_iam_member" "smtp_server_password_secret_accessor" {
