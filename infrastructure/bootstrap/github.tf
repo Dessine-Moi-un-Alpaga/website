@@ -7,11 +7,21 @@ resource "github_repository" "git_repository" {
   has_wiki             = true
   homepage_url         = "https://${var.domain_name}"
   name                 = var.github_repository
-  vulnerability_alerts = true
 
-  pages {
-    build_type = "workflow"
+  lifecycle {
+    ignore_changes = [
+      pages,
+    ]
   }
+}
+
+resource "github_repository_pages" "github_pages" {
+  build_type = "workflow"
+  repository = github_repository.git_repository.name
+}
+
+resource "github_repository_vulnerability_alerts" "dependabot" {
+  repository = github_repository.git_repository.name
 }
 
 resource "random_bytes" "gradle_configuration_cache_encryption_key" {
@@ -70,19 +80,19 @@ resource "github_actions_environment_variable" "production_variables" {
 resource "github_actions_environment_secret" "development_secrets" {
   for_each = local.secrets
 
-  plaintext_value = each.value
   environment     = github_repository_environment.development_environment.environment
   repository      = github_repository.git_repository.name
   secret_name     = each.key
+  value           = each.value
 }
 
 resource "github_actions_environment_secret" "production_secrets" {
   for_each = local.secrets
 
-  plaintext_value = each.value
   environment     = github_repository_environment.production_environment.environment
   repository      = github_repository.git_repository.name
   secret_name     = each.key
+  value           = each.value
 }
 
 resource "github_actions_environment_variable" "development_bucket_name_variable" {
