@@ -1,6 +1,7 @@
 variable "api_key" {
   description = "Website API Key"
   nullable    = false
+  sensitive   = true
   type        = string
 }
 
@@ -76,13 +77,6 @@ variable "organization_id" {
   type        = string
 }
 
-variable "password" {
-  description = "API Password"
-  nullable    = false
-  sensitive   = true
-  type        = string
-}
-
 variable "prod_bucket_name" {
   description = "Website Asset Bucket (Production)"
   nullable    = false
@@ -142,12 +136,6 @@ variable "sonarcloud_token" {
   description = "Sonarcloud Token"
   nullable    = false
   sensitive   = true
-  type        = string
-}
-
-variable "username" {
-  description = "Website API Username"
-  nullable    = false
   type        = string
 }
 

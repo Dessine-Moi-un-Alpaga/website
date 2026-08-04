@@ -3,17 +3,9 @@ resource "bcrypt_hash" "api_key_hash" {
   cost      = var.bcrypt_cost
 }
 
-resource "bcrypt_hash" "password_hash" {
-  cleartext = var.password
-  cost      = var.bcrypt_cost
-}
-
-locals {
-  credentials = "${var.username}:${bcrypt_hash.password_hash.id}"
-}
-
 resource "local_sensitive_file" "variables" {
   content  = <<-EOT
+  api_key                       = "${var.api_key}"
   artifact_registry_location    = "${var.artifact_registry_location}"
   artifact_repository           = "${var.artifact_repository}"
   billing_account               = "${var.billing_account}"
@@ -25,7 +17,6 @@ resource "local_sensitive_file" "variables" {
   github_repository_description = "${var.github_repository_description}"
   home_directory                = "${var.home_directory}"
   organization_id               = "${var.organization_id}"
-  password                      = "${var.password}"
   prod_bucket_name              = "${var.prod_bucket_name}"
   project_id                    = "${var.project_id}"
   project_name                  = "${var.project_name}"
@@ -36,7 +27,6 @@ resource "local_sensitive_file" "variables" {
   smtp_server_port              = "${var.smtp_server_port}"
   smtp_server_username          = "${var.smtp_server_username}"
   sonarcloud_token              = "${var.sonarcloud_token}"
-  username                      = "${var.username}"
   zone                          = "${var.zone}"
   EOT
   filename = "${var.home_directory}/.dmua/bootstrap/terraform.tfvars"
@@ -79,7 +69,6 @@ resource "local_file" "dotenv_production_variables" {
 resource "local_sensitive_file" "dotenv_secrets" {
   content = <<-EOT
   API_KEY_HASH='${bcrypt_hash.api_key_hash.id}'
-  CREDENTIALS='${local.credentials}'
   SMTP_SERVER_PASSWORD=${var.smtp_server_password}
   SONARCLOUD_TOKEN=${var.sonarcloud_token}
   EOT
