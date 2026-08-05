@@ -19,3 +19,6 @@ tasks:
       TF_CLI_ARGS_apply: tfplan
     cmds:
       - terraform apply
+    preconditions:
+      - sh: '[ "$CI" != "true" ]'
+        msg: "This Terraform stack should only be run on a trusted developer machine."
