@@ -7,9 +7,7 @@ import io.ktor.server.application.install
 import io.ktor.server.auth.Authentication
 import io.ktor.server.auth.UserIdPrincipal
 import io.ktor.server.auth.apikey.apiKey
-import io.ktor.server.auth.basic
 import io.ktor.server.plugins.di.dependencies
-import kotlin.math.exp
 
 internal fun Application.authentication() {
     authenticationProperties()
