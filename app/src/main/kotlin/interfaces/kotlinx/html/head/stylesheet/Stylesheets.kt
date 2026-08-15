@@ -1,6 +1,6 @@
-package be.alpago.website.interfaces.kotlinx.html.head.stylesheet
+package com.dessinemoiunalpaga.website.interfaces.kotlinx.html.head.stylesheet
 
-import be.alpago.website.application.PageModel
+import com.dessinemoiunalpaga.website.application.PageModel
 import kotlinx.html.*
 
 fun HEAD.stylesheets(pageModel: PageModel) {

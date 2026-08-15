@@ -1,88 +1,88 @@
-# Package be.alpago.website.adapters
+# Package com.dessinemoiunalpaga.website.adapters
 
 The layer that contains the implementations of the secondary (driven) ports.
 
-# Package be.alpago.website.adapters.persistence.firestore
+# Package com.dessinemoiunalpaga.website.adapters.persistence.firestore
 
 [Google Cloud Firestore](https://cloud.google.com/products/firestore) implementations of the persistence-related ports.
 
-# Package be.alpago.website.adapters.email.jakarta.mail
+# Package com.dessinemoiunalpaga.website.adapters.email.jakarta.mail
 
 [Jakarta Mail](https://jakartaee.github.io/mail-api/) implementation of the email-sending port.
 
-# Package be.alpago.website.application
+# Package com.dessinemoiunalpaga.website.application
 
 The application layer, mostly responsible for modelling the structure of the website pages and populating that model
 with the persisted contents.
 
-# Package be.alpago.website.application.queries
+# Package com.dessinemoiunalpaga.website.application.queries
 
 Implementations of the use cases dedicated to displaying web pages.
 
-# Package be.alpago.website.application.usecases
+# Package com.dessinemoiunalpaga.website.application.usecases
 
 Names of the functionalities offered to an external user. In a nutshell: showing web pages and managing their content,
 as well as sending emails.
 
-# Package be.alpago.website.domain
+# Package com.dessinemoiunalpaga.website.domain
 
 The core domain of the application.
 
 This application being mostly CRUDs to configure the contents of a static website, the core domain can be described as
 anemic.
 
-# Package be.alpago.website.interfaces
+# Package com.dessinemoiunalpaga.website.interfaces
 
 The layer that contains the implementations of the primary (driving) ports.
 
-# Package be.alpago.website.interfaces.kotlinx.html
+# Package com.dessinemoiunalpaga.website.interfaces.kotlinx.html
 
 [kotlinx.html](https://github.com/Kotlin/kotlinx.html) implementation of the website templates.
 
-# Package be.alpago.website.interfaces.ktor.routes
+# Package com.dessinemoiunalpaga.website.interfaces.ktor.routes
 
 HTTP endpoints exposed by the application.
 
-# Package be.alpago.website.libs
+# Package com.dessinemoiunalpaga.website.libs
 
 Utility code that could be extracted to their own modules.
 
-# Package be.alpago.website.libs.adapters.persistence
+# Package com.dessinemoiunalpaga.website.libs.adapters.persistence
 
 Utility code used by persistence-related adapters.
 
-# Package be.alpago.website.libs.domain
+# Package com.dessinemoiunalpaga.website.libs.domain
 
 Base domain abstractions.
 
-# Package be.alpago.website.libs.domain.ports.persistence
+# Package com.dessinemoiunalpaga.website.libs.domain.ports.persistence
 
 Persistence-related ports.
 
-# Package be.alpago.website.libs.i18n4k
+# Package com.dessinemoiunalpaga.website.libs.i18n4k
 
 Utility code for configuring the [i18n4k](https://comahe-de.github.io/i18n4k/) library.
 
-# Package be.alpago.website.libs.kotlin.i18n
+# Package com.dessinemoiunalpaga.website.libs.kotlin.i18n
 
 Extensions of the kotlin standard library related to internationalization.
 
-# Package be.alpago.website.libs.kotlin.retry
+# Package com.dessinemoiunalpaga.website.libs.kotlin.retry
 
 Simple implementation of a retry functionality for a given block of code.
 
-# Package be.alpago.website.libs.kotlin.serialization
+# Package com.dessinemoiunalpaga.website.libs.kotlin.serialization
 
 Extensions of the kotlin serialization libraries.
 
-# Package be.alpago.website.libs.ktor.plugins.webjars
+# Package com.dessinemoiunalpaga.website.libs.ktor.plugins.webjars
 
 Native-friendly replacement for the ktor Webjars plugin.
 
-# Package be.alpago.website.libs.ktor.routes
+# Package com.dessinemoiunalpaga.website.libs.ktor.routes
 
 Ktor routes for managing persistent AggregateRoots.
 
-# Package be.alpago.website.libs.slf4j
+# Package com.dessinemoiunalpaga.website.libs.slf4j
 
 Utility code for configuring logging using SLF4J.

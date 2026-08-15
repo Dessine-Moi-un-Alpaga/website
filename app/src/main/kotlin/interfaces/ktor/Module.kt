@@ -1,6 +1,6 @@
-package be.alpago.website.interfaces.ktor
+package com.dessinemoiunalpaga.website.interfaces.ktor
 
-import be.alpago.website.interfaces.ktor.routes.routes
+import com.dessinemoiunalpaga.website.interfaces.ktor.routes.routes
 import io.ktor.server.application.Application
 
 internal suspend fun Application.ktor() {

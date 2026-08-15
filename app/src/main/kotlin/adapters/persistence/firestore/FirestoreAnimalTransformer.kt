@@ -1,6 +1,6 @@
-package be.alpago.website.adapters.persistence.firestore
+package com.dessinemoiunalpaga.website.adapters.persistence.firestore
 
-import be.alpago.website.domain.Animal
+import com.dessinemoiunalpaga.website.domain.Animal
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 

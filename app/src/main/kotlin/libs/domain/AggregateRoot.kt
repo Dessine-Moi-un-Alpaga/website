@@ -1,4 +1,4 @@
-package be.alpago.website.libs.domain
+package com.dessinemoiunalpaga.website.libs.domain
 
 /**
  * A standard [Domain-Driven Aggregate Root](https://martinfowler.com/bliki/DDD_Aggregate.html)

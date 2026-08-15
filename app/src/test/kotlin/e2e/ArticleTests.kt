@@ -1,6 +1,6 @@
-package be.alpago.website.e2e
+package com.dessinemoiunalpaga.website.e2e
 
-import be.alpago.website.domain.Article
+import com.dessinemoiunalpaga.website.domain.Article
 import io.kotest.assertions.ktor.client.shouldHaveStatus
 import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.shouldBe

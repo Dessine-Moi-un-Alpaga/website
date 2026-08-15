@@ -1,4 +1,4 @@
-package be.alpago.website.e2e
+package com.dessinemoiunalpaga.website.e2e
 
 import io.kotest.assertions.ktor.client.shouldHaveStatus
 import io.kotest.matchers.collections.shouldBeEmpty

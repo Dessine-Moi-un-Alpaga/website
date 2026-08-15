@@ -1,9 +1,9 @@
-package be.alpago.website.interfaces.kotlinx.html.footer.contact
+package com.dessinemoiunalpaga.website.interfaces.kotlinx.html.footer.contact
 
-import be.alpago.website.interfaces.kotlinx.html.TemplateProperties
-import be.alpago.website.interfaces.kotlinx.html.footer.contact.form.contactForm
-import be.alpago.website.interfaces.kotlinx.html.footer.contact.info.contactInformation
-import be.alpago.website.interfaces.kotlinx.html.style.EscapeVelocity
+import com.dessinemoiunalpaga.website.interfaces.kotlinx.html.TemplateProperties
+import com.dessinemoiunalpaga.website.interfaces.kotlinx.html.footer.contact.form.contactForm
+import com.dessinemoiunalpaga.website.interfaces.kotlinx.html.footer.contact.info.contactInformation
+import com.dessinemoiunalpaga.website.interfaces.kotlinx.html.style.EscapeVelocity
 import kotlinx.html.*
 
 fun DIV.contact(properties: TemplateProperties) {

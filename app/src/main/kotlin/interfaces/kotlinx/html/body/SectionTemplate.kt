@@ -1,10 +1,10 @@
-package be.alpago.website.interfaces.kotlinx.html.body
+package com.dessinemoiunalpaga.website.interfaces.kotlinx.html.body
 
-import be.alpago.website.application.SectionColor
-import be.alpago.website.application.SectionModel
-import be.alpago.website.interfaces.kotlinx.html.TemplateProperties
-import be.alpago.website.interfaces.kotlinx.html.style.EscapeVelocity
-import be.alpago.website.interfaces.kotlinx.html.style.testId
+import com.dessinemoiunalpaga.website.application.SectionColor
+import com.dessinemoiunalpaga.website.application.SectionModel
+import com.dessinemoiunalpaga.website.interfaces.kotlinx.html.TemplateProperties
+import com.dessinemoiunalpaga.website.interfaces.kotlinx.html.style.EscapeVelocity
+import com.dessinemoiunalpaga.website.interfaces.kotlinx.html.style.testId
 import io.ktor.server.html.Placeholder
 import io.ktor.server.html.Template
 import io.ktor.server.html.insert

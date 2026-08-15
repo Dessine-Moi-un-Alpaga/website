@@ -1,4 +1,4 @@
-package be.alpago.website.domain
+package com.dessinemoiunalpaga.website.domain
 
 import kotlinx.serialization.Serializable
 

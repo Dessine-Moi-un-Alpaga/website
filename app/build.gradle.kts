@@ -13,10 +13,10 @@ plugins {
     jacoco
 }
 
-group = "be.alpago"
+group = "com.dessinemoiunalpaga"
 
 application {
-    mainClass.set("be.alpago.website.ApplicationKt")
+    mainClass.set("com.dessinemoiunalpaga.website.ApplicationKt")
 }
 
 repositories {
@@ -107,7 +107,7 @@ graalvmNative {
 
         modes {
             direct {
-                options.add("config-output-dir=src/main/resources/META-INF/native-image/be.alpago/website")
+                options.add("config-output-dir=src/main/resources/META-INF/native-image/com.dessinemoiunalpaga/website")
             }
         }
     }
@@ -146,13 +146,13 @@ dokka {
         jdkVersion.set(project.property("javaVersion").toString().toInt())
 
         val suppressedPackages = listOf(
-            "be.alpago.website",
-            "be.alpago.website.i18n",
-            "be.alpago.website.interfaces.kotlinx.html.body(.*)",
-            "be.alpago.website.interfaces.kotlinx.html.footer(.*)",
-            "be.alpago.website.interfaces.kotlinx.html.head(.*)",
-            "be.alpago.website.interfaces.kotlinx.html.header(.*)",
-            "be.alpago.website.interfaces.kotlinx.html.style(.*)",
+            "com.dessinemoiunalpaga.website",
+            "com.dessinemoiunalpaga.website.i18n",
+            "com.dessinemoiunalpaga.website.interfaces.kotlinx.html.body(.*)",
+            "com.dessinemoiunalpaga.website.interfaces.kotlinx.html.footer(.*)",
+            "com.dessinemoiunalpaga.website.interfaces.kotlinx.html.head(.*)",
+            "com.dessinemoiunalpaga.website.interfaces.kotlinx.html.header(.*)",
+            "com.dessinemoiunalpaga.website.interfaces.kotlinx.html.style(.*)",
         )
 
         for (suppressedPackage in suppressedPackages) {
@@ -182,7 +182,7 @@ dokka {
 
     pluginsConfiguration.html {
         customStyleSheets.from("dokka.css")
-        footerMessage.set("© ${LocalDate.now().year} Alpago")
+        footerMessage.set("© ${LocalDate.now().year} Dessine-Moi un Alpaga")
     }
 }
 

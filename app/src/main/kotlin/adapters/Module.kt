@@ -1,7 +1,7 @@
-package be.alpago.website.adapters
+package com.dessinemoiunalpaga.website.adapters
 
-import be.alpago.website.adapters.email.jakarta.mail.jakartaMail
-import be.alpago.website.adapters.persistence.firestore.firestore
+import com.dessinemoiunalpaga.website.adapters.email.jakarta.mail.jakartaMail
+import com.dessinemoiunalpaga.website.adapters.persistence.firestore.firestore
 import io.ktor.server.application.Application
 
 internal fun Application.adapters() {

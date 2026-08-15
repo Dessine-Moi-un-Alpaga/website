@@ -1,9 +1,9 @@
-package be.alpago.website.libs.adapters.persistence
+package com.dessinemoiunalpaga.website.libs.adapters.persistence
 
-import be.alpago.website.libs.domain.AggregateRoot
-import be.alpago.website.libs.domain.ports.persistence.Repository
-import be.alpago.website.libs.kotlin.retry.RetryOptions
-import be.alpago.website.libs.kotlin.retry.retry
+import com.dessinemoiunalpaga.website.libs.domain.AggregateRoot
+import com.dessinemoiunalpaga.website.libs.domain.ports.persistence.Repository
+import com.dessinemoiunalpaga.website.libs.kotlin.retry.RetryOptions
+import com.dessinemoiunalpaga.website.libs.kotlin.retry.retry
 
 /**
  * A Repository decorator implementation that retries operations in case of failure.

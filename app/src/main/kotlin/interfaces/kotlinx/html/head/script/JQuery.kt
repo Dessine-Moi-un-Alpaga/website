@@ -1,4 +1,4 @@
-package be.alpago.website.interfaces.kotlinx.html.head.script
+package com.dessinemoiunalpaga.website.interfaces.kotlinx.html.head.script
 
 import kotlinx.html.*
 

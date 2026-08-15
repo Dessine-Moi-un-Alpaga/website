@@ -1,7 +1,7 @@
-package be.alpago.website.e2e
+package com.dessinemoiunalpaga.website.e2e
 
-import be.alpago.website.domain.ImageMetadata
-import be.alpago.website.interfaces.kotlinx.html.style.Photoswipe
+import com.dessinemoiunalpaga.website.domain.ImageMetadata
+import com.dessinemoiunalpaga.website.interfaces.kotlinx.html.style.Photoswipe
 import io.kotest.assertions.ktor.client.shouldHaveStatus
 import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.shouldBe

@@ -1,19 +1,19 @@
-package be.alpago.website.application.queries
+package com.dessinemoiunalpaga.website.application.queries
 
-import be.alpago.website.application.ArticleSectionModel
-import be.alpago.website.application.HighlightsSectionModel
-import be.alpago.website.application.PageModel
-import be.alpago.website.application.PhotoGallerySectionModel
-import be.alpago.website.application.SectionColor
-import be.alpago.website.application.SectionModel
-import be.alpago.website.application.usecases.ShowIndexPage
-import be.alpago.website.domain.Animal
-import be.alpago.website.domain.Article
-import be.alpago.website.domain.Highlight
-import be.alpago.website.domain.ImageMetadata
-import be.alpago.website.i18n.Messages
-import be.alpago.website.libs.domain.ports.persistence.Repository
-import be.alpago.website.libs.kotlin.i18n.capitalize
+import com.dessinemoiunalpaga.website.application.ArticleSectionModel
+import com.dessinemoiunalpaga.website.application.HighlightsSectionModel
+import com.dessinemoiunalpaga.website.application.PageModel
+import com.dessinemoiunalpaga.website.application.PhotoGallerySectionModel
+import com.dessinemoiunalpaga.website.application.SectionColor
+import com.dessinemoiunalpaga.website.application.SectionModel
+import com.dessinemoiunalpaga.website.application.usecases.ShowIndexPage
+import com.dessinemoiunalpaga.website.domain.Animal
+import com.dessinemoiunalpaga.website.domain.Article
+import com.dessinemoiunalpaga.website.domain.Highlight
+import com.dessinemoiunalpaga.website.domain.ImageMetadata
+import com.dessinemoiunalpaga.website.i18n.Messages
+import com.dessinemoiunalpaga.website.libs.domain.ports.persistence.Repository
+import com.dessinemoiunalpaga.website.libs.kotlin.i18n.capitalize
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 

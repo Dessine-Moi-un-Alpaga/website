@@ -1,4 +1,4 @@
-package be.alpago.website.libs
+package com.dessinemoiunalpaga.website.libs
 
 /**
  * @throws NoSuchEnvironmentVariableException

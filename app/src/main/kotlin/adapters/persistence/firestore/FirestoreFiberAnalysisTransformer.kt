@@ -1,6 +1,6 @@
-package be.alpago.website.adapters.persistence.firestore
+package com.dessinemoiunalpaga.website.adapters.persistence.firestore
 
-import be.alpago.website.domain.FiberAnalysis
+import com.dessinemoiunalpaga.website.domain.FiberAnalysis
 
 private const val ANIMAL_ID = "animalId"
 private const val AVERAGE_FIBER_DIAMETER = "averageFiberDiameter"

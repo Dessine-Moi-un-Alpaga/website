@@ -1,11 +1,11 @@
-package be.alpago.website.e2e
+package com.dessinemoiunalpaga.website.e2e
 
 import at.favre.lib.crypto.bcrypt.BCrypt
-import be.alpago.website.adapters.persistence.firestore.FirestoreProperties
-import be.alpago.website.interfaces.kotlinx.html.TemplateProperties
-import be.alpago.website.interfaces.ktor.AuthenticationProperties
-import be.alpago.website.libs.getEnvironmentVariable
-import be.alpago.website.modules
+import com.dessinemoiunalpaga.website.adapters.persistence.firestore.FirestoreProperties
+import com.dessinemoiunalpaga.website.interfaces.kotlinx.html.TemplateProperties
+import com.dessinemoiunalpaga.website.interfaces.ktor.AuthenticationProperties
+import com.dessinemoiunalpaga.website.libs.getEnvironmentVariable
+import com.dessinemoiunalpaga.website.modules
 import io.github.serpro69.kfaker.Faker
 import io.github.serpro69.kfaker.fakerConfig
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation

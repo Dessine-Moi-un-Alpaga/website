@@ -10,13 +10,13 @@
       ]
     },
     {
-      "type": "be.alpago.website.adapters.email.jakarta.mail.JakartaMailProperties"
+      "type": "com.dessinemoiunalpaga.website.adapters.email.jakarta.mail.JakartaMailProperties"
     },
     {
-      "type": "be.alpago.website.adapters.email.jakarta.mail.JakartaMailService"
+      "type": "com.dessinemoiunalpaga.website.adapters.email.jakarta.mail.JakartaMailService"
     },
     {
-      "type": "be.alpago.website.adapters.persistence.firestore.BooleanValue",
+      "type": "com.dessinemoiunalpaga.website.adapters.persistence.firestore.BooleanValue",
       "fields": [
         {
           "name": "Companion"
@@ -24,7 +24,7 @@
       ]
     },
     {
-      "type": "be.alpago.website.adapters.persistence.firestore.BooleanValue$Companion",
+      "type": "com.dessinemoiunalpaga.website.adapters.persistence.firestore.BooleanValue$Companion",
       "methods": [
         {
           "name": "serializer",
@@ -33,7 +33,7 @@
       ]
     },
     {
-      "type": "be.alpago.website.adapters.persistence.firestore.Document",
+      "type": "com.dessinemoiunalpaga.website.adapters.persistence.firestore.Document",
       "fields": [
         {
           "name": "Companion"
@@ -41,7 +41,7 @@
       ]
     },
     {
-      "type": "be.alpago.website.adapters.persistence.firestore.Document$Companion",
+      "type": "com.dessinemoiunalpaga.website.adapters.persistence.firestore.Document$Companion",
       "methods": [
         {
           "name": "serializer",
@@ -50,13 +50,13 @@
       ]
     },
     {
-      "type": "be.alpago.website.adapters.persistence.firestore.FirestoreAggregateTransformer"
+      "type": "com.dessinemoiunalpaga.website.adapters.persistence.firestore.FirestoreAggregateTransformer"
     },
     {
-      "type": "be.alpago.website.adapters.persistence.firestore.FirestoreProperties"
+      "type": "com.dessinemoiunalpaga.website.adapters.persistence.firestore.FirestoreProperties"
     },
     {
-      "type":"be.alpago.website.adapters.persistence.firestore.GoogleToken",
+      "type":"com.dessinemoiunalpaga.website.adapters.persistence.firestore.GoogleToken",
       "fields": [
         {
           "name": "Companion"
@@ -64,7 +64,7 @@
       ]
     },
     {
-      "type": "be.alpago.website.adapters.persistence.firestore.GoogleToken$Companion",
+      "type": "com.dessinemoiunalpaga.website.adapters.persistence.firestore.GoogleToken$Companion",
       "methods": [
         {
           "name": "serializer",
@@ -73,7 +73,7 @@
       ]
     },
     {
-      "type": "be.alpago.website.adapters.persistence.firestore.IntValue",
+      "type": "com.dessinemoiunalpaga.website.adapters.persistence.firestore.IntValue",
       "fields": [
         {
           "name": "Companion"
@@ -81,7 +81,7 @@
       ]
     },
     {
-      "type": "be.alpago.website.adapters.persistence.firestore.IntValue$Companion",
+      "type": "com.dessinemoiunalpaga.website.adapters.persistence.firestore.IntValue$Companion",
       "methods": [
         {
           "name": "serializer",
@@ -90,7 +90,7 @@
       ]
     },
     {
-      "type": "be.alpago.website.adapters.persistence.firestore.ListDocumentsResponse",
+      "type": "com.dessinemoiunalpaga.website.adapters.persistence.firestore.ListDocumentsResponse",
       "fields": [
         {
           "name": "Companion"
@@ -98,7 +98,7 @@
       ]
     },
     {
-      "type": "be.alpago.website.adapters.persistence.firestore.ListDocumentsResponse$Companion",
+      "type": "com.dessinemoiunalpaga.website.adapters.persistence.firestore.ListDocumentsResponse$Companion",
       "methods": [
         {
           "name": "serializer",
@@ -107,7 +107,7 @@
       ]
     },
     {
-      "type": "be.alpago.website.adapters.persistence.firestore.NullValue",
+      "type": "com.dessinemoiunalpaga.website.adapters.persistence.firestore.NullValue",
       "fields": [
         {
           "name": "Companion"
@@ -115,7 +115,7 @@
       ]
     },
     {
-      "type": "be.alpago.website.adapters.persistence.firestore.NullValue$Companion",
+      "type": "com.dessinemoiunalpaga.website.adapters.persistence.firestore.NullValue$Companion",
       "methods": [
         {
           "name": "serializer",
@@ -124,7 +124,7 @@
       ]
     },
     {
-      "type": "be.alpago.website.adapters.persistence.firestore.Query",
+      "type": "com.dessinemoiunalpaga.website.adapters.persistence.firestore.Query",
       "fields": [
         {
           "name": "Companion"
@@ -132,7 +132,7 @@
       ]
     },
     {
-      "type": "be.alpago.website.adapters.persistence.firestore.Query$Companion",
+      "type": "com.dessinemoiunalpaga.website.adapters.persistence.firestore.Query$Companion",
       "methods": [
         {
           "name": "serializer",
@@ -141,7 +141,7 @@
       ]
     },
     {
-      "type": "be.alpago.website.adapters.persistence.firestore.QueryResponse",
+      "type": "com.dessinemoiunalpaga.website.adapters.persistence.firestore.QueryResponse",
       "fields": [
         {
           "name": "Companion"
@@ -149,7 +149,7 @@
       ]
     },
     {
-      "type": "be.alpago.website.adapters.persistence.firestore.QueryResponse$Companion",
+      "type": "com.dessinemoiunalpaga.website.adapters.persistence.firestore.QueryResponse$Companion",
       "methods": [
         {
           "name": "serializer",
@@ -158,7 +158,7 @@
       ]
     },
     {
-      "type": "be.alpago.website.adapters.persistence.firestore.StringValue",
+      "type": "com.dessinemoiunalpaga.website.adapters.persistence.firestore.StringValue",
       "fields": [
         {
           "name": "Companion"
@@ -166,7 +166,7 @@
       ]
     },
     {
-      "type": "be.alpago.website.adapters.persistence.firestore.StringValue$Companion",
+      "type": "com.dessinemoiunalpaga.website.adapters.persistence.firestore.StringValue$Companion",
       "methods": [
         {
           "name": "serializer",
@@ -175,25 +175,25 @@
       ]
     },
     {
-      "type": "be.alpago.website.application.usecases.SendEmail"
+      "type": "com.dessinemoiunalpaga.website.application.usecases.SendEmail"
     },
     {
-      "type": "be.alpago.website.application.usecases.ShowAnimalPage"
+      "type": "com.dessinemoiunalpaga.website.application.usecases.ShowAnimalPage"
     },
     {
-      "type": "be.alpago.website.application.usecases.ShowFactsheetPage"
+      "type": "com.dessinemoiunalpaga.website.application.usecases.ShowFactsheetPage"
     },
     {
-      "type": "be.alpago.website.application.usecases.ShowIndexPage"
+      "type": "com.dessinemoiunalpaga.website.application.usecases.ShowIndexPage"
     },
     {
-      "type": "be.alpago.website.application.usecases.ShowNewsPage"
+      "type": "com.dessinemoiunalpaga.website.application.usecases.ShowNewsPage"
     },
     {
-      "type": "be.alpago.website.application.usecases.ShowPhotoGalleryPage"
+      "type": "com.dessinemoiunalpaga.website.application.usecases.ShowPhotoGalleryPage"
     },
     {
-      "type": "be.alpago.website.domain.Animal",
+      "type": "com.dessinemoiunalpaga.website.domain.Animal",
       "fields": [
         {
           "name": "Companion"
@@ -201,7 +201,7 @@
       ]
     },
     {
-      "type": "be.alpago.website.domain.Animal$Companion",
+      "type": "com.dessinemoiunalpaga.website.domain.Animal$Companion",
       "methods": [
         {
           "name": "serializer",
@@ -210,7 +210,7 @@
       ]
     },
     {
-      "type": "be.alpago.website.domain.Article",
+      "type": "com.dessinemoiunalpaga.website.domain.Article",
       "fields": [
         {
           "name": "Companion"
@@ -218,7 +218,7 @@
       ]
     },
     {
-      "type": "be.alpago.website.domain.Article$Companion",
+      "type": "com.dessinemoiunalpaga.website.domain.Article$Companion",
       "methods": [
         {
           "name": "serializer",
@@ -227,7 +227,7 @@
       ]
     },
     {
-      "type": "be.alpago.website.domain.Email",
+      "type": "com.dessinemoiunalpaga.website.domain.Email",
       "fields": [
         {
           "name": "Companion"
@@ -235,7 +235,7 @@
       ]
     },
     {
-      "type": "be.alpago.website.domain.Email$Companion",
+      "type": "com.dessinemoiunalpaga.website.domain.Email$Companion",
       "methods": [
         {
           "name": "serializer",
@@ -244,7 +244,7 @@
       ]
     },
     {
-      "type": "be.alpago.website.domain.FiberAnalysis",
+      "type": "com.dessinemoiunalpaga.website.domain.FiberAnalysis",
       "fields": [
         {
           "name": "Companion"
@@ -252,7 +252,7 @@
       ]
     },
     {
-      "type": "be.alpago.website.domain.FiberAnalysis$Companion",
+      "type": "com.dessinemoiunalpaga.website.domain.FiberAnalysis$Companion",
       "methods": [
         {
           "name": "serializer",
@@ -261,7 +261,7 @@
       ]
     },
     {
-      "type": "be.alpago.website.domain.Highlight",
+      "type": "com.dessinemoiunalpaga.website.domain.Highlight",
       "fields": [
         {
           "name": "Companion"
@@ -269,7 +269,7 @@
       ]
     },
     {
-      "type": "be.alpago.website.domain.Highlight$Companion",
+      "type": "com.dessinemoiunalpaga.website.domain.Highlight$Companion",
       "methods": [
         {
           "name": "serializer",
@@ -278,7 +278,7 @@
       ]
     },
     {
-      "type": "be.alpago.website.domain.ImageMetadata",
+      "type": "com.dessinemoiunalpaga.website.domain.ImageMetadata",
       "fields": [
         {
           "name": "Companion"
@@ -286,7 +286,7 @@
       ]
     },
     {
-      "type": "be.alpago.website.domain.ImageMetadata$Companion",
+      "type": "com.dessinemoiunalpaga.website.domain.ImageMetadata$Companion",
       "methods": [
         {
           "name": "serializer",
@@ -295,19 +295,19 @@
       ]
     },
     {
-      "type": "be.alpago.website.interfaces.kotlinx.html.TemplateProperties"
+      "type": "com.dessinemoiunalpaga.website.interfaces.kotlinx.html.TemplateProperties"
     },
     {
-      "type": "be.alpago.website.interfaces.ktor.AuthenticationProperties"
+      "type": "com.dessinemoiunalpaga.website.interfaces.ktor.AuthenticationProperties"
     },
     {
-      "type": "be.alpago.website.libs.domain.AggregateRoot"
+      "type": "com.dessinemoiunalpaga.website.libs.domain.AggregateRoot"
     },
     {
-      "type": "be.alpago.website.libs.domain.ports.persistence.Repository"
+      "type": "com.dessinemoiunalpaga.website.libs.domain.ports.persistence.Repository"
     },
     {
-      "type": "be.alpago.website.libs.ktor.plugins.webjars.InputStreamContent"
+      "type": "com.dessinemoiunalpaga.website.libs.ktor.plugins.webjars.InputStreamContent"
     },
     {
       "type": "com.sun.crypto.provider.AESCipher$General",

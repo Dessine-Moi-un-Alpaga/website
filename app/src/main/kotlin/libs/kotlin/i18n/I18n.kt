@@ -1,4 +1,4 @@
-package be.alpago.website.libs.kotlin.i18n
+package com.dessinemoiunalpaga.website.libs.kotlin.i18n
 
 import java.util.Locale
 

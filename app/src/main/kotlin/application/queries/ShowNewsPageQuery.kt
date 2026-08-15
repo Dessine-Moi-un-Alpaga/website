@@ -1,14 +1,14 @@
-package be.alpago.website.application.queries
+package com.dessinemoiunalpaga.website.application.queries
 
-import be.alpago.website.application.ArticleSectionModel
-import be.alpago.website.application.PageModel
-import be.alpago.website.application.SectionColor
-import be.alpago.website.application.usecases.ShowNewsPage
-import be.alpago.website.domain.Animal
-import be.alpago.website.domain.Article
-import be.alpago.website.i18n.Messages
-import be.alpago.website.libs.domain.ports.persistence.Repository
-import be.alpago.website.libs.kotlin.i18n.capitalize
+import com.dessinemoiunalpaga.website.application.ArticleSectionModel
+import com.dessinemoiunalpaga.website.application.PageModel
+import com.dessinemoiunalpaga.website.application.SectionColor
+import com.dessinemoiunalpaga.website.application.usecases.ShowNewsPage
+import com.dessinemoiunalpaga.website.domain.Animal
+import com.dessinemoiunalpaga.website.domain.Article
+import com.dessinemoiunalpaga.website.i18n.Messages
+import com.dessinemoiunalpaga.website.libs.domain.ports.persistence.Repository
+import com.dessinemoiunalpaga.website.libs.kotlin.i18n.capitalize
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 

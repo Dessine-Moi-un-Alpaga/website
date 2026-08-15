@@ -1,6 +1,6 @@
-package be.alpago.website.application.usecases
+package com.dessinemoiunalpaga.website.application.usecases
 
-import be.alpago.website.domain.Email
+import com.dessinemoiunalpaga.website.domain.Email
 
 fun interface SendEmail {
 

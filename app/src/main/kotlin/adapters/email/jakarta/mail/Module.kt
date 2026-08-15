@@ -1,6 +1,6 @@
-package be.alpago.website.adapters.email.jakarta.mail
+package com.dessinemoiunalpaga.website.adapters.email.jakarta.mail
 
-import be.alpago.website.libs.getEnvironmentVariable
+import com.dessinemoiunalpaga.website.libs.getEnvironmentVariable
 import io.ktor.server.application.Application
 import io.ktor.server.plugins.di.dependencies
 

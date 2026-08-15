@@ -1,4 +1,4 @@
-package be.alpago.website.interfaces.ktor
+package com.dessinemoiunalpaga.website.interfaces.ktor
 
 import io.ktor.http.HttpStatusCode
 import io.ktor.server.application.Application

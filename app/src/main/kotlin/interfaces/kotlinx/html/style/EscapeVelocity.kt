@@ -1,4 +1,4 @@
-package be.alpago.website.interfaces.kotlinx.html.style
+package com.dessinemoiunalpaga.website.interfaces.kotlinx.html.style
 
 object EscapeVelocity {
 

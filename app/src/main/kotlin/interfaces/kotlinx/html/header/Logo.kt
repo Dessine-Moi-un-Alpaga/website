@@ -1,7 +1,7 @@
-package be.alpago.website.interfaces.kotlinx.html.header
+package com.dessinemoiunalpaga.website.interfaces.kotlinx.html.header
 
-import be.alpago.website.i18n.Messages
-import be.alpago.website.interfaces.kotlinx.html.TemplateProperties
+import com.dessinemoiunalpaga.website.i18n.Messages
+import com.dessinemoiunalpaga.website.interfaces.kotlinx.html.TemplateProperties
 import kotlinx.html.*
 
 const val LOGO_PATH = "images/logo.png"

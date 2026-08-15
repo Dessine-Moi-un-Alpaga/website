@@ -1,4 +1,4 @@
-package be.alpago.website.adapters.persistence.firestore
+package com.dessinemoiunalpaga.website.adapters.persistence.firestore
 
 import io.ktor.client.HttpClient
 import io.ktor.client.call.HttpClientCall

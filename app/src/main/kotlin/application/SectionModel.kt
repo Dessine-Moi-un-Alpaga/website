@@ -1,10 +1,10 @@
-package be.alpago.website.application
+package com.dessinemoiunalpaga.website.application
 
-import be.alpago.website.domain.Animal
-import be.alpago.website.domain.Article
-import be.alpago.website.domain.FiberAnalysis
-import be.alpago.website.domain.Highlight
-import be.alpago.website.domain.ImageMetadata
+import com.dessinemoiunalpaga.website.domain.Animal
+import com.dessinemoiunalpaga.website.domain.Article
+import com.dessinemoiunalpaga.website.domain.FiberAnalysis
+import com.dessinemoiunalpaga.website.domain.Highlight
+import com.dessinemoiunalpaga.website.domain.ImageMetadata
 
 sealed class SectionModel(
     val color: SectionColor,

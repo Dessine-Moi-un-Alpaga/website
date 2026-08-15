@@ -1,6 +1,6 @@
-package be.alpago.website.libs.domain.ports.persistence
+package com.dessinemoiunalpaga.website.libs.domain.ports.persistence
 
-import be.alpago.website.libs.domain.AggregateRoot
+import com.dessinemoiunalpaga.website.libs.domain.AggregateRoot
 
 /**
  * Base contract for a standard [Domain-Driven Aggregate Repository](https://martinfowler.com/eaaCatalog/repository.html)

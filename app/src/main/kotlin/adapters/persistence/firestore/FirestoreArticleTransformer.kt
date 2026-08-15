@@ -1,6 +1,6 @@
-package be.alpago.website.adapters.persistence.firestore
+package com.dessinemoiunalpaga.website.adapters.persistence.firestore
 
-import be.alpago.website.domain.Article
+import com.dessinemoiunalpaga.website.domain.Article
 
 private const val ID = "id"
 private const val BANNER = "banner"

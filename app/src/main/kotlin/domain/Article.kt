@@ -1,6 +1,6 @@
-package be.alpago.website.domain
+package com.dessinemoiunalpaga.website.domain
 
-import be.alpago.website.libs.domain.AggregateRoot
+import com.dessinemoiunalpaga.website.libs.domain.AggregateRoot
 import kotlinx.serialization.Serializable
 
 @Serializable

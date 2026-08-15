@@ -1,4 +1,4 @@
-package be.alpago.website.interfaces.kotlinx.html
+package com.dessinemoiunalpaga.website.interfaces.kotlinx.html
 
 /**
  * Configuration properties used by the html templates.

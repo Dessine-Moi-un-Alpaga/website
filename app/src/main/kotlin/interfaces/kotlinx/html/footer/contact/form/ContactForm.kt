@@ -1,6 +1,6 @@
-package be.alpago.website.interfaces.kotlinx.html.footer.contact.form
+package com.dessinemoiunalpaga.website.interfaces.kotlinx.html.footer.contact.form
 
-import be.alpago.website.interfaces.kotlinx.html.style.EscapeVelocity
+import com.dessinemoiunalpaga.website.interfaces.kotlinx.html.style.EscapeVelocity
 import kotlinx.html.*
 
 open class CONTACTFORM(

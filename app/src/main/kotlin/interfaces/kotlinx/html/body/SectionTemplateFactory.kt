@@ -1,11 +1,11 @@
-package be.alpago.website.interfaces.kotlinx.html.body
+package com.dessinemoiunalpaga.website.interfaces.kotlinx.html.body
 
-import be.alpago.website.application.AnimalSectionModel
-import be.alpago.website.application.ArticleSectionModel
-import be.alpago.website.application.HighlightsSectionModel
-import be.alpago.website.application.PhotoGallerySectionModel
-import be.alpago.website.application.SectionModel
-import be.alpago.website.interfaces.kotlinx.html.TemplateProperties
+import com.dessinemoiunalpaga.website.application.AnimalSectionModel
+import com.dessinemoiunalpaga.website.application.ArticleSectionModel
+import com.dessinemoiunalpaga.website.application.HighlightsSectionModel
+import com.dessinemoiunalpaga.website.application.PhotoGallerySectionModel
+import com.dessinemoiunalpaga.website.application.SectionModel
+import com.dessinemoiunalpaga.website.interfaces.kotlinx.html.TemplateProperties
 
 object SectionTemplateFactory {
 
