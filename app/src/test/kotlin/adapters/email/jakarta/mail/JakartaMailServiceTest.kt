@@ -1,6 +1,6 @@
-package be.alpago.website.adapters.email.jakarta.mail
+package com.dessinemoiunalpaga.website.adapters.email.jakarta.mail
 
-import be.alpago.website.domain.Email
+import com.dessinemoiunalpaga.website.domain.Email
 import io.github.serpro69.kfaker.Faker
 import io.kotest.matchers.booleans.shouldBeTrue
 import io.kotest.matchers.collections.shouldContainAll

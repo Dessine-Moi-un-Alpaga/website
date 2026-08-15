@@ -1,8 +1,8 @@
-package be.alpago.website.interfaces.ktor.routes
+package com.dessinemoiunalpaga.website.interfaces.ktor.routes
 
-import be.alpago.website.application.usecases.SendEmail
-import be.alpago.website.application.usecases.UnexpectedEmailException
-import be.alpago.website.domain.Email
+import com.dessinemoiunalpaga.website.application.usecases.SendEmail
+import com.dessinemoiunalpaga.website.application.usecases.UnexpectedEmailException
+import com.dessinemoiunalpaga.website.domain.Email
 import io.github.oshai.kotlinlogging.KotlinLogging
 import io.ktor.http.HttpStatusCode
 import io.ktor.server.application.Application

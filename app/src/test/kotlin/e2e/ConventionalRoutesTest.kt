@@ -1,8 +1,8 @@
-package be.alpago.website.e2e
+package com.dessinemoiunalpaga.website.e2e
 
-import be.alpago.website.interfaces.ktor.routes.APPLE_TOUCH_ICON
-import be.alpago.website.interfaces.ktor.routes.FAVICON
-import be.alpago.website.interfaces.ktor.routes.ROBOTS_TXT
+import com.dessinemoiunalpaga.website.interfaces.ktor.routes.APPLE_TOUCH_ICON
+import com.dessinemoiunalpaga.website.interfaces.ktor.routes.FAVICON
+import com.dessinemoiunalpaga.website.interfaces.ktor.routes.ROBOTS_TXT
 import io.kotest.assertions.ktor.client.shouldHaveStatus
 import io.ktor.client.request.get
 import io.ktor.http.HttpStatusCode

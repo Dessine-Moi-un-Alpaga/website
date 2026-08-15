@@ -1,11 +1,11 @@
-package be.alpago.website.interfaces.ktor.routes
+package com.dessinemoiunalpaga.website.interfaces.ktor.routes
 
-import be.alpago.website.application.usecases.ShowPhotoGalleryPage
-import be.alpago.website.domain.ImageMetadata
-import be.alpago.website.interfaces.kotlinx.html.LayoutTemplate
-import be.alpago.website.interfaces.kotlinx.html.TemplateProperties
-import be.alpago.website.libs.domain.ports.persistence.Repository
-import be.alpago.website.libs.ktor.routes.managementRoutes
+import com.dessinemoiunalpaga.website.application.usecases.ShowPhotoGalleryPage
+import com.dessinemoiunalpaga.website.domain.ImageMetadata
+import com.dessinemoiunalpaga.website.interfaces.kotlinx.html.LayoutTemplate
+import com.dessinemoiunalpaga.website.interfaces.kotlinx.html.TemplateProperties
+import com.dessinemoiunalpaga.website.libs.domain.ports.persistence.Repository
+import com.dessinemoiunalpaga.website.libs.ktor.routes.managementRoutes
 import io.ktor.server.application.Application
 import io.ktor.server.html.respondHtmlTemplate
 import io.ktor.server.plugins.di.dependencies

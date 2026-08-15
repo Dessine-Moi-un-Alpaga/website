@@ -1,6 +1,6 @@
-package be.alpago.website.adapters.persistence.firestore
+package com.dessinemoiunalpaga.website.adapters.persistence.firestore
 
-import be.alpago.website.libs.domain.AggregateRoot
+import com.dessinemoiunalpaga.website.libs.domain.AggregateRoot
 
 /**
  * Provides the base contract for transforming [Map]s returned by Firestore to [AggregateRoot]s and vice versa.

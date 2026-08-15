@@ -1,11 +1,11 @@
-package be.alpago.website.interfaces.kotlinx.html.header.navigation
+package com.dessinemoiunalpaga.website.interfaces.kotlinx.html.header.navigation
 
-import be.alpago.website.application.NavigationModel
-import be.alpago.website.application.PageModel
-import be.alpago.website.domain.Animal
-import be.alpago.website.i18n.Messages
-import be.alpago.website.interfaces.kotlinx.html.style.EscapeVelocity
-import be.alpago.website.libs.kotlin.i18n.capitalize
+import com.dessinemoiunalpaga.website.application.NavigationModel
+import com.dessinemoiunalpaga.website.application.PageModel
+import com.dessinemoiunalpaga.website.domain.Animal
+import com.dessinemoiunalpaga.website.i18n.Messages
+import com.dessinemoiunalpaga.website.interfaces.kotlinx.html.style.EscapeVelocity
+import com.dessinemoiunalpaga.website.libs.kotlin.i18n.capitalize
 import kotlinx.html.*
 
 private val NavigationModel.Category.text

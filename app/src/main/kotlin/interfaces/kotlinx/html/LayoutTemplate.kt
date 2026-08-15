@@ -1,8 +1,8 @@
-package be.alpago.website.interfaces.kotlinx.html
+package com.dessinemoiunalpaga.website.interfaces.kotlinx.html
 
-import be.alpago.website.application.PageModel
-import be.alpago.website.interfaces.kotlinx.html.body.BodyTemplate
-import be.alpago.website.interfaces.kotlinx.html.head.HeadTemplate
+import com.dessinemoiunalpaga.website.application.PageModel
+import com.dessinemoiunalpaga.website.interfaces.kotlinx.html.body.BodyTemplate
+import com.dessinemoiunalpaga.website.interfaces.kotlinx.html.head.HeadTemplate
 import io.ktor.server.html.Template
 import io.ktor.server.html.insert
 import kotlinx.html.*

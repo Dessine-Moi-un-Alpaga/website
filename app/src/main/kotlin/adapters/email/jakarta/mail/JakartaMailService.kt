@@ -1,9 +1,9 @@
-package be.alpago.website.adapters.email.jakarta.mail
+package com.dessinemoiunalpaga.website.adapters.email.jakarta.mail
 
-import be.alpago.website.application.usecases.SendEmail
-import be.alpago.website.application.usecases.UnexpectedEmailException
-import be.alpago.website.domain.Email
-import be.alpago.website.i18n.Messages
+import com.dessinemoiunalpaga.website.application.usecases.SendEmail
+import com.dessinemoiunalpaga.website.application.usecases.UnexpectedEmailException
+import com.dessinemoiunalpaga.website.domain.Email
+import com.dessinemoiunalpaga.website.i18n.Messages
 import jakarta.mail.Message
 import jakarta.mail.MessagingException
 import jakarta.mail.Session

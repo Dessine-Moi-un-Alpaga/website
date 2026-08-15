@@ -1,8 +1,8 @@
-package be.alpago.website.interfaces.ktor.routes
+package com.dessinemoiunalpaga.website.interfaces.ktor.routes
 
-import be.alpago.website.domain.FiberAnalysis
-import be.alpago.website.libs.domain.ports.persistence.Repository
-import be.alpago.website.libs.ktor.routes.managementRoutes
+import com.dessinemoiunalpaga.website.domain.FiberAnalysis
+import com.dessinemoiunalpaga.website.libs.domain.ports.persistence.Repository
+import com.dessinemoiunalpaga.website.libs.ktor.routes.managementRoutes
 import io.ktor.server.application.Application
 import io.ktor.server.plugins.di.dependencies
 

@@ -1,6 +1,6 @@
-package be.alpago.website.interfaces.ktor
+package com.dessinemoiunalpaga.website.interfaces.ktor
 
-import be.alpago.website.libs.ktor.plugins.webjars.Webjars
+import com.dessinemoiunalpaga.website.libs.ktor.plugins.webjars.Webjars
 import io.ktor.server.application.Application
 import io.ktor.server.application.install
 

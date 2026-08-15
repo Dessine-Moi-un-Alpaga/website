@@ -1,6 +1,6 @@
-package be.alpago.website.adapters.persistence.firestore
+package com.dessinemoiunalpaga.website.adapters.persistence.firestore
 
-import be.alpago.website.domain.ImageMetadata
+import com.dessinemoiunalpaga.website.domain.ImageMetadata
 
 private const val ID = "id"
 private const val DESCRIPTION = "description"

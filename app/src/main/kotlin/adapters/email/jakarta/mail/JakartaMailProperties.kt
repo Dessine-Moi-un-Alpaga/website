@@ -1,4 +1,4 @@
-package be.alpago.website.adapters.email.jakarta.mail
+package com.dessinemoiunalpaga.website.adapters.email.jakarta.mail
 
 data class JakartaMailProperties(
     val address: String,

@@ -1,6 +1,6 @@
-package be.alpago.website.adapters.persistence.firestore
+package com.dessinemoiunalpaga.website.adapters.persistence.firestore
 
-import be.alpago.website.domain.Highlight
+import com.dessinemoiunalpaga.website.domain.Highlight
 
 private const val ID = "id"
 private const val LINK = "link"

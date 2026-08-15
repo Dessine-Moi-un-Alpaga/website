@@ -1,4 +1,4 @@
-package be.alpago.website.interfaces.ktor
+package com.dessinemoiunalpaga.website.interfaces.ktor
 
 import io.ktor.server.application.Application
 import io.ktor.server.application.install

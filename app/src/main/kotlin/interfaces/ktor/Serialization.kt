@@ -1,4 +1,4 @@
-package be.alpago.website.interfaces.ktor
+package com.dessinemoiunalpaga.website.interfaces.ktor
 
 import io.ktor.serialization.kotlinx.json.json
 import io.ktor.server.application.Application

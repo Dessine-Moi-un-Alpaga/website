@@ -1,7 +1,7 @@
-package be.alpago.website.interfaces.kotlinx.html.footer.contact.info
+package com.dessinemoiunalpaga.website.interfaces.kotlinx.html.footer.contact.info
 
-import be.alpago.website.interfaces.kotlinx.html.style.EscapeVelocity
-import be.alpago.website.interfaces.kotlinx.html.style.FontAwesome
+import com.dessinemoiunalpaga.website.interfaces.kotlinx.html.style.EscapeVelocity
+import com.dessinemoiunalpaga.website.interfaces.kotlinx.html.style.FontAwesome
 import kotlinx.html.*
 
 fun DIV.social() {

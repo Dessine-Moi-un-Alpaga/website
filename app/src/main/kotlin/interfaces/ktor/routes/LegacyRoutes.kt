@@ -1,6 +1,6 @@
-package be.alpago.website.interfaces.ktor.routes
+package com.dessinemoiunalpaga.website.interfaces.ktor.routes
 
-import be.alpago.website.interfaces.kotlinx.html.TemplateProperties
+import com.dessinemoiunalpaga.website.interfaces.kotlinx.html.TemplateProperties
 import io.ktor.server.application.Application
 import io.ktor.server.plugins.di.dependencies
 import io.ktor.server.response.respondRedirect

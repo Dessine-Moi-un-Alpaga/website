@@ -1,8 +1,8 @@
-package be.alpago.website.libs.ktor.routes
+package com.dessinemoiunalpaga.website.libs.ktor.routes
 
-import be.alpago.website.libs.domain.AggregateRoot
-import be.alpago.website.libs.domain.ports.persistence.AggregateRootNotFound
-import be.alpago.website.libs.domain.ports.persistence.Repository
+import com.dessinemoiunalpaga.website.libs.domain.AggregateRoot
+import com.dessinemoiunalpaga.website.libs.domain.ports.persistence.AggregateRootNotFound
+import com.dessinemoiunalpaga.website.libs.domain.ports.persistence.Repository
 import io.ktor.http.HttpStatusCode
 import io.ktor.server.application.Application
 import io.ktor.server.auth.authenticate

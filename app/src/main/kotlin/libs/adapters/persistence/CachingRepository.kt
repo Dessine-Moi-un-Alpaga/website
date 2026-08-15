@@ -1,7 +1,7 @@
-package be.alpago.website.libs.adapters.persistence
+package com.dessinemoiunalpaga.website.libs.adapters.persistence
 
-import be.alpago.website.libs.domain.AggregateRoot
-import be.alpago.website.libs.domain.ports.persistence.Repository
+import com.dessinemoiunalpaga.website.libs.domain.AggregateRoot
+import com.dessinemoiunalpaga.website.libs.domain.ports.persistence.Repository
 import java.util.Collections.synchronizedMap
 import java.util.concurrent.atomic.AtomicReference
 

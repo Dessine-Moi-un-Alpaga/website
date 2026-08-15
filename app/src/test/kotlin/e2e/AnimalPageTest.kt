@@ -1,7 +1,7 @@
-package be.alpago.website.e2e
+package com.dessinemoiunalpaga.website.e2e
 
-import be.alpago.website.domain.Animal
-import be.alpago.website.domain.FiberAnalysis
+import com.dessinemoiunalpaga.website.domain.Animal
+import com.dessinemoiunalpaga.website.domain.FiberAnalysis
 import io.kotest.assertions.ktor.client.shouldHaveStatus
 import io.ktor.client.request.get
 import io.ktor.client.request.put

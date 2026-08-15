@@ -1,9 +1,9 @@
-package be.alpago.website.interfaces.kotlinx.html.header
+package com.dessinemoiunalpaga.website.interfaces.kotlinx.html.header
 
-import be.alpago.website.application.PageModel
-import be.alpago.website.interfaces.kotlinx.html.TemplateProperties
-import be.alpago.website.interfaces.kotlinx.html.header.navigation.navigationMenu
-import be.alpago.website.interfaces.kotlinx.html.style.EscapeVelocity
+import com.dessinemoiunalpaga.website.application.PageModel
+import com.dessinemoiunalpaga.website.interfaces.kotlinx.html.TemplateProperties
+import com.dessinemoiunalpaga.website.interfaces.kotlinx.html.header.navigation.navigationMenu
+import com.dessinemoiunalpaga.website.interfaces.kotlinx.html.style.EscapeVelocity
 import kotlinx.html.*
 
 fun DIV.header(

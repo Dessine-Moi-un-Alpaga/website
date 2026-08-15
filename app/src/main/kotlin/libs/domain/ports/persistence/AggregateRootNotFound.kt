@@ -1,3 +1,3 @@
-package be.alpago.website.libs.domain.ports.persistence
+package com.dessinemoiunalpaga.website.libs.domain.ports.persistence
 
 class AggregateRootNotFound : Exception()

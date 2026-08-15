@@ -1,6 +1,6 @@
-package be.alpago.website.application
+package com.dessinemoiunalpaga.website.application
 
-import be.alpago.website.domain.Animal
+import com.dessinemoiunalpaga.website.domain.Animal
 import java.util.SortedMap
 
 private typealias Categories = SortedMap<NavigationModel.Category, MutableSet<Animal>>

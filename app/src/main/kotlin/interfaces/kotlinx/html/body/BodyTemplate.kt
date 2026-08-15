@@ -1,10 +1,10 @@
-package be.alpago.website.interfaces.kotlinx.html.body
+package com.dessinemoiunalpaga.website.interfaces.kotlinx.html.body
 
-import be.alpago.website.application.PageModel
-import be.alpago.website.interfaces.kotlinx.html.TemplateProperties
-import be.alpago.website.interfaces.kotlinx.html.footer.footer
-import be.alpago.website.interfaces.kotlinx.html.header.header
-import be.alpago.website.interfaces.kotlinx.html.style.EscapeVelocity
+import com.dessinemoiunalpaga.website.application.PageModel
+import com.dessinemoiunalpaga.website.interfaces.kotlinx.html.TemplateProperties
+import com.dessinemoiunalpaga.website.interfaces.kotlinx.html.footer.footer
+import com.dessinemoiunalpaga.website.interfaces.kotlinx.html.header.header
+import com.dessinemoiunalpaga.website.interfaces.kotlinx.html.style.EscapeVelocity
 import io.ktor.server.html.Template
 import io.ktor.server.html.insert
 import kotlinx.html.*

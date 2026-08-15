@@ -1,4 +1,4 @@
-package be.alpago.website.interfaces.kotlinx.html.footer.legal
+package com.dessinemoiunalpaga.website.interfaces.kotlinx.html.footer.legal
 
 import kotlinx.html.*
 import java.time.LocalDate.now
@@ -13,6 +13,6 @@ fun UL.copyright() {
         unsafe {
             +Entities.nbsp.text
         }
-        +"Alpago"
+        +"Dessine-Moi un Alpaga"
     }
 }

@@ -1,13 +1,13 @@
-package be.alpago.website.application.queries
+package com.dessinemoiunalpaga.website.application.queries
 
-import be.alpago.website.application.AnimalSectionModel
-import be.alpago.website.application.PageModel
-import be.alpago.website.application.usecases.ShowAnimalPage
-import be.alpago.website.domain.Animal
-import be.alpago.website.domain.FiberAnalysis
-import be.alpago.website.i18n.Messages
-import be.alpago.website.libs.domain.ports.persistence.AggregateRootNotFound
-import be.alpago.website.libs.domain.ports.persistence.Repository
+import com.dessinemoiunalpaga.website.application.AnimalSectionModel
+import com.dessinemoiunalpaga.website.application.PageModel
+import com.dessinemoiunalpaga.website.application.usecases.ShowAnimalPage
+import com.dessinemoiunalpaga.website.domain.Animal
+import com.dessinemoiunalpaga.website.domain.FiberAnalysis
+import com.dessinemoiunalpaga.website.i18n.Messages
+import com.dessinemoiunalpaga.website.libs.domain.ports.persistence.AggregateRootNotFound
+import com.dessinemoiunalpaga.website.libs.domain.ports.persistence.Repository
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 

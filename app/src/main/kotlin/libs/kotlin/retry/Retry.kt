@@ -1,4 +1,4 @@
-package be.alpago.website.libs.kotlin.retry
+package com.dessinemoiunalpaga.website.libs.kotlin.retry
 
 import kotlinx.coroutines.delay
 import kotlin.time.Duration.Companion.milliseconds

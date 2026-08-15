@@ -1,7 +1,7 @@
-package be.alpago.website.domain
+package com.dessinemoiunalpaga.website.domain
 
-import be.alpago.website.libs.domain.AggregateRoot
-import be.alpago.website.libs.kotlin.serialization.SerializableLocalDate
+import com.dessinemoiunalpaga.website.libs.domain.AggregateRoot
+import com.dessinemoiunalpaga.website.libs.kotlin.serialization.SerializableLocalDate
 import kotlinx.serialization.Serializable
 
 @Serializable

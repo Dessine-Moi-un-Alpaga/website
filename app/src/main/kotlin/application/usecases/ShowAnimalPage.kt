@@ -1,6 +1,6 @@
-package be.alpago.website.application.usecases
+package com.dessinemoiunalpaga.website.application.usecases
 
-import be.alpago.website.application.PageModel
+import com.dessinemoiunalpaga.website.application.PageModel
 
 fun interface ShowAnimalPage {
 

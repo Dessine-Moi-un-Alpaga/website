@@ -1,7 +1,7 @@
-package be.alpago.website.adapters.persistence.firestore
+package com.dessinemoiunalpaga.website.adapters.persistence.firestore
 
-import be.alpago.website.libs.domain.AggregateRoot
-import be.alpago.website.libs.domain.ports.persistence.AggregateRootNotFound
+import com.dessinemoiunalpaga.website.libs.domain.AggregateRoot
+import com.dessinemoiunalpaga.website.libs.domain.ports.persistence.AggregateRootNotFound
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.collections.shouldContainAll
 import io.kotest.matchers.shouldBe
