@@ -61,9 +61,11 @@ dependencies {
     testImplementation(libs.bundles.kotest)
 }
 
+val javaVersion = "${project.property("javaVersion")}"
+
 kotlin {
     compilerOptions {
-        jvmTarget.set(JvmTarget.fromTarget(project.property("javaVersion").toString()))
+        jvmTarget.set(JvmTarget.fromTarget(javaVersion))
     }
 }
 
@@ -143,7 +145,7 @@ tasks.run {
 dokka {
     dokkaSourceSets.main {
         includes.from("src/main/kotlin/package-info.md")
-        jdkVersion.set(project.property("javaVersion").toString().toInt())
+        jdkVersion.set(javaVersion.toInt())
 
         val suppressedPackages = listOf(
             "com.dessinemoiunalpaga.website",
