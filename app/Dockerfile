@@ -7,7 +7,7 @@ ARG WORKDIR
 WORKDIR ${WORKDIR}
 COPY ./native-build.sh .
 COPY ./build/libs/${JAR_FILENAME} .
-RUN ./native-build.sh ${JAR_FILENAME} 16m
+RUN ./native-image -R:MaxHeapSize=16m -jar ${JAR_FILENAME}
 
 
 FROM scratch
