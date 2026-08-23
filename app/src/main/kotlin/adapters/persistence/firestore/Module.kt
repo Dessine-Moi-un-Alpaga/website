@@ -141,7 +141,7 @@ private fun Application.indexArticleRepository() {
         provide<Repository<Article>>(ShowIndexArticle::class.simpleName) {
             CachingRepository(
                 RetryingRepository(
-                FirestoreRepository(
+                    FirestoreRepository(
                         client = resolve<HttpClient>(),
                         collection = INDEX_ARTICLE_COLLECTION,
                         properties = resolve<FirestoreProperties>(),
