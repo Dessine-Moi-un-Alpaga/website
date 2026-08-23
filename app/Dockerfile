@@ -6,7 +6,7 @@ ARG JAR_FILENAME=website-all.jar
 ARG WORKDIR
 WORKDIR ${WORKDIR}
 COPY ./build/libs/${JAR_FILENAME} .
-RUN ./native-image -R:MaxHeapSize=16m -jar ${JAR_FILENAME}
+RUN native-image -R:MaxHeapSize=16m -jar ${JAR_FILENAME}
 
 
 FROM scratch
