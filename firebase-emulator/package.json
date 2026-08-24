@@ -3,7 +3,7 @@
     "port": "8181"
   },
   "devDependencies": {
-    "firebase-tools": "^15.27.0",
+    "firebase-tools": "^15.28.1",
     "wait-on": "^9.1.0"
   },
   "scripts": {
