@@ -102,7 +102,7 @@ $ task app:run -- -Pagent
 ```
 
 You must then make sure that all relevant code paths are covered by your interactions with the app and all the
-configuration files in `app/src/main/resouces/META-INF/native-image/be.alpago/website` will be updated accordingly.
+configuration files in `app/src/main/resouces/META-INF/native-image/com.dessinemoiunalpaga/website` will be updated accordingly.
 
 # Managing the Dynamic Assets
 
