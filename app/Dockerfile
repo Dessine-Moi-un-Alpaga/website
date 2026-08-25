@@ -1,6 +1,6 @@
 ARG WORKDIR=/app
 
-FROM ghcr.io/graalvm/native-image-community:25i2-25.0.4-muslib-ol10-20260728 AS build
+FROM ghcr.io/graalvm/native-image-community:25i3-25.0.4.1-muslib-ol10-20260825 AS build
 
 ARG JAR_FILENAME=website-all.jar
 ARG WORKDIR
