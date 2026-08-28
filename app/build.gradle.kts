@@ -61,7 +61,7 @@ dependencies {
     testImplementation(libs.bundles.kotest)
 }
 
-val javaVersion = "${project.property("javaVersion")}"
+val javaVersion = "${JavaVersion.current()}"
 
 kotlin {
     compilerOptions {

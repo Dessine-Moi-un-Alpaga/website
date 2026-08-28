@@ -12,7 +12,6 @@ vars:
   ARTIFACT_REGISTRY: "{{.ARTIFACT_REGISTRY_LOCATION}}-docker.pkg.dev"
   DOCKER_IMAGE: "{{.ARTIFACT_REGISTRY}}/{{.GOOGLE_PROJECT}}/{{.ARTIFACT_REPOSITORY}}/website"
   ENVIRONMENT: '{{default "development" .ENVIRONMENT}}'
-  JAVA_VERSION: 25
   VERSION:
     sh: git describe --tags --always --first-parent
 
