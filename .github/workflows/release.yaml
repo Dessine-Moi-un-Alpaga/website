@@ -61,8 +61,6 @@ jobs:
           path: ~/.cache/firebase/emulators
 
       - name: Build
-        env:
-          JAVA_VERSION: ${{ vars.JAVA_VERSION }}
         run: task app:build
 
       - name: Save build reports and logs

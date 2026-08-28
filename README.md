@@ -161,18 +161,14 @@ Update the following files:
 * `app/gradle/libs.versions.toml`
 * `README.md`
 
-### Bumping the JDK Major Version
+### Bumping the GraalVM version
 
 Update the following files:
 
-* `.github/workflows/release.yaml`
-* `app/gradle.properties`
-* `Taskfile.yaml`
-
-JDK major version updates also impact the base image for the Docker build:
-
 * `app/Dockerfile`
 * `README.md`
+
+Major version bumps require aligning the JDK version in the GitHub Actions workflow as well.
 
 # Known Issues
 
