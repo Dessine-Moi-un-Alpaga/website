@@ -42,9 +42,7 @@ updates:
 
   - package-ecosystem: "terraform"
     directories:
-      - "/infrastructure/app"
-      - "/infrastructure/bootstrap"
-      - "/infrastructure/infra"
+      - "/infrastructure/**/*"
     groups:
       terraform-providers:
         patterns:
