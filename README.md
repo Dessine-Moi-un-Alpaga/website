@@ -245,6 +245,19 @@ Major version bumps require aligning the JDK version in the GitHub Actions workf
 
 * `.github/workflows/release.yaml`
 
+## About Dependabot Security Updates
+
+Unfortunately, Dependabot on GitHub can only create pull requests for dependency security updates against the default
+branch. This makes the automatic security updates feature very impractical, given
+[the development process described above](#contributing).
+
+The recommended alternative is to run the following command locally from the `firebase-emulator` directory, as often as
+it is deemed appropriate:
+
+```shell
+$ npm audit fix
+```
+
 # Known Issues
 
 When working on the `beta` branch, the Github Actions workflow skips the (lengthy) Sonar analysis step when no source
