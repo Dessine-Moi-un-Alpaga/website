@@ -74,7 +74,7 @@ which it depends ([Google Cloud Firestore](https://cloud.google.com/products/fir
 as well as the Koin Dependency Injection library.
 
 Replacing those with a few lines of custom code cut the resulting binary's size in half. After
-[Ktor's native DI](https://ktor.io/docs/server-dependency-injection.html) implement got introduced, settling for that
+[Ktor's native DI](https://ktor.io/docs/server-dependency-injection.html) implementation got introduced, settling for that
 instead of rolling our own proved to be a cost-effective compromise.
 
 The project also initially made use of the full `logback-classic` Slf4j implementation, which is definitely overkill for
