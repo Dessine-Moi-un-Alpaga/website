@@ -37,6 +37,9 @@ tasks:
       - task: infrastructure:app:init
       - task: infrastructure:app:plan
       - task: infrastructure:app:apply
+    preconditions:
+      - sh: '[ "$CI" = "true" ]'
+        msg: "This Terraform stack should only be run in a continuous integration environment."
 
   upload-assets:
     desc: Uploads assets in the local assets/ directory to Google Cloud Storage

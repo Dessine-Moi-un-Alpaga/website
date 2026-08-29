@@ -24,6 +24,9 @@ tasks:
             --cache-from type=gha,scope=main
             --cache-to type=gha,mode=max,scope=main
             .
+    preconditions:
+      - sh: '[ "$CI" = "true" ]'
+        msg: "This Terraform stack should only be run in a continuous integration environment."
 
   run:
     desc: Runs the application locally using the Firestore emulator
