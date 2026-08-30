@@ -1,13 +1,13 @@
-version: "3"
+version: '3'
 
 tasks:
 
   start:
     cmds:
-      - npm ci
-      - npm run start
+    - npm ci
+    - npm run start
 
   stop:
     cmds:
-      - cmd: npm run stop
-        ignore_error: true
+    - cmd: npm run stop
+      ignore_error: true

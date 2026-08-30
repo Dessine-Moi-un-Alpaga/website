@@ -1,24 +1,24 @@
-version: "3"
+version: 3
 
 vars:
-  WORK_DIR: "{{.HOME}}/.dmua/bootstrap"
-  VARIABLE_FILE: "{{.WORK_DIR}}/terraform.tfvars"
+  WORK_DIR: '{{.HOME}}/.dmua/bootstrap'
+  VARIABLE_FILE: '{{.WORK_DIR}}/terraform.tfvars'
 
 tasks:
   plan:
     env:
-      TF_CLI_ARGS_init: "-backend-config=path={{.WORK_DIR}}/terraform.tfstate"
-      TF_CLI_ARGS_plan: "-out=tfplan -var-file={{.VARIABLE_FILE}}"
+      TF_CLI_ARGS_init: '-backend-config=path={{.WORK_DIR}}/terraform.tfstate'
+      TF_CLI_ARGS_plan: '-out=tfplan -var-file={{.VARIABLE_FILE}}'
     cmds:
-      - touch {{.VARIABLE_FILE}}
-      - terraform init
-      - terraform plan
+    - touch {{.VARIABLE_FILE}}
+    - terraform init
+    - terraform plan
 
   apply:
     env:
       TF_CLI_ARGS_apply: tfplan
     cmds:
-      - terraform apply
+    - terraform apply
     preconditions:
-      - sh: '[ "$CI" != "true" ]'
-        msg: "This Terraform stack should only be run on a trusted developer machine."
+    - sh: '[ "$CI" != "true" ]'
+      msg: This Terraform stack should only be run on a trusted developer machine.

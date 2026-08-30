@@ -2,11 +2,11 @@ name: Release
 on:
   pull_request:
     branches:
-      - main
+    - main
   push:
     branches:
-      - beta
-      - main
+    - beta
+    - main
 concurrency:
   group: ${{ github.workflow }}
 jobs:
@@ -22,141 +22,141 @@ jobs:
     environment: ${{ github.ref_name == 'main' && 'production' || 'development' }}
     steps:
 
-      - name: Check out source code
-        uses: actions/checkout@v7
-        with:
-          fetch-depth: 2
-          fetch-tags: true
+    - name: Check out source code
+      uses: actions/checkout@v7
+      with:
+        fetch-depth: 2
+        fetch-tags: true
 
-      - name: Install Node
-        uses: actions/setup-node@v7
-        with:
-          cache: npm
-          cache-dependency-path: firebase-emulator
-          node-version: ${{ env.NODE_VERSION }}
+    - name: Install Node
+      uses: actions/setup-node@v7
+      with:
+        cache: npm
+        cache-dependency-path: firebase-emulator
+        node-version: ${{ env.NODE_VERSION }}
 
-      - name: Install Java
-        uses: actions/setup-java@v6
-        with:
-          distribution: temurin
-          java-version: ${{ env.JAVA_VERSION }}
+    - name: Install Java
+      uses: actions/setup-java@v6
+      with:
+        distribution: temurin
+        java-version: ${{ env.JAVA_VERSION }}
 
-      - name: Set up Gradle integration
-        uses: gradle/actions/setup-gradle@v6.3.0
-        with:
-          build-scan-publish: true
-          build-scan-terms-of-use-url: https://gradle.com/terms-of-service
-          build-scan-terms-of-use-agree: yes
-          cache-encryption-key: ${{ secrets.GRADLE_ENCRYPTION_KEY }}
-          cache-read-only: false
-          dependency-graph: generate-and-submit
+    - name: Set up Gradle integration
+      uses: gradle/actions/setup-gradle@v6.3.0
+      with:
+        build-scan-publish: true
+        build-scan-terms-of-use-url: https://gradle.com/terms-of-service
+        build-scan-terms-of-use-agree: yes
+        cache-encryption-key: ${{ secrets.GRADLE_ENCRYPTION_KEY }}
+        cache-read-only: false
+        dependency-graph: generate-and-submit
 
-      - name: Install Task
-        uses: go-task/setup-task@v2
+    - name: Install Task
+      uses: go-task/setup-task@v2
 
-      - name: Set up Firebase emulator cache
-        uses: actions/cache@v6
-        with:
-          key: firebase-tools-${{ hashFiles('firebase-emulator/package-lock.json') }}
-          path: ~/.cache/firebase/emulators
+    - name: Set up Firebase emulator cache
+      uses: actions/cache@v6
+      with:
+        key: firebase-tools-${{ hashFiles('firebase-emulator/package-lock.json') }}
+        path: ~/.cache/firebase/emulators
 
-      - name: Build
-        run: task app:build
+    - name: Build
+      run: task app:build
 
-      - name: Save build reports and logs
-        if: always()
-        uses: actions/upload-artifact@v7
-        with:
-          name: reports-and-logs
-          path: |
-            app/build/reports/**/configuration-cache-report.html
-            app/build/reports/problems/problems-report.html
-            firebase-emulator/*.log
+    - name: Save build reports and logs
+      if: always()
+      uses: actions/upload-artifact@v7
+      with:
+        name: reports-and-logs
+        path: |
+          app/build/reports/**/configuration-cache-report.html
+          app/build/reports/problems/problems-report.html
+          firebase-emulator/*.log
 
-      - name: Upload API documentation artifact
-        uses: actions/upload-pages-artifact@v5
-        with:
-          path: app/build/dokka/html
+    - name: Upload API documentation artifact
+      uses: actions/upload-pages-artifact@v5
+      with:
+        path: app/build/dokka/html
 
-      - name: Deploy API documentation
-        uses: actions/deploy-pages@v5
+    - name: Deploy API documentation
+      uses: actions/deploy-pages@v5
 
-      - name: Check if analysis is required
-        id: analysis-check
-        uses: ./.github/actions/analysis-check
-        with:
-          commit: ${{ github.sha }}
-          previous-commit: ${{ github.event.before }}
-          ref-name: ${{ github.ref_name}}
+    - name: Check if analysis is required
+      id: analysis-check
+      uses: ./.github/actions/analysis-check
+      with:
+        commit: ${{ github.sha }}
+        previous-commit: ${{ github.event.before }}
+        ref-name: ${{ github.ref_name}}
 
-      - name: Set up SonarCloud package cache
-        if: steps.analysis-check.outputs.analysis-required == 'true'
-        uses: actions/cache@v6
-        with:
-          key: ${{ runner.os }}-sonar
-          path: ~/.sonar/cache
+    - name: Set up SonarCloud package cache
+      if: steps.analysis-check.outputs.analysis-required == 'true'
+      uses: actions/cache@v6
+      with:
+        key: ${{ runner.os }}-sonar
+        path: ~/.sonar/cache
 
-      - name: Analyze
-        if: steps.analysis-check.outputs.analysis-required == 'true'
-        uses: SonarSource/sonarqube-scan-action@v8
-        env:
-          SONAR_TOKEN: ${{ secrets.SONARCLOUD_TOKEN }}
+    - name: Analyze
+      if: steps.analysis-check.outputs.analysis-required == 'true'
+      uses: SonarSource/sonarqube-scan-action@v8
+      env:
+        SONAR_TOKEN: ${{ secrets.SONARCLOUD_TOKEN }}
 
-      - name: Create Terraform plugin cache directory
-        run: mkdir -p ${TF_PLUGIN_CACHE_DIR}
+    - name: Create Terraform plugin cache directory
+      run: mkdir -p ${TF_PLUGIN_CACHE_DIR}
 
-      - name: Set up Terraform cache
-        uses: actions/cache@v6
-        with:
-          path: ${{ env.TF_PLUGIN_CACHE_DIR }}
-          key: ${{ runner.os }}-terraform-${{ hashFiles('**/.terraform.lock.hcl') }}
+    - name: Set up Terraform cache
+      uses: actions/cache@v6
+      with:
+        path: ${{ env.TF_PLUGIN_CACHE_DIR }}
+        key: ${{ runner.os }}-terraform-${{ hashFiles('**/.terraform.lock.hcl') }}
 
-      - name: Install Terraform
-        uses: hashicorp/setup-terraform@v4
-        with:
-          terraform_version: ${{ env.TERRAFORM_VERSION }}
-          terraform_wrapper: false
+    - name: Install Terraform
+      uses: hashicorp/setup-terraform@v4
+      with:
+        terraform_version: ${{ env.TERRAFORM_VERSION }}
+        terraform_wrapper: false
 
-      - name: Install Docker Buildx
-        uses: docker/setup-buildx-action@v4
+    - name: Install Docker Buildx
+      uses: docker/setup-buildx-action@v4
 
-      - name: Install semantic-release exec plugin
-        run: npm install --save-dev @semantic-release/exec
+    - name: Install semantic-release exec plugin
+      run: npm install --save-dev @semantic-release/exec
 
-      - name: Expose GitHub Runtime
-        uses: actions/github-script@v9
-        with:
-          script: |
-            core.exportVariable('ACTIONS_RUNTIME_TOKEN', process.env['ACTIONS_RUNTIME_TOKEN'])
-            core.exportVariable('ACTIONS_RESULTS_URL', process.env['ACTIONS_RESULTS_URL'])
+    - name: Expose GitHub Runtime
+      uses: actions/github-script@v9
+      with:
+        script: |
+          core.exportVariable('ACTIONS_RUNTIME_TOKEN', process.env['ACTIONS_RUNTIME_TOKEN'])
+          core.exportVariable('ACTIONS_RESULTS_URL', process.env['ACTIONS_RESULTS_URL'])
 
-      - name: Authenticate to Google Cloud
-        uses: google-github-actions/auth@v3
-        with:
-          export_environment_variables: true
-          service_account: terraform@${{ vars.GOOGLE_PROJECT }}.iam.gserviceaccount.com
-          workload_identity_provider: projects/${{ vars.GOOGLE_PROJECT_NUMBER }}/locations/global/workloadIdentityPools/github-actions-workflows/providers/github-actions
+    - name: Authenticate to Google Cloud
+      uses: google-github-actions/auth@v3
+      with:
+        export_environment_variables: true
+        service_account: terraform@${{ vars.GOOGLE_PROJECT }}.iam.gserviceaccount.com
+        workload_identity_provider: projects/${{ vars.GOOGLE_PROJECT_NUMBER }}/locations/global/workloadIdentityPools/github-actions-workflows/providers/github-actions
 
-      - name: Release
-        env:
-          API_KEY_HASH: ${{ secrets.API_KEY_HASH }}
-          ARTIFACT_REGISTRY_LOCATION: ${{ vars.ARTIFACT_REGISTRY_LOCATION }}
-          ARTIFACT_REPOSITORY: ${{ vars.ARTIFACT_REPOSITORY }}
-          BUCKET_NAME: ${{ vars.BUCKET_NAME }}
-          CREATE_DOMAIN_MAPPING: ${{ vars.CREATE_DOMAIN_MAPPING }}
-          CREDENTIALS: ${{ secrets.CREDENTIALS }}
-          CORS_ORIGINS: ${{ vars.CORS_ORIGINS }}
-          DOMAIN_NAME: ${{ vars.DOMAIN_NAME }}
-          FIRESTORE_LOCATION: ${{ vars.FIRESTORE_LOCATION }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GOOGLE_PROJECT: ${{ vars.GOOGLE_PROJECT }}
-          GOOGLE_REGION: ${{ vars.GOOGLE_REGION }}
-          SMTP_SERVER_ADDRESS: ${{ vars.SMTP_SERVER_ADDRESS }}
-          SMTP_SERVER_PASSWORD: ${{ secrets.SMTP_SERVER_PASSWORD }}
-          SMTP_SERVER_PORT: ${{ vars.SMTP_SERVER_PORT }}
-          SMTP_SERVER_USERNAME: ${{ vars.SMTP_SERVER_USERNAME }}
-          TF_IN_AUTOMATION: true
-        run: npx semantic-release@${SEMANTIC_RELEASE_VERSION}
+    - name: Release
+      env:
+        API_KEY_HASH: ${{ secrets.API_KEY_HASH }}
+        ARTIFACT_REGISTRY_LOCATION: ${{ vars.ARTIFACT_REGISTRY_LOCATION }}
+        ARTIFACT_REPOSITORY: ${{ vars.ARTIFACT_REPOSITORY }}
+        BUCKET_NAME: ${{ vars.BUCKET_NAME }}
+        CREATE_DOMAIN_MAPPING: ${{ vars.CREATE_DOMAIN_MAPPING }}
+        CREDENTIALS: ${{ secrets.CREDENTIALS }}
+        CORS_ORIGINS: ${{ vars.CORS_ORIGINS }}
+        DOMAIN_NAME: ${{ vars.DOMAIN_NAME }}
+        FIRESTORE_LOCATION: ${{ vars.FIRESTORE_LOCATION }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GOOGLE_PROJECT: ${{ vars.GOOGLE_PROJECT }}
+        GOOGLE_REGION: ${{ vars.GOOGLE_REGION }}
+        SMTP_SERVER_ADDRESS: ${{ vars.SMTP_SERVER_ADDRESS }}
+        SMTP_SERVER_PASSWORD: ${{ secrets.SMTP_SERVER_PASSWORD }}
+        SMTP_SERVER_PORT: ${{ vars.SMTP_SERVER_PORT }}
+        SMTP_SERVER_USERNAME: ${{ vars.SMTP_SERVER_USERNAME }}
+        TF_IN_AUTOMATION: true
+      run: npx semantic-release@${SEMANTIC_RELEASE_VERSION}
 
 permissions:
   contents: write
