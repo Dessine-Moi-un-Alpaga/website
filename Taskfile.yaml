@@ -1,4 +1,4 @@
-version: "3"
+version: 3
 
 includes:
   app:
@@ -9,16 +9,16 @@ includes:
     taskfile: ./infrastructure/Taskfile.yaml
 
 vars:
-  ARTIFACT_REGISTRY: "{{.ARTIFACT_REGISTRY_LOCATION}}-docker.pkg.dev"
-  DOCKER_IMAGE: "{{.ARTIFACT_REGISTRY}}/{{.GOOGLE_PROJECT}}/{{.ARTIFACT_REPOSITORY}}/website"
+  ARTIFACT_REGISTRY: '{{.ARTIFACT_REGISTRY_LOCATION}}-docker.pkg.dev'
+  DOCKER_IMAGE: '{{.ARTIFACT_REGISTRY}}/{{.GOOGLE_PROJECT}}/{{.ARTIFACT_REPOSITORY}}/website'
   ENVIRONMENT: '{{default "development" .ENVIRONMENT}}'
   VERSION:
     sh: git describe --tags --always --first-parent
 
 dotenv:
-  - "{{.HOME}}/.dmua/variables/{{.ENVIRONMENT}}/.env"
-  - "{{.HOME}}/.dmua/secrets/.env"
-  - "{{.HOME}}/.dmua/variables/.env"
+- '{{.HOME}}/.dmua/variables/{{.ENVIRONMENT}}/.env'
+- '{{.HOME}}/.dmua/secrets/.env'
+- '{{.HOME}}/.dmua/variables/.env'
 
 tasks:
 
@@ -30,16 +30,16 @@ tasks:
   release:
     desc: Performs a release, pusblishes it and deploys it to Google Cloud Run
     cmds:
-      - task: infrastructure:infra:init
-      - task: infrastructure:infra:plan
-      - task: infrastructure:infra:apply
-      - task: app:push
-      - task: infrastructure:app:init
-      - task: infrastructure:app:plan
-      - task: infrastructure:app:apply
+    - task: infrastructure:infra:init
+    - task: infrastructure:infra:plan
+    - task: infrastructure:infra:apply
+    - task: app:push
+    - task: infrastructure:app:init
+    - task: infrastructure:app:plan
+    - task: infrastructure:app:apply
     preconditions:
       - sh: '[ "$CI" = "true" ]'
-        msg: "This Terraform stack should only be run in a continuous integration environment."
+        msg: This Terraform stack should only be run in a continuous integration environment.
 
   upload-assets:
     desc: Uploads assets in the local assets/ directory to Google Cloud Storage

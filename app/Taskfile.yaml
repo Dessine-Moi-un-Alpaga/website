@@ -1,4 +1,4 @@
-version: "3"
+version: 3
 
 includes:
   firebase-emulator:
@@ -10,42 +10,42 @@ tasks:
   build:
     desc: Performs the continuous integration build
     cmds:
-      - task: firebase-emulator:start
-      - defer: { task: firebase-emulator:stop }
-      - ./gradlew ci
+    - task: firebase-emulator:start
+    - defer: { task: firebase-emulator:stop }
+    - ./gradlew ci
 
   push:
     cmds:
-      - gcloud auth configure-docker {{.ARTIFACT_REGISTRY}} --quiet
-          && docker buildx build
-            --push
-            --tag {{.DOCKER_IMAGE}}:{{.VERSION}}
-            --tag {{.DOCKER_IMAGE}}:{{.ENVIRONMENT}}
-            --cache-from type=gha,scope=main
-            --cache-to type=gha,mode=max,scope=main
-            .
+    - gcloud auth configure-docker {{.ARTIFACT_REGISTRY}} --quiet
+        && docker buildx build
+          --push
+          --tag {{.DOCKER_IMAGE}}:{{.VERSION}}
+          --tag {{.DOCKER_IMAGE}}:{{.ENVIRONMENT}}
+          --cache-from type=gha,scope=main
+          --cache-to type=gha,mode=max,scope=main
+          .
     preconditions:
       - sh: '[ "$CI" = "true" ]'
-        msg: "This Terraform stack should only be run in a continuous integration environment."
+        msg: This Terraform stack should only be run in a continuous integration environment.
 
   run:
     desc: Runs the application locally using the Firestore emulator
     env:
-      ORG_GRADLE_PROJECT_apiKeyHash: "{{.API_KEY_HASH}}"
-      ORG_GRADLE_PROJECT_bucket: "{{.BUCKET_NAME}}"
-      ORG_GRADLE_PROJECT_googleProject: "{{.GOOGLE_PROJECT}}"
-      ORG_GRADLE_PROJECT_smtpServerAddress: "{{.SMTP_SERVER_ADDRESS}}"
-      ORG_GRADLE_PROJECT_smtpServerPassword: "{{.SMTP_SERVER_PASSWORD}}"
-      ORG_GRADLE_PROJECT_smtpServerPort: "{{.SMTP_SERVER_PORT}}"
-      ORG_GRADLE_PROJECT_smtpServerUsername: "{{.SMTP_SERVER_USERNAME}}"
+      ORG_GRADLE_PROJECT_apiKeyHash: '{{.API_KEY_HASH}}'
+      ORG_GRADLE_PROJECT_bucket: '{{.BUCKET_NAME}}'
+      ORG_GRADLE_PROJECT_googleProject: '{{.GOOGLE_PROJECT}}'
+      ORG_GRADLE_PROJECT_smtpServerAddress: '{{.SMTP_SERVER_ADDRESS}}'
+      ORG_GRADLE_PROJECT_smtpServerPassword: '{{.SMTP_SERVER_PASSWORD}}'
+      ORG_GRADLE_PROJECT_smtpServerPort: '{{.SMTP_SERVER_PORT}}'
+      ORG_GRADLE_PROJECT_smtpServerUsername: '{{.SMTP_SERVER_USERNAME}}'
     cmds:
-      - task: firebase-emulator:start
-      - defer: { task: firebase-emulator:stop }
-      - ./gradlew {{.CLI_ARGS}} run
+    - task: firebase-emulator:start
+    - defer: { task: firebase-emulator:stop }
+    - ./gradlew {{.CLI_ARGS}} run
 
   test:
     desc: Tests the application using the Firestore emulator
     cmds:
-      - task: firebase-emulator:start
-      - defer: { task: firebase-emulator:stop }
-      - ./gradlew test
+    - task: firebase-emulator:start
+    - defer: { task: firebase-emulator:stop }
+    - ./gradlew test
