@@ -10,7 +10,7 @@ terraform {
     }
     google = {
       source = "hashicorp/google"
-      version = "~> 7.9"
+      version = "~> 8.0"
     }
     local = {
       source = "hashicorp/local"
