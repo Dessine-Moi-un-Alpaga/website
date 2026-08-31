@@ -169,16 +169,13 @@ dokka {
             remoteUrl("https://github.com/Dessine-Moi-un-Alpaga/website/tree/main/app/src/main/kotlin")
         }
 
-        val externalApiDocs = mapOf(
-            "kotlinx-serialization" to Pair("https://kotlinlang.org/api/kotlinx.serialization", "https://kotlinlang.org/api/kotlinx.serialization/package-list"),
-            "ktor" to Pair("https://api.ktor.io", "https://api.ktor.io/package-list"),
-        )
-
-        for (externalApiDoc in externalApiDocs) {
-            externalDocumentationLinks.register(externalApiDoc.key) {
-                url(externalApiDoc.value.first)
-                packageListUrl(externalApiDoc.value.second)
-            }
+        externalDocumentationLinks.register("kotlinx-serialization") {
+            url("https://kotlinlang.org/api/kotlinx.serialization")
+            packageListUrl("https://kotlinlang.org/api/kotlinx.serialization/package-list")
+        }
+        externalDocumentationLinks.register("ktor") {
+            url("https://api.ktor.io")
+            packageListUrl("https://api.ktor.io/package-list")
         }
     }
 
