@@ -12,19 +12,16 @@ class ConventionalRoutesTest {
 
     @Test
     fun `apple touch icon is available`() = endToEndTest {
-        var response = client.get("/$APPLE_TOUCH_ICON")
-        response shouldHaveStatus HttpStatusCode.OK
+        client.get("/$APPLE_TOUCH_ICON") shouldHaveStatus HttpStatusCode.OK
     }
 
     @Test
     fun `favicon is available`() = endToEndTest {
-        var response = client.get("/$FAVICON")
-        response shouldHaveStatus HttpStatusCode.OK
+        client.get("/$FAVICON") shouldHaveStatus HttpStatusCode.OK
     }
 
     @Test
     fun `robots_txt is available`() = endToEndTest {
-        var response = client.get("/$ROBOTS_TXT")
-        response shouldHaveStatus HttpStatusCode.OK
+        client.get("/$ROBOTS_TXT") shouldHaveStatus HttpStatusCode.OK
     }
 }

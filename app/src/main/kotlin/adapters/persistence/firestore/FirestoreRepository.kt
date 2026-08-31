@@ -67,8 +67,8 @@ class FirestoreRepository<T : AggregateRoot>(
             if (response.status == HttpStatusCode.OK) {
                 val body = response.body<ListDocumentsResponse>()
 
-                for (document in body.documents) {
-                    val idValue = document.fields[ID_FIELD]
+                for ((fields) in body.documents) {
+                    val idValue = fields[ID_FIELD]
 
                     if (idValue != null) {
                         val id = (idValue as StringValue).stringValue
