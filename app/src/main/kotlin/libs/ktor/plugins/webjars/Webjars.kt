@@ -55,7 +55,7 @@ val Webjars: ApplicationPlugin<WebjarsConfig> = createApplicationPlugin("Webjars
             val version = locator.version(webjar) ?: throw IllegalArgumentException("jar $webjar not found")
             val fullPath = locator.fullPath(webjar, partialPath) ?: throw IllegalArgumentException("jar $webjar not found")
             val stream = WebjarsConfig::class.java.classLoader.getResourceAsStream(fullPath) ?: return@onCall
-            val content = InputStreamContent(stream).apply {
+            val content = InputStreamContent(stream, ContentType.defaultForFilePath(fullPath)).apply {
                 EntityTagVersion(version)
                 versions += LastModifiedVersion(lastModifiedVersion)
                 versions += EntityTagVersion(version)

@@ -3,6 +3,7 @@
  */
 package com.dessinemoiunalpaga.website.libs.ktor.plugins.webjars
 
+import io.ktor.http.ContentType
 import io.ktor.http.content.OutgoingContent
 import io.ktor.util.cio.KtorDefaultPool
 import io.ktor.utils.io.ByteReadChannel
@@ -14,6 +15,7 @@ import java.io.InputStream
  */
 internal class InputStreamContent(
     private val input: InputStream,
+    override val contentType: ContentType,
 ) : OutgoingContent.ReadChannelContent() {
 
     override fun readFrom(): ByteReadChannel = input.toByteReadChannel(pool = KtorDefaultPool)
