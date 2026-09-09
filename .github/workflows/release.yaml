@@ -38,6 +38,7 @@ jobs:
     - name: Install Java
       uses: actions/setup-java@v6
       with:
+        cache-jdk: true
         distribution: temurin
         java-version: ${{ env.JAVA_VERSION }}
 
