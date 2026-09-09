@@ -39,6 +39,7 @@ jobs:
       uses: actions/setup-java@v6
       with:
         cache-jdk: true
+        check-latest: true
         distribution: temurin
         java-version: ${{ env.JAVA_VERSION }}
 
