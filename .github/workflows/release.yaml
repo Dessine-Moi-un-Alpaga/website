@@ -12,7 +12,7 @@ concurrency:
 jobs:
   release:
     name: Release
-    runs-on: ubuntu-slim
+    runs-on: ubuntu-latest
     env:
       JAVA_VERSION: 25
       NODE_VERSION: 25
