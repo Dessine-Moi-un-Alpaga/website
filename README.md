@@ -229,7 +229,7 @@ Update the following files:
 * `.github/workflows/release.yaml`
 * `README.md`
 
-## Bumping the Kolin or Ktor Versions
+## Bumping the Kotlin or Ktor Versions
 
 These updates will be carried out by Dependabot but you should also make sure to update the corresponding version badges
 in the `README.md` file.
