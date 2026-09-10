@@ -10,24 +10,34 @@ import jakarta.mail.Session
 import jakarta.mail.Transport
 import jakarta.mail.internet.InternetAddress
 import jakarta.mail.internet.MimeMessage
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
 import java.util.Properties
 
 class JakartaMailService(
     private val properties: JakartaMailProperties,
 ) : SendEmail {
 
-    override suspend fun send(email: Email) {
-        val session = Session.getInstance(configuration())
-        val message = message(session, email)
+    private val session: Session by lazy {
+        Session.getInstance(configuration())
+    }
 
-        try {
-            Transport.send(
-                message,
-                properties.smtpServerUsername,
-                properties.smtpServerPassword
-            )
-        } catch (e: MessagingException) {
-            throw UnexpectedEmailException(e)
+    override suspend fun send(email: Email) {
+        coroutineScope {
+            launch(Dispatchers.IO) {
+                val message = message(session, email)
+
+                try {
+                    Transport.send(
+                        message,
+                        properties.smtpServerUsername,
+                        properties.smtpServerPassword
+                    )
+                } catch (e: MessagingException) {
+                    throw UnexpectedEmailException(e)
+                }
+            }
         }
     }
 
