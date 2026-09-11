@@ -5,6 +5,6 @@ import kotlinx.html.*
 fun HEAD.escapeVelocityStylesheet() {
     link {
         rel = LinkRel.stylesheet
-        href = "/webjars/escape-velocity/css/main.css"
+        href = "/assets/css/escape-velocity/main.css"
     }
 }

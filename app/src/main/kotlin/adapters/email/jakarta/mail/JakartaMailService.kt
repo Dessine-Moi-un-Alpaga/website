@@ -42,16 +42,16 @@ class JakartaMailService(
     }
 
     private fun configuration() = Properties().apply {
-        this["mail.smtp.auth"] = true
-        this["mail.smtp.starttls.enable"] = true
-        this["mail.smtp.host"] = properties.smtpServerAddress
-        this["mail.smtp.port"] = properties.smtpServerPort
+        set("mail.smtp.auth", true)
+        set("mail.smtp.starttls.enable", true)
+        set("mail.smtp.host", properties.smtpServerAddress)
+        set("mail.smtp.port", properties.smtpServerPort)
     }
 
     private fun message(session: Session, email: Email) = MimeMessage(session).apply {
-        this.setFrom(properties.smtpServerUsername)
-        this.setRecipients(Message.RecipientType.TO, InternetAddress.parse(properties.address))
-        this.subject = Messages.emailSubject("${email.sender.name} (${email.sender.address})")
-        this.setText(email.message)
+        setFrom(properties.smtpServerUsername)
+        setRecipients(Message.RecipientType.TO, InternetAddress.parse(properties.address))
+        subject = Messages.emailSubject("${email.sender.name} (${email.sender.address})")
+        setText(email.message)
     }
 }

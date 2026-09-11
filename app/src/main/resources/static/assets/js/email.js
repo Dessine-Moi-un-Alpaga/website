@@ -1,7 +1,3 @@
-toastr.options = {
-    positionClass: 'toast-bottom-left'
-};
-
 function buildRequest() {
     const body = {
         message: document.getElementById('contact-message').value,
@@ -45,6 +41,9 @@ function handleResponse(response) {
 }
 
 async function sendEmail(event) {
+    toastr.options = {
+        positionClass: 'toast-bottom-left'
+    };
     event.preventDefault();
     const request = buildRequest();
     const url = '/api/email';

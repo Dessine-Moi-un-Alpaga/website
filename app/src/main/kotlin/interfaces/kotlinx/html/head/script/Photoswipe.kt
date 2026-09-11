@@ -11,11 +11,11 @@ fun HEAD.photoswipe(pageModel: PageModel) {
             unsafe {
                 +"""
                 |
-                |      import PhotoSwipeLightbox from '/webjars/photoswipe/dist/photoswipe-lightbox.esm.min.js';
+                |      import PhotoSwipeLightbox from '/assets/js/photoswipe/photoswipe-lightbox.esm.min.js';
                 |      const lightbox = new PhotoSwipeLightbox({
                 |        gallery: '#gallery',
                 |        children: 'figure',
-                |        pswpModule: () => import('/webjars/photoswipe/dist/photoswipe.esm.min.js')
+                |        pswpModule: () => import('/assets/js/photoswipe/photoswipe.esm.min.js')
                 |      });
                 |      lightbox.init();
                 |    """.trimMargin()
