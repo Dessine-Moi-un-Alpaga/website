@@ -177,7 +177,3 @@ dokka {
 tasks.dokkaGeneratePublicationHtml.configure {
     dependsOn(tasks.generateI18n4kFiles)
 }
-
-tasks.shadowJar {
-    exclude("META-INF/native-image/org.webjars/webjars-locator-lite/resource-config.json")
-}
