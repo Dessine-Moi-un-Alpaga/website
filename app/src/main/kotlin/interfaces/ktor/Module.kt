@@ -11,5 +11,4 @@ internal suspend fun Application.ktor() {
     routes()
     serialization()
     validation()
-    webjars()
 }

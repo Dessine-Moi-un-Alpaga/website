@@ -4,9 +4,9 @@ import kotlinx.html.*
 
 fun HEAD.responsiveTools() {
     script {
-        src = "/webjars/responsive-tools/dist/browser.min.js"
+        src = "/assets/js/responsive-tools/browser.min.js"
     }
     script {
-        src = "/webjars/responsive-tools/dist/breakpoints.min.js"
+        src = "/assets/js/responsive-tools/breakpoints.min.js"
     }
 }

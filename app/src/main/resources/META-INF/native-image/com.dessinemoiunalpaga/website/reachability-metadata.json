@@ -1262,133 +1262,34 @@
       "glob": "META-INF/javamail.default.providers"
     },
     {
-      "glob": "META-INF/maven/org.webjars/escape-velocity/pom.properties"
+      "glob": "static/assets/css/escape-velocity/images/banner.jpg"
     },
     {
-      "glob": "META-INF/maven/org.webjars/font-awesome/pom.properties"
+      "glob": "static/assets/css/escape-velocity/images/overlay.png"
     },
     {
-      "glob": "META-INF/maven/org.webjars/jquery.dropotron/pom.properties"
+      "glob": "static/assets/css/escape-velocity/images/shadow.png"
     },
     {
-      "glob": "META-INF/maven/org.webjars/jquery/pom.properties"
+      "glob": "static/assets/css/escape-velocity/main.css"
     },
     {
-      "glob": "META-INF/maven/org.webjars.npm/photoswipe/pom.properties"
+      "glob": "static/assets/js/escape-velocity/main.js"
     },
     {
-      "glob": "META-INF/maven/org.webjars/responsive-tools/pom.properties"
+      "glob": "static/assets/js/escape-velocity/util.js"
     },
     {
-      "glob": "META-INF/maven/org.webjars/toastr/pom.properties"
+      "glob": "static/assets/js/photoswipe/photoswipe-lightbox.esm.min.js"
     },
     {
-      "glob": "META-INF/resources/webjars-locator.properties"
+      "glob": "static/assets/js/photoswipe/photoswipe.esm.min.js"
     },
     {
-      "glob": "META-INF/resources/webjars/escape-velocity/*"
+      "glob": "static/assets/js/responsive-tools/breakpoints.min.js"
     },
     {
-      "glob": "META-INF/resources/webjars/escape-velocity/*/css/images/banner.jpg"
-    },
-    {
-      "glob": "META-INF/resources/webjars/escape-velocity/*/css/images/overlay.png"
-    },
-    {
-      "glob": "META-INF/resources/webjars/escape-velocity/*/css/images/shadow.png"
-    },
-    {
-      "glob": "META-INF/resources/webjars/escape-velocity/*/css/main.css"
-    },
-    {
-      "glob": "META-INF/resources/webjars/escape-velocity/*/js/main.js"
-    },
-    {
-      "glob": "META-INF/resources/webjars/escape-velocity/*/js/util.js"
-    },
-    {
-      "glob": "META-INF/resources/webjars/font-awesome/*"
-    },
-    {
-      "glob": "META-INF/resources/webjars/font-awesome/*/css/brands.min.css"
-    },
-    {
-      "glob": "META-INF/resources/webjars/font-awesome/*/css/fontawesome.min.css"
-    },
-    {
-      "glob": "META-INF/resources/webjars/font-awesome/*/css/solid.min.css"
-    },
-    {
-      "glob": "META-INF/resources/webjars/font-awesome/*/webfonts/fa-brands-400.eot"
-    },
-    {
-      "glob": "META-INF/resources/webjars/font-awesome/*/webfonts/fa-brands-400.svg"
-    },
-    {
-      "glob": "META-INF/resources/webjars/font-awesome/*/webfonts/fa-brands-400.ttf"
-    },
-    {
-      "glob": "META-INF/resources/webjars/font-awesome/*/webfonts/fa-brands-400.woff"
-    },
-    {
-      "glob": "META-INF/resources/webjars/font-awesome/*/webfonts/fa-brands-400.woff2"
-    },
-    {
-      "glob": "META-INF/resources/webjars/font-awesome/*/webfonts/fa-solid-900.eot"
-    },
-    {
-      "glob": "META-INF/resources/webjars/font-awesome/*/webfonts/fa-solid-900.svg"
-    },
-    {
-      "glob": "META-INF/resources/webjars/font-awesome/*/webfonts/fa-solid-900.ttf"
-    },
-    {
-      "glob": "META-INF/resources/webjars/font-awesome/*/webfonts/fa-solid-900.woff"
-    },
-    {
-      "glob": "META-INF/resources/webjars/font-awesome/*/webfonts/fa-solid-900.woff2"
-    },
-    {
-      "glob": "META-INF/resources/webjars/jquery.dropotron/*"
-    },
-    {
-      "glob": "META-INF/resources/webjars/jquery.dropotron/*/jquery.dropotron.min.js"
-    },
-    {
-      "glob": "META-INF/resources/webjars/jquery/*"
-    },
-    {
-      "glob": "META-INF/resources/webjars/jquery/*/jquery.min.js"
-    },
-    {
-      "glob": "META-INF/resources/webjars/photoswipe/*"
-    },
-    {
-      "glob": "META-INF/resources/webjars/photoswipe/*/dist/photoswipe-lightbox.esm.min.js"
-    },
-    {
-      "glob": "META-INF/resources/webjars/photoswipe/*/dist/photoswipe.esm.min.js"
-    },
-    {
-      "glob": "META-INF/resources/webjars/photoswipe/*/dist/photoswipe.css"
-    },
-    {
-      "glob": "META-INF/resources/webjars/responsive-tools/*"
-    },
-    {
-      "glob": "META-INF/resources/webjars/responsive-tools/*/dist/breakpoints.min.js"
-    },
-    {
-      "glob": "META-INF/resources/webjars/responsive-tools/*/dist/browser.min.js"
-    },
-    {
-      "glob": "META-INF/resources/webjars/toastr/*"
-    },
-    {
-      "glob": "META-INF/resources/webjars/toastr/*/build/toastr.min.css"
-    },
-    {
-      "glob": "META-INF/resources/webjars/toastr/*/build/toastr.min.js"
+      "glob": "static/assets/js/responsive-tools/browser.min.js"
     },
     {
       "glob": "META-INF/services/io.ktor.serialization.kotlinx.KotlinxSerializationExtensionProvider"

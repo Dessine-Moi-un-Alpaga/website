@@ -4,10 +4,10 @@ import kotlinx.html.*
 
 fun HEAD.escapeVelocity() {
     script {
-        src = "/webjars/escape-velocity/js/util.js"
+        src = "/assets/js/escape-velocity/util.js"
     }
     script {
         async = true
-        src = "/webjars/escape-velocity/js/main.js"
+        src = "/assets/js/escape-velocity/main.js"
     }
 }
