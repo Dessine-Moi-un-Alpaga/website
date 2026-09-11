@@ -1,7 +1,7 @@
 package com.dessinemoiunalpaga.website.adapters.email.jakarta.mail
 
 import com.dessinemoiunalpaga.website.application.usecases.SendEmail
-import com.dessinemoiunalpaga.website.application.usecases.UnexpectedEmailException
+import com.dessinemoiunalpaga.website.application.usecases.MailException
 import com.dessinemoiunalpaga.website.domain.Email
 import com.dessinemoiunalpaga.website.i18n.Messages
 import jakarta.mail.Message
@@ -35,7 +35,7 @@ class JakartaMailService(
                         properties.smtpServerPassword
                     )
                 } catch (e: MessagingException) {
-                    throw UnexpectedEmailException(e)
+                    throw MailException(e)
                 }
             }
         }
