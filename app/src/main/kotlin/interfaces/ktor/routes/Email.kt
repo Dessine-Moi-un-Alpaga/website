@@ -1,7 +1,7 @@
 package com.dessinemoiunalpaga.website.interfaces.ktor.routes
 
 import com.dessinemoiunalpaga.website.application.usecases.SendEmail
-import com.dessinemoiunalpaga.website.application.usecases.UnexpectedEmailException
+import com.dessinemoiunalpaga.website.application.usecases.MailException
 import com.dessinemoiunalpaga.website.domain.Email
 import io.github.oshai.kotlinlogging.KotlinLogging
 import io.ktor.http.HttpStatusCode
@@ -40,7 +40,7 @@ fun Application.emailRoute() {
             try {
                 service.send(email)
                 call.response.status(HttpStatusCode.OK)
-            } catch (e: UnexpectedEmailException) {
+            } catch (e: MailException) {
                 logger.error(e) {}
                 call.response.status(HttpStatusCode.InternalServerError)
             }
