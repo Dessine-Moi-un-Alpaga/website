@@ -307,9 +307,6 @@
       "type": "com.dessinemoiunalpaga.website.libs.domain.ports.persistence.Repository"
     },
     {
-      "type": "com.dessinemoiunalpaga.website.libs.ktor.plugins.webjars.InputStreamContent"
-    },
-    {
       "type": "com.sun.crypto.provider.AESCipher$General",
       "methods": [
         {
