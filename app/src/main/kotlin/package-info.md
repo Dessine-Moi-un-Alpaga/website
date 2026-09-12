@@ -75,10 +75,6 @@ Simple implementation of a retry functionality for a given block of code.
 
 Extensions of the kotlin serialization libraries.
 
-# Package com.dessinemoiunalpaga.website.libs.ktor.plugins.webjars
-
-Native-friendly replacement for the ktor Webjars plugin.
-
 # Package com.dessinemoiunalpaga.website.libs.ktor.routes
 
 Ktor routes for managing persistent AggregateRoots.
