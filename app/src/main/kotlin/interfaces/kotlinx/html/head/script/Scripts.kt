@@ -13,3 +13,7 @@ fun HEAD.scripts(pageModel: PageModel) {
     toastr()
     email()
 }
+
+fun SCRIPT.noReferrer() {
+    attributes["referrerpolicy"] = "no-referrer"
+}
