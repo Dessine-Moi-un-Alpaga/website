@@ -9,6 +9,7 @@ fun HEAD.scripts(pageModel: PageModel) {
     responsiveTools()
     dropotron()
     escapeVelocity()
+    spinner()
     toastr()
     email()
 }
