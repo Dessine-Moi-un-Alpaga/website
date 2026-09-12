@@ -41,6 +41,10 @@ function handleResponse(response) {
 }
 
 async function sendEmail(event) {
+    var spinner = new Spinner();
+    var modal = document.getElementById('modal')
+    spinner.spin(modal);
+    modal.style.display = "flex";
     toastr.options = {
         positionClass: 'toast-bottom-left'
     };
@@ -53,5 +57,8 @@ async function sendEmail(event) {
         handleResponse(response);
     } catch (error) {
         notifyError();
+    } finally {
+        modal.style.display = "none";
+        spinner.stop();
     }
 }

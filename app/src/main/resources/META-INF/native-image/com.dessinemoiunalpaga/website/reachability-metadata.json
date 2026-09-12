@@ -1259,36 +1259,6 @@
       "glob": "META-INF/javamail.default.providers"
     },
     {
-      "glob": "static/assets/css/escape-velocity/images/banner.jpg"
-    },
-    {
-      "glob": "static/assets/css/escape-velocity/images/overlay.png"
-    },
-    {
-      "glob": "static/assets/css/escape-velocity/images/shadow.png"
-    },
-    {
-      "glob": "static/assets/css/escape-velocity/main.css"
-    },
-    {
-      "glob": "static/assets/js/escape-velocity/main.js"
-    },
-    {
-      "glob": "static/assets/js/escape-velocity/util.js"
-    },
-    {
-      "glob": "static/assets/js/photoswipe/photoswipe-lightbox.esm.min.js"
-    },
-    {
-      "glob": "static/assets/js/photoswipe/photoswipe.esm.min.js"
-    },
-    {
-      "glob": "static/assets/js/responsive-tools/breakpoints.min.js"
-    },
-    {
-      "glob": "static/assets/js/responsive-tools/browser.min.js"
-    },
-    {
       "glob": "META-INF/services/io.ktor.serialization.kotlinx.KotlinxSerializationExtensionProvider"
     },
     {
@@ -1337,6 +1307,21 @@
       "glob": "simplelogger.properties"
     },
     {
+      "glob": "static/assets/css/escape-velocity/images/banner.jpg"
+    },
+    {
+      "glob": "static/assets/css/escape-velocity/images/overlay.png"
+    },
+    {
+      "glob": "static/assets/css/escape-velocity/images/shadow.png"
+    },
+    {
+      "glob": "static/assets/css/escape-velocity/main.css"
+    },
+    {
+      "glob": "static/assets/css/spin.js/spin.css"
+    },
+    {
       "glob": "static/assets/css/main.css"
     },
     {
@@ -1356,6 +1341,27 @@
     },
     {
       "glob": "static/assets/icons/manifest.webmanifest"
+    },
+    {
+      "glob": "static/assets/js/escape-velocity/main.js"
+    },
+    {
+      "glob": "static/assets/js/escape-velocity/util.js"
+    },
+    {
+      "glob": "static/assets/js/photoswipe/photoswipe-lightbox.esm.min.js"
+    },
+    {
+      "glob": "static/assets/js/photoswipe/photoswipe.esm.min.js"
+    },
+    {
+      "glob": "static/assets/js/responsive-tools/breakpoints.min.js"
+    },
+    {
+      "glob": "static/assets/js/responsive-tools/browser.min.js"
+    },
+    {
+      "glob": "static/assets/js/spin.js/spin.js"
     },
     {
       "glob": "static/assets/js/email.js"

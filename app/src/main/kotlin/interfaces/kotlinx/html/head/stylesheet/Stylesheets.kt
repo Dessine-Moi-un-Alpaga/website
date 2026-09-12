@@ -7,6 +7,7 @@ fun HEAD.stylesheets(pageModel: PageModel) {
     fontAwesomeStylesheets()
     escapeVelocityStylesheet()
     photoswipeStylesheet(pageModel)
+    spinner()
     toastrStylesheet()
     customStylesheets()
 }

@@ -29,6 +29,7 @@ class BodyTemplate(
                 }
 
                 footer(properties)
+                spinnerModal()
             }
         }
     }
