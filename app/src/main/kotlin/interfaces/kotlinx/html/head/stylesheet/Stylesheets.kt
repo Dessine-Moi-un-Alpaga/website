@@ -11,3 +11,8 @@ fun HEAD.stylesheets(pageModel: PageModel) {
     toastrStylesheet()
     customStylesheets()
 }
+
+fun LINK.externalStylesheetAttributes() {
+    attributes["crossorigin"] = "anonymous"
+    attributes["referrerpolicy"] = "no-referrer"
+}

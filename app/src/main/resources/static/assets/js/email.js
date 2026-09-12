@@ -41,18 +41,19 @@ function handleResponse(response) {
 }
 
 async function sendEmail(event) {
-    var spinner = new Spinner();
-    var modal = document.getElementById('modal')
+    event.preventDefault();
+    const spinner = new Spinner();
+    const modal = document.getElementById('modal')
     spinner.spin(modal);
     modal.style.display = "flex";
+    const request = buildRequest();
+    const url = '/api/email';
     toastr.options = {
         positionClass: 'toast-bottom-left'
     };
-    event.preventDefault();
-    const request = buildRequest();
-    const url = '/api/email';
 
     try {
+
         const response = await fetch(url, request);
         handleResponse(response);
     } catch (error) {
