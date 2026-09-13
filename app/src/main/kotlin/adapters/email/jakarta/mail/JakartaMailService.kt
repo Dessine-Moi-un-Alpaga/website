@@ -13,6 +13,7 @@ import jakarta.mail.internet.MimeMessage
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.util.Properties
 
 class JakartaMailService(
@@ -24,19 +25,17 @@ class JakartaMailService(
     }
 
     override suspend fun send(email: Email) {
-        coroutineScope {
-            launch(Dispatchers.IO) {
-                val message = message(session, email)
+        withContext(Dispatchers.IO) {
+            val message = message(session, email)
 
-                try {
-                    Transport.send(
-                        message,
-                        properties.smtpServerUsername,
-                        properties.smtpServerPassword
-                    )
-                } catch (e: MessagingException) {
-                    throw MailException(e)
-                }
+            try {
+                Transport.send(
+                    message,
+                    properties.smtpServerUsername,
+                    properties.smtpServerPassword
+                )
+            } catch (e: MessagingException) {
+                throw MailException(e)
             }
         }
     }
