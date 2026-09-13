@@ -112,8 +112,8 @@ fun firestoreHttpClient(): HttpClient {
                 }
 
                 result ?: execute(request)
-            }
-        }.await()
+            }.await()
+        }
     }
 
     return client
