@@ -53,7 +53,6 @@ async function sendEmail(event) {
     };
 
     try {
-
         const response = await fetch(url, request);
         handleResponse(response);
     } catch (error) {
