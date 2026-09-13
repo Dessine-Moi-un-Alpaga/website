@@ -24,6 +24,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
@@ -103,16 +104,14 @@ fun firestoreHttpClient(): HttpClient {
     }
 
     client.plugin(HttpSend).intercept { request ->
-        coroutineScope {
-            async(Dispatchers.IO) {
-                var result: HttpClientCall? = null
+        withContext(Dispatchers.IO) {
+            var result: HttpClientCall? = null
 
-                if (request.targetsProductionFirestoreEnvironment()) {
-                    result = interceptFirestoreRequest(request)
-                }
+            if (request.targetsProductionFirestoreEnvironment()) {
+                result = interceptFirestoreRequest(request)
+            }
 
-                result ?: execute(request)
-            }.await()
+            result ?: execute(request)
         }
     }
 
