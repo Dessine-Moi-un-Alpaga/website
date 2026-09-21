@@ -31,7 +31,9 @@ dependencies {
     implementation(libs.kotlin.logging)
 
     implementation(libs.bundles.ktor.client)
-    implementation(libs.bundles.ktor.server)
+    implementation(libs.bundles.ktor.server) {
+        exclude(group = "io.ktor", module = "ktor-openapi-schema-jvm")
+    }
 
     runtimeOnly(libs.angus.smtp)
     runtimeOnly(libs.slf4j.simple)
