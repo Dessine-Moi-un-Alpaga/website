@@ -1,6 +1,9 @@
 {
   "reflection": [
     {
+      "type": "android.os.Build"
+    },
+    {
       "type": "apple.security.AppleProvider",
       "methods": [
         {
@@ -495,6 +498,15 @@
       "type": "io.ktor.network.sockets.SocketBase"
     },
     {
+      "type": "io.ktor.openapi.JsonSchemaInference"
+    },
+    {
+      "type": "io.ktor.openapi.Operation"
+    },
+    {
+      "type": "io.ktor.openapi.Operation$Builder"
+    },
+    {
       "type": "io.ktor.serialization.kotlinx.json.KotlinxSerializationJsonExtensionProvider"
     },
     {
@@ -622,6 +634,9 @@
     },
     {
       "type": "kotlin.Function0"
+    },
+    {
+      "type": "kotlin.Function1"
     },
     {
       "type": "kotlin.Function2"
