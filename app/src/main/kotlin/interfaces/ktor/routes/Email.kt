@@ -1,7 +1,7 @@
 package com.dessinemoiunalpaga.website.interfaces.ktor.routes
 
-import com.dessinemoiunalpaga.website.application.usecases.SendEmail
 import com.dessinemoiunalpaga.website.application.usecases.MailException
+import com.dessinemoiunalpaga.website.application.usecases.SendEmail
 import com.dessinemoiunalpaga.website.domain.Email
 import io.github.oshai.kotlinlogging.KotlinLogging
 import io.ktor.http.HttpStatusCode
