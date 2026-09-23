@@ -1,9 +1,6 @@
 package com.dessinemoiunalpaga.website.interfaces.kotlinx.html.body
 
-import kotlinx.html.DIV
-import kotlinx.html.classes
-import kotlinx.html.div
-import kotlinx.html.id
+import kotlinx.html.*
 
 fun DIV.spinnerModal() {
     div {

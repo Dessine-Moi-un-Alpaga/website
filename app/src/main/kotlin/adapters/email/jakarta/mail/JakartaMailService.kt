@@ -1,7 +1,7 @@
 package com.dessinemoiunalpaga.website.adapters.email.jakarta.mail
 
-import com.dessinemoiunalpaga.website.application.usecases.SendEmail
 import com.dessinemoiunalpaga.website.application.usecases.MailException
+import com.dessinemoiunalpaga.website.application.usecases.SendEmail
 import com.dessinemoiunalpaga.website.domain.Email
 import com.dessinemoiunalpaga.website.i18n.Messages
 import jakarta.mail.Message
@@ -11,8 +11,6 @@ import jakarta.mail.Transport
 import jakarta.mail.internet.InternetAddress
 import jakarta.mail.internet.MimeMessage
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.util.Properties
 

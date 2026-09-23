@@ -1,7 +1,6 @@
 package com.dessinemoiunalpaga.website.interfaces.kotlinx.html.head.script
 
-import kotlinx.html.HEAD
-import kotlinx.html.script
+import kotlinx.html.*
 
 fun HEAD.spinner() {
     script {
