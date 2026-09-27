@@ -4,6 +4,6 @@ import kotlinx.html.*
 
 fun HEAD.charset() {
     meta {
-        charset = "utf8"
+        charset = Charsets.UTF_8.name()
     }
 }

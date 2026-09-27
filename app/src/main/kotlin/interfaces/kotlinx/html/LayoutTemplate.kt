@@ -6,6 +6,7 @@ import com.dessinemoiunalpaga.website.interfaces.kotlinx.html.head.HeadTemplate
 import io.ktor.server.html.Template
 import io.ktor.server.html.insert
 import kotlinx.html.*
+import java.util.Locale
 
 /**
  * The root html template for all web pages. Renders the page based on the specified [PageModel].
@@ -16,7 +17,7 @@ class LayoutTemplate(
 ) : Template<HTML> {
 
     override fun HTML.apply() {
-        lang = "fr"
+        lang = Locale.getDefault().language
 
         insert(HeadTemplate(pageModel)) { }
         insert(BodyTemplate(pageModel, properties)) { }
