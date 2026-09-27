@@ -49,3 +49,8 @@ tasks:
     - task: firebase-emulator:start
     - defer: { task: firebase-emulator:stop }
     - ./gradlew test
+
+  update-gradle-version:
+    desc: Updates the Gradle version
+    cmds:
+    - ./gradlew :wrapper --gradle-version={{.CLI_ARGS}} && ./gradlew :wrapper
