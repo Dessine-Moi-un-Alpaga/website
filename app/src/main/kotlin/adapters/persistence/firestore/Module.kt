@@ -46,9 +46,9 @@ internal fun Application.firestore() {
     imageMetadataTransformer()
 
     indexPageRepositories()
-    newsPageRepositories()
+    newsPageRepository()
     factsheetPageRepositories()
-    photoGalleryPageRepositories()
+    photoGalleryPageRepository()
 }
 
 private fun Application.httpClient() {
@@ -205,7 +205,7 @@ private fun Application.indexGuildHighlightRepository() {
     }
 }
 
-private fun Application.newsPageRepositories() {
+private fun Application.newsPageRepository() {
     dependencies {
         provide<Repository<Article>>(ShowNewsPage::class.simpleName) {
             CachingRepository(
@@ -261,7 +261,7 @@ private fun Application.factsheetHighlightRepository() {
     }
 }
 
-private fun Application.photoGalleryPageRepositories() {
+private fun Application.photoGalleryPageRepository() {
     dependencies {
         provide<Repository<ImageMetadata>>(ShowPhotoGalleryPage::class.simpleName) {
             CachingRepository(
