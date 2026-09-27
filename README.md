@@ -216,10 +216,10 @@ Version updates that need to be applied to several files at once are listed belo
 
 ## Bumping the Gradle Version
 
-Run the following command from the `app/` subdirectory and update the `README.md` accordingly:
+Run the following command and update the `README.md` accordingly:
 
 ```shell
-./gradlew :wrapper --gradle-version=<GRADLE_VERSION> && ./gradlew :wrapper
+$ task app:update-gradle-version -- <GRADLE_VERSION>
 ```
 
 ## Bumping the Terraform Version
