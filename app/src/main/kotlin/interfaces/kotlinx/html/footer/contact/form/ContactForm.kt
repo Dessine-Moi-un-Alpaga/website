@@ -3,7 +3,7 @@ package com.dessinemoiunalpaga.website.interfaces.kotlinx.html.footer.contact.fo
 import com.dessinemoiunalpaga.website.interfaces.kotlinx.html.style.EscapeVelocity
 import kotlinx.html.*
 
-open class CONTACTFORM(
+open class ContactForm(
     initialAttributes : Map<String, String>,
     override val consumer : TagConsumer<*>
 ) : HTMLTag(
@@ -15,7 +15,7 @@ open class CONTACTFORM(
     false
 ), HtmlBlockTag
 
-inline fun FlowContent.contactForm(crossinline block : CONTACTFORM.() -> Unit = {}) : Unit = CONTACTFORM(
+inline fun FlowContent.contactForm(crossinline block: ContactForm.() -> Unit = {}): Unit = ContactForm(
     attributesMapOf(
         "id", "contact-form",
         "onsubmit", "sendEmail(event)",
