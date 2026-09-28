@@ -1,5 +1,6 @@
 package com.dessinemoiunalpaga.website.e2e
 
+import com.dessinemoiunalpaga.website.interfaces.kotlinx.html.style.TEST_ATTRIBUTE
 import io.kotest.assertions.ktor.client.shouldHaveStatus
 import io.kotest.matchers.collections.shouldBeEmpty
 import io.ktor.client.request.get
@@ -18,10 +19,10 @@ class IndexPageTest {
         response shouldHaveStatus HttpStatusCode.OK
 
         val document = Jsoup.parse(response.bodyAsText())
-        document.select("[data-test-id=article]").shouldBeEmpty()
-        document.select("[data-test-id=news] [data-test-id=news-highlight]").shouldBeEmpty()
-        document.select("[data-test-id=trainings] [data-test-id=trainings-photo]").shouldBeEmpty()
-        document.select("[data-test-id=guilds] [data-test-id=guilds-highlight]").shouldBeEmpty()
+        document.select("[$TEST_ATTRIBUTE=article]").shouldBeEmpty()
+        document.select("[$TEST_ATTRIBUTE=news] [$TEST_ATTRIBUTE=news-highlight]").shouldBeEmpty()
+        document.select("[$TEST_ATTRIBUTE=trainings] [$TEST_ATTRIBUTE=trainings-photo]").shouldBeEmpty()
+        document.select("[$TEST_ATTRIBUTE=guilds] [$TEST_ATTRIBUTE=guilds-highlight]").shouldBeEmpty()
     }
 
     @Test

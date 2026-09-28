@@ -13,7 +13,7 @@ import com.dessinemoiunalpaga.website.libs.kotlin.retry.retry
 class RetryingRepository<T : AggregateRoot>(
     private val delegate: Repository<T>,
     private val options: RetryOptions = RetryOptions(),
-): Repository<T> {
+) : Repository<T> {
 
     override suspend fun delete(id: String) = retry(options) { delegate.delete(id) }
 
