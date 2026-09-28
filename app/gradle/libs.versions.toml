@@ -13,7 +13,7 @@ kotlin-faker           = "1.16.2"
 kotlin-logging         = "8.0.4"
 ktor                   = "3.6.0"
 mockk                  = "1.14.11"
-slf4j                  = "2.0.19"
+slf4j                  = "2.0.20"
 
 [libraries]
 angus-smtp                      = { module = "org.eclipse.angus:smtp",                  version.ref = "angus-mail"       }
