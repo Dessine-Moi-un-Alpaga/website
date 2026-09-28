@@ -1,6 +1,7 @@
 package com.dessinemoiunalpaga.website.e2e
 
 import com.dessinemoiunalpaga.website.domain.Article
+import com.dessinemoiunalpaga.website.interfaces.kotlinx.html.style.TEST_ATTRIBUTE
 import io.kotest.assertions.ktor.client.shouldHaveStatus
 import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.shouldBe
@@ -22,7 +23,7 @@ suspend fun ApplicationTestBuilder.articleTest(
     pageUrl: String,
     sectionId: String,
 ) {
-    val contentAttribute = "data-test-id=${sectionId}-contents"
+    val contentAttribute = "$TEST_ATTRIBUTE=${sectionId}-contents"
     val content = FAKER.random.randomString(250)
     val article: Article = FAKER.randomProvider.randomClassInstance {
         namedParameterGenerator("text") {
@@ -33,12 +34,12 @@ suspend fun ApplicationTestBuilder.articleTest(
     createArticle(articleUrl, article)
 
     val document = getArticlePage(pageUrl)
-    document.select("[data-test-id=${sectionId}]") shouldHaveSize 1
-    document.select("[data-test-id=${sectionId}-section-title]").text() shouldBe article.sectionTitle
-    document.select("[data-test-id=${sectionId}-title]").text() shouldBe article.title
-    document.select("[data-test-id=${sectionId}-subtitle]").text() shouldBe article.subtitle
-    document.select("[data-test-id=${sectionId}-banner]").attr("alt") shouldBe article.bannerDescription
-    document.select("[data-test-id=${sectionId}-banner]").attr("src") shouldBe "${baseAssetUrl}/${article.banner}"
+    document.select("[$TEST_ATTRIBUTE=${sectionId}]") shouldHaveSize 1
+    document.select("[$TEST_ATTRIBUTE=${sectionId}-section-title]").text() shouldBe article.sectionTitle
+    document.select("[$TEST_ATTRIBUTE=${sectionId}-title]").text() shouldBe article.title
+    document.select("[$TEST_ATTRIBUTE=${sectionId}-subtitle]").text() shouldBe article.subtitle
+    document.select("[$TEST_ATTRIBUTE=${sectionId}-banner]").attr("alt") shouldBe article.bannerDescription
+    document.select("[$TEST_ATTRIBUTE=${sectionId}-banner]").attr("src") shouldBe "${baseAssetUrl}/${article.banner}"
     document.select("[$contentAttribute]").text() shouldBe content
 }
 

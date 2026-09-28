@@ -1,5 +1,6 @@
 package com.dessinemoiunalpaga.website.e2e
 
+import com.dessinemoiunalpaga.website.interfaces.kotlinx.html.style.TEST_ATTRIBUTE
 import io.kotest.assertions.ktor.client.shouldHaveStatus
 import io.kotest.matchers.collections.shouldBeEmpty
 import io.ktor.client.request.get
@@ -18,7 +19,7 @@ class NewsPageTest {
         response shouldHaveStatus HttpStatusCode.OK
 
         val document = Jsoup.parse(response.bodyAsText())
-        document.select("[data-test-id^=news-]").shouldBeEmpty()
+        document.select("[$TEST_ATTRIBUTE^=news-]").shouldBeEmpty()
     }
 
     @Test

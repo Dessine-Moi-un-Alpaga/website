@@ -2,6 +2,7 @@ package com.dessinemoiunalpaga.website.e2e
 
 import com.dessinemoiunalpaga.website.domain.ImageMetadata
 import com.dessinemoiunalpaga.website.interfaces.kotlinx.html.style.Photoswipe
+import com.dessinemoiunalpaga.website.interfaces.kotlinx.html.style.TEST_ATTRIBUTE
 import io.kotest.assertions.ktor.client.shouldHaveStatus
 import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.shouldBe
@@ -27,13 +28,13 @@ suspend fun ApplicationTestBuilder.photoGalleryTest(
     createImageMetadata(galleryUrl, imageMetadata)
 
     val document = getPhotoGalleryPage(pageUrl)
-    document.select("[data-test-id=$sectionId]") shouldHaveSize 1
-    document.select("[data-test-id=$sectionId-photo]") shouldHaveSize 1
-    document.select("[data-test-id=$sectionId-photo-image]").attr(Photoswipe.height) shouldBe "${imageMetadata.height}"
-    document.select("[data-test-id=$sectionId-photo-image]").attr(Photoswipe.width) shouldBe "${imageMetadata.width}"
-    document.select("[data-test-id=$sectionId-photo-image]").attr("href") shouldBe "${baseAssetUrl}/${imageMetadata.path}"
-    document.select("[data-test-id=$sectionId-photo-thumbnail]").attr("alt") shouldBe imageMetadata.description
-    document.select("[data-test-id=$sectionId-photo-thumbnail]").attr("src") shouldBe "${baseAssetUrl}/${imageMetadata.thumbnailPath}"
+    document.select("[$TEST_ATTRIBUTE=$sectionId]") shouldHaveSize 1
+    document.select("[$TEST_ATTRIBUTE=$sectionId-photo]") shouldHaveSize 1
+    document.select("[$TEST_ATTRIBUTE=$sectionId-photo-image]").attr(Photoswipe.height) shouldBe "${imageMetadata.height}"
+    document.select("[$TEST_ATTRIBUTE=$sectionId-photo-image]").attr(Photoswipe.width) shouldBe "${imageMetadata.width}"
+    document.select("[$TEST_ATTRIBUTE=$sectionId-photo-image]").attr("href") shouldBe "${baseAssetUrl}/${imageMetadata.path}"
+    document.select("[$TEST_ATTRIBUTE=$sectionId-photo-thumbnail]").attr("alt") shouldBe imageMetadata.description
+    document.select("[$TEST_ATTRIBUTE=$sectionId-photo-thumbnail]").attr("src") shouldBe "${baseAssetUrl}/${imageMetadata.thumbnailPath}"
 }
 
 private suspend fun ApplicationTestBuilder.createImageMetadata(galleryUrl: String, imageMetadata: ImageMetadata) {

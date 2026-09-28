@@ -1,6 +1,7 @@
 package com.dessinemoiunalpaga.website.e2e
 
 import com.dessinemoiunalpaga.website.domain.Highlight
+import com.dessinemoiunalpaga.website.interfaces.kotlinx.html.style.TEST_ATTRIBUTE
 import io.kotest.assertions.ktor.client.shouldHaveStatus
 import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.shouldBe
@@ -59,12 +60,12 @@ private suspend fun ApplicationTestBuilder.getHighlightPage(pageUrl: String): Do
     return Jsoup.parse(response.bodyAsText())
 }
 
-private fun Document.highlights(sectionId: String)  = select("[data-test-id=$sectionId]")
-private fun Document.highlight(sectionId: String) = select("[data-test-id=$sectionId-highlight]")
-private fun Document.thumbnailLink(sectionId: String) = select("[data-test-id=$sectionId-highlight-thumbnail]").attr("href")
-private fun Document.thumbnailDescription(sectionId: String) = select("[data-test-id=$sectionId-highlight-thumbnail-image]").attr("alt")
-private fun Document.thumbnailImage(sectionId: String) = select("[data-test-id=$sectionId-highlight-thumbnail-image]").attr("src")
-private fun Document.thumbnailTitleLink(sectionId: String) = select("[data-test-id=$sectionId-highlight-title]").attr("href")
-private fun Document.thumbnailTitle(sectionId: String) = select("[data-test-id=$sectionId-highlight-title]").text()
-private fun Document.highlightText(sectionId: String) = select("[data-test-id=$sectionId-highlight-text]").text()
-private fun Document.highlightButtonLink(sectionId: String) = select("[data-test-id=$sectionId-highlight-button]").attr("href")
+private fun Document.highlights(sectionId: String)  = select("[$TEST_ATTRIBUTE=$sectionId]")
+private fun Document.highlight(sectionId: String) = select("[$TEST_ATTRIBUTE=$sectionId-highlight]")
+private fun Document.thumbnailLink(sectionId: String) = select("[$TEST_ATTRIBUTE=$sectionId-highlight-thumbnail]").attr("href")
+private fun Document.thumbnailDescription(sectionId: String) = select("[$TEST_ATTRIBUTE=$sectionId-highlight-thumbnail-image]").attr("alt")
+private fun Document.thumbnailImage(sectionId: String) = select("[$TEST_ATTRIBUTE=$sectionId-highlight-thumbnail-image]").attr("src")
+private fun Document.thumbnailTitleLink(sectionId: String) = select("[$TEST_ATTRIBUTE=$sectionId-highlight-title]").attr("href")
+private fun Document.thumbnailTitle(sectionId: String) = select("[$TEST_ATTRIBUTE=$sectionId-highlight-title]").text()
+private fun Document.highlightText(sectionId: String) = select("[$TEST_ATTRIBUTE=$sectionId-highlight-text]").text()
+private fun Document.highlightButtonLink(sectionId: String) = select("[$TEST_ATTRIBUTE=$sectionId-highlight-button]").attr("href")

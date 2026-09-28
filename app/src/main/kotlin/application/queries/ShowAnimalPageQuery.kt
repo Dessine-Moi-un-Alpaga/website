@@ -14,7 +14,7 @@ import kotlinx.coroutines.coroutineScope
 class ShowAnimalPageQuery(
     private val animalRepository: Repository<Animal>,
     private val fiberAnalysisRepository: Repository<FiberAnalysis>,
-): ShowAnimalPage {
+) : ShowAnimalPage {
 
     override suspend fun execute(id: String) = coroutineScope {
         val fiberAnalyses = async { fiberAnalysisRepository.findBy("animalId", id) }
