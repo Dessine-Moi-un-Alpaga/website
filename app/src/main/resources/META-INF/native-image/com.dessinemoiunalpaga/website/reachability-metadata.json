@@ -56,23 +56,6 @@
       "type": "com.dessinemoiunalpaga.website.adapters.persistence.firestore.FirestoreProperties"
     },
     {
-      "type":"com.dessinemoiunalpaga.website.adapters.persistence.firestore.GoogleToken",
-      "fields": [
-        {
-          "name": "Companion"
-        }
-      ]
-    },
-    {
-      "type": "com.dessinemoiunalpaga.website.adapters.persistence.firestore.GoogleToken$Companion",
-      "methods": [
-        {
-          "name": "serializer",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
       "type": "com.dessinemoiunalpaga.website.adapters.persistence.firestore.IntValue",
       "fields": [
         {
@@ -499,6 +482,9 @@
     },
     {
       "type": "io.ktor.server.application.PluginInstance"
+    },
+    {
+      "type": "io.ktor.server.application.ReceiveGuard"
     },
     {
       "type": "io.ktor.server.auth.AuthenticateProvidersRegistration"
@@ -1346,6 +1332,9 @@
       "glob": "static/assets/icons/manifest.webmanifest"
     },
     {
+      "glob": "static/assets/js/email.js"
+    },
+    {
       "glob": "static/assets/js/escape-velocity/main.js"
     },
     {
@@ -1365,9 +1354,6 @@
     },
     {
       "glob": "static/assets/js/spin.js/spin.js"
-    },
-    {
-      "glob": "static/assets/js/email.js"
     },
     {
       "glob": "static/assets/robots.txt"
