@@ -12,7 +12,7 @@ kotlin                 = "2.4.21"
 kotlin-faker           = "1.16.2"
 kotlin-logging         = "8.0.6"
 ktor                   = "3.6.1"
-mockk                  = "1.14.11"
+mockk                  = "1.14.12"
 slf4j                  = "2.0.20"
 
 [libraries]
