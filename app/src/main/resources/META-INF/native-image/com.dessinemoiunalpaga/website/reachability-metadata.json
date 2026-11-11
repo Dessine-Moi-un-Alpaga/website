@@ -56,6 +56,23 @@
       "type": "com.dessinemoiunalpaga.website.adapters.persistence.firestore.FirestoreProperties"
     },
     {
+      "type":"com.dessinemoiunalpaga.website.adapters.persistence.firestore.GoogleToken",
+      "fields": [
+        {
+          "name": "Companion"
+        }
+      ]
+    },
+    {
+      "type": "com.dessinemoiunalpaga.website.adapters.persistence.firestore.GoogleToken$Companion",
+      "methods": [
+        {
+          "name": "serializer",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
       "type": "com.dessinemoiunalpaga.website.adapters.persistence.firestore.IntValue",
       "fields": [
         {
