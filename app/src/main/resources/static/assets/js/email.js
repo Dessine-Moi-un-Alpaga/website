@@ -42,7 +42,9 @@ function handleResponse(response) {
 
 async function sendEmail(event) {
     event.preventDefault();
-    const spinner = new Spinner();
+    const spinner = new Spinner({
+        color: "#fafafa"
+    });
     const modal = document.getElementById('modal')
     spinner.spin(modal);
     modal.style.display = "flex";
