@@ -51,7 +51,7 @@ class FirestoreRepositoryTest {
             client = client,
             properties = FirestoreProperties(
                 environmentName = "test",
-                project = "gitops-8ab10a6068",
+                project = "project",
                 url = "http://127.0.0.1:8181",
             ),
             transformer = TestTransformer(),
