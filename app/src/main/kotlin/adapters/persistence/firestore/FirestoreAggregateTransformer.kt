@@ -19,22 +19,26 @@ abstract class FirestoreAggregateTransformer<T : AggregateRoot> {
         fromDomain(aggregateRoot)
     )
 
-    private fun unwrap(fields: Map<String, Value>) = fields.mapValues {
-        when (it.value) {
-            is BooleanValue -> (it.value as BooleanValue).booleanValue
-            is IntValue     -> (it.value as IntValue).integerValue
+    private fun unwrap(fields: Map<String, Value>) = fields.mapValues  {
+        val value = it.value
+
+        when (value) {
+            is BooleanValue -> value.booleanValue
+            is IntValue     -> value.integerValue
             is NullValue    -> null
-            is StringValue  -> (it.value as StringValue).stringValue
+            is StringValue  -> value.stringValue
         }
     }
 
     private fun wrap(fields: Map<String, Any?>) = fields.mapValues {
-        when (it.value) {
-            is Boolean  -> BooleanValue(it.value as Boolean)
-            is Int      -> IntValue(it.value as Int)
+        val value = it.value
+
+        when (value) {
+            is Boolean  -> BooleanValue(value)
+            is Int      -> IntValue(value)
             is Nothing? -> NullValue(null)
-            is String   -> StringValue(it.value as String)
-            else        -> throw RuntimeException("Unknown value type: ${it.value}")
+            is String   -> StringValue(value)
+            else        -> throw RuntimeException("Unknown value type: $value")
         }
     }
 }
