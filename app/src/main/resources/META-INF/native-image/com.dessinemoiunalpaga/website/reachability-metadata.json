@@ -513,6 +513,12 @@
       "type": "io.ktor.server.auth.AuthenticationContext"
     },
     {
+      "type": "io.ktor.server.auth.AuthenticationPlan"
+    },
+    {
+      "type": "io.ktor.server.auth.AuthenticationRun"
+    },
+    {
       "type": "io.ktor.server.engine.BaseApplicationResponse"
     },
     {
