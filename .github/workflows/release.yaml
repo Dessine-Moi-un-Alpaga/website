@@ -66,6 +66,7 @@ jobs:
       run: task app:build
 
     - name: Save build reports and logs
+      background: true
       if: always()
       uses: actions/upload-artifact@v7
       with:
@@ -81,6 +82,8 @@ jobs:
         path: app/build/dokka/html
 
     - name: Deploy API documentation
+      background: true
+      continue-on-error: true
       uses: actions/deploy-pages@v5
 
     - name: Check if analysis is required
@@ -99,6 +102,7 @@ jobs:
         path: ~/.sonar/cache
 
     - name: Analyze
+      background: true
       if: steps.analysis-check.outputs.analysis-required == 'true'
       uses: SonarSource/sonarqube-scan-action@v8
       env:
