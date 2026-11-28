@@ -16,6 +16,7 @@ runs:
 
   - name: Create Terraform plugin cache directory
     run: mkdir -p ${{ inputs.cache-directory }}
+    shell: bash
 
   - name: Set up Terraform cache
     uses: actions/cache@v6
