@@ -1,0 +1,17 @@
+name: api-docs
+description: Uploads the API documentation
+inputs:
+  path:
+    description: The path to the API documentation
+    required: true
+runs:
+  using: composite
+  steps:
+
+  - name: Upload API documentation artifact
+    uses: actions/upload-pages-artifact@v5
+    with:
+      path: ${{ inputs.path }}
+
+  - name: Deploy API documentation
+    uses: actions/deploy-pages@v5

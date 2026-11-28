@@ -1,0 +1,30 @@
+name: setup-terraform
+description: Sets Up Terraform
+inputs:
+  cache-directory:
+    description: The path to the Terraform plugin cache
+    required: true
+  os:
+    description: The runner OS
+    required: true
+  version:
+    description: The Terraform version
+    required: true
+runs:
+  using: composite
+  steps:
+
+  - name: Create Terraform plugin cache directory
+    run: mkdir -p ${{ inputs.cache-directory }}
+
+  - name: Set up Terraform cache
+    uses: actions/cache@v6
+    with:
+      path: ${{ inputs.cache-directory }}
+      key: ${{ inputs.os }}-terraform-${{ hashFiles('**/.terraform.lock.hcl') }}
+
+  - name: Install Terraform
+    uses: hashicorp/setup-terraform@v4
+    with:
+      terraform_version: ${{ inputs.version }}
+      terraform_wrapper: false
