@@ -86,27 +86,15 @@ jobs:
       continue-on-error: true
       uses: actions/deploy-pages@v5
 
-    - name: Check if analysis is required
-      id: analysis-check
-      uses: ./.github/actions/analysis-check
+    - name: Perform SonarCloud Analysis
+      background: true
+      uses: ./.github/actions/sonar
       with:
         commit: ${{ github.sha }}
+        os: ${{ runner.os }}
         previous-commit: ${{ github.event.before }}
         ref-name: ${{ github.ref_name}}
-
-    - name: Set up SonarCloud package cache
-      if: steps.analysis-check.outputs.analysis-required == 'true'
-      uses: actions/cache@v6
-      with:
-        key: ${{ runner.os }}-sonar
-        path: ~/.sonar/cache
-
-    - name: Analyze
-      background: true
-      if: steps.analysis-check.outputs.analysis-required == 'true'
-      uses: SonarSource/sonarqube-scan-action@v8
-      env:
-        SONAR_TOKEN: ${{ secrets.SONARCLOUD_TOKEN }}
+        token: ${{ secrets.SONARCLOUD_TOKEN }}
 
     - name: Create Terraform plugin cache directory
       run: mkdir -p ${TF_PLUGIN_CACHE_DIR}
