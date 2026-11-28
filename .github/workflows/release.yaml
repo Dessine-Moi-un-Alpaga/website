@@ -130,7 +130,7 @@ jobs:
 
     - name: Wait for Release Dependencies
       wait:
-      - docker-buidlx
+      - docker-buildx
       - semantic-release
       - terraform
 
