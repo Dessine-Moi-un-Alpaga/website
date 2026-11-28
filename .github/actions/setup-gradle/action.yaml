@@ -1,0 +1,30 @@
+name: setup-gradle
+description: Sets Up Gradle
+inputs:
+  cache-encryption-key:
+    description: The Gradle cache encryption key
+    required: true
+  java-version:
+    description: The Java version
+    required: true
+runs:
+  using: composite
+  steps:
+
+  - name: Install Java
+    uses: actions/setup-java@v6
+    with:
+      cache-jdk: true
+      check-latest: true
+      distribution: temurin
+      java-version: ${{ inputs.java-version }}
+
+  - name: Set up Gradle integration
+    uses: gradle/actions/setup-gradle@v6.4.1
+    with:
+      build-scan-publish: true
+      build-scan-terms-of-use-url: https://gradle.com/terms-of-service
+      build-scan-terms-of-use-agree: yes
+      cache-encryption-key: ${{ inputs.cache-encryption-key }}
+      cache-read-only: false
+      dependency-graph: generate-and-submit
